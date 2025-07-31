@@ -1,0 +1,96 @@
++ OWNER=yoshiko-pg
++ REPO=difit
++ OUTPUT_DIR=./reports
+++ date +%Y%m%d_%H%M%S
++ OUTPUT_FILE=./reports/pr_contributors_yoshiko-pg_difit_20250731_191710.csv
++ [[ yoshiko-pg == \-\h ]]
++ [[ yoshiko-pg == \-\-\h\e\l\p ]]
++ main yoshiko-pg difit
++ echo '🚀 GitHub Pull Request Contributor Analyzer'
++ echo ===========================================
++ check_requirements
++ missing_commands=()
++ local missing_commands
++ command -v gh
++ command -v jq
++ [[ 0 -gt 0 ]]
++ check_github_auth
++ gh auth status
++ check_repository_access
++ echo '🔍 Checking repository access...'
++ gh repo view yoshiko-pg/difit
++ echo '✅ Repository access confirmed'
++ setup_output_directory
++ [[ ! -d ./reports ]]
++ analyze_contributors
++ echo ''
++ echo '📊 Starting pull request contributor analysis...'
++ echo 'Repository: yoshiko-pg/difit'
++ echo 'Output file: ./reports/pr_contributors_yoshiko-pg_difit_20250731_191710.csv'
++ echo ----------------------------------------
++ gh api graphql --field owner=yoshiko-pg --field repo=difit --field 'query=
+        query($owner: String!, $repo: String!) {
+          repository(owner: $owner, name: $repo) {
+            pullRequests(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
+              totalCount
+              nodes {
+                author {
+                  login
+                  ... on User {
+                    id
+                    databaseId
+                  }
+                }
+              }
+            }
+          }
+        }
+      '
++ jq '
+      # プルリクエストの総数を取得（参考情報として）
+      .data.repository.pullRequests.totalCount as $total |
+      
+      # 作成者情報を抽出・整理
+      .data.repository.pullRequests.nodes 
+      | map(select(.author != null and .author.login != null))
+      | map({
+          userId: (.author.databaseId // "unknown"),
+          username: .author.login
+        })
+      
+      # ユーザーごとに集計
+      | group_by(.username)
+      | map({
+          userId: .[0].userId,
+          username: .[0].username,
+          pullRequestCount: length
+        })
+      
+      # 貢献度順にソート
+      | sort_by(-.pullRequestCount)
+      
+      # メタデータを追加
+      | {
+          metadata: {
+            totalPullRequests: $total,
+            analyzedDate: now | strftime("%Y-%m-%d %H:%M:%S"),
+            contributorCount: length
+          },
+          contributors: .
+        }
+    '
++ tee ./reports/pr_contributors_yoshiko-pg_difit_20250731_191710.csv
++ gh api --template '
+{{/* メタデータをコメントとして出力 */}}
+# Pull Request Contributor Analysis Report
+# Repository: yoshiko-pg/difit
+# Generated: {{.metadata.analyzedDate}}
+# Total Contributors: {{.metadata.contributorCount}}
+# ----------------------------------------
+userId,username,pullrequest回数
+{{/* 各貢献者の情報を出力 */}}
+{{range .contributors}}
+{{.userId}},"{{.username | replace "\"" "\"\""}}",{{.pullRequestCount}}
+{{end}}
+' --input -
+accepts 1 arg(s), received 0

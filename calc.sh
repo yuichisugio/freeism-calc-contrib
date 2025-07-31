@@ -1,8 +1,10 @@
 #!/bin/bash
 # GitHub プルリクエスト貢献者分析ツール
 
-# エラーが発生したらスクリプトを終了
-set -euoxv pipefail
+# ./calc.sh yoshiko-pg difit 2> error.txt
+
+# エラーが発生したらスクリプトを終了。-xは標準エラー出力なので、error.txtに出力させる。
+set -euxo pipefail
 
 # デフォルト設定
 OWNER=${1:-"yoshiko-pg"}
