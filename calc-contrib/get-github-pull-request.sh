@@ -8,19 +8,13 @@
 # -oはパイプで繋いだコマンドが失敗したらスクリプトを終了。
 set -euo pipefail
 
-# デフォルト設定
-OWNER=${1:-"yoshiko-pg"}
-REPO=${2:-"difit"}
-
-# 出力ファイルのパス
-OUTPUT_DIR="./reports"
-OUTPUT_FILE="${OUTPUT_DIR}/pr_contributors_${OWNER}_${REPO}_$(date +%Y%m%d_%H%M%S).csv"
-
 # プルリクエスト貢献者を分析。
 function analyze_contributors() {
   # GitHub APIを呼び出し、プルリクエストデータを取得。
   # jqでデータを加工してCSVに出力。
   # teeでファイルに出力しつつ、標準出力にも出力。
+
+  # ↓ディレクティブは、シェルスクリプトの静的解析ツールであるshellcheckに対して、GraphQL変数を使用したいので、""を使用する警告を無視して、''を使用できるように指示するもの。
   # shellcheck disable=SC2016
   gh api graphql -F owner="$OWNER" -F name="$REPO" -f query='
       query($owner: String!, $name: String!) {
@@ -78,11 +72,4 @@ function analyze_contributors() {
     (.[] | [.userId, .username, .pullRequestCount] | @csv)
     ' |
     tee "$OUTPUT_FILE"
-}
-
-# 出力ディレクトリの準備
-setup_output_directory() {
-  if [[ ! -d "$OUTPUT_DIR" ]]; then
-    mkdir -p "$OUTPUT_DIR"
-  fi
 }

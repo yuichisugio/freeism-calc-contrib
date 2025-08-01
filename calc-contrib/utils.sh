@@ -24,3 +24,10 @@ Examples:
 
 EOF
 }
+
+# 出力ディレクトリの準備
+setup_output_directory() {
+  if [[ ! -d "$OUTPUT_DIR" ]]; then
+    mkdir -p "$OUTPUT_DIR"
+  fi
+}
