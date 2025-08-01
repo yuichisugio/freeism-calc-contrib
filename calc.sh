@@ -104,7 +104,7 @@ function analyze_contributors() {
     | sort_by(-.pullRequestCount)
 
     # CSVヘッダーの出力
-    | (["userId", "username", "pullrequest回数"] | @csv),
+    | (["userId", "username", "pullRequestCount"] | join(",")),
 
     # データ行の出力
     (.[] | [.userId, .username, .pullRequestCount] | @csv)
