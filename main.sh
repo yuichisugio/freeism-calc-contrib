@@ -30,6 +30,9 @@ fi
 # プルリクエスト貢献者を分析。
 source "$(dirname "$0")/calc-contrib/get-github-pull-request.sh" "$OWNER" "$REPO" "$OUTPUT_FILE"
 
+# イシュー貢献者を分析。
+source "$(dirname "$0")/calc-contrib/get-github-issue.sh" "$OWNER" "$REPO" "$OUTPUT_FILE"
+
 # 貢献度の重み付け
 # source "$(dirname "$0")/calc-contrib/contrib-weighting.sh"
 
