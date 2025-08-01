@@ -1,48 +1,16 @@
 #!/bin/bash
 
+# pull request関連のデータ取得を行うファイル
+
 # エラーが発生したらスクリプトを終了。
 # -eはエラーが発生したらスクリプトを終了。
 # -uは未定義の変数を使用したらエラー。
 # -oはパイプで繋いだコマンドが失敗したらスクリプトを終了。
 set -euo pipefail
 
-# スクリプトのディレクトリに移動。
-# どのディレクトリにいても、スクリプトのディレクトリに移動することで相対パスでファイルでも正しく指定できる。
-cd "$(dirname "$0")"
-
-# 使用方法の表示
-show_usage() {
-  cat <<EOF
-Usage: $0 [OWNER] [REPO]
-
-GitHub リポジトリのプルリクエスト貢献者を分析し、
-各ユーザーの貢献度をCSV形式で出力します。
-
-Parameters:
-  OWNER    リポジトリのオーナー名 (デフォルト: cli)
-  REPO     リポジトリ名 (デフォルト: cli)
-
-Output:
-  userId,username,pullrequest回数
-
-Examples:
-  $0                    # cli/cli を分析
-  $0 facebook react     # facebook/react を分析
-  $0 microsoft vscode   # microsoft/vscode を分析
-
-EOF
-}
-
 # デフォルト設定
 OWNER=${1:-"yoshiko-pg"}
 REPO=${2:-"difit"}
-
-# ヘルプオプションの処理。引数がある場合のみヘルプをチェック。
-# 引数がない場合はヘルプを表示しない。
-if [[ $# -gt 0 && ("$1" == "-h" || "$1" == "--help") ]]; then
-  show_usage
-  exit 0
-fi
 
 # 出力ファイルのパス
 OUTPUT_DIR="./reports"
@@ -118,12 +86,3 @@ setup_output_directory() {
     mkdir -p "$OUTPUT_DIR"
   fi
 }
-
-# メイン関数
-function main() {
-  setup_output_directory
-  analyze_contributors
-}
-
-# スクリプトを実行。
-main "$@"
