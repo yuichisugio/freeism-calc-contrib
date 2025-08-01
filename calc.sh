@@ -53,40 +53,42 @@ function analyze_contributors() {
   # GitHub APIを呼び出し、プルリクエストデータを取得。
   # jqでデータを加工してCSVに出力。
   # teeでファイルに出力しつつ、標準出力にも出力。
-  gh api graphql -f query="
-    query {
-      repository(owner: \"$OWNER\", name: \"$REPO\") {
-        pullRequests(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
-          totalCount
-          nodes {
-            author {
-              login
-              ... on User {
-                id
-                databaseId
+  # shellcheck disable=SC2016
+  gh api graphql -F owner="$OWNER" -F name="$REPO" -f query='
+      query($owner: String!, $name: String!) {
+        repository(owner: $owner, name: $name) {
+          pullRequests(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
+            totalCount
+            nodes {
+              author {
+                login
+                ... on User {
+                  id
+                  databaseId
+                }
               }
             }
           }
         }
+        rateLimit{
+          cost
+          limit
+          nodeCount
+          used
+          remaining
+          resetAt
+        }
       }
-      rateLimit{
-        cost
-        limit
-        nodeCount
-        used
-        remaining
-        resetAt
-      }
-    }
-  " | jq -r '
+  ' |
+    jq -r '
     # プルリクエストデータの前処理
     .data.repository.pullRequests as $pullRequests |
 
     # 作成者情報を抽出・整理（null値を除外）
-    $pullRequests.nodes 
+    $pullRequests.nodes
     | map(select(.author != null and .author.login != null))
     | map({
-        userId: (.author.databaseId // "unknown"),
+        userId: (.author.databaseId),
         username: .author.login
       })
 
@@ -103,10 +105,11 @@ function analyze_contributors() {
 
     # CSVヘッダーの出力
     | (["userId", "username", "pullrequest回数"] | @csv),
-      
+
     # データ行の出力
     (.[] | [.userId, .username, .pullRequestCount] | @csv)
-    ' | tee "$OUTPUT_FILE"
+    ' |
+    tee "$OUTPUT_FILE"
 }
 
 # 出力ディレクトリの準備
