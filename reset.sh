@@ -4,10 +4,13 @@
 
 set -euo pipefail
 
+# どこから実行しても相対PATHを安定させる
 cd "$(dirname "$0")"
 
+# 引数がない場合のダミーを入れる。set -uのエラーを回避するため。
 arg1=${1:-"all"}
 
+# ヘルプを表示する関数
 function show_usage() {
   cat <<EOF
   Usage:
@@ -31,11 +34,13 @@ function show_usage() {
 EOF
 }
 
-if [[ $arg1 == "-h" || $arg1 == "--heblp" ]]; then
+# ヘルプを表示する
+if [[ $arg1 == "-h" || $arg1 == "--help" ]]; then
   show_usage
   exit 0
 fi
 
+# resultsディレクトリが存在しない場合はエラーを表示する
 if [[ ! -d results ]]; then
   echo "resultsディレクトリが存在しません"
   exit 1

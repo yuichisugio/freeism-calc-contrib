@@ -28,8 +28,17 @@ EOF
 
 # 出力ディレクトリの準備
 setup_output_directory() {
-  if [[ ! -d "$OUTPUT_DIR" ]]; then
-    mkdir -p "$OUTPUT_DIR"
+
+  if [[ ! -d "$RESULTS_DIR" ]]; then
+    mkdir -p "$RESULTS_DIR"
+  fi
+
+  if [[ ! -d "$PULL_REQUEST_DIR" ]]; then
+    mkdir -p "$PULL_REQUEST_DIR"
+  fi
+
+  if [[ ! -d "$ISSUE_DIR" ]]; then
+    mkdir -p "$ISSUE_DIR"
   fi
 
   return 0

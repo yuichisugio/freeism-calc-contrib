@@ -2,32 +2,49 @@
 
 ## 概要
 
-- 名前は、`freeism-contribution-calculate`
 - 指定 OSS への各ユーザーごとの貢献度を分析してくれる
 
 ## 今後追加したい内容
 
 - 追加コード行数（Lines of Code, LoC）の評価を追加したい。
+- issue関連のタスクを貢献度の算出に入れる
 
 ## 使用方法
 
-1. （初回のみ）以下を実行
+### 初回のみ
+
+1. シェルで、以下を実行
    ```shell
    git clone https://github.com/yuichisugio/freeism-contribution-calculate.git
    ```
-1. （初回のみ）以下を実行
+1. シェルで、以下を実行
    ```shell
-   chmod +x ./main.sh
+   chmod +x ./main.sh && chmod +x ./reset.sh
    ```
-1. 以下を実行
+
+### 分析したい場合
+
+1. シェルで、以下を実行
    ```shell
-   ./main.sh
+   ./main.sh [リポジトリ所有者名] [リポジトリ名]
    ```
 1. `results/main`フォルダに、分析結果が入る
 
-## 注意事項
+### 分析結果を削除したい場合
 
-1. トークンは不要
+1. シェルで、以下を実行
+   ```shell
+   ./reset.sh [オプション]
+   ```
+   - オプションなしで、`results`フォルダのデータをすべて削除
+   - `-p`or`-pull-request`で`pull-request`フォルダのみ削除
+   - `-p`or`-issue`で`issue`フォルダのみ削除
+   - `-m`or`-main`で`main`フォルダのみ削除
+
+## 必要な内容
+
+1. GitHub CLI(`gh`)のインストール
+1. GitHub CLI(`gh`)のログイン
 
 ## 出力される分析内容
 
@@ -79,7 +96,7 @@
 
 1. プルリクエストのコード変更数
    - `additions`（追加行数）、`deletions`（削除行数）から判断
-   - プルリク系のすべてで、↑を使用する
+   - プルリク系のすべてで、↑ を使用する
 1. コミットのコード変更数
 1. c
 
@@ -115,6 +132,7 @@
 ### etc
 
 ## シェルスクリプトで実装した理由
+
 1. どの言語を学んでいる人でも理解しやすい
 2. 自分が勉強したかった
 3. 環境構築が楽
