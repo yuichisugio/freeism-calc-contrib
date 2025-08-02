@@ -14,7 +14,7 @@ OWNER=${1:-"yoshiko-pg"}
 REPO=${2:-"difit"}
 
 # 共通関数を読み込む
-source "$(dirname "$0")/calc-contrib/utils.sh"
+source "$(dirname "$0")/src/utils/utils.sh"
 
 # ヘルプオプションの処理。引数がある場合のみヘルプをチェック。
 # 引数がない場合はヘルプを表示しない。
@@ -24,10 +24,10 @@ if [[ $# -gt 0 && ("$1" == "-h" || "$1" == "--help") ]]; then
 fi
 
 # プルリクエスト貢献者を分析。
-source "$(dirname "$0")/calc-contrib/get-github-pull-request.sh"
+source "$(dirname "$0")/src/get-data-from-github/get-github-pull-request.sh"
 
 # イシュー貢献者を分析。
-source "$(dirname "$0")/calc-contrib/get-github-issue.sh"
+source "$(dirname "$0")/src/get-data-from-github/get-github-issue.sh"
 
 # 貢献度の重み付け
 # source "$(dirname "$0")/calc-contrib/contrib-weighting.sh"
