@@ -32,6 +32,8 @@ function show_usage() {
     $0 -p
     $0 -m
 EOF
+
+  return 0
 }
 
 # ヘルプを表示する

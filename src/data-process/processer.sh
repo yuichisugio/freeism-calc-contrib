@@ -65,6 +65,8 @@ function process_commit_data() {
       commit_date: .commit.author.date
     }
   ' "$commit_data_file" >"$output_file"
+
+  return 0
 }
 
 # イシューのデータを加工
@@ -84,6 +86,8 @@ function process_issue_data() {
       issue_comments: .comments
     }
   ' "$issue_data_file" >"$output_file"
+
+  return 0
 }
 
 # スターのデータを加工
@@ -97,6 +101,8 @@ function process_star_data() {
       star_created_at: .created_at
     }
   ' "$star_data_file" >"$output_file"
+
+  return 0
 }
 
 # forkのデータを加工
@@ -110,6 +116,8 @@ function process_fork_data() {
       fork_created_at: .created_at
     }
   ' "$fork_data_file" >"$output_file"
+
+  return 0
 }
 
 # watchのデータを加工
@@ -123,6 +131,8 @@ function process_watch_data() {
       watch_created_at: .created_at
     }
   ' "$watch_data_file" >"$output_file"
+
+  return 0
 }
 
 # installのデータを加工
@@ -136,4 +146,6 @@ function process_install_data() {
       install_created_at: .created_at
     }
   ' "$install_data_file" >"$output_file"
+
+  return 0
 }

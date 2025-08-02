@@ -16,4 +16,6 @@ get_github_commit_data() {
     author: .author.login,
     date: .commit.author.date
   }' | tee "$output_file"
+
+  return 0
 }
