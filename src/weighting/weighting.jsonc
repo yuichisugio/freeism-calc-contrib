@@ -1,0 +1,48 @@
+{
+	"task_type": {
+		"pr": {
+		"approved_pr_created": 10, // 承認された作成
+		"rejected_pr_created": 10, // 却下された作成
+		"pr_created": 10, // 作成
+		"pr_merged": 8, // マージ
+		"pr_reviewed": 5, // レビュー
+		"pr_approved_judge": 7, // プルリクを承認する側
+		"pr_rejected_judge": 7, // プルリクを却下する側
+		"pr_assigned": 4, // 割り当て
+		"pr_commented": 2 // コメント
+    },
+    "issue": {
+      "issue_created": 3, // 作成
+      "issue_closed": 5, // クローズ
+      "issue_commented": 2, // コメント
+      "issue_assigned": 4 // 割り当て
+    },
+    "commit": {
+			"commits": 6 // コミット
+		},
+		"star": 1,
+		"fork": 1,
+		"watch": 1,
+		"install": 1
+	},
+	"period": {
+		"first_period": 1,
+		"second_period": 2,
+		"third_period": 3,
+		"fourth_period": 4,
+		"fifth_period": 5
+	},
+	"lines_of_code": {
+		"m_size": 1,
+		"l_size": 2,
+		"xl_size": 3,
+		"xxl_size": 4
+	},
+	"reaction_speed": {
+		"very_fast": 5,
+		"fast": 4,
+		"medium": 3,
+		"slow": 2,
+		"very_slow": 1
+	}
+}
