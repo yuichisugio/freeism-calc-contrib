@@ -66,4 +66,6 @@ function get_github_issue_contributors() {
     (.[] | [.userId, .username, .issueCount] | @csv)
     ' |
     tee "$OUTPUT_FILE"
+
+    return 0
 }

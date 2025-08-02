@@ -24,7 +24,7 @@ function get_github_pull_request_contributors() {
       query($owner: String!, $name: String!) {
         repository(owner: $owner, name: $name) {
           pullRequests(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
-            totalCount
+            state
             nodes {
               author {
                 login
@@ -76,4 +76,6 @@ function get_github_pull_request_contributors() {
     (.[] | [.userId, .username, .pullRequestCount] | @csv)
     ' |
     tee "$OUTPUT_FILE"
+
+    return 0
 }

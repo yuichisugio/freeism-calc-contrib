@@ -45,6 +45,8 @@ function main() {
 
   # イシュー貢献者を分析。
   get_github_issue_contributors
+
+  return 0
 }
 
 # スクリプトを実行。
