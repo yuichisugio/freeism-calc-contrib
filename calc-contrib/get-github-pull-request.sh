@@ -8,8 +8,12 @@
 # -oはパイプで繋いだコマンドが失敗したらスクリプトを終了。
 set -euo pipefail
 
+# 出力ファイルのパス
+OUTPUT_DIR="./results/pull-request"
+OUTPUT_FILE="${OUTPUT_DIR}/pr_contributors_${OWNER}_${REPO}_$(date +%Y%m%d_%H%M%S).csv"
+
 # プルリクエスト貢献者を分析。
-function analyze_contributors() {
+function get_github_pull_request_contributors() {
   # GitHub APIを呼び出し、プルリクエストデータを取得。
   # jqでデータを加工してCSVに出力。
   # teeでファイルに出力しつつ、標準出力にも出力。
