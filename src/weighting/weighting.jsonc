@@ -1,21 +1,20 @@
 {
 	"task_type": {
 		"pr": {
+			"open_pr_created": 5, // 作成
+			"draft_pr_created": 2, // 下書き作成
 			"approved_pr_created": 10, // 承認された作成
-			"rejected_pr_created": 10, // 却下された作成
-			"pr_created": 10, // 作成
-			"pr_merged": 8, // マージ
-			"pr_reviewed": 5, // レビュー
-			"pr_approved_judge": 7, // プルリクを承認する側
-			"pr_rejected_judge": 7, // プルリクを却下する側
-			"pr_assigned": 4, // 割り当て
-			"pr_commented": 2 // コメント
+			"rejected_pr_created": 5, // 却下された作成
+			"pr_commented": 2, // コメント
+			"pr_merged": 3, // マージ
+			"pr_reviewed": 5 // レビュー
 		},
 		"issue": {
-			"issue_created": 3, // 作成
-			"issue_closed": 5, // クローズ
+			"open_issue_created": 3, // 作成
+			"not_planned_issue_created": 2, // 作成
+			"completed_issue_created": 5, // 作成
 			"issue_commented": 2, // コメント
-			"issue_assigned": 4 // 割り当て
+			"issue_status_changed": 5 // ステータス変更
 		},
 		"commit": {
 			"commits": 6 // コミット

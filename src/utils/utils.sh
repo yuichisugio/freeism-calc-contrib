@@ -2,6 +2,8 @@
 
 # 共通関数を定義するファイル
 
+set -euo pipefail
+
 # 使用方法の表示
 show_usage() {
   cat <<EOF
