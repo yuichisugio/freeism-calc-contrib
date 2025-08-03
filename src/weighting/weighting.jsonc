@@ -35,7 +35,8 @@
 		"m_size": 1,
 		"l_size": 2,
 		"xl_size": 3,
-		"xxl_size": 4
+		"xxl_size": 4,
+		"xxxl_size": 5
 	},
 	"reaction_speed": {
 		"very_fast": 5,
@@ -43,5 +44,12 @@
 		"medium": 3,
 		"slow": 2,
 		"very_slow": 1
+	},
+	"reaction_count": {
+		"very_high": 5,
+		"high": 4,
+		"medium": 3,
+		"low": 2,
+		"very_low": 1
 	}
 }
