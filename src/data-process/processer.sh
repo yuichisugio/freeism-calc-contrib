@@ -13,41 +13,21 @@ function process_pr_data() {
 
   echo "$1" |
     jq -r '
-    # プルリクエストデータの前処理
-    .data.repository.pullRequests as $pullRequests |
-
-    # 作成者情報を抽出・整理（null値を除外）
-    $pullRequests.nodes
-    | map(select(.author != null and .author.login != null))
-    | map({
-        userId: (.author.databaseId),
-        username: .author.login
-      })
-
-    # ユーザーごとに集計
-    | group_by(.username)
-    | map({
-        userId: .[0].userId,
-        username: .[0].username,
-        pullRequestCount: length
-      })
-
-    # 貢献度順にソート（降順）
-    | sort_by(-.pullRequestCount)
-
-     | {
-      pr_id: .number,
-      pr_title: .title,
-      pr_body: .body,
-      pr_created_at: .created_at,
-      pr_updated_at: .updated_at,
-      pr_merged_at: .merged_at,
-      pr_closed_at: .closed_at,
-      pr_assignees: .assignees,
-      pr_reviewers: .reviewers,
-      pr_comments: .comments
-    }
-  ' | tee "$pr_output_file"
+      .data.repository.pullRequests
+        | {
+        pr_id: .number,
+        pr_title: .title,
+        pr_body: .body,
+        pr_created_at: .created_at,
+        pr_updated_at: .updated_at,
+        pr_merged_at: .merged_at,
+        pr_closed_at: .closed_at,
+        pr_assignees: .assignees,
+        pr_reviewers: .reviewers,
+        pr_comments: .comments
+      }
+      ' |
+    tee "$pr_output_file"
 
   return 0
 }
