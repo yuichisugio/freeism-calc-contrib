@@ -19,6 +19,14 @@
 		"commit": {
 			"commits": 6 // コミット
 		},
+		"sponsor": {
+			"spot_high": 3,
+			"spot_medium": 2,
+			"spot_low": 1,
+			"monthly_high": 5,
+			"monthly_medium": 4,
+			"monthly_low": 3
+		},
 		"star": 1,
 		"fork": 1,
 		"watch": 1,

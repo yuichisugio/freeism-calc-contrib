@@ -129,3 +129,18 @@ function process_install_data() {
 
   return 0
 }
+
+# GitHub Sponsors関連のデータを加工
+function process_sponsor_data() {
+  local sponsor_data_file="${1:-}"
+  local output_file="${2:-}"
+
+  jq -r '
+    .[] | {
+      sponsor_id: .id,
+      sponsor_created_at: .created_at
+    }
+  ' "$sponsor_data_file" >"$output_file"
+
+  return 0
+}
