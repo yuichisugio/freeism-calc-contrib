@@ -17,7 +17,7 @@ readonly PULL_REQUEST_DIR="${RESULTS_DIR}/pull-request"
 readonly ISSUE_DIR="${RESULTS_DIR}/issue"
 
 # 共通関数を読み込む
-source "$(dirname "$0")/src/utils/utils.sh"
+source "$(dirname "$0")/utils/utils.sh"
 
 # ヘルプオプションの処理。引数がある場合のみヘルプをチェック。
 # 引数がない場合はヘルプを表示しない。
@@ -27,13 +27,13 @@ if [[ $# -gt 0 && ("$1" == "-h" || "$1" == "--help") ]]; then
 fi
 
 # データを加工するファイルを読み込む
-source "$(dirname "$0")/src/data-process/processer.sh"
+source "$(dirname "$0")/data-process/github-processer.sh"
 
 # プルリクエスト貢献者を分析。
-source "$(dirname "$0")/src/get-data-from-github/get-github-pull-request.sh"
+source "$(dirname "$0")/get-data/get-data-from-github/get-github-pull-request.sh"
 
 # イシュー貢献者を分析。
-source "$(dirname "$0")/src/get-data-from-github/get-github-issue.sh"
+source "$(dirname "$0")/get-data/get-data-from-github/get-github-issue.sh"
 
 # 貢献度の重み付け
 # source "$(dirname "$0")/calc-contrib/contrib-weighting.sh"

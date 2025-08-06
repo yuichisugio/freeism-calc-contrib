@@ -1,8 +1,12 @@
-# `freeism-contribution-calculate`
+# `freeism-contribution-calculate`の説明
 
 ## 概要
 
 - 指定 OSS への各ユーザーごとの貢献度を分析してくれる
+
+## フォルダ構造
+
+評価軸 -> 異なる評価対象ごとの評価ロジック -> データ取得 / データ加工 / 重み付け値の算出 / 貢献度の算出
 
 ## 今後追加したい内容
 
