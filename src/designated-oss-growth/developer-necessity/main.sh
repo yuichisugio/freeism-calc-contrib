@@ -27,7 +27,7 @@ if [[ $# -gt 0 && ("$1" == "-h" || "$1" == "--help") ]]; then
 fi
 
 # データを加工するファイルを読み込む
-source "$(dirname "$0")/data-process/github-processer.sh"
+source "$(dirname "$0")/data-process/github-processor.sh"
 
 # プルリクエスト貢献者を分析。
 source "$(dirname "$0")/get-data/get-data-from-github/get-github-pull-request.sh"

@@ -2,8 +2,5 @@
 .env*
 !.env.example
 
-# reports
-reports/
-
 # results
 results/
