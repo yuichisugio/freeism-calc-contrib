@@ -48,3 +48,5 @@
 #### 概要
 
 - [OpenRank](https://open-digger.cn/en/docs/user-docs/metrics/openrank)による評価
+- 以下のように取得したいリポジトリを URL 内で指定すると、OpenRank が JSON で取得できる
+  - https://oss.open-digger.cn/github/X-lab2017/open-digger/community_openrank.json
