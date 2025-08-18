@@ -31,33 +31,5 @@
 		"fork": 1,
 		"watch": 1,
 		"install": 1
-	},
-	"period": {
-		"first_period": 1,
-		"second_period": 2,
-		"third_period": 3,
-		"fourth_period": 4,
-		"fifth_period": 5
-	},
-	"lines_of_code": {
-		"m_size": 1,
-		"l_size": 2,
-		"xl_size": 3,
-		"xxl_size": 4,
-		"xxxl_size": 5
-	},
-	"reaction_speed": {
-		"very_fast": 5,
-		"fast": 4,
-		"medium": 3,
-		"slow": 2,
-		"very_slow": 1
-	},
-	"reaction_count": {
-		"very_high": 5,
-		"high": 4,
-		"medium": 3,
-		"low": 2,
-		"very_low": 1
 	}
 }
