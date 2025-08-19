@@ -16,18 +16,6 @@
 
 #### 概要
 
--
-
-#### 必要な準備
-
-- [scorecard](https://github.com/ossf/scorecard?tab=readme-ov-file 'scorecard github url')を使用しているため、その環境構築が必要
-  1. scorecard をインストール
-     ```shell
-     brew install scorecard
-     ```
-  2. Github の Personal Access Token を取得
-     - 権限は、classic にして、public_repo などにチェック。read-only の権限だけで OK
-
 ## 貢献度を分析するロジック
 
 ### OpenRank
