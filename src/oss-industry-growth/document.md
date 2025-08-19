@@ -8,7 +8,6 @@
 ## 評価ロジックの種類
 
 1. 「GitHub OSS」の貢献度を独自の指標の組み合わせ
-1. 「GitHub OSS」の指定 OSS の各開発者の貢献値の平方根の合計（∑ √ 各貢献者の貢献値）
 1. OpenRank
 
 ## 評価ロジックごとの説明
@@ -30,18 +29,6 @@
      - 権限は、classic にして、public_repo などにチェック。read-only の権限だけで OK
 
 ## 貢献度を分析するロジック
-
-### 「GitHub OSS」の貢献度を独自の指標の組み合わせ
-
-1. セキュリティ
-   - [scorecard](https://github.com/ossf/scorecard?tab=readme-ov-file 'scorecard github url')を使用している
-
-### 「GitHub OSS」の指定 OSS の各開発者の貢献値の平方根の合計（∑ √ 各貢献者の貢献値）
-
-#### 概要
-
-- 平方根にしているのは、貢献する人数が多いリポジトリを優遇したいため
-  - その方が強固でサポートされやすいと考えている
 
 ### OpenRank
 
