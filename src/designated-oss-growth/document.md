@@ -23,6 +23,8 @@
 ### 概要
 
 - 「指定 OSS が使用している（依存している）GitHub OSS」による「指定 OSS の発展」への貢献度を分析
+- 実装をシンプルにするために、各依存ライブラリごとに恣意的な数値を入力して評価する
+  - 今後は静的解析や他の指標を指標して評価できるようにしたい
 
 ### 使い方
 
@@ -33,6 +35,14 @@
 - path
 
   - `path`に、指定フォーマットの使用 OSS の一覧の JSON ファイルの PATH を指定する
+  - その JSON ファイルの形式は、以下の形式であれば OK！
+    ```json
+    {
+      "data":[
+        {a},{b},{},...
+      ]
+    }
+    ```
 
 - オプション
   - `-d`,`--default`
@@ -43,5 +53,33 @@
 ### 出力形式
 
 ```json
-
+{
+	"meta": {
+		"createdAt": "2025-08-20",
+		"specified-oss": {
+			"owner": "ryoppippi",
+			"Repository": "ccusage"
+		}
+	},
+	"data": [
+		{
+			"host": "gitlab.com",
+			"owner": "group",
+			"repo": "lib-b",
+			"evaluation": {
+				"evaluationCriteria": {
+					"timeResources": 3
+				}
+			}
+		},
+		{
+			"host": "github.com",
+			"owner": "acme",
+			"repo": "lib-a",
+			"package_manager_url": "pack-D",
+			"homepage": "page-p",
+			"repository_url": "git/e"
+		}
+	]
+}
 ```
