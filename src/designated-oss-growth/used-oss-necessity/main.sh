@@ -68,7 +68,7 @@ function validate_json_file() {
 
   # ファイルが有効なJSONか確認
   for file in "${dependencies_json}" "${config_json}"; do
-    if ! jq -e '.' "${file}" >/dev/null; then
+    if ! jq '.' "${file}" >/dev/null; then
       echo "Error: ${file} is not a valid JSON file" >&2
       exit 1
     fi
@@ -134,11 +134,31 @@ function process_dependencies_json() {
 #--------------------------------------
 function prepare_output_file() {
   local name
-  name=$(jq -r '.meta["specified-oss"] | "\(.owner)_\(.Repository)"' "${dependencies_json}")
+  name=$(
+    jq -r '
+      # meta.specified-oss から安全に owner/repo を組み立て
+      def from_meta:
+        (.meta["specified-oss"]? // {}) as $m
+        | ($m.owner // empty)      as $o
+        | ($m.Repository // $m.repository // empty) as $r
+        | select(($o|type)=="string" and ($o|length)>0 and ($r|type)=="string" and ($r|length)>0)
+        | "\($o)_\($r)";
+
+      # data[].repo ("owner/name") からのフォールバック
+      def from_data:
+        (.data // [])
+        | map(.repo? | select(type=="string"))
+        | map(capture("(?<owner>[^/]+)/(?<name>[^/]+)"))
+        | (if length>0 then "\(.[0].owner)_\(.[0].name)" else empty end);
+
+      from_meta // from_data // "unknown"
+    ' "${dependencies_json}"
+  )
+
   local dir="./results/${name}"
   mkdir -p "$dir"
   echo "$dir"
-  echo "INFO: results directory: $dir" >&2
+  echo "SUCCESS! $dir" >&2
 }
 
 #--------------------------------------
