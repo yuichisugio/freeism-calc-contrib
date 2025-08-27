@@ -67,6 +67,7 @@
 			"owner": "group",
 			"repo": "lib-b",
 			"evaluation": {
+				"result": 3
 				"evaluationCriteria": {
 					"timeResources": 3
 				}
@@ -83,3 +84,11 @@
 	]
 }
 ```
+
+### 仕様
+1. dependencies_jsonに、config_jsonのkeyとvalueの値が入っていないdata配列の要素には、config_jsonのkeyとvalueの値を、key-valueオブジェクトとして出力形式を参考に入れる
+2. 入れたconfig_jsonのkeyとvalueの値をもとに、平均値を算出して、evaluation.resultに記載する
+3. すでにconfig_jsonのkeyとvalueの値が入っている場合は、平均値を再計算する
+     後からkeyとvalueの値を修正して再計算したいため
+4. config.jsonで、"enabled"がtrue以外の文言の場合は、そのキーは、dependencies_jsonに入れない。すでにある場合は削除する
+
