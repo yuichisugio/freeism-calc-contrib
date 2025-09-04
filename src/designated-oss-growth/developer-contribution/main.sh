@@ -7,7 +7,7 @@ set -euo pipefail
 
 # スクリプトのディレクトリに移動。
 # どのディレクトリにいても、スクリプトのディレクトリに移動することで相対パスでファイルでも正しく指定できる。
-cd "$(dirname "$0")"
+cd "$(cd "$(dirname -- "$0")" && pwd -P)"
 
 # デフォルト設定
 readonly OWNER=${1:-"yoshiko-pg"}
