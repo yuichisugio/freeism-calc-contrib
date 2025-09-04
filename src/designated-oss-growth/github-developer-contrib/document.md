@@ -39,20 +39,17 @@
 
 1.  CSV 形式
 1.  JSON 形式
-    - 後々対応
 
 ### 表示するカラムは以下
 
 1.  データ取得元サービス名
 1.  データ取得元ユーザー名
 1.  データ取得元ユーザー ID
-1.  タスク名
-1.  データ取得元タスク ID
 1.  タスクの貢献度
-1.  貢献度の算出ロジック
-1.  各重み付けの値
-1.  メモ
-1.  算出日
+1.  ファイル作成日
+1.  タスク名（オプション付きの場合に表示する）
+1.  データ取得元タスク ID（オプション付きの場合に表示する）
+1.  各重み付けの値（オプション付きの場合に表示する）
 
 ### JSON 形式
 
@@ -60,40 +57,51 @@
 {
 	"meta": {
 		"createdAt": "2025-08-20",
+		"analysisPeriod": {
+			"start": "2025-08-20",
+			"end": "2025-08-20"
+		},
 		"specified-oss": {
+			"host": "github.com",
 			"owner": "ryoppippi",
-			"Repository": "ccusage"
+			"Repository": "ccusage",
+			"url": "https://github.com/ryoppippi/ccusage"
 		}
 	},
 	"data": [
 		{
-			"host": "gitlab.com",
-			"owner": "group",
-			"repo": "lib-b",
-			"evaluation": {
-				"result": 3
-				"evaluationCriteria": {
-					"timeResources": 3
-				}
-			}
+			"host": "github.com",
+			"hostUsername": "aaa",
+			"hostUserId": "1234567",
+			"contribution": 15
 		},
 		{
 			"host": "github.com",
-			"owner": "acme",
-			"repo": "lib-a",
-			"package_manager_url": "pack-D",
-			"homepage": "page-p",
-			"repository_url": "git/e"
+			"hostUsername": "bbb",
+			"hostUserId": "1234567",
+			"contribution": 99995500
 		}
 	]
 }
 ```
 
+- `-vervose`, `-v` or `-detail`,`-d`のオプションをつけた場合は、各ユーザー内のタスクごとに以下が追加
+  - 後々の開発
+  ```json
+  "task": {
+  	"taskName":"abc",
+  	"taskId":"abc",
+  	"executedDate":"2025-08-20",
+  	"weighting":1
+  }
+  ```
+
 ### CSV 形式
 
 ```csv
-meta,createdAt,specified-oss
-meta,specified-oss,
+createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specifiedOssRepository,specifiedOssUrl,host,hostUsername,contribution,hostUserId
+2025-08-20,2025-08-20,2025-08-20,github.com,ryoppippi,ccusage,https://github.com/ryoppippi/ccusage,github.com,aaa,15,gerhtsymdgh
+2025-08-20,2025-08-20,2025-08-20,github.com,ryoppippi,ccusage,https://github.com/ryoppippi/ccusage,github.com,bbb,99995500,wqewghare
 ```
 
 ## 今後追加したい内容
@@ -169,12 +177,12 @@ meta,specified-oss,
 - 説明
 
   - リアクション数
-  - 👎 バッド`b`は、一つにつき`-0.1`
+  - 👎 バッド`b`は、一つにつき`0.1`
   - バッド以外`a`は、一つにつき`0.1`
-  - `y`が 0 以下の場合は`0`にする
+  - `y`が 0 以下でも、マイナスのままにして、ユーザー合算の時に他のタスクにも影響が出るようにしたい
 
 - 計算式
-  $$f(a, b) =\begin{cases}0.1a - 0.1b & (y \geq 1) \\1 & (y \lt 1)\end{cases}$$
+  $$f(a, b) =0.1a - 0.1b$$
 
 - 対応タスク
   - pullRequest
@@ -200,49 +208,69 @@ meta,specified-oss,
 #### タスクの種類
 
 - 説明
-  - GitHub API から取得できるタスク全部（プルリクエスト・Issue・ドキュメント整備・など）
+  - GitHub API から取得できるタスクの重み付け
 
 ##### プルリクエスト
 
-1. プルリクエストの作成（Merged・Approved）
+1. プルリクエストの作成（Merged、Approved）
    - `approved`は承認済みだけどマージはまだ
-1. プルリクエストの作成（Closed）
-1. プルリクエストの作成（Open・Draft・Pending・Changes requested）
+   - `5`
+1. プルリクエストの作成（`Draft`）
+   - `0.5`
+1. プルリクエストの作成（`Rejected`,`Open`,`Pending`,`Changes requested`）
+   - `3`
 1. プルリクエストにコメント投稿
+   - `1`
 1. プルリクエストをマージ
-1. プルリクエストをレビューして、Approved or Closed
+   - `2`
+1. プルリクエストをレビューして、Approved or Rejected
+   - `3`
 1. プルリクエストにラベル付け
+   - `1`
+1. プルリクエストの担当者のアサイン
+   - `1`
+1. プルリクエストにリアクションをつける
+   - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
+   - `1`
 
 ##### イシュー
 
 1. イシュー作成（Closed - Completed）
+   - `3`
 1. イシュー作成（Closed - Not planned）
+   - `1`
 1. イシュー作成（Open）
+   - `2`
 1. イシューにコメント
+   - `1`
 1. イシューのステータスを変更（Open・Closed）
+   - `1`
 1. イシューにラベル付けをする
+   - `1`
 1. 担当者をアサイン（アサインする側）
+   - `1`
+1. イシューにリアクションをつける
+   - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
+   - `1`
 
-#### ディスカッション
+##### ディスカッション
 
 1. ディスカッションの作成
-1. コメントを投稿
-1. コメントにリアクション
-1. ラベル付けをする
+   - `2`
+1. ディスカッションにコメント
+   - `1`
+1. ディスカッションにリアクション
+   - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
+   - `1`
+1. ディスカッションにラベル付け
+   - `1`
 1. カテゴリー分けをする
-
-##### スポンサー
-
-1. スポンサー（大・単発）
-1. スポンサー（中・単発）
-1. スポンサー（小・単発）
-1. スポンサー（大・毎月）
-1. スポンサー（中・毎月）
-1. スポンサー（小・毎月）
+   - `1`
 
 ##### コミット
 
-1. main ブランチへのコミット
+1. `main` ブランチへのコミット
    - 基本はプルリクエストで管理したい
-   - GitHub API で、branchProtectionRules オブジェクトが Require a pull request before merging が`true`の場合は、不要
+   - GitHub API で、`branchProtectionRules` オブジェクトの`Require a pull request before merging` が`true`の場合は不要
    - コミットは、main ブランチに直接プッシュした場合のみカウントしたい
+   - `2`
