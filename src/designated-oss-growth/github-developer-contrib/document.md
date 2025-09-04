@@ -1,4 +1,4 @@
-# developer contribution
+# GitHub Developer Contribution
 
 ## 概要
 
@@ -117,10 +117,14 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 ## 評価軸を追加・削除・変更したい場合
 
-1. `./src/get-data`フォルダ直下に、新規ファイルを作成して、新しくデータを取得する処理を入れる
-1. `./src/data-process`に、フォルダ直下に、新規ファイルを作成して、新しくデータの加工処理を入れる
-1. `./src/calc-weighted`フォルダ直下に、重み付けの値を算出する処理を追加実装する
-1. `./src/calc-contrib/calc-amount-contrib.sh`に、貢献度を算出する処理を入れる
+1. `./src/designated-oss-growth/github-developer-contrib/get-data`フォルダ直下に、新規ファイルを作成して、新しくデータを取得する処理を入れる
+1. `./src/designated-oss-growth/github-developer-contrib/process-data`に、フォルダ直下に、新規ファイルを作成して、新しくデータの加工処理を入れる
+1. `./src/designated-oss-growth/github-developer-contrib/calc-weighted`フォルダ直下に、重み付けの値を算出する処理を追加実装する
+1. `./src/designated-oss-growth/github-developer-contrib/calc-contrib`に、貢献度を算出する処理を入れる
+
+## Rate Limit 対策
+
+- 基本は以前の取得分に追加して取得する使い方だと思うが、RateLimit 対策は後々実装したい
 
 ## 貢献度の算出方法
 
@@ -229,7 +233,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
       - Pull Request 作成から、レビュワー担当者アサインまでの日数
       - Pull Request 作成から、プルリクエスト担当者のアサインまでの日数
   1.  Discussions
-      - Discussions 作成から、コメントまでの期間
+      - Discussions 作成から、コメントまでの日数
       - Discussions 作成から、リアクションするまでの日数
       - Discussions 作成から、ラベル付けするまでの日数
       - Discussions 作成から、カテゴリー分けまでの日数
@@ -307,3 +311,14 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - GitHub API で、`branchProtectionRules` オブジェクトの`Require a pull request before merging` が`true`の場合は不要
    - コミットは、main ブランチに直接プッシュした場合のみカウントしたい
    - `2`
+
+##### others
+
+- API の Rate Limit 的にデータは取得しない可能性もある
+
+1. Star する
+   - `1`
+1. Fork する
+   - `1`
+1. Watch する
+   - `1`
