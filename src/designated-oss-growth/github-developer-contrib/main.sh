@@ -30,10 +30,10 @@ fi
 source "$(dirname "$0")/scripts/data-process/github-processor.sh"
 
 # プルリクエスト貢献者を分析。
-source "$(dirname "$0")/scripts/get-data/get-data-from-github/get-github-pull-request.sh"
+source "$(dirname "$0")/scripts/get-data/get-github-pull-request.sh"
 
 # イシュー貢献者を分析。
-source "$(dirname "$0")/scripts/get-data/get-data-from-github/get-github-issue.sh"
+source "$(dirname "$0")/scripts/get-data/get-github-issue.sh"
 
 # 貢献度の重み付け
 # source "$(dirname "$0")/calc-contrib/contrib-weighting.sh"
