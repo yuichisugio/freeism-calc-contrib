@@ -6,20 +6,20 @@
 
 ### リポジトリ全体で初回のみ
 
-1. [GitHub CLI(`gh`)](https://cli.github.com/)のインストール
-1. [`gh auth login`](https://cli.github.com/manual/gh_auth_login)でログイン
-1. [jq](https://stedolan.github.io/jq/download/) をインストール
+1. <a href="https://cli.github.com/" target="_blank" rel="noopener noreferrer">GitHub CLI(`gh`)</a>のインストール
+1. <a href="https://cli.github.com/manual/gh_auth_login" target="_blank" rel="noopener noreferrer">`gh auth login`</a>でログイン
+1. <a href="https://stedolan.github.io/jq/download/" target="_blank" rel="noopener noreferrer">`jq`</a>をインストール
 1. シェルで、以下を実行
    ```shell
-   git clone https://github.com/yuichisugio/freeism-contribution-calculate.git
+   git clone https://github.com/yuichisugio/freeism-calc-contrib.git
    ```
-   ※一部で、初回のみ GitHub の Personal Access Token が必要な場合がある。その場合は、各評価軸の`document.md`に記載
 
 ### 処理を実行
 
 1. 分析する場合
+   - `[path]`は、GitHub のリポジトリ URL をそのまま渡せば OK
    ```shell
-   ./main.sh [option] [path]
+   ./main.sh [path] [option]
    ```
 
 ### 分析結果を削除したい場合
@@ -47,9 +47,12 @@
 1.  データ取得元ユーザー ID
 1.  タスクの貢献度
 1.  ファイル作成日
-1.  タスク名（オプション付きの場合に表示する）
-1.  データ取得元タスク ID（オプション付きの場合に表示する）
-1.  各重み付けの値（オプション付きの場合に表示する）
+1.  タスク名
+    - オプション付きの場合に表示する
+1.  データ取得元タスク ID
+    - オプション付きの場合に表示する
+1.  各重み付けの値
+    - オプション付きの場合に表示する
 
 ### JSON 形式
 
@@ -109,13 +112,9 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 1. 期間を指定して貢献度の算出ができる仕組み
    - API 制限的に一度に取得できる数に限りがあるため、以前の分析に追加で取得したい
    - インクリメンタルなデータ取得・貢献度の分析を行いたい
-1. 以前の分析を使用して、足りない部分のみデータ取得する仕組み
-   - API 制限的に一度に取得できる数に限りがあるため、以前の`./results`フォルダの結果を使用したい
-1. Zenn など他 API からも情報を取得して貢献度を算出する
 
 ## 評価軸を追加・削除・変更したい場合
 
-1. `./src`フォルダ直下に、
 1. `./src/get-data`フォルダ直下に、新規ファイルを作成して、新しくデータを取得する処理を入れる
 1. `./src/data-process`に、フォルダ直下に、新規ファイルを作成して、新しくデータの加工処理を入れる
 1. `./src/calc-weighted`フォルダ直下に、重み付けの値を算出する処理を追加実装する
@@ -125,19 +124,18 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 ### 概要
 
-#### 貢献度の算出の流れ
+- 貢献度の算出の流れ
 
-1.  各タスクごとに、それぞれの評価軸の視点で貢献度を算出する
-1.  全ての評価軸の貢献度を掛け算して、タスクごとの貢献度を算出
-1.  タスクごとの貢献度を、ユーザーごとに合算する
+  1.  各タスクごとに、それぞれの評価軸の視点で貢献度を算出する
+  1.  全ての評価軸の貢献度を掛け算して、タスクごとの貢献度を算出
+  1.  タスクごとの貢献度を、ユーザーごとに合算する
 
-#### 評価軸の一覧
-
-1.  貢献の実施期間
-1.  作業量
-1.  参加者からの評価
-1.  対応速度
-1.  タスクの種類
+- 評価軸の一覧
+  1.  貢献の実施期間
+  1.  作業量
+  1.  参加者からの評価
+  1.  対応速度
+  1.  タスクの種類
 
 ### 各指標ごとの計算式
 
