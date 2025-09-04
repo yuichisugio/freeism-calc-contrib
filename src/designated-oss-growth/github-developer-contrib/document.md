@@ -2,6 +2,8 @@
 
 ## 概要
 
+- GitHub リポジトリの URL で指定したライブラリに貢献した開発者の一覧と貢献度を算出するツール
+
 ## 使い方
 
 ### リポジトリ全体で初回のみ
@@ -45,6 +47,7 @@
 1.  データ取得元サービス名
 1.  データ取得元ユーザー名
 1.  データ取得元ユーザー ID
+    - 名前は変わる可能性があるため
 1.  タスクの貢献度
 1.  ファイル作成日
 1.  タスク名
@@ -110,8 +113,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 ## 今後追加したい内容
 
 1. 期間を指定して貢献度の算出ができる仕組み
-   - API 制限的に一度に取得できる数に限りがあるため、以前の分析に追加で取得したい
-   - インクリメンタルなデータ取得・貢献度の分析を行いたい
+   - API 制限的に一度に取得できる数に限りがあるため
 
 ## 評価軸を追加・削除・変更したい場合
 
@@ -143,14 +145,14 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 - 説明
 
-  - 初期に貢献するほど、プロジェクトを見つけて発展させる貢献度は大きいので評価したい
+  - 初期に貢献するほど、プロジェクトを見つけて発展させる貢献度は大きいので評価したい。
   - 「ライブラリ作成日」から数えた日数を`x`に入れる。
 
 - 計算式
   $$f(a, b) =\begin{cases} y=-x + 3650 & (y \geq 1) \\1 & (y \lt 1)\end{cases}$$
 
 - 対応タスク
-  1. 全てのタスク
+  1. 「タスクの種類」に記載の全てのタスク
 
 #### 作業量
 
@@ -166,9 +168,16 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 - 対応タスク
   - プルリク
-  - イシュー
-  - コメント
+    - プルリクの作成時のコード行数
+    - プルリクの作 成者による作成時のコメント行数
+    - プルリクの作成者以外によるコメント行数
+  - Issue
+    - Issue のコメント行数
   - Discussions
+    - Discussions のコメント行数
+  - コミット
+    - コミットのコード行数
+    - コミットの`git commit`のコメント行数
 
 #### 参加者からの評価
 
@@ -183,10 +192,15 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   $$f(a, b) =0.1a - 0.1b$$
 
 - 対応タスク
-  - pullRequest
+  - Pull Request
+    - Pull Request のコード提案のリアクション数
+    - Pull Request のコード提案に返信したコメントのリアクション数
   - Issue
-  - Comment
+    - Issue の議題提案のリアクション数
+    - Issue の議題提案に返信したコメントのリアクション数
   - Discussions
+    - Discussions の提案のリアクション数
+    - Discussions の提案に返信したコメントのリアクション数
 
 #### 対応速度
 
@@ -199,9 +213,28 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   $$f(a, b) =\begin{cases} -x + 30 & (y \geq 1) \\1 & (y \lt 1)\end{cases}$$
 
 - 対応タスク
-  1.  Issue 作成から対応するプルリクエスト作成日までの対応速度
-  1.  プルリク作成からマージ or リジェクトまでの期間
-  1.  c
+
+  1.  Issue
+      - Issue 作成から、コメントまでの日数
+      - Issue 作成から、ステータス変更までの日数
+      - Issue 作成から、リアクションするまでの日数
+      - Issue 作成から、ラベル付けするまでの日数
+      - Issue 作成から、担当者のアサインまでの日数
+  1.  Pull Request
+      - Pull Request 作成から、`Rejected`or`Approved`or`Merged`までの日数
+      - Pull Request 作成から、コメントまでの日数
+      - Pull Request 作成から、ステータス変更までの日数
+      - Pull Request 作成から、リアクションするまでの日数
+      - Pull Request 作成から、ラベル付けするまでの日数
+      - Pull Request 作成から、レビュワー担当者アサインまでの日数
+      - Pull Request 作成から、プルリクエスト担当者のアサインまでの日数
+  1.  Discussions
+      - Discussions 作成から、コメントまでの期間
+      - Discussions 作成から、リアクションするまでの日数
+      - Discussions 作成から、ラベル付けするまでの日数
+      - Discussions 作成から、カテゴリー分けまでの日数
+      - Discussions 作成から、Voting までの日数
+      - ※「Discussions 作成からステータス変更」は、議論を十分する時間がなくなり望まない結果になるので算出しない。
 
 #### タスクの種類
 
@@ -231,38 +264,40 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
    - `1`
 
-##### イシュー
+##### Issue
 
-1. イシュー作成（Closed - Completed）
+1. Issue 作成（Closed - Completed）
    - `3`
-1. イシュー作成（Closed - Not planned）
+1. Issue 作成（Closed - Not planned）
    - `1`
-1. イシュー作成（Open）
+1. Issue 作成（Open）
    - `2`
-1. イシューにコメント
+1. Issue にコメント
    - `1`
-1. イシューのステータスを変更（Open・Closed）
+1. Issue のステータスを変更（Open・Closed=Completed/Not planned）
    - `1`
-1. イシューにラベル付けをする
+1. Issue にラベル付けをする
    - `1`
 1. 担当者をアサイン（アサインする側）
    - `1`
-1. イシューにリアクションをつける
+1. Issue にリアクションをつける
    - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
    - `1`
 
-##### ディスカッション
+##### Discussions
 
-1. ディスカッションの作成
+1. Discussions の作成
    - `2`
-1. ディスカッションにコメント
+1. Discussions にコメント
    - `1`
-1. ディスカッションにリアクション
+1. Discussions にリアクション
    - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
    - `1`
-1. ディスカッションにラベル付け
+1. Discussions にラベル付け
    - `1`
-1. カテゴリー分けをする
+1. Discussions にカテゴリー分けをする
+   - `1`
+1. Discussions に投票する
    - `1`
 
 ##### コミット
