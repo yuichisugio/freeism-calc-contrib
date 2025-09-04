@@ -7,15 +7,15 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 # デフォルト設定
-readonly OWNER=${1:-"yoshiko-pg"}
-readonly REPO=${2:-"difit"}
-readonly GITHUB_AUTH_TOKEN=${3}
+# readonly OWNER=${1:-"yoshiko-pg"}
+# readonly REPO=${2:-"difit"}
+# readonly GITHUB_AUTH_TOKEN=${3}
 readonly RESULTS_DIR="./results"
 readonly PULL_REQUEST_DIR="${RESULTS_DIR}/pull-request"
 readonly ISSUE_DIR="${RESULTS_DIR}/issue"
 
 # 共通関数を読み込む
-source "$(dirname "$0")/utils/utils.sh"
+source "$(dirname "$0")/scripts/utils/utils.sh"
 
 # ヘルプオプションの処理。引数がある場合のみヘルプをチェック。
 # 引数がない場合はヘルプを表示しない。
@@ -25,16 +25,16 @@ if [[ $# -gt 0 && ("$1" == "-h" || "$1" == "--help") ]]; then
 fi
 
 # データを加工するファイルを読み込む
-source "$(dirname "$0")/data-process/github-processor.sh"
+source "$(dirname "$0")/scripts/data-process/github-processor.sh"
 
 # データを加工するファイルを読み込む
-source "$(dirname "$0")/data-process/scorecard-processor.sh"
+source "$(dirname "$0")/scripts/data-process/scorecard-processor.sh"
 
 # プルリクエスト貢献者を分析。
-source "$(dirname "$0")/get-data/from-github/github-oss-meta-data.sh"
+source "$(dirname "$0")/scripts/get-data/from-github/github-oss-meta-data.sh"
 
 # イシュー貢献者を分析。
-source "$(dirname "$0")/get-data/from-open-ssf-scorecard/scorecard.sh"
+# source "$(dirname "$0")/scripts/get-data/from-open-ssf-scorecard/scorecard.sh"
 
 # 貢献度の重み付け
 # source "$(dirname "$0")/calc-contrib/contrib-weighting.sh"
