@@ -187,6 +187,13 @@ EOF
 # 出力ディレクトリの準備
 #--------------------------------------
 function setup_output_directory() {
+  # 引数の値
+  local owner="$1" repo="$2" RESULTS_DIR RAW_DATA_DIR
+
+  # 結果ディレクトリの準備
+  RESULTS_DIR="./results/${owner}/${repo}"
+  RAW_DATA_DIR="${RESULTS_DIR}/raw-data"
+
   # 結果ディレクトリの準備
   if [[ ! -d "$RESULTS_DIR" ]]; then
     mkdir -p "$RESULTS_DIR"

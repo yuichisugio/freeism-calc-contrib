@@ -8,32 +8,39 @@ set -euo pipefail
 
 cd "$(cd "$(dirname -- "$0")" && pwd -P)"
 
-function usage() {
-  cat <<EOF
-  Usage: $(basename "$0") <repo>
-    <repo> can be "owner/repo" or a full GitHub URL.
-  Output: single JSON with repository meta (created_at, default_branch, url, id, owner)
-EOF
+function get_repo_meta() {
+  # 引数の値
+  local owner="$1" repo="$2" query RAW_DATA_PATH PROCESSED_DATA_PATH
+
+  # ファイルのデータのパスを設定
+  readonly RAW_DATA_PATH="./raw-data.json"
+  readonly PROCESSED_DATA_PATH="../../archive/processed-data.json"
+
+  # クエリを定義
+  # shellcheck disable=SC2016
+  query='
+    query($owner: String!, $repo: String!) {
+      repository(owner: $owner, name: $repo) {
+        id
+        name
+        url
+        createdAt
+        owner {
+          login
+          id
+        }
+        defaultBranchRef {
+          name
+        }
+      }
+    }
+  '
+
+  # クエリを実行。jq '.' で、JSONを指定ファイルに出力。
+  gh api graphql -F owner="$owner" -F repo="$repo" -f query="$query" | jq '.' >"$RAW_DATA_PATH"
+
+  # 終了ステータスを成功にする
+  return 0
 }
 
-function main() {
-  require_tools
-  [[ $# -ge 1 ]] || {
-    usage
-    exit 1
-  }
-  read -r OWNER REPO < <(parse_github_url_args "$1")
-
-  gh api -H "Accept: application/vnd.github+json" "/repos/${OWNER}/${REPO}" |
-    jq '{
-        host:"github.com",
-        owner:.owner.login,
-        ownerId:(.owner.id|tostring),
-        repository:.name,
-        repositoryId:(.id|tostring),
-        url:.html_url,
-        createdAt:.created_at,
-        defaultBranch:.default_branch
-      }'
-}
-main "$@" || exit 1
+get_repo_meta "$@"

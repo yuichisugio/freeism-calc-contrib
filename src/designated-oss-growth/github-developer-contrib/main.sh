@@ -12,18 +12,11 @@ set -euo pipefail
 # どのディレクトリにいても、スクリプトのディレクトリに移動することで相対パスでファイルでも正しく指定できる。
 cd "$(cd "$(dirname -- "$0")" && pwd -P)"
 
-# デフォルト設定
-readonly OWNER=${1:-"yoshiko-pg"}
-readonly REPO=${2:-"difit"}
-readonly RESULTS_DIR="./results/${OWNER}/${REPO}"
-readonly RAW_DATA_DIR="${RESULTS_DIR}/raw-data"
-
 # 共通関数を読み込む
 source "$(dirname "$0")/scripts/utils/utils.sh"
 
-# ヘルプオプションの処理。引数がある場合のみヘルプをチェック。
-# 引数がない場合はヘルプを表示しない。
-if [[ $# -gt 0 && ("$1" == "-h" || "$1" == "--help") ]]; then
+# ヘルプオプションの処理。
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
   show_usage
   exit 0
 fi
@@ -45,8 +38,15 @@ source "$(dirname "$0")/scripts/get-data/get-github-issue.sh"
 
 # メイン関数
 function main() {
+
+  # 依存コマンドの確認
+  require_tools
+
+  # 引数をパース
+  read -r OWNER REPO < <(parse_github_url_args "$@")
+
   # 出力ディレクトリの準備
-  setup_output_directory
+  setup_output_directory "$OWNER" "$REPO"
 
   # プルリクエスト貢献者を分析。
   raw_pr_data=$(get_github_pull_request_contributors)
@@ -62,4 +62,4 @@ function main() {
 }
 
 # スクリプトを実行。
-main
+main "$@"

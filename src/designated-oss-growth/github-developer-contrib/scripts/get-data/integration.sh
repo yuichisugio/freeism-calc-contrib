@@ -9,31 +9,16 @@ set -euo pipefail
 cd "$(cd "$(dirname -- "$0")" && pwd -P)"
 
 function integration_graphql_query() {
+
   # 引数の値
-  local owner="$1" repo="$2" output_file="$3" query
+  local owner="$1" repo="$2"
+  # local RAW_DATA_PATH PROCESSED_DATA_PATH
 
-  # クエリを定義
-  # shellcheck disable=SC2016
-  query='
-    query($owner: String!, $repo: String!) {
-      repository(owner: $owner, name: $repo) {
-        id
-        name
-        url
-        createdAt
-        owner {
-          login
-          id
-        }
-        defaultBranchRef {
-          name
-        }
-      }
-    }
-  '
+  # rawデータを統合したファイルを保存する
+  # readonly RAW_DATA_PATH="../../archive/raw-data.json"
+  # readonly PROCESSED_DATA_PATH="../../archive/processed-data.json"
 
-  # クエリを実行。jq '.' で、JSONを指定ファイルに出力。
-  gh api graphql -F owner="$owner" -F repo="$repo" -f query="$query" | jq '.' >"$output_file"
+  get_repo_meta "$owner" "$repo"
 
   # 終了ステータスを成功にする
   return 0
