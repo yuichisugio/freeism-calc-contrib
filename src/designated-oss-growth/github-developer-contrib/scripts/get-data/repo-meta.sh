@@ -8,7 +8,7 @@ set -euo pipefail
 
 cd "$(cd "$(dirname -- "$0")" && pwd -P)"
 
-usage() {
+function usage() {
   cat <<EOF
   Usage: $(basename "$0") <repo>
     <repo> can be "owner/repo" or a full GitHub URL.
@@ -16,13 +16,13 @@ usage() {
 EOF
 }
 
-main() {
+function main() {
   require_tools
   [[ $# -ge 1 ]] || {
     usage
     exit 1
   }
-  read -r OWNER REPO < <(parse_repo "$1")
+  read -r OWNER REPO < <(parse_github_url_args "$1")
 
   gh api -H "Accept: application/vnd.github+json" "/repos/${OWNER}/${REPO}" |
     jq '{
@@ -36,4 +36,4 @@ main() {
         defaultBranch:.default_branch
       }'
 }
-main "$@"
+main "$@" || exit 1

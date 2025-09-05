@@ -409,7 +409,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   - プルリク作成者のユーザー名
   - プルリク作成者のユーザー ID
   - プルリク作成日
-  - コード行数
+  - コードの追加・削除の行数
   - コメント行数
 - プルリクのステータス変更
   - ステータス変更者のユーザー名

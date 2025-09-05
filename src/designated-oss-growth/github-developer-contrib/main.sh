@@ -1,6 +1,9 @@
 #!/bin/bash
 
+#--------------------------------------
+# メインスクリプト
 # 実行したい時に呼び出すファイル。ここを起点に色々な関数を呼び出す
+#--------------------------------------
 
 # エラーが発生でスクリプトを終了。未定義でエラー。パイプ中エラーでも中断
 set -euo pipefail
@@ -12,9 +15,8 @@ cd "$(cd "$(dirname -- "$0")" && pwd -P)"
 # デフォルト設定
 readonly OWNER=${1:-"yoshiko-pg"}
 readonly REPO=${2:-"difit"}
-readonly RESULTS_DIR="./results"
-readonly PULL_REQUEST_DIR="${RESULTS_DIR}/pull-request"
-readonly ISSUE_DIR="${RESULTS_DIR}/issue"
+readonly RESULTS_DIR="./results/${OWNER}/${REPO}"
+readonly RAW_DATA_DIR="${RESULTS_DIR}/raw-data"
 
 # 共通関数を読み込む
 source "$(dirname "$0")/scripts/utils/utils.sh"
