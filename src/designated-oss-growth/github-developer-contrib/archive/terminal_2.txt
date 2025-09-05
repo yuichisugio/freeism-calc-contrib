@@ -1,3 +1,23 @@
+./src/designated-oss-growth/github-developer-contrib/scripts/get-data/commit.sh -r yoshiko-pg/difit | jq '.' > ./src/designated-oss-growth/github-developer-contrib/archive/commit.json
+
+コミット267件で、push直コミットが267件で、4ポイント消費
+287
+
+210
+
+gh api graphql -f query='
+  query(){
+    rateLimit {
+      cost
+      limit
+      nodeCount
+      remaining
+      used
+      resetAt
+    }
+  }
+'
+
 # 直接 main/master に push されたコミット候補（= PR 非紐付）のみ判定材料を取る
 query($owner: String!, $name: String!, $pageSize: Int = 100, $since: GitTimestamp, $after: String) {
   repository(owner: $owner, name: $name) {

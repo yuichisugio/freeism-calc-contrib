@@ -1,0 +1,4894 @@
+{
+  "repository": "ryoppippi/ccusage",
+  "branch": "main",
+  "qualifiedRef": "refs/heads/main",
+  "since": null,
+  "collectedAt": "2025-09-05T17:25:43Z",
+  "rateLimit": {
+    "cost": 1,
+    "remaining": 4912,
+    "resetAt": "2025-09-05T17:55:14Z"
+  },
+  "count": 287,
+  "nodes": [
+    {
+      "oid": "d806108e3e6d312b94ca3e5d70eec43c6c037c16",
+      "abbreviatedOid": "d806108",
+      "committedDate": "2025-09-05T13:47:04Z",
+      "messageHeadline": "chore: remove typecheck on pre-commit",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d806108e3e6d312b94ca3e5d70eec43c6c037c16",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8abefa9bbe8bb83b2e21bba3a6f107fcefe0e52f",
+      "abbreviatedOid": "8abefa9",
+      "committedDate": "2025-09-05T13:46:26Z",
+      "messageHeadline": "docs: fix copyright year",
+      "url": "https://github.com/ryoppippi/ccusage/commit/8abefa9bbe8bb83b2e21bba3a6f107fcefe0e52f",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "acb2d037b4f305e1f60da43eaaf16a935286c782",
+      "abbreviatedOid": "acb2d03",
+      "committedDate": "2025-09-02T22:37:38Z",
+      "messageHeadline": "chore: release v16.2.3",
+      "url": "https://github.com/ryoppippi/ccusage/commit/acb2d037b4f305e1f60da43eaaf16a935286c782",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fb15bbbcc43a836d5c8da875f513efe76ea05016",
+      "abbreviatedOid": "fb15bbb",
+      "committedDate": "2025-09-02T11:24:11Z",
+      "messageHeadline": "chore: release v16.2.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/fb15bbbcc43a836d5c8da875f513efe76ea05016",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "265307971f61c685909e59f14e6c084cf9ed7b8a",
+      "abbreviatedOid": "2653079",
+      "committedDate": "2025-09-02T11:13:30Z",
+      "messageHeadline": "chore: release v16.2.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/265307971f61c685909e59f14e6c084cf9ed7b8a",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "075cb93d208b26213743e3072812d8c4a487925c",
+      "abbreviatedOid": "075cb93",
+      "committedDate": "2025-08-27T16:42:21Z",
+      "messageHeadline": "docs: socket.dev badge",
+      "url": "https://github.com/ryoppippi/ccusage/commit/075cb93d208b26213743e3072812d8c4a487925c",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5872c0deec3db38e6948e923fa322c9fa1af9090",
+      "abbreviatedOid": "5872c0d",
+      "committedDate": "2025-08-25T19:47:20Z",
+      "messageHeadline": "chore: typecheck for ts js in pre-commit",
+      "url": "https://github.com/ryoppippi/ccusage/commit/5872c0deec3db38e6948e923fa322c9fa1af9090",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f6798c0251c5a6f5f1609a8d72fcae5fd8ab92a9",
+      "abbreviatedOid": "f6798c0",
+      "committedDate": "2025-08-25T19:13:28Z",
+      "messageHeadline": "docs: emphasize no dynamic imports and vitest globals in CLAUDE.md",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f6798c0251c5a6f5f1609a8d72fcae5fd8ab92a9",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d56accf6186a4d7ebdbed58c8d41bb52e2a8e2c5",
+      "abbreviatedOid": "d56accf",
+      "committedDate": "2025-08-24T22:14:39Z",
+      "messageHeadline": "fix(table): test mock",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d56accf6186a4d7ebdbed58c8d41bb52e2a8e2c5",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5391c61f0a01963f993cd3ce8d20c1946394210a",
+      "abbreviatedOid": "5391c61",
+      "committedDate": "2025-08-24T22:14:04Z",
+      "messageHeadline": "chore: run test in git commit",
+      "url": "https://github.com/ryoppippi/ccusage/commit/5391c61f0a01963f993cd3ce8d20c1946394210a",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "83d2f5e1e05edc00e006e785b7e5cbe72df054ec",
+      "abbreviatedOid": "83d2f5e",
+      "committedDate": "2025-08-24T22:08:39Z",
+      "messageHeadline": "chore: remove run from reelase",
+      "url": "https://github.com/ryoppippi/ccusage/commit/83d2f5e1e05edc00e006e785b7e5cbe72df054ec",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f81e4d6772ca3d44af95f5db545c3818c58dbcf8",
+      "abbreviatedOid": "f81e4d6",
+      "committedDate": "2025-08-24T12:15:09Z",
+      "messageHeadline": "refactor: logger",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f81e4d6772ca3d44af95f5db545c3818c58dbcf8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e7fafcc09c8439346a16fc7af78820ebf9e67859",
+      "abbreviatedOid": "e7fafcc",
+      "committedDate": "2025-08-23T21:11:17Z",
+      "messageHeadline": "docs: emphasize no dynamic imports and vitest globals in CLAUDE.md",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e7fafcc09c8439346a16fc7af78820ebf9e67859",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "bad49f6d3b95bbcd2b7412d7a10007c31dacb8fd",
+      "abbreviatedOid": "bad49f6",
+      "committedDate": "2025-08-23T20:17:28Z",
+      "messageHeadline": "chore: renovate [CI Skip]",
+      "url": "https://github.com/ryoppippi/ccusage/commit/bad49f6d3b95bbcd2b7412d7a10007c31dacb8fd",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "812ce739e865aafab81405c73f09e70e2728bf7a",
+      "abbreviatedOid": "812ce73",
+      "committedDate": "2025-08-23T17:46:44Z",
+      "messageHeadline": "chore: release v16.2.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/812ce739e865aafab81405c73f09e70e2728bf7a",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "23eae61e7a8cad2c9b0f49b23e0022d13df38fd2",
+      "abbreviatedOid": "23eae61",
+      "committedDate": "2025-08-23T14:34:46Z",
+      "messageHeadline": "chore(mcp): add grep mcp",
+      "url": "https://github.com/ryoppippi/ccusage/commit/23eae61e7a8cad2c9b0f49b23e0022d13df38fd2",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5acdeca7d855ebc9f112b479a3a5954d8caab69d",
+      "abbreviatedOid": "5acdeca",
+      "committedDate": "2025-08-22T13:10:21Z",
+      "messageHeadline": "chore: move schema gen to lint-staged",
+      "url": "https://github.com/ryoppippi/ccusage/commit/5acdeca7d855ebc9f112b479a3a5954d8caab69d",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "55947daa18b045c040c06b40423510114414ec8e",
+      "abbreviatedOid": "55947da",
+      "committedDate": "2025-08-22T11:37:03Z",
+      "messageHeadline": "chore: release v16.1.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/55947daa18b045c040c06b40423510114414ec8e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "de45d6c5e49f188a3b02a9a4b94bdf13ba6239f9",
+      "abbreviatedOid": "de45d6c",
+      "committedDate": "2025-08-22T11:34:02Z",
+      "messageHeadline": "fix(statusline): remove cs alias",
+      "url": "https://github.com/ryoppippi/ccusage/commit/de45d6c5e49f188a3b02a9a4b94bdf13ba6239f9",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "837f60e82d4a28146f8e6ec95687993d54b11b97",
+      "abbreviatedOid": "837f60e",
+      "committedDate": "2025-08-22T11:07:06Z",
+      "messageHeadline": "chore: update lsmcp",
+      "url": "https://github.com/ryoppippi/ccusage/commit/837f60e82d4a28146f8e6ec95687993d54b11b97",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "937ce4bf1e40b0b1a3cc48c85d4b933d0c5abd86",
+      "abbreviatedOid": "937ce4b",
+      "committedDate": "2025-08-20T01:50:24Z",
+      "messageHeadline": "docs: priority of file location",
+      "url": "https://github.com/ryoppippi/ccusage/commit/937ce4bf1e40b0b1a3cc48c85d4b933d0c5abd86",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fff9a88b793d5ce8761876d6fbb74b654fd3fcea",
+      "abbreviatedOid": "fff9a88",
+      "committedDate": "2025-08-20T01:26:06Z",
+      "messageHeadline": "chore: release v16.1.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/fff9a88b793d5ce8761876d6fbb74b654fd3fcea",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3dddbb69b11fd9292522b6f6233379399ad5d646",
+      "abbreviatedOid": "3dddbb6",
+      "committedDate": "2025-08-20T01:25:50Z",
+      "messageHeadline": "fix!: exclude live and refreshInterval from blocks command JSON schem…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3dddbb69b11fd9292522b6f6233379399ad5d646",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f9938256df879a8798cfb034f918b983fcbdc3ab",
+      "abbreviatedOid": "f993825",
+      "committedDate": "2025-08-20T01:02:04Z",
+      "messageHeadline": "chore: release v16.1.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f9938256df879a8798cfb034f918b983fcbdc3ab",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "69ee764596e3e7263d9886ffa9afd660745b0055",
+      "abbreviatedOid": "69ee764",
+      "committedDate": "2025-08-20T00:15:28Z",
+      "messageHeadline": "chore: release v16.0.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/69ee764596e3e7263d9886ffa9afd660745b0055",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9e52de9853d21c8cdb1e14df5e06b3e0ef35b52e",
+      "abbreviatedOid": "9e52de9",
+      "committedDate": "2025-08-19T15:00:22Z",
+      "messageHeadline": "chore: remove comment",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9e52de9853d21c8cdb1e14df5e06b3e0ef35b52e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1c5365a640944b911660d2accdf15b9b1c47f6de",
+      "abbreviatedOid": "1c5365a",
+      "committedDate": "2025-08-19T14:16:57Z",
+      "messageHeadline": "chore: remove args-tokens",
+      "url": "https://github.com/ryoppippi/ccusage/commit/1c5365a640944b911660d2accdf15b9b1c47f6de",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "587c67ac4c700918741132798efeac7f3b521f58",
+      "abbreviatedOid": "587c67a",
+      "committedDate": "2025-08-19T02:24:03Z",
+      "messageHeadline": "chore: release v15.10.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/587c67ac4c700918741132798efeac7f3b521f58",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "66997b77d188169081af84dc459c814c13c96738",
+      "abbreviatedOid": "66997b7",
+      "committedDate": "2025-08-18T22:45:31Z",
+      "messageHeadline": "chore: reorder mcp list",
+      "url": "https://github.com/ryoppippi/ccusage/commit/66997b77d188169081af84dc459c814c13c96738",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7df792a3ce386b5a3ce103dba73d67b69cd3d208",
+      "abbreviatedOid": "7df792a",
+      "committedDate": "2025-08-17T19:36:41Z",
+      "messageHeadline": "chore: release v15.9.9",
+      "url": "https://github.com/ryoppippi/ccusage/commit/7df792a3ce386b5a3ce103dba73d67b69cd3d208",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "43c9b723736b218501d6703807e7f490689bf42a",
+      "abbreviatedOid": "43c9b72",
+      "committedDate": "2025-08-17T19:35:33Z",
+      "messageHeadline": "chore: update limo",
+      "url": "https://github.com/ryoppippi/ccusage/commit/43c9b723736b218501d6703807e7f490689bf42a",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "016ce675bf245c149f9dec55bae04f2c581b8c24",
+      "abbreviatedOid": "016ce67",
+      "committedDate": "2025-08-17T18:58:32Z",
+      "messageHeadline": "chore: bun simple-git-hooks",
+      "url": "https://github.com/ryoppippi/ccusage/commit/016ce675bf245c149f9dec55bae04f2c581b8c24",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "571ae9b1faaf560034ad5392d36691efcd2c02ba",
+      "abbreviatedOid": "571ae9b",
+      "committedDate": "2025-08-17T17:23:16Z",
+      "messageHeadline": "chore: release v15.9.8",
+      "url": "https://github.com/ryoppippi/ccusage/commit/571ae9b1faaf560034ad5392d36691efcd2c02ba",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b262a74f01488c37ce4ba3e8c430d66f918f6f20",
+      "abbreviatedOid": "b262a74",
+      "committedDate": "2025-08-17T17:22:59Z",
+      "messageHeadline": "ci: npm publish",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b262a74f01488c37ce4ba3e8c430d66f918f6f20",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3b4a0e1478c7191cdb83b053a37e9098816006a6",
+      "abbreviatedOid": "3b4a0e1",
+      "committedDate": "2025-08-17T17:15:53Z",
+      "messageHeadline": "chore: ignore lsmcp and claude local setting",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3b4a0e1478c7191cdb83b053a37e9098816006a6",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "c8de2414e0a27b2c53bcd2e9bb9bea22f247e1bd",
+      "abbreviatedOid": "c8de241",
+      "committedDate": "2025-08-17T14:28:58Z",
+      "messageHeadline": "fix(statusline): replace @jsr/std__async with custom delay function (…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/c8de2414e0a27b2c53bcd2e9bb9bea22f247e1bd",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "cc1f546e3de90c3b05a9c9df9b84007da0ee87f0",
+      "abbreviatedOid": "cc1f546",
+      "committedDate": "2025-08-17T14:05:21Z",
+      "messageHeadline": "test: use fs-fixture methods instead of manual path operations (#530)",
+      "url": "https://github.com/ryoppippi/ccusage/commit/cc1f546e3de90c3b05a9c9df9b84007da0ee87f0",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6d7843fb1ee55366e255bec9d368274f4c69e1d6",
+      "abbreviatedOid": "6d7843f",
+      "committedDate": "2025-08-17T14:05:20Z",
+      "messageHeadline": "feat: enforce bun package manager usage (#529)",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6d7843fb1ee55366e255bec9d368274f4c69e1d6",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "23e4207528a2febb93d87bd14fcb9d988efe0501",
+      "abbreviatedOid": "23e4207",
+      "committedDate": "2025-08-17T14:05:20Z",
+      "messageHeadline": "ci: use bun publish",
+      "url": "https://github.com/ryoppippi/ccusage/commit/23e4207528a2febb93d87bd14fcb9d988efe0501",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6d9211aacd99be041ee2e445ea34c2c417d57cbc",
+      "abbreviatedOid": "6d9211a",
+      "committedDate": "2025-08-15T11:39:35Z",
+      "messageHeadline": "chore: release v15.9.7",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6d9211aacd99be041ee2e445ea34c2c417d57cbc",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ea5d142f65309d7e79423201c5666c96d9cc903f",
+      "abbreviatedOid": "ea5d142",
+      "committedDate": "2025-08-15T09:15:01Z",
+      "messageHeadline": "chore: release v15.9.6",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ea5d142f65309d7e79423201c5666c96d9cc903f",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "47c9db803806619098d0f6a803cb676c2e8a8501",
+      "abbreviatedOid": "47c9db8",
+      "committedDate": "2025-08-13T22:25:19Z",
+      "messageHeadline": "chore(deps): zod @3.25.67",
+      "url": "https://github.com/ryoppippi/ccusage/commit/47c9db803806619098d0f6a803cb676c2e8a8501",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fbd9fd4e24bd36e404f7d1793d2e36451a834306",
+      "abbreviatedOid": "fbd9fd4",
+      "committedDate": "2025-08-13T12:28:20Z",
+      "messageHeadline": "chore: remove eslint-mcp",
+      "url": "https://github.com/ryoppippi/ccusage/commit/fbd9fd4e24bd36e404f7d1793d2e36451a834306",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e2fd84aafb86e76d65c4ee05018606d59b1c729b",
+      "abbreviatedOid": "e2fd84a",
+      "committedDate": "2025-08-13T12:16:40Z",
+      "messageHeadline": "refactor: simplify sessionCost.totalCost",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e2fd84aafb86e76d65c4ee05018606d59b1c729b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "375d2183352b4a94ec0507ffca996e18a21182af",
+      "abbreviatedOid": "375d218",
+      "committedDate": "2025-08-13T10:26:06Z",
+      "messageHeadline": "chore: release v15.9.5",
+      "url": "https://github.com/ryoppippi/ccusage/commit/375d2183352b4a94ec0507ffca996e18a21182af",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "26c8929625685df60e77fd16d273edbd18bdb0d5",
+      "abbreviatedOid": "26c8929",
+      "committedDate": "2025-08-13T10:25:47Z",
+      "messageHeadline": "chore: stop installing byethrow-mcp",
+      "url": "https://github.com/ryoppippi/ccusage/commit/26c8929625685df60e77fd16d273edbd18bdb0d5",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6e09515f80a0b7a50a6f27b911d3ab64eedcf337",
+      "abbreviatedOid": "6e09515",
+      "committedDate": "2025-08-13T10:25:47Z",
+      "messageHeadline": "chore(deps): update dependency @typescript/native-preview to ^7.0.0-d…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6e09515f80a0b7a50a6f27b911d3ab64eedcf337",
+      "author": {
+        "name": "renovate[bot]",
+        "email": "29139614+renovate[bot]@users.noreply.github.com",
+        "user": {
+          "login": "renovate[bot]"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "96b32bdb91f34c3c7b0399ae29314398b85af9fe",
+      "abbreviatedOid": "96b32bd",
+      "committedDate": "2025-08-13T10:25:47Z",
+      "messageHeadline": "feat(statusline): add context token display to statusline command (#480)",
+      "url": "https://github.com/ryoppippi/ccusage/commit/96b32bdb91f34c3c7b0399ae29314398b85af9fe",
+      "author": {
+        "name": "ItsLucas",
+        "email": "itslucas@itslucas.me",
+        "user": {
+          "login": "ItsLucas"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "2b194e5582d39dd7ecefd8d0839e2a75b7bbb2f8",
+      "abbreviatedOid": "2b194e5",
+      "committedDate": "2025-08-12T20:44:57Z",
+      "messageHeadline": "ci: remove token",
+      "url": "https://github.com/ryoppippi/ccusage/commit/2b194e5582d39dd7ecefd8d0839e2a75b7bbb2f8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9ec8ba392b9eddce312c6b5a212d91f831fc1617",
+      "abbreviatedOid": "9ec8ba3",
+      "committedDate": "2025-08-12T20:43:45Z",
+      "messageHeadline": "chore: release v15.9.4",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9ec8ba392b9eddce312c6b5a212d91f831fc1617",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "16909a3d107e23ab924163d9327a933438419e70",
+      "abbreviatedOid": "16909a3",
+      "committedDate": "2025-08-12T20:34:08Z",
+      "messageHeadline": "feat(session): add --id option to session command for custom statusli…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/16909a3d107e23ab924163d9327a933438419e70",
+      "author": {
+        "name": "Melvyn",
+        "email": "56388157+Melvynx@users.noreply.github.com",
+        "user": {
+          "login": "Melvynx"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f91e1e743c1314fbbd1716424ac6121591a480f7",
+      "abbreviatedOid": "f91e1e7",
+      "committedDate": "2025-08-11T13:22:05Z",
+      "messageHeadline": "chore: release v15.9.3",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f91e1e743c1314fbbd1716424ac6121591a480f7",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3b850bc7a44aa7d9fc0ccc29618355c0b89b02bf",
+      "abbreviatedOid": "3b850bc",
+      "committedDate": "2025-08-11T13:21:50Z",
+      "messageHeadline": "ci: OIDC publish",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3b850bc7a44aa7d9fc0ccc29618355c0b89b02bf",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "c82c0856a6c2d90095cc80b6ff5050a3a8401167",
+      "abbreviatedOid": "c82c085",
+      "committedDate": "2025-08-10T22:10:16Z",
+      "messageHeadline": "ci: split lint/check and test into separate jobs",
+      "url": "https://github.com/ryoppippi/ccusage/commit/c82c0856a6c2d90095cc80b6ff5050a3a8401167",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9763dd7731e020d9438d143e9e922e2d27a804c3",
+      "abbreviatedOid": "9763dd7",
+      "committedDate": "2025-08-10T22:08:14Z",
+      "messageHeadline": "ci: simplify jq setup by checking availability only",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9763dd7731e020d9438d143e9e922e2d27a804c3",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3b0f16e0a4829b05294c240692076ff08eedb24c",
+      "abbreviatedOid": "3b0f16e",
+      "committedDate": "2025-08-10T21:45:59Z",
+      "messageHeadline": "chore: custom command for reduce-similarities",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3b0f16e0a4829b05294c240692076ff08eedb24c",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "4b9e2bee90d23d39ba327875e53c22e443f4317b",
+      "abbreviatedOid": "4b9e2be",
+      "committedDate": "2025-08-10T21:36:00Z",
+      "messageHeadline": "chore: release v15.9.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/4b9e2bee90d23d39ba327875e53c22e443f4317b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7c6c110fe288736eaa2af5cb6dfa119f55373894",
+      "abbreviatedOid": "7c6c110",
+      "committedDate": "2025-08-09T07:56:14Z",
+      "messageHeadline": "docs(statusline): remove prerequirements",
+      "url": "https://github.com/ryoppippi/ccusage/commit/7c6c110fe288736eaa2af5cb6dfa119f55373894",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6ab8d21f520db4287dbd5b1d201fb08c07120739",
+      "abbreviatedOid": "6ab8d21",
+      "committedDate": "2025-08-09T02:12:14Z",
+      "messageHeadline": "chore: release v15.9.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6ab8d21f520db4287dbd5b1d201fb08c07120739",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f50b847213218bb55a0581def22729a337d2bf33",
+      "abbreviatedOid": "f50b847",
+      "committedDate": "2025-08-09T02:12:04Z",
+      "messageHeadline": "fix(statusline): use correct date format for daily usage filtering",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f50b847213218bb55a0581def22729a337d2bf33",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "744efd5e2bbc2141f64eed5d4e513446af0ca55f",
+      "abbreviatedOid": "744efd5",
+      "committedDate": "2025-08-09T01:53:47Z",
+      "messageHeadline": "chore: release v15.9.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/744efd5e2bbc2141f64eed5d4e513446af0ca55f",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6c3e628eccec9c7c63377b6f5ee1ab25d4cc1d69",
+      "abbreviatedOid": "6c3e628",
+      "committedDate": "2025-08-07T09:40:05Z",
+      "messageHeadline": "chore: release v15.8.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6c3e628eccec9c7c63377b6f5ee1ab25d4cc1d69",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b072bc7e018d6c681e595834f9f302e33889bca0",
+      "abbreviatedOid": "b072bc7",
+      "committedDate": "2025-08-07T09:26:42Z",
+      "messageHeadline": "Revert \"chore(deps): update dependency lint-staged to ^16.1.4 (#435)\"",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b072bc7e018d6c681e595834f9f302e33889bca0",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "44d5cbe6d0acefaab7d781368126dcff5c353d96",
+      "abbreviatedOid": "44d5cbe",
+      "committedDate": "2025-08-04T19:00:33Z",
+      "messageHeadline": "chore: release v15.7.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/44d5cbe6d0acefaab7d781368126dcff5c353d96",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9a5e52299d008ea27852cf742a41465a3b53f6c0",
+      "abbreviatedOid": "9a5e522",
+      "committedDate": "2025-08-04T11:26:21Z",
+      "messageHeadline": "chore: release v15.7.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9a5e52299d008ea27852cf742a41465a3b53f6c0",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9eb8c1e1a8bcba0bb230c7e2510de37d8835b11d",
+      "abbreviatedOid": "9eb8c1e",
+      "committedDate": "2025-08-04T09:33:27Z",
+      "messageHeadline": "chore: release v15.6.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9eb8c1e1a8bcba0bb230c7e2510de37d8835b11d",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b19394c82b842720ba04f96196559b9f0e2adaa8",
+      "abbreviatedOid": "b19394c",
+      "committedDate": "2025-08-03T20:40:28Z",
+      "messageHeadline": "chore: release v15.6.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b19394c82b842720ba04f96196559b9f0e2adaa8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "69826a71ac3e5903fad7d8e790cdc2d9ea65a781",
+      "abbreviatedOid": "69826a7",
+      "committedDate": "2025-08-03T16:25:17Z",
+      "messageHeadline": "chore: format",
+      "url": "https://github.com/ryoppippi/ccusage/commit/69826a71ac3e5903fad7d8e790cdc2d9ea65a781",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f0be25717448103b1654df59caa69a891eb8101e",
+      "abbreviatedOid": "f0be257",
+      "committedDate": "2025-07-28T20:59:35Z",
+      "messageHeadline": "chore: erasableSyntaxOnly",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f0be25717448103b1654df59caa69a891eb8101e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0b0bd31810d7b9e51c34c3dc2c7bf55b4ddbb4a4",
+      "abbreviatedOid": "0b0bd31",
+      "committedDate": "2025-07-24T16:34:10Z",
+      "messageHeadline": "chore: release v15.5.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/0b0bd31810d7b9e51c34c3dc2c7bf55b4ddbb4a4",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b30893de7ab95197de2ebcb69858a3931fe1f75e",
+      "abbreviatedOid": "b30893d",
+      "committedDate": "2025-07-22T20:54:12Z",
+      "messageHeadline": "chore: release v15.5.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b30893de7ab95197de2ebcb69858a3931fe1f75e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "11c80df0edb02e48f2e2a5b56f70482a08a0ea58",
+      "abbreviatedOid": "11c80df",
+      "committedDate": "2025-07-19T12:23:55Z",
+      "messageHeadline": "chore: release v15.5.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/11c80df0edb02e48f2e2a5b56f70482a08a0ea58",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d1742bbceb3d07d8c8b80a0dd8bbe8b648d679db",
+      "abbreviatedOid": "d1742bb",
+      "committedDate": "2025-07-19T12:15:52Z",
+      "messageHeadline": "chore: release v15.4.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d1742bbceb3d07d8c8b80a0dd8bbe8b648d679db",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0b5b74cf09662ae8f77b7944ddca3cf35c7d9b05",
+      "abbreviatedOid": "0b5b74c",
+      "committedDate": "2025-07-08T15:35:39Z",
+      "messageHeadline": "build: run sort-package-json onSuccess",
+      "url": "https://github.com/ryoppippi/ccusage/commit/0b5b74cf09662ae8f77b7944ddca3cf35c7d9b05",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "de40200ae839c436bee4dcdf697fbffd0e91014e",
+      "abbreviatedOid": "de40200",
+      "committedDate": "2025-07-07T23:04:14Z",
+      "messageHeadline": "docs: add redirect to gh/npm/deepwiki",
+      "url": "https://github.com/ryoppippi/ccusage/commit/de40200ae839c436bee4dcdf697fbffd0e91014e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "266f076dfb4bd92a382e39ab5f8d60b716c4d990",
+      "abbreviatedOid": "266f076",
+      "committedDate": "2025-07-06T14:37:43Z",
+      "messageHeadline": "chore: release v15.3.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/266f076dfb4bd92a382e39ab5f8d60b716c4d990",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6c76826f796824a44594ba36dc45c7cac266f48d",
+      "abbreviatedOid": "6c76826",
+      "committedDate": "2025-07-04T22:16:06Z",
+      "messageHeadline": "docs: not_found_handling 404-page",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6c76826f796824a44594ba36dc45c7cac266f48d",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "862cef292b4a3c89be0f16cdb3c97866691645a0",
+      "abbreviatedOid": "862cef2",
+      "committedDate": "2025-07-04T22:14:29Z",
+      "messageHeadline": "docs: run_worker_first false",
+      "url": "https://github.com/ryoppippi/ccusage/commit/862cef292b4a3c89be0f16cdb3c97866691645a0",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "c8260f82e987e995a3c12e2f815c63857df9a1a2",
+      "abbreviatedOid": "c8260f8",
+      "committedDate": "2025-07-04T22:12:39Z",
+      "messageHeadline": "docs: enable html_handling = 'drop-trailing-slash'}",
+      "url": "https://github.com/ryoppippi/ccusage/commit/c8260f82e987e995a3c12e2f815c63857df9a1a2",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e12983b50655799cc18fd8484ab21f2b810ed702",
+      "abbreviatedOid": "e12983b",
+      "committedDate": "2025-07-04T21:51:03Z",
+      "messageHeadline": "docs: Update Node.js version requirement from 18+ to 20+",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e12983b50655799cc18fd8484ab21f2b810ed702",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "aed19358b66e2afb304dc4acc86dee9533b48e1b",
+      "abbreviatedOid": "aed1935",
+      "committedDate": "2025-07-04T19:52:23Z",
+      "messageHeadline": "chore: release v15.3.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/aed19358b66e2afb304dc4acc86dee9533b48e1b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9c49f46701877ce6df665c19d875b98581257f92",
+      "abbreviatedOid": "9c49f46",
+      "committedDate": "2025-07-04T19:50:02Z",
+      "messageHeadline": "feat: Improve Featured Sponsor section layout and sizing",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9c49f46701877ce6df665c19d875b98581257f92",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "21417e2e248ea4b8c43161749faf0bc99d22e9ed",
+      "abbreviatedOid": "21417e2",
+      "committedDate": "2025-06-25T13:02:20Z",
+      "messageHeadline": "chore: use `nodeProtocol` option in tsdown instead of rolldown-plugin…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/21417e2e248ea4b8c43161749faf0bc99d22e9ed",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f8753357554b0fb62ba6adf41d4ca10be747b8e7",
+      "abbreviatedOid": "f875335",
+      "committedDate": "2025-06-23T11:58:11Z",
+      "messageHeadline": "docs: add offline mode with deno",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f8753357554b0fb62ba6adf41d4ca10be747b8e7",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3f77ef4c7c14b8e5a1d95c9700f546785f6fb9ea",
+      "abbreviatedOid": "3f77ef4",
+      "committedDate": "2025-06-23T10:07:59Z",
+      "messageHeadline": "docs(readme): add npx quick start and clarify install",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3f77ef4c7c14b8e5a1d95c9700f546785f6fb9ea",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b62d8fc15a1dda69fd22c4168f73b747b41c5afe",
+      "abbreviatedOid": "b62d8fc",
+      "committedDate": "2025-06-22T22:00:59Z",
+      "messageHeadline": "chore: rm unused text for claude",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b62d8fc15a1dda69fd22c4168f73b747b41c5afe",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8e9ab52b7ff9d7ef2127ac59d73cb49b7bd3c0aa",
+      "abbreviatedOid": "8e9ab52",
+      "committedDate": "2025-06-22T21:51:20Z",
+      "messageHeadline": "chore: remove vitest global import",
+      "url": "https://github.com/ryoppippi/ccusage/commit/8e9ab52b7ff9d7ef2127ac59d73cb49b7bd3c0aa",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7efd27928f18469a6130ebdd773e1ca00907e311",
+      "abbreviatedOid": "7efd279",
+      "committedDate": "2025-06-22T21:50:00Z",
+      "messageHeadline": "chore: release v15.2.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/7efd27928f18469a6130ebdd773e1ca00907e311",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b2ca28256095b1d3c367cab72cfc957e57725168",
+      "abbreviatedOid": "b2ca282",
+      "committedDate": "2025-06-22T20:02:34Z",
+      "messageHeadline": "chore(_blocks.live): add monitor.clearCache comment",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b2ca28256095b1d3c367cab72cfc957e57725168",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "165869086f92eb7c60b773a70b80e87ce6622367",
+      "abbreviatedOid": "1658690",
+      "committedDate": "2025-06-22T13:08:10Z",
+      "messageHeadline": "docs(README): add deepwiki badge again",
+      "url": "https://github.com/ryoppippi/ccusage/commit/165869086f92eb7c60b773a70b80e87ce6622367",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "bffbdc847eefb8a60696e9e24b8de28377ff9b67",
+      "abbreviatedOid": "bffbdc8",
+      "committedDate": "2025-06-22T01:06:45Z",
+      "messageHeadline": "chore: release v15.1.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/bffbdc847eefb8a60696e9e24b8de28377ff9b67",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6268af1558659bbba73fcc9484069100135ded2c",
+      "abbreviatedOid": "6268af1",
+      "committedDate": "2025-06-21T23:47:49Z",
+      "messageHeadline": "chore: release v15.0.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6268af1558659bbba73fcc9484069100135ded2c",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "59bd8e175769804f10384314083e886cabe6d2c8",
+      "abbreviatedOid": "59bd8e1",
+      "committedDate": "2025-06-21T22:04:38Z",
+      "messageHeadline": "chore(docs): remove",
+      "url": "https://github.com/ryoppippi/ccusage/commit/59bd8e175769804f10384314083e886cabe6d2c8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "c7738f2379a7fedaaabf17d3ba9071005b0091b4",
+      "abbreviatedOid": "c7738f2",
+      "committedDate": "2025-06-21T22:04:08Z",
+      "messageHeadline": "fix(block-live): per token -> token/min",
+      "url": "https://github.com/ryoppippi/ccusage/commit/c7738f2379a7fedaaabf17d3ba9071005b0091b4",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f8fd5a8f885e9a329c0afdd97336ab647a04bf3c",
+      "abbreviatedOid": "f8fd5a8",
+      "committedDate": "2025-06-21T21:25:32Z",
+      "messageHeadline": "docs(README): update sponsor image url",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f8fd5a8f885e9a329c0afdd97336ab647a04bf3c",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "bc82c8d22d4f837b8ebc14b24412e205e70db9f3",
+      "abbreviatedOid": "bc82c8d",
+      "committedDate": "2025-06-21T20:58:38Z",
+      "messageHeadline": "chore: release v15.0.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/bc82c8d22d4f837b8ebc14b24412e205e70db9f3",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9ef0c09c74da1576fe7ca3298346b2b567856b9d",
+      "abbreviatedOid": "9ef0c09",
+      "committedDate": "2025-06-21T20:42:25Z",
+      "messageHeadline": "docs: add `claude-code-usage-monitor` as a  related project (#117)",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9ef0c09c74da1576fe7ca3298346b2b567856b9d",
+      "author": {
+        "name": "Maciej",
+        "email": "maciekdymarczyk@gmail.com",
+        "user": {
+          "login": "Maciek-roboblog"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "62dee8f718662048f3fc917d3ef5b333eb7ff0ae",
+      "abbreviatedOid": "62dee8f",
+      "committedDate": "2025-06-20T21:10:15Z",
+      "messageHeadline": "chore: release v14.1.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/62dee8f718662048f3fc917d3ef5b333eb7ff0ae",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a6099685f4256d7c6645a4e355b4f34e479a0841",
+      "abbreviatedOid": "a609968",
+      "committedDate": "2025-06-20T13:24:29Z",
+      "messageHeadline": "chore: release v14.1.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/a6099685f4256d7c6645a4e355b4f34e479a0841",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0a09818d36c80f3a93dca324b617ee0f16a50519",
+      "abbreviatedOid": "0a09818",
+      "committedDate": "2025-06-20T11:33:49Z",
+      "messageHeadline": "chore: release v14.1.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/0a09818d36c80f3a93dca324b617ee0f16a50519",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "12c6ad6a5d031a0b2d2bf4900774b23c586ea96b",
+      "abbreviatedOid": "12c6ad6",
+      "committedDate": "2025-06-20T11:05:05Z",
+      "messageHeadline": "chore: release v14.0.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/12c6ad6a5d031a0b2d2bf4900774b23c586ea96b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e2f4b7b2e90f8c25b458af435d941df436d9f94f",
+      "abbreviatedOid": "e2f4b7b",
+      "committedDate": "2025-06-18T19:57:04Z",
+      "messageHeadline": "chore: fix license",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e2f4b7b2e90f8c25b458af435d941df436d9f94f",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fbcc21de061055f8c034c273e0e94661063e373b",
+      "abbreviatedOid": "fbcc21d",
+      "committedDate": "2025-06-18T19:49:27Z",
+      "messageHeadline": "docs(README): centerise badges",
+      "url": "https://github.com/ryoppippi/ccusage/commit/fbcc21de061055f8c034c273e0e94661063e373b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d93a8afa3837a870cbdc27546254151584050d4c",
+      "abbreviatedOid": "d93a8af",
+      "committedDate": "2025-06-18T19:36:17Z",
+      "messageHeadline": "chore: release v13.0.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d93a8afa3837a870cbdc27546254151584050d4c",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fa323df65cb89576b9db53da79f0638d3af0d228",
+      "abbreviatedOid": "fa323df",
+      "committedDate": "2025-06-18T19:35:07Z",
+      "messageHeadline": "docs(README): replace main logo to svg",
+      "url": "https://github.com/ryoppippi/ccusage/commit/fa323df65cb89576b9db53da79f0638d3af0d228",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "728180fec69e987c2c8cd06e0b7fa503902604c2",
+      "abbreviatedOid": "728180f",
+      "committedDate": "2025-06-18T17:01:15Z",
+      "messageHeadline": "docs: use jsdelivr CDN for all image URLs in README",
+      "url": "https://github.com/ryoppippi/ccusage/commit/728180fec69e987c2c8cd06e0b7fa503902604c2",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6ec4dcba95695a19232e71c4893759a184e5698d",
+      "abbreviatedOid": "6ec4dcb",
+      "committedDate": "2025-06-18T16:55:38Z",
+      "messageHeadline": "chore: release v13.0.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6ec4dcba95695a19232e71c4893759a184e5698d",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ad8591b98bae5e77d92170c2f747de9001468957",
+      "abbreviatedOid": "ad8591b",
+      "committedDate": "2025-06-18T16:48:24Z",
+      "messageHeadline": "docs: bigger logo",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ad8591b98bae5e77d92170c2f747de9001468957",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ad7204524ff1ea3ea3106b9e522514fc0bcbf150",
+      "abbreviatedOid": "ad72045",
+      "committedDate": "2025-06-18T16:48:23Z",
+      "messageHeadline": "docs: move Abbreviation explanation",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ad7204524ff1ea3ea3106b9e522514fc0bcbf150",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "34f9b569eb73d0e19f6b7b8fd4cfe09086ad0299",
+      "abbreviatedOid": "34f9b56",
+      "committedDate": "2025-06-18T14:20:04Z",
+      "messageHeadline": "chore: release v12.4.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/34f9b569eb73d0e19f6b7b8fd4cfe09086ad0299",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7c57f248f42c55e5e6dbf330d3e3e153a80f010d",
+      "abbreviatedOid": "7c57f24",
+      "committedDate": "2025-06-18T12:08:34Z",
+      "messageHeadline": "chore: release v12.3.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/7c57f248f42c55e5e6dbf330d3e3e153a80f010d",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "4815a466b897d21a85f9e4d1f6c249ea73182333",
+      "abbreviatedOid": "4815a46",
+      "committedDate": "2025-06-18T11:35:16Z",
+      "messageHeadline": "docs: fix mcp test command to use bun",
+      "url": "https://github.com/ryoppippi/ccusage/commit/4815a466b897d21a85f9e4d1f6c249ea73182333",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "4928f267dcb73031d768d847ba9151f4a9871920",
+      "abbreviatedOid": "4928f26",
+      "committedDate": "2025-06-18T10:05:12Z",
+      "messageHeadline": "build: capitalise NodeExternals plugin",
+      "url": "https://github.com/ryoppippi/ccusage/commit/4928f267dcb73031d768d847ba9151f4a9871920",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "36bfca277aed9800a0a1bb9a0fbdd6e6d76266e2",
+      "abbreviatedOid": "36bfca2",
+      "committedDate": "2025-06-18T09:54:13Z",
+      "messageHeadline": "build: remove valibot from dts.resolve",
+      "url": "https://github.com/ryoppippi/ccusage/commit/36bfca277aed9800a0a1bb9a0fbdd6e6d76266e2",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "99caab13affa9e14544044c30260171bb6a572af",
+      "abbreviatedOid": "99caab1",
+      "committedDate": "2025-06-18T02:12:35Z",
+      "messageHeadline": "chore: release v12.3.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/99caab13affa9e14544044c30260171bb6a572af",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ccbc451544c25cf76248d3b90d5f663c263bc551",
+      "abbreviatedOid": "ccbc451",
+      "committedDate": "2025-06-18T02:11:52Z",
+      "messageHeadline": "docs: fix packagephobia badge",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ccbc451544c25cf76248d3b90d5f663c263bc551",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "988331dae40dd2f6f0bca46b7b9e738909b86000",
+      "abbreviatedOid": "988331d",
+      "committedDate": "2025-06-18T01:56:34Z",
+      "messageHeadline": "chore: release v12.3.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/988331dae40dd2f6f0bca46b7b9e738909b86000",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3e38b16fca5a11df9ef4a3e1921e86ede823d7c2",
+      "abbreviatedOid": "3e38b16",
+      "committedDate": "2025-06-18T01:54:27Z",
+      "messageHeadline": "build: apply rollup-plugin-node-externals to externalise all node bui…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3e38b16fca5a11df9ef4a3e1921e86ede823d7c2",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ba5f29fa05fbae0dba2f708b11a496e0fa224aca",
+      "abbreviatedOid": "ba5f29f",
+      "committedDate": "2025-06-18T01:54:11Z",
+      "messageHeadline": "chore(deps): add rollup-plugin-node-externals",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ba5f29fa05fbae0dba2f708b11a496e0fa224aca",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7a0ab8b3130bf7741175893d828990ecadf103b4",
+      "abbreviatedOid": "7a0ab8b",
+      "committedDate": "2025-06-18T01:45:57Z",
+      "messageHeadline": "chore(deps): remove fetch-to-node",
+      "url": "https://github.com/ryoppippi/ccusage/commit/7a0ab8b3130bf7741175893d828990ecadf103b4",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "54f82bde8fdff565a68fc57b9f9d6a3c48f45af1",
+      "abbreviatedOid": "54f82bd",
+      "committedDate": "2025-06-18T01:44:36Z",
+      "messageHeadline": "chore: release v12.2.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/54f82bde8fdff565a68fc57b9f9d6a3c48f45af1",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d4cc86efaa68059ac29e63960ffefcc2dfe7c2e3",
+      "abbreviatedOid": "d4cc86e",
+      "committedDate": "2025-06-17T23:11:10Z",
+      "messageHeadline": "docs: update screenshot",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d4cc86efaa68059ac29e63960ffefcc2dfe7c2e3",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "55e628d96defe8288ddc6dc76a4633c15504b2b4",
+      "abbreviatedOid": "55e628d",
+      "committedDate": "2025-06-17T22:55:06Z",
+      "messageHeadline": "chore: release v12.1.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/55e628d96defe8288ddc6dc76a4633c15504b2b4",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "105ac73750d157f8e0c3f86ae52b3079cf514e2c",
+      "abbreviatedOid": "105ac73",
+      "committedDate": "2025-06-17T22:54:55Z",
+      "messageHeadline": "feat!: use hono/tiny",
+      "url": "https://github.com/ryoppippi/ccusage/commit/105ac73750d157f8e0c3f86ae52b3079cf514e2c",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8cb1ca98d5156cd6c9e2635f73b9cd59fee2caa5",
+      "abbreviatedOid": "8cb1ca9",
+      "committedDate": "2025-06-17T22:54:36Z",
+      "messageHeadline": "chore(deps): update packages",
+      "url": "https://github.com/ryoppippi/ccusage/commit/8cb1ca98d5156cd6c9e2635f73b9cd59fee2caa5",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "66378cfaa4a75c076d113b6d399a1e6c3695f5cb",
+      "abbreviatedOid": "66378cf",
+      "committedDate": "2025-06-17T22:48:12Z",
+      "messageHeadline": "build: remove external option",
+      "url": "https://github.com/ryoppippi/ccusage/commit/66378cfaa4a75c076d113b6d399a1e6c3695f5cb",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "90fc5ac59908071dcb772bb044c6a2489692dd45",
+      "abbreviatedOid": "90fc5ac",
+      "committedDate": "2025-06-17T22:38:19Z",
+      "messageHeadline": "chore: release v12.0.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/90fc5ac59908071dcb772bb044c6a2489692dd45",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "25e555d1a5f85b1467499e25a85d66873cfd4798",
+      "abbreviatedOid": "25e555d",
+      "committedDate": "2025-06-17T20:32:44Z",
+      "messageHeadline": "chore: release v11.0.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/25e555d1a5f85b1467499e25a85d66873cfd4798",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "43dd6c0f85fdbd4537286a9987a2b99746f4bcc4",
+      "abbreviatedOid": "43dd6c0",
+      "committedDate": "2025-06-17T20:32:14Z",
+      "messageHeadline": "build: enable dce-only-minify and treeshake",
+      "url": "https://github.com/ryoppippi/ccusage/commit/43dd6c0f85fdbd4537286a9987a2b99746f4bcc4",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b26b133e69cbdb075bbb35387c6cf5587f808274",
+      "abbreviatedOid": "b26b133",
+      "committedDate": "2025-06-17T20:26:50Z",
+      "messageHeadline": "chore: release v11.0.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b26b133e69cbdb075bbb35387c6cf5587f808274",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a71cb4d2a8a0d03edd77c463898c11a79cc3646b",
+      "abbreviatedOid": "a71cb4d",
+      "committedDate": "2025-06-17T20:26:31Z",
+      "messageHeadline": "chore: vitest run -> vitest",
+      "url": "https://github.com/ryoppippi/ccusage/commit/a71cb4d2a8a0d03edd77c463898c11a79cc3646b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "af85b287b0de3bf86950c74a98c9ac6706166c4f",
+      "abbreviatedOid": "af85b28",
+      "committedDate": "2025-06-17T20:16:04Z",
+      "messageHeadline": "chore: build dts with tsgo",
+      "url": "https://github.com/ryoppippi/ccusage/commit/af85b287b0de3bf86950c74a98c9ac6706166c4f",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "671bb42007e671822bf86c42a9440a427cb8925e",
+      "abbreviatedOid": "671bb42",
+      "committedDate": "2025-06-17T17:08:00Z",
+      "messageHeadline": "docs(README): add sponsors",
+      "url": "https://github.com/ryoppippi/ccusage/commit/671bb42007e671822bf86c42a9440a427cb8925e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0f247d469e6c9f1b87a8fd7f1ec779749dc34f03",
+      "abbreviatedOid": "0f247d4",
+      "committedDate": "2025-06-17T16:27:09Z",
+      "messageHeadline": "docs(README): star history",
+      "url": "https://github.com/ryoppippi/ccusage/commit/0f247d469e6c9f1b87a8fd7f1ec779749dc34f03",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ee7d7b69000f0b9a895f2aca0abb8eb39a9b0d16",
+      "abbreviatedOid": "ee7d7b6",
+      "committedDate": "2025-06-17T15:29:33Z",
+      "messageHeadline": "docs(README): add related projects section",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ee7d7b69000f0b9a895f2aca0abb8eb39a9b0d16",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ca71238e1e6618ef51c448ad0a75b135223735c1",
+      "abbreviatedOid": "ca71238",
+      "committedDate": "2025-06-17T14:42:31Z",
+      "messageHeadline": "chore: release v11.0.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ca71238e1e6618ef51c448ad0a75b135223735c1",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d64b895f1d988b017f6e1c55c0b9645d15c3b0e3",
+      "abbreviatedOid": "d64b895",
+      "committedDate": "2025-06-17T13:30:59Z",
+      "messageHeadline": "chore: release v10.0.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d64b895f1d988b017f6e1c55c0b9645d15c3b0e3",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "486b74d155f404524d31ba2e30542ae0e33f430d",
+      "abbreviatedOid": "486b74d",
+      "committedDate": "2025-06-16T20:16:01Z",
+      "messageHeadline": "chore: release v9.0.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/486b74d155f404524d31ba2e30542ae0e33f430d",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b242f429f86cd15a9a3c604fdbde3c29181fa87c",
+      "abbreviatedOid": "b242f42",
+      "committedDate": "2025-06-16T20:15:14Z",
+      "messageHeadline": "docs: clarify offline mode only supports Claude models in CLI help",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b242f429f86cd15a9a3c604fdbde3c29181fa87c",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ec2fd55517bbb670a1abbb1eff19121b9fae0341",
+      "abbreviatedOid": "ec2fd55",
+      "committedDate": "2025-06-16T20:14:46Z",
+      "messageHeadline": "docs: add missing documentation for offline mode and responsive tables",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ec2fd55517bbb670a1abbb1eff19121b9fae0341",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3ad8f18b47ef6624dcd68a7097f3ae4250ef8144",
+      "abbreviatedOid": "3ad8f18",
+      "committedDate": "2025-06-16T20:05:23Z",
+      "messageHeadline": "chore: release v9.0.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3ad8f18b47ef6624dcd68a7097f3ae4250ef8144",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "932b9ec9e1cfd193aab79365219fb5f363d24087",
+      "abbreviatedOid": "932b9ec",
+      "committedDate": "2025-06-16T16:21:51Z",
+      "messageHeadline": "Merge pull request #70 from timrogers/copilot/fix-4a5d6a32-927f-4cf5-…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/932b9ec9e1cfd193aab79365219fb5f363d24087",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ae3cbe789218e50224dc9acd965c29e15fe50f04",
+      "abbreviatedOid": "ae3cbe7",
+      "committedDate": "2025-06-16T16:21:51Z",
+      "messageHeadline": "fix(ci): create ~/.claude directory and clean up test",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ae3cbe789218e50224dc9acd965c29e15fe50f04",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3d65059c602aa00623702306f6ab0cf4280e41b6",
+      "abbreviatedOid": "3d65059",
+      "committedDate": "2025-06-16T16:21:51Z",
+      "messageHeadline": "fix(test): handle CI environment where ~/.claude does not exist",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3d65059c602aa00623702306f6ab0cf4280e41b6",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e351d37966f7551dd69d05ab7c0f2aedb11c255a",
+      "abbreviatedOid": "e351d37",
+      "committedDate": "2025-06-16T16:21:51Z",
+      "messageHeadline": "trigger ci: force new CI run to resolve test environment issue",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e351d37966f7551dd69d05ab7c0f2aedb11c255a",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6abb9fa5576d20caf0aac761811a9685cc87f92e",
+      "abbreviatedOid": "6abb9fa",
+      "committedDate": "2025-06-16T16:21:37Z",
+      "messageHeadline": "resolve merge conflict in shared-args.internal.ts",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6abb9fa5576d20caf0aac761811a9685cc87f92e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "98defd916ce1602fac42649f8b3c33c14db196db",
+      "abbreviatedOid": "98defd9",
+      "committedDate": "2025-06-16T16:21:35Z",
+      "messageHeadline": "docs(readme): remove remaining --path references from examples",
+      "url": "https://github.com/ryoppippi/ccusage/commit/98defd916ce1602fac42649f8b3c33c14db196db",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "858f5baa4623c8559255ce839f634ae014d64b30",
+      "abbreviatedOid": "858f5ba",
+      "committedDate": "2025-06-16T16:21:34Z",
+      "messageHeadline": "docs(readme): remove --path option from CLI documentation",
+      "url": "https://github.com/ryoppippi/ccusage/commit/858f5baa4623c8559255ce839f634ae014d64b30",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3cf0c0dbe4423fcbbf10039ef6b84690ab60ae6d",
+      "abbreviatedOid": "3cf0c0d",
+      "committedDate": "2025-06-16T16:21:34Z",
+      "messageHeadline": "fix(cli)!: remove --path option entirely and use environment variable",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3cf0c0dbe4423fcbbf10039ef6b84690ab60ae6d",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5299d95bf671dbd7bf075039ce692f40b75e2d10",
+      "abbreviatedOid": "5299d95",
+      "committedDate": "2025-06-16T16:20:45Z",
+      "messageHeadline": "docs(readme): update CLI options to remove -p short option",
+      "url": "https://github.com/ryoppippi/ccusage/commit/5299d95bf671dbd7bf075039ce692f40b75e2d10",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "312eb92eb3dbd0a67619c123c6d254cb752b9c94",
+      "abbreviatedOid": "312eb92",
+      "committedDate": "2025-06-16T16:20:45Z",
+      "messageHeadline": "fix(cli)!: remove -p short option for path argument",
+      "url": "https://github.com/ryoppippi/ccusage/commit/312eb92eb3dbd0a67619c123c6d254cb752b9c94",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "292ede3f2681c6f85acc8324b793fedac98ad2a3",
+      "abbreviatedOid": "292ede3",
+      "committedDate": "2025-06-12T11:37:36Z",
+      "messageHeadline": "refactor(data-loader): create a function for sorting",
+      "url": "https://github.com/ryoppippi/ccusage/commit/292ede3f2681c6f85acc8324b793fedac98ad2a3",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0b061b2595ea5589b8e568e17b90daa443d72566",
+      "abbreviatedOid": "0b061b2",
+      "committedDate": "2025-06-12T11:37:36Z",
+      "messageHeadline": "refactor(data-loader): use exhaustive check for sort-order",
+      "url": "https://github.com/ryoppippi/ccusage/commit/0b061b2595ea5589b8e568e17b90daa443d72566",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "478fc1d0ec674911d83909343439e1bc995515cd",
+      "abbreviatedOid": "478fc1d",
+      "committedDate": "2025-06-12T09:41:02Z",
+      "messageHeadline": "chore: release v0.8.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/478fc1d0ec674911d83909343439e1bc995515cd",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "85afe7ba801978474356f9a5a16e62543188c584",
+      "abbreviatedOid": "85afe7b",
+      "committedDate": "2025-06-11T14:33:25Z",
+      "messageHeadline": "docs(README): update session outputs",
+      "url": "https://github.com/ryoppippi/ccusage/commit/85afe7ba801978474356f9a5a16e62543188c584",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a7f5c953d777a67bcedf2f281c8d8acde2cd01a0",
+      "abbreviatedOid": "a7f5c95",
+      "committedDate": "2025-06-11T14:29:50Z",
+      "messageHeadline": "chore: release v0.7.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/a7f5c953d777a67bcedf2f281c8d8acde2cd01a0",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "742372a6c9118fb3763c47e9652444d3d3afd61a",
+      "abbreviatedOid": "742372a",
+      "committedDate": "2025-06-11T14:26:59Z",
+      "messageHeadline": "Merge pull request #57 from ryoppippi/feature/remove-project",
+      "url": "https://github.com/ryoppippi/ccusage/commit/742372a6c9118fb3763c47e9652444d3d3afd61a",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7cb72f11ce24b54923b90960c3652224719b8c52",
+      "abbreviatedOid": "7cb72f1",
+      "committedDate": "2025-06-11T14:26:59Z",
+      "messageHeadline": "Merge pull request #52 from constantins2001/main",
+      "url": "https://github.com/ryoppippi/ccusage/commit/7cb72f11ce24b54923b90960c3652224719b8c52",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "12597cbc73ae71acf816e5ade544c9dcc9758e42",
+      "abbreviatedOid": "12597cb",
+      "committedDate": "2025-06-11T14:26:59Z",
+      "messageHeadline": "fix: remove project column from session command",
+      "url": "https://github.com/ryoppippi/ccusage/commit/12597cbc73ae71acf816e5ade544c9dcc9758e42",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1a7b11e13139704fa72a99aea6d001128bb15332",
+      "abbreviatedOid": "1a7b11e",
+      "committedDate": "2025-06-11T14:26:58Z",
+      "messageHeadline": "Document `--breakdown` flag and model-specific usage breakdowns in RE…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/1a7b11e13139704fa72a99aea6d001128bb15332",
+      "author": {
+        "name": "Constantin Schreiber",
+        "email": "mail@constantinschreiber.me",
+        "user": {
+          "login": "constantins2001"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "c397c7bb15b5f048e1fe48c5e18b345dd23fc34e",
+      "abbreviatedOid": "c397c7b",
+      "committedDate": "2025-06-11T14:26:58Z",
+      "messageHeadline": "Refactor: Extract `pushBreakdownRows` helper to simplify breakdown ro…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/c397c7bb15b5f048e1fe48c5e18b345dd23fc34e",
+      "author": {
+        "name": "Constantin Schreiber",
+        "email": "mail@constantinschreiber.me",
+        "user": {
+          "login": "constantins2001"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d7efbf95f5a1db6dea5908bafdf55aaaf37a78a4",
+      "abbreviatedOid": "d7efbf9",
+      "committedDate": "2025-06-11T14:26:58Z",
+      "messageHeadline": "Hide model cost breakdown behind --breakdown CLI flag",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d7efbf95f5a1db6dea5908bafdf55aaaf37a78a4",
+      "author": {
+        "name": "Constantin Schreiber",
+        "email": "mail@constantinschreiber.me",
+        "user": {
+          "login": "constantins2001"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ffde10f728b85ffc9d0f979fe7085bcd50c3af0c",
+      "abbreviatedOid": "ffde10f",
+      "committedDate": "2025-06-11T14:26:58Z",
+      "messageHeadline": "format",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ffde10f728b85ffc9d0f979fe7085bcd50c3af0c",
+      "author": {
+        "name": "Constantin Schreiber",
+        "email": "mail@constantinschreiber.me",
+        "user": {
+          "login": "constantins2001"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b4f453f9583830a6b9c89ea5510f3c328dd0300f",
+      "abbreviatedOid": "b4f453f",
+      "committedDate": "2025-06-11T14:26:58Z",
+      "messageHeadline": "feat: Add model breakdowns and usage details in usage reports",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b4f453f9583830a6b9c89ea5510f3c328dd0300f",
+      "author": {
+        "name": "Constantin Schreiber",
+        "email": "mail@constantinschreiber.me",
+        "user": {
+          "login": "constantins2001"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f97cd3e8ab1d6e5e455e80735c543bbcfdcb82ff",
+      "abbreviatedOid": "f97cd3e",
+      "committedDate": "2025-06-10T04:53:05Z",
+      "messageHeadline": "chore: release v0.6.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f97cd3e8ab1d6e5e455e80735c543bbcfdcb82ff",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "88625739c353b26bec5865a637d7e932923346a8",
+      "abbreviatedOid": "8862573",
+      "committedDate": "2025-06-10T04:52:32Z",
+      "messageHeadline": "fix(build): Explicitly make fastMCP dependencies external",
+      "url": "https://github.com/ryoppippi/ccusage/commit/88625739c353b26bec5865a637d7e932923346a8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b80f8105ccb4bc712c7793def09414b2add325de",
+      "abbreviatedOid": "b80f810",
+      "committedDate": "2025-06-09T23:58:14Z",
+      "messageHeadline": "fix(pricing-fetcher): use safeParse for model schema validation",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b80f8105ccb4bc712c7793def09414b2add325de",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "cad223d25debdd457f28c13df661015c6bdec58d",
+      "abbreviatedOid": "cad223d",
+      "committedDate": "2025-06-09T23:46:08Z",
+      "messageHeadline": "Revert \"chore: optimise dts with dtsroll\"",
+      "url": "https://github.com/ryoppippi/ccusage/commit/cad223d25debdd457f28c13df661015c6bdec58d",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "06ee718582a5a8f75c114d9fef9c932274dbb181",
+      "abbreviatedOid": "06ee718",
+      "committedDate": "2025-06-09T10:30:24Z",
+      "messageHeadline": "chore: optimise dts with dtsroll",
+      "url": "https://github.com/ryoppippi/ccusage/commit/06ee718582a5a8f75c114d9fef9c932274dbb181",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "59683d049334f50013f3467e316a58f818dfb9e7",
+      "abbreviatedOid": "59683d0",
+      "committedDate": "2025-06-08T17:20:33Z",
+      "messageHeadline": "docs: replace download stats link to tanstack stats",
+      "url": "https://github.com/ryoppippi/ccusage/commit/59683d049334f50013f3467e316a58f818dfb9e7",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e6aee3127f54aaa2ba28edbdad3f25eadb38bf36",
+      "abbreviatedOid": "e6aee31",
+      "committedDate": "2025-06-08T17:04:51Z",
+      "messageHeadline": "Revert \"ci: cache eslintcache\"",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e6aee3127f54aaa2ba28edbdad3f25eadb38bf36",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "21786f5bef944264ef12cba312b3983c50cf21ab",
+      "abbreviatedOid": "21786f5",
+      "committedDate": "2025-06-08T17:03:35Z",
+      "messageHeadline": "ci: cache eslintcache",
+      "url": "https://github.com/ryoppippi/ccusage/commit/21786f5bef944264ef12cba312b3983c50cf21ab",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0667c69817e1c60e55eb1e97822755ecb11737ee",
+      "abbreviatedOid": "0667c69",
+      "committedDate": "2025-06-08T13:40:24Z",
+      "messageHeadline": "chore: release v0.6.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/0667c69817e1c60e55eb1e97822755ecb11737ee",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5dcbd02d57c0b150659bc7dcf91e6e7e0e65c8e2",
+      "abbreviatedOid": "5dcbd02",
+      "committedDate": "2025-06-08T13:26:22Z",
+      "messageHeadline": "chore: run sort-package-json when creating a commit",
+      "url": "https://github.com/ryoppippi/ccusage/commit/5dcbd02d57c0b150659bc7dcf91e6e7e0e65c8e2",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "98930b1c17b302a612a472e8a73c2e62d804f1db",
+      "abbreviatedOid": "98930b1",
+      "committedDate": "2025-06-08T11:20:12Z",
+      "messageHeadline": "fix: nullish",
+      "url": "https://github.com/ryoppippi/ccusage/commit/98930b1c17b302a612a472e8a73c2e62d804f1db",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e38b860c369388d499fcab3e5bfef2a3bbea4a4c",
+      "abbreviatedOid": "e38b860",
+      "committedDate": "2025-06-08T10:58:35Z",
+      "messageHeadline": "chore: fix renovate",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e38b860c369388d499fcab3e5bfef2a3bbea4a4c",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "186247f34c71c945efa983d0e5a7011474ce30ff",
+      "abbreviatedOid": "186247f",
+      "committedDate": "2025-06-07T20:07:10Z",
+      "messageHeadline": "chore: release v0.6.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/186247f34c71c945efa983d0e5a7011474ce30ff",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8b6983bb1f0d31a26da8ba6ffc3308e0111d399e",
+      "abbreviatedOid": "8b6983b",
+      "committedDate": "2025-06-07T20:06:33Z",
+      "messageHeadline": "refactor(commands): pass options directory instead of creating option…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/8b6983bb1f0d31a26da8ba6ffc3308e0111d399e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ad0c211a3764abaff869800f989af9ead7fb494a",
+      "abbreviatedOid": "ad0c211",
+      "committedDate": "2025-06-07T19:57:36Z",
+      "messageHeadline": "chore!: replace typescript to tsgo",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ad0c211a3764abaff869800f989af9ead7fb494a",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d9faede9b8b90fb14cf3b71ae2640fcf8d2252f3",
+      "abbreviatedOid": "d9faede",
+      "committedDate": "2025-06-04T15:48:24Z",
+      "messageHeadline": "chore: release v0.5.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d9faede9b8b90fb14cf3b71ae2640fcf8d2252f3",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "042f468799f06de4ed1a152448a4f4c777261aa8",
+      "abbreviatedOid": "042f468",
+      "committedDate": "2025-06-04T15:47:51Z",
+      "messageHeadline": "chore: exclude dist for tsc",
+      "url": "https://github.com/ryoppippi/ccusage/commit/042f468799f06de4ed1a152448a4f4c777261aa8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "65bbef81c7ce4dfa50a22f635f38e1a64d7c97e2",
+      "abbreviatedOid": "65bbef8",
+      "committedDate": "2025-06-04T15:32:30Z",
+      "messageHeadline": "docs(CLAUDE): use llms.txt instead of full",
+      "url": "https://github.com/ryoppippi/ccusage/commit/65bbef81c7ce4dfa50a22f635f38e1a64d7c97e2",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "75477320f10c32fce6348dc945b8635959c81344",
+      "abbreviatedOid": "7547732",
+      "committedDate": "2025-06-04T13:07:52Z",
+      "messageHeadline": "fix: stop using tsdown hooks",
+      "url": "https://github.com/ryoppippi/ccusage/commit/75477320f10c32fce6348dc945b8635959c81344",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5a00f5078b3dc157d67101168a618614581baa53",
+      "abbreviatedOid": "5a00f50",
+      "committedDate": "2025-06-03T23:20:44Z",
+      "messageHeadline": "docs: more strict command",
+      "url": "https://github.com/ryoppippi/ccusage/commit/5a00f5078b3dc157d67101168a618614581baa53",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8ce4b35a78480056a819acf48f6c0aab4913f832",
+      "abbreviatedOid": "8ce4b35",
+      "committedDate": "2025-06-03T23:13:55Z",
+      "messageHeadline": "docs: how to run with deno",
+      "url": "https://github.com/ryoppippi/ccusage/commit/8ce4b35a78480056a819acf48f6c0aab4913f832",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "90a9362ab0b14b353eba276b95e1a6211e73cc08",
+      "abbreviatedOid": "90a9362",
+      "committedDate": "2025-06-03T23:13:54Z",
+      "messageHeadline": "docs: add how to run with pnpm",
+      "url": "https://github.com/ryoppippi/ccusage/commit/90a9362ab0b14b353eba276b95e1a6211e73cc08",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7b09d94d600b58ecc449f0c488845eba0f2421db",
+      "abbreviatedOid": "7b09d94",
+      "committedDate": "2025-06-03T17:15:41Z",
+      "messageHeadline": "chore: release v0.4.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/7b09d94d600b58ecc449f0c488845eba0f2421db",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3a54e4651ce4d4d01e1687dc7d3ee17eae6449bd",
+      "abbreviatedOid": "3a54e46",
+      "committedDate": "2025-06-03T16:02:17Z",
+      "messageHeadline": "Revert \"chore: fix release command\"",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3a54e4651ce4d4d01e1687dc7d3ee17eae6449bd",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d50ac83939560d7e3035a10b49f5a43f8f3a3201",
+      "abbreviatedOid": "d50ac83",
+      "committedDate": "2025-06-03T16:02:00Z",
+      "messageHeadline": "chore: release v0.4.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d50ac83939560d7e3035a10b49f5a43f8f3a3201",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8f1e34232f3e6ed572d7bbaef1c7d08f6ca6fbae",
+      "abbreviatedOid": "8f1e342",
+      "committedDate": "2025-06-03T16:01:49Z",
+      "messageHeadline": "chore: fix release command",
+      "url": "https://github.com/ryoppippi/ccusage/commit/8f1e34232f3e6ed572d7bbaef1c7d08f6ca6fbae",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "cb12adfd385640779638ff8288cb8890913e8195",
+      "abbreviatedOid": "cb12adf",
+      "committedDate": "2025-06-03T15:58:32Z",
+      "messageHeadline": "fix: json mode",
+      "url": "https://github.com/ryoppippi/ccusage/commit/cb12adfd385640779638ff8288cb8890913e8195",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "790083b0fefe023ace07ac3f39c4a142c2ae647d",
+      "abbreviatedOid": "790083b",
+      "committedDate": "2025-06-03T15:15:36Z",
+      "messageHeadline": "chore: release v0.4.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/790083b0fefe023ace07ac3f39c4a142c2ae647d",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fdb0280e5632e8c87c017a03ed22a196c2cea233",
+      "abbreviatedOid": "fdb0280",
+      "committedDate": "2025-06-03T15:04:27Z",
+      "messageHeadline": "ci: publish from GitHub Actions",
+      "url": "https://github.com/ryoppippi/ccusage/commit/fdb0280e5632e8c87c017a03ed22a196c2cea233",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "dcdfb9c0eea61d7e5d9862ae1565aa2940a779a7",
+      "abbreviatedOid": "dcdfb9c",
+      "committedDate": "2025-06-02T13:43:04Z",
+      "messageHeadline": "chore: release v0.3.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/dcdfb9c0eea61d7e5d9862ae1565aa2940a779a7",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "41021bb4d0fcd58556c70bb4c6371b096479464d",
+      "abbreviatedOid": "41021bb",
+      "committedDate": "2025-06-02T13:42:53Z",
+      "messageHeadline": "fix: include valibot for dts",
+      "url": "https://github.com/ryoppippi/ccusage/commit/41021bb4d0fcd58556c70bb4c6371b096479464d",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1367461e54a96aa815569ca82a16b7bff5078ef0",
+      "abbreviatedOid": "1367461",
+      "committedDate": "2025-06-02T13:41:46Z",
+      "messageHeadline": "Revert \"chore(deps): add valibot for optional dependencies for develo…",
+      "url": "https://github.com/ryoppippi/ccusage/commit/1367461e54a96aa815569ca82a16b7bff5078ef0",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "858819da0337c1e2b8f7f67bf4ea3549383fda94",
+      "abbreviatedOid": "858819d",
+      "committedDate": "2025-06-02T13:34:58Z",
+      "messageHeadline": "chore: release v0.3.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/858819da0337c1e2b8f7f67bf4ea3549383fda94",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "13ff13b7a56a4f89e170920bd8757ba11eaff39b",
+      "abbreviatedOid": "13ff13b",
+      "committedDate": "2025-06-02T13:34:45Z",
+      "messageHeadline": "chore(deps): add valibot for optional dependencies for developers",
+      "url": "https://github.com/ryoppippi/ccusage/commit/13ff13b7a56a4f89e170920bd8757ba11eaff39b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1f68a2475bf1bba1141cc0725d239f90cdc0eff8",
+      "abbreviatedOid": "1f68a24",
+      "committedDate": "2025-06-01T18:20:45Z",
+      "messageHeadline": "chore: release v0.3.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/1f68a2475bf1bba1141cc0725d239f90cdc0eff8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "566e3fbc15ef0b078a760e50254ce91c26487110",
+      "abbreviatedOid": "566e3fb",
+      "committedDate": "2025-06-01T18:20:33Z",
+      "messageHeadline": "feat: export modules",
+      "url": "https://github.com/ryoppippi/ccusage/commit/566e3fbc15ef0b078a760e50254ce91c26487110",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9c46b65c578cf7a39b451ae9f1eabcfc5fa31397",
+      "abbreviatedOid": "9c46b65",
+      "committedDate": "2025-06-01T16:07:59Z",
+      "messageHeadline": "fix: author",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9c46b65c578cf7a39b451ae9f1eabcfc5fa31397",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b9be8537f7592da9fcc09e187cce7a0400d5d8a4",
+      "abbreviatedOid": "b9be853",
+      "committedDate": "2025-06-01T15:57:14Z",
+      "messageHeadline": "docs: change badge",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b9be8537f7592da9fcc09e187cce7a0400d5d8a4",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ab00889a167c356fafbda21a170e28fce4d61e17",
+      "abbreviatedOid": "ab00889",
+      "committedDate": "2025-06-01T15:54:53Z",
+      "messageHeadline": "chore: release v0.2.3",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ab00889a167c356fafbda21a170e28fce4d61e17",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "54bd783c14fdc41a217e08cf80b5bfd604a650ad",
+      "abbreviatedOid": "54bd783",
+      "committedDate": "2025-06-01T15:50:15Z",
+      "messageHeadline": "feat: use fast-sort",
+      "url": "https://github.com/ryoppippi/ccusage/commit/54bd783c14fdc41a217e08cf80b5bfd604a650ad",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5312354f4b3bb3ba28e84857a454f807c8cc40ca",
+      "abbreviatedOid": "5312354",
+      "committedDate": "2025-06-01T13:24:28Z",
+      "messageHeadline": "docs(CLAUDE.md): devdependencies always",
+      "url": "https://github.com/ryoppippi/ccusage/commit/5312354f4b3bb3ba28e84857a454f807c8cc40ca",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d0fb1c7c3d1321e0dc26d9184f29f1b289bc2885",
+      "abbreviatedOid": "d0fb1c7",
+      "committedDate": "2025-05-31T10:47:40Z",
+      "messageHeadline": "docs: deepwiki badge",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d0fb1c7c3d1321e0dc26d9184f29f1b289bc2885",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "53993b4014fecfc8107e01e5c813bd5b2a2169fa",
+      "abbreviatedOid": "53993b4",
+      "committedDate": "2025-05-30T17:20:19Z",
+      "messageHeadline": "docs: add npm download badge",
+      "url": "https://github.com/ryoppippi/ccusage/commit/53993b4014fecfc8107e01e5c813bd5b2a2169fa",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "88a5a6d471a36ad4e73d67150b08b8eb5d60f0c8",
+      "abbreviatedOid": "88a5a6d",
+      "committedDate": "2025-05-30T15:36:58Z",
+      "messageHeadline": "chore: release v0.2.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/88a5a6d471a36ad4e73d67150b08b8eb5d60f0c8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "c1327a5813da02e3637f57e8543d81eb1185c8b0",
+      "abbreviatedOid": "c1327a5",
+      "committedDate": "2025-05-30T15:36:10Z",
+      "messageHeadline": "fix: renderHeader disable",
+      "url": "https://github.com/ryoppippi/ccusage/commit/c1327a5813da02e3637f57e8543d81eb1185c8b0",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "10c9888c96829a51b0d069d986a31126f43d8e70",
+      "abbreviatedOid": "10c9888",
+      "committedDate": "2025-05-30T15:24:37Z",
+      "messageHeadline": "chore: release v0.2.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/10c9888c96829a51b0d069d986a31126f43d8e70",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "52e71e73531504e843eabdfdc78218ca198b1969",
+      "abbreviatedOid": "52e71e7",
+      "committedDate": "2025-05-30T15:24:27Z",
+      "messageHeadline": "fix: remove fetching prices per data",
+      "url": "https://github.com/ryoppippi/ccusage/commit/52e71e73531504e843eabdfdc78218ca198b1969",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3288a2a4f1d0f93c70ddeb7ce9811d82858653d7",
+      "abbreviatedOid": "3288a2a",
+      "committedDate": "2025-05-30T15:03:04Z",
+      "messageHeadline": "fix: remvoe unused calculateCost function",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3288a2a4f1d0f93c70ddeb7ce9811d82858653d7",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "aa96b6b79bd8cf25ba6eb1ac114e07937fbbd140",
+      "abbreviatedOid": "aa96b6b",
+      "committedDate": "2025-05-30T15:00:58Z",
+      "messageHeadline": "fix: extract cost calculator logic to cost-calculator",
+      "url": "https://github.com/ryoppippi/ccusage/commit/aa96b6b79bd8cf25ba6eb1ac114e07937fbbd140",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1e1c87f29451a43a406236aaf5d6865ab910cf51",
+      "abbreviatedOid": "1e1c87f",
+      "committedDate": "2025-05-30T14:42:46Z",
+      "messageHeadline": "chore: release v0.2.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/1e1c87f29451a43a406236aaf5d6865ab910cf51",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "2d6f1fc510e3127072131ddb7f78820cd13a5a94",
+      "abbreviatedOid": "2d6f1fc",
+      "committedDate": "2025-05-30T14:42:10Z",
+      "messageHeadline": "docs: update screenshot",
+      "url": "https://github.com/ryoppippi/ccusage/commit/2d6f1fc510e3127072131ddb7f78820cd13a5a94",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "aa74372c6c7840270b8bfbb93884ffc1152be4ec",
+      "abbreviatedOid": "aa74372",
+      "committedDate": "2025-05-30T14:40:39Z",
+      "messageHeadline": "docs: add cache token support",
+      "url": "https://github.com/ryoppippi/ccusage/commit/aa74372c6c7840270b8bfbb93884ffc1152be4ec",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8bbbd64577c762430c4ff4f5dc7ee6c803bff7e5",
+      "abbreviatedOid": "8bbbd64",
+      "committedDate": "2025-05-30T14:40:26Z",
+      "messageHeadline": "feat(commands): show prompt caching result",
+      "url": "https://github.com/ryoppippi/ccusage/commit/8bbbd64577c762430c4ff4f5dc7ee6c803bff7e5",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7e17c87bceb711306865b66167ff27d1d41d4eb8",
+      "abbreviatedOid": "7e17c87",
+      "committedDate": "2025-05-30T14:37:50Z",
+      "messageHeadline": "feat(cost-calculator): prompt caching support",
+      "url": "https://github.com/ryoppippi/ccusage/commit/7e17c87bceb711306865b66167ff27d1d41d4eb8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f8e9bc8503d3d804733309dd83798cec5bbbb439",
+      "abbreviatedOid": "f8e9bc8",
+      "committedDate": "2025-05-30T14:37:37Z",
+      "messageHeadline": "feat(data-loader): add prompt cache support",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f8e9bc8503d3d804733309dd83798cec5bbbb439",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "63368faa543a2ae843195d90a9f17cba1af77d3e",
+      "abbreviatedOid": "63368fa",
+      "committedDate": "2025-05-30T14:37:25Z",
+      "messageHeadline": "feat(types): add cache_creation and cache_read",
+      "url": "https://github.com/ryoppippi/ccusage/commit/63368faa543a2ae843195d90a9f17cba1af77d3e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "4999f08669fc9abe704ad439bca3dbf6af5b8ab9",
+      "abbreviatedOid": "4999f08",
+      "committedDate": "2025-05-30T14:34:47Z",
+      "messageHeadline": "docs: limitation -> api usage for tool calling",
+      "url": "https://github.com/ryoppippi/ccusage/commit/4999f08669fc9abe704ad439bca3dbf6af5b8ab9",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "979bf72594264079d9378a8c2cfe40568a78e8dd",
+      "abbreviatedOid": "979bf72",
+      "committedDate": "2025-05-30T14:12:44Z",
+      "messageHeadline": "docs: limitation about prompt chaching",
+      "url": "https://github.com/ryoppippi/ccusage/commit/979bf72594264079d9378a8c2cfe40568a78e8dd",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "29949bc44dbb59832c58a0d92b179e5c498ae1bf",
+      "abbreviatedOid": "29949bc",
+      "committedDate": "2025-05-30T14:10:18Z",
+      "messageHeadline": "test: use sonnet-4 and opus-4",
+      "url": "https://github.com/ryoppippi/ccusage/commit/29949bc44dbb59832c58a0d92b179e5c498ae1bf",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0c303e366908fdd398ef8bf8e7941730537579b7",
+      "abbreviatedOid": "0c303e3",
+      "committedDate": "2025-05-30T03:59:24Z",
+      "messageHeadline": "docs: update session report example result",
+      "url": "https://github.com/ryoppippi/ccusage/commit/0c303e366908fdd398ef8bf8e7941730537579b7",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e00a38be7d24e8845dd3d072a75e78fc528f5212",
+      "abbreviatedOid": "e00a38b",
+      "committedDate": "2025-05-30T03:57:54Z",
+      "messageHeadline": "docs: remove project structure",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e00a38be7d24e8845dd3d072a75e78fc528f5212",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1c0960c1b0f5451199887f873851649ea9ad3bfe",
+      "abbreviatedOid": "1c0960c",
+      "committedDate": "2025-05-30T03:57:11Z",
+      "messageHeadline": "docs: bun is not required",
+      "url": "https://github.com/ryoppippi/ccusage/commit/1c0960c1b0f5451199887f873851649ea9ad3bfe",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "48e91c485b6df54048deaf8bc47e2f5011885d5f",
+      "abbreviatedOid": "48e91c4",
+      "committedDate": "2025-05-30T02:12:19Z",
+      "messageHeadline": "chore: release v0.1.12",
+      "url": "https://github.com/ryoppippi/ccusage/commit/48e91c485b6df54048deaf8bc47e2f5011885d5f",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f72997d6d3ce269141ee4dad8b016a00bbf1e024",
+      "abbreviatedOid": "f72997d",
+      "committedDate": "2025-05-30T02:12:14Z",
+      "messageHeadline": "fix(index.ts): shebang bun -> node",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f72997d6d3ce269141ee4dad8b016a00bbf1e024",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5424f3b7cbaa0e6dc679bef556de77e5629ed9a4",
+      "abbreviatedOid": "5424f3b",
+      "committedDate": "2025-05-29T23:52:16Z",
+      "messageHeadline": "chore: release v0.1.11",
+      "url": "https://github.com/ryoppippi/ccusage/commit/5424f3b7cbaa0e6dc679bef556de77e5629ed9a4",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9ccaae905979a339f19b480d7fdc02b0aee1a82b",
+      "abbreviatedOid": "9ccaae9",
+      "committedDate": "2025-05-29T23:51:52Z",
+      "messageHeadline": "feat: extract claude dir path",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9ccaae905979a339f19b480d7fdc02b0aee1a82b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0f6e36ed2c95eba0b995eb50315b8b3181fa33c9",
+      "abbreviatedOid": "0f6e36e",
+      "committedDate": "2025-05-29T23:51:21Z",
+      "messageHeadline": "feat: add default value to json argument",
+      "url": "https://github.com/ryoppippi/ccusage/commit/0f6e36ed2c95eba0b995eb50315b8b3181fa33c9",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9b60d69e1bb925c4b88bc2fc3ca659a0611e62fa",
+      "abbreviatedOid": "9b60d69",
+      "committedDate": "2025-05-29T23:45:02Z",
+      "messageHeadline": "fix: move data-validation to shared-args",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9b60d69e1bb925c4b88bc2fc3ca659a0611e62fa",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "21a71f865e6213ea803454f0ac86a5113bbb3c4e",
+      "abbreviatedOid": "21a71f8",
+      "committedDate": "2025-05-29T23:43:52Z",
+      "messageHeadline": "fix: extract shared arguments",
+      "url": "https://github.com/ryoppippi/ccusage/commit/21a71f865e6213ea803454f0ac86a5113bbb3c4e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e2983055a036d7c3d6559be094fc73cff70fe08b",
+      "abbreviatedOid": "e298305",
+      "committedDate": "2025-05-29T23:39:33Z",
+      "messageHeadline": "feat: validate -s and -u with regex",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e2983055a036d7c3d6559be094fc73cff70fe08b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "974bb93eb710cc40d12aacf7de7f9dc739073dcd",
+      "abbreviatedOid": "974bb93",
+      "committedDate": "2025-05-29T23:29:36Z",
+      "messageHeadline": "chore: release v0.1.10",
+      "url": "https://github.com/ryoppippi/ccusage/commit/974bb93eb710cc40d12aacf7de7f9dc739073dcd",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "afa30c3bb76bde3b45131b9b8face781203ac5a5",
+      "abbreviatedOid": "afa30c3",
+      "committedDate": "2025-05-29T23:29:27Z",
+      "messageHeadline": "docs: add limitations",
+      "url": "https://github.com/ryoppippi/ccusage/commit/afa30c3bb76bde3b45131b9b8face781203ac5a5",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "523f3edb62cd46f21df2f3c0b86914f08561311a",
+      "abbreviatedOid": "523f3ed",
+      "committedDate": "2025-05-29T22:48:52Z",
+      "messageHeadline": "chore: release v0.1.9",
+      "url": "https://github.com/ryoppippi/ccusage/commit/523f3edb62cd46f21df2f3c0b86914f08561311a",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fcdb8263b4017318e57a4d0c269a8d11f8c5514e",
+      "abbreviatedOid": "fcdb826",
+      "committedDate": "2025-05-29T22:48:45Z",
+      "messageHeadline": "fix: exclude screenshot from published package",
+      "url": "https://github.com/ryoppippi/ccusage/commit/fcdb8263b4017318e57a4d0c269a8d11f8c5514e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "bd0dcb4dc4d0903355a73c0f636fbdcff2553e08",
+      "abbreviatedOid": "bd0dcb4",
+      "committedDate": "2025-05-29T22:45:10Z",
+      "messageHeadline": "chore: release v0.1.8",
+      "url": "https://github.com/ryoppippi/ccusage/commit/bd0dcb4dc4d0903355a73c0f636fbdcff2553e08",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3dc2e8ebd7ae271c91ec1b74bf43758f5aad317e",
+      "abbreviatedOid": "3dc2e8e",
+      "committedDate": "2025-05-29T22:44:42Z",
+      "messageHeadline": "fix: day in daily command separator length",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3dc2e8ebd7ae271c91ec1b74bf43758f5aad317e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "cbe417b292c562f5b9ab13d50b1d12b2aae005a3",
+      "abbreviatedOid": "cbe417b",
+      "committedDate": "2025-05-29T22:43:55Z",
+      "messageHeadline": "fix: import proceess in daily",
+      "url": "https://github.com/ryoppippi/ccusage/commit/cbe417b292c562f5b9ab13d50b1d12b2aae005a3",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "4221034a7ed7bb2c2702f36b3cfeb2abf9364c3e",
+      "abbreviatedOid": "4221034",
+      "committedDate": "2025-05-29T22:36:27Z",
+      "messageHeadline": "docs: add podcast by NotebookLM",
+      "url": "https://github.com/ryoppippi/ccusage/commit/4221034a7ed7bb2c2702f36b3cfeb2abf9364c3e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "c73ec1c51e151282a24cd36a949de220aa1a7587",
+      "abbreviatedOid": "c73ec1c",
+      "committedDate": "2025-05-29T22:04:06Z",
+      "messageHeadline": "chore: run `git checkout` after publishing",
+      "url": "https://github.com/ryoppippi/ccusage/commit/c73ec1c51e151282a24cd36a949de220aa1a7587",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "813fa482e6a2a7ec6f3efe21305f026263cbd1b8",
+      "abbreviatedOid": "813fa48",
+      "committedDate": "2025-05-29T22:01:54Z",
+      "messageHeadline": "chore: release v0.1.7",
+      "url": "https://github.com/ryoppippi/ccusage/commit/813fa482e6a2a7ec6f3efe21305f026263cbd1b8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d39d8319e555d633273d22da48c5bba60af8b375",
+      "abbreviatedOid": "d39d831",
+      "committedDate": "2025-05-29T21:57:39Z",
+      "messageHeadline": "fix: useageSileint",
+      "url": "https://github.com/ryoppippi/ccusage/commit/d39d8319e555d633273d22da48c5bba60af8b375",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "40812473d608fbbfc76677ec029f6f399364c986",
+      "abbreviatedOid": "4081247",
+      "committedDate": "2025-05-29T21:56:57Z",
+      "messageHeadline": "ci: update",
+      "url": "https://github.com/ryoppippi/ccusage/commit/40812473d608fbbfc76677ec029f6f399364c986",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6570b95b1eb855a38012ccd9f4260929c3844674",
+      "abbreviatedOid": "6570b95",
+      "committedDate": "2025-05-29T21:46:18Z",
+      "messageHeadline": "docs: update CLAUDE.md",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6570b95b1eb855a38012ccd9f4260929c3844674",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3c44e44abe5abb50db004c02faa8ad14dbe61db3",
+      "abbreviatedOid": "3c44e44",
+      "committedDate": "2025-05-29T20:58:28Z",
+      "messageHeadline": "chore: release v0.1.6",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3c44e44abe5abb50db004c02faa8ad14dbe61db3",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e075827a17768fe9d94a73a52eb3e5e0c0c27a0b",
+      "abbreviatedOid": "e075827",
+      "committedDate": "2025-05-29T20:58:18Z",
+      "messageHeadline": "fix: session table",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e075827a17768fe9d94a73a52eb3e5e0c0c27a0b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "142e07bfd332fd36ac21af070c202d84c016f51e",
+      "abbreviatedOid": "142e07b",
+      "committedDate": "2025-05-29T20:32:42Z",
+      "messageHeadline": "chore: release v0.1.5",
+      "url": "https://github.com/ryoppippi/ccusage/commit/142e07bfd332fd36ac21af070c202d84c016f51e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1e91b1f8bae06e517b62b3331d7907140f281009",
+      "abbreviatedOid": "1e91b1f",
+      "committedDate": "2025-05-29T20:32:35Z",
+      "messageHeadline": "fix: session cols(adjust length of project/session cols)",
+      "url": "https://github.com/ryoppippi/ccusage/commit/1e91b1f8bae06e517b62b3331d7907140f281009",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "41e82cdf420e522737b8467daf39646e8c3840cb",
+      "abbreviatedOid": "41e82cd",
+      "committedDate": "2025-05-29T19:56:43Z",
+      "messageHeadline": "chore: license MIT",
+      "url": "https://github.com/ryoppippi/ccusage/commit/41e82cdf420e522737b8467daf39646e8c3840cb",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e0e8f02d70d9cac47bc14eebbdaa99fbb74898ef",
+      "abbreviatedOid": "e0e8f02",
+      "committedDate": "2025-05-29T19:55:06Z",
+      "messageHeadline": "chore: sort package.json",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e0e8f02d70d9cac47bc14eebbdaa99fbb74898ef",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3b22739ea7fb44f452edb25717e322cd7c535f13",
+      "abbreviatedOid": "3b22739",
+      "committedDate": "2025-05-29T19:50:02Z",
+      "messageHeadline": "docs: add ccusage alias",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3b22739ea7fb44f452edb25717e322cd7c535f13",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1768bbc5ea8335001fae143af6efdcb5a1fa0210",
+      "abbreviatedOid": "1768bbc",
+      "committedDate": "2025-05-29T19:47:42Z",
+      "messageHeadline": "docs: update screenshot",
+      "url": "https://github.com/ryoppippi/ccusage/commit/1768bbc5ea8335001fae143af6efdcb5a1fa0210",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3594cc62b41109fd9553edc452f2232512de5ffb",
+      "abbreviatedOid": "3594cc6",
+      "committedDate": "2025-05-29T19:46:16Z",
+      "messageHeadline": "chore: release v0.1.4",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3594cc62b41109fd9553edc452f2232512de5ffb",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8b756e249e84536b8fc68432e07d0c0b73242da1",
+      "abbreviatedOid": "8b756e2",
+      "committedDate": "2025-05-29T19:46:07Z",
+      "messageHeadline": "fix: use local time instead of JST",
+      "url": "https://github.com/ryoppippi/ccusage/commit/8b756e249e84536b8fc68432e07d0c0b73242da1",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f753ccddfde81436285faa62d77b729e30ea55b8",
+      "abbreviatedOid": "f753ccd",
+      "committedDate": "2025-05-29T19:39:37Z",
+      "messageHeadline": "docs: add motivation",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f753ccddfde81436285faa62d77b729e30ea55b8",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e705ca93ab47a8f264eb95a59c0ad7e8cec9fa2b",
+      "abbreviatedOid": "e705ca9",
+      "committedDate": "2025-05-29T19:32:42Z",
+      "messageHeadline": "chore: add typos",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e705ca93ab47a8f264eb95a59c0ad7e8cec9fa2b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3c8d3c0b0c11bf219aa6d8653d1a06acdf0884eb",
+      "abbreviatedOid": "3c8d3c0",
+      "committedDate": "2025-05-29T19:31:26Z",
+      "messageHeadline": "chore: release v0.1.3",
+      "url": "https://github.com/ryoppippi/ccusage/commit/3c8d3c0b0c11bf219aa6d8653d1a06acdf0884eb",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9133604501d69a911671782fa8216aaed7ecbd25",
+      "abbreviatedOid": "9133604",
+      "committedDate": "2025-05-29T19:31:19Z",
+      "messageHeadline": "docs: fix command usage",
+      "url": "https://github.com/ryoppippi/ccusage/commit/9133604501d69a911671782fa8216aaed7ecbd25",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "4c3f120c43a1d32a1ae3122949876d657e38609b",
+      "abbreviatedOid": "4c3f120",
+      "committedDate": "2025-05-29T19:27:02Z",
+      "messageHeadline": "docs: update screenshot",
+      "url": "https://github.com/ryoppippi/ccusage/commit/4c3f120c43a1d32a1ae3122949876d657e38609b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b96bfa93a0dd541f5a1eab189b8ecf2da84aeafd",
+      "abbreviatedOid": "b96bfa9",
+      "committedDate": "2025-05-29T19:24:49Z",
+      "messageHeadline": "chore: release v0.1.2",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b96bfa93a0dd541f5a1eab189b8ecf2da84aeafd",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "768afd9c71b637ed350b4c79a494cbb6403f3a3a",
+      "abbreviatedOid": "768afd9",
+      "committedDate": "2025-05-29T19:24:39Z",
+      "messageHeadline": "feat!: rename to ccusage",
+      "url": "https://github.com/ryoppippi/ccusage/commit/768afd9c71b637ed350b4c79a494cbb6403f3a3a",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0401bc2490dbada0edaf794325fadca2555d0c19",
+      "abbreviatedOid": "0401bc2",
+      "committedDate": "2025-05-29T19:18:12Z",
+      "messageHeadline": "chore: release v0.1.1",
+      "url": "https://github.com/ryoppippi/ccusage/commit/0401bc2490dbada0edaf794325fadca2555d0c19",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b42d5e345eaaad3130db60b87735b72a584d681c",
+      "abbreviatedOid": "b42d5e3",
+      "committedDate": "2025-05-29T19:17:22Z",
+      "messageHeadline": "feat!: rename to claude-code-usage",
+      "url": "https://github.com/ryoppippi/ccusage/commit/b42d5e345eaaad3130db60b87735b72a584d681c",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e3c44d2a4dcf45b2a8aae66ee2412dc572a51f9b",
+      "abbreviatedOid": "e3c44d2",
+      "committedDate": "2025-05-29T19:01:17Z",
+      "messageHeadline": "docs: update",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e3c44d2a4dcf45b2a8aae66ee2412dc572a51f9b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "403539e6d2cdd5260efadc5432517e9f19fee070",
+      "abbreviatedOid": "403539e",
+      "committedDate": "2025-05-29T18:59:01Z",
+      "messageHeadline": "docs: add npm package badge",
+      "url": "https://github.com/ryoppippi/ccusage/commit/403539e6d2cdd5260efadc5432517e9f19fee070",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ddcad6f9725b4f91a93eb85e8c041d3a29f5ee9e",
+      "abbreviatedOid": "ddcad6f",
+      "committedDate": "2025-05-29T18:56:44Z",
+      "messageHeadline": "chore: release v0.1.0",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ddcad6f9725b4f91a93eb85e8c041d3a29f5ee9e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "bd2f9a0787bfbf188b779e3e6412fffdf4bc3279",
+      "abbreviatedOid": "bd2f9a0",
+      "committedDate": "2025-05-29T18:56:33Z",
+      "messageHeadline": "chore: fix publish command",
+      "url": "https://github.com/ryoppippi/ccusage/commit/bd2f9a0787bfbf188b779e3e6412fffdf4bc3279",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ed3e95d2ee5730cf6b546fef44d3cbe19bd1d4fe",
+      "abbreviatedOid": "ed3e95d",
+      "committedDate": "2025-05-29T18:55:49Z",
+      "messageHeadline": "test: fix type",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ed3e95d2ee5730cf6b546fef44d3cbe19bd1d4fe",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a7d189e5327422603423cfc6c6f4dd313b6e344e",
+      "abbreviatedOid": "a7d189e",
+      "committedDate": "2025-05-29T18:50:06Z",
+      "messageHeadline": "docs: su ku sho!",
+      "url": "https://github.com/ryoppippi/ccusage/commit/a7d189e5327422603423cfc6c6f4dd313b6e344e",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ff15962a551e791e12a217ad848957654bb8c1b5",
+      "abbreviatedOid": "ff15962",
+      "committedDate": "2025-05-29T18:46:55Z",
+      "messageHeadline": "docs: inspiration",
+      "url": "https://github.com/ryoppippi/ccusage/commit/ff15962a551e791e12a217ad848957654bb8c1b5",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "af70fcc9c70d82c691ae5dd9a5e6fc141319fdb3",
+      "abbreviatedOid": "af70fcc",
+      "committedDate": "2025-05-29T18:46:12Z",
+      "messageHeadline": "docs: update",
+      "url": "https://github.com/ryoppippi/ccusage/commit/af70fcc9c70d82c691ae5dd9a5e6fc141319fdb3",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "64be66745c084af54d211fd9ef1bd0f79eba49ad",
+      "abbreviatedOid": "64be667",
+      "committedDate": "2025-05-29T18:46:05Z",
+      "messageHeadline": "feat: include dist dir",
+      "url": "https://github.com/ryoppippi/ccusage/commit/64be66745c084af54d211fd9ef1bd0f79eba49ad",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "2718cc1590af1603a5151b8c8edf1978ac1fe2a6",
+      "abbreviatedOid": "2718cc1",
+      "committedDate": "2025-05-29T18:43:08Z",
+      "messageHeadline": "feat: implement json output",
+      "url": "https://github.com/ryoppippi/ccusage/commit/2718cc1590af1603a5151b8c8edf1978ac1fe2a6",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1384426481651b30302b207fe1fc8bbdd15f2ead",
+      "abbreviatedOid": "1384426",
+      "committedDate": "2025-05-29T18:16:17Z",
+      "messageHeadline": "docs(claude): add log description",
+      "url": "https://github.com/ryoppippi/ccusage/commit/1384426481651b30302b207fe1fc8bbdd15f2ead",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1fb9802062f3e19a5bb01ca4d18d0d9dd3f14676",
+      "abbreviatedOid": "1fb9802",
+      "committedDate": "2025-05-29T18:15:17Z",
+      "messageHeadline": "docs(claude): add gunshi",
+      "url": "https://github.com/ryoppippi/ccusage/commit/1fb9802062f3e19a5bb01ca4d18d0d9dd3f14676",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6e05ae4ec92563dedfb32a3f1f64b2797f26eb2c",
+      "abbreviatedOid": "6e05ae4",
+      "committedDate": "2025-05-29T18:12:11Z",
+      "messageHeadline": "feat: use valibot for validation",
+      "url": "https://github.com/ryoppippi/ccusage/commit/6e05ae4ec92563dedfb32a3f1f64b2797f26eb2c",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "db5f920a454b0d4e68fb236d5f43533d9a671df3",
+      "abbreviatedOid": "db5f920",
+      "committedDate": "2025-05-29T18:06:07Z",
+      "messageHeadline": "test: fix type for model prices",
+      "url": "https://github.com/ryoppippi/ccusage/commit/db5f920a454b0d4e68fb236d5f43533d9a671df3",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "2530c8f1e138e6f75b52af4471a8677d7a92e275",
+      "abbreviatedOid": "2530c8f",
+      "committedDate": "2025-05-29T18:05:55Z",
+      "messageHeadline": "fix: remove fromFile",
+      "url": "https://github.com/ryoppippi/ccusage/commit/2530c8f1e138e6f75b52af4471a8677d7a92e275",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7772f2ff835ce1729fa740c135b70712bb1a15d4",
+      "abbreviatedOid": "7772f2f",
+      "committedDate": "2025-05-29T18:00:56Z",
+      "messageHeadline": "feat: add claude.md",
+      "url": "https://github.com/ryoppippi/ccusage/commit/7772f2ff835ce1729fa740c135b70712bb1a15d4",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "daeeccb09934dfcdecac583173a21be0e8647117",
+      "abbreviatedOid": "daeeccb",
+      "committedDate": "2025-05-29T18:00:49Z",
+      "messageHeadline": "feat: use dailyCommand as a default",
+      "url": "https://github.com/ryoppippi/ccusage/commit/daeeccb09934dfcdecac583173a21be0e8647117",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0bf95c6fbb08d1311650f4c6ca3ef86b45e9ab44",
+      "abbreviatedOid": "0bf95c6",
+      "committedDate": "2025-05-29T17:58:06Z",
+      "messageHeadline": "feat: implement by  claude code",
+      "url": "https://github.com/ryoppippi/ccusage/commit/0bf95c6fbb08d1311650f4c6ca3ef86b45e9ab44",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f45e96f09e76a9a39fde7355878e840e39cce12b",
+      "abbreviatedOid": "f45e96f",
+      "committedDate": "2025-05-29T17:51:12Z",
+      "messageHeadline": "chore: funding",
+      "url": "https://github.com/ryoppippi/ccusage/commit/f45e96f09e76a9a39fde7355878e840e39cce12b",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "63a0ee198048ae92dd2f2d53d5ecad6ef1f7dee4",
+      "abbreviatedOid": "63a0ee1",
+      "committedDate": "2025-05-29T17:51:09Z",
+      "messageHeadline": "chore: renovate",
+      "url": "https://github.com/ryoppippi/ccusage/commit/63a0ee198048ae92dd2f2d53d5ecad6ef1f7dee4",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e5713ffe733b209c0048c1e6d453211e0b6a2acb",
+      "abbreviatedOid": "e5713ff",
+      "committedDate": "2025-05-29T17:51:05Z",
+      "messageHeadline": "ci: add ci",
+      "url": "https://github.com/ryoppippi/ccusage/commit/e5713ffe733b209c0048c1e6d453211e0b6a2acb",
+      "author": {
+        "name": "ryoppippi",
+        "email": "1560508+ryoppippi@users.noreply.github.com",
+        "user": {
+          "login": "ryoppippi"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    }
+  ]
+}
