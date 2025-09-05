@@ -1,42 +1,37 @@
 #!/bin/bash
 
 #--------------------------------------
-# リポジトリのメタデータを取得する
+# Discussionsを取得する
 #--------------------------------------
 
 set -euo pipefail
 
 cd "$(cd "$(dirname -- "$0")" && pwd -P)"
 
-function get_repo_meta() {
-  # 引数の値
-  local owner="$1" repo="$2" query
+function get_discussions() {
+  local owner="$1" repo="$2"
 
   # クエリを定義
   # shellcheck disable=SC2016
-  query='
+  QUERY='
     query($owner: String!, $repo: String!) {
       repository(owner: $owner, name: $repo) {
-        id
-        name
-        url
-        createdAt
-        owner {
-          login
-          id
-        }
-        defaultBranchRef {
-          name
+        discussions(first: 100) {
+          nodes {
+            id
+            title
+            body
+          }
         }
       }
     }
   '
 
   # クエリを実行。jq '.' で、JSONを指定ファイルに出力。
-  gh api graphql -F owner="$owner" -F repo="$repo" -f query="$query" | jq '.' >"$RAW_REPO_META_DIR"
+  gh api graphql -F owner="$owner" -F repo="$repo" -f query="$QUERY" | jq '.' >"$RAW_DISCUSSIONS_DIR"
 
   # 終了ステータスを成功にする
   return 0
 }
 
-get_repo_meta "$@"
+get_discussions "$@"

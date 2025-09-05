@@ -188,21 +188,14 @@ EOF
 #--------------------------------------
 function setup_output_directory() {
   # 引数の値
-  local owner="$1" repo="$2" RESULTS_DIR RAW_DATA_DIR
+  local owner="$1" repo="$2"
 
   # 結果ディレクトリの準備
-  RESULTS_DIR="./results/${owner}/${repo}"
-  RAW_DATA_DIR="${RESULTS_DIR}/raw-data"
-
-  # 結果ディレクトリの準備
-  if [[ ! -d "$RESULTS_DIR" ]]; then
-    mkdir -p "$RESULTS_DIR"
-  fi
-
-  # 生データディレクトリの準備
-  if [[ ! -d "$RAW_DATA_DIR" ]]; then
-    mkdir -p "$RAW_DATA_DIR"
-  fi
+  for path in "${PATH_ARRAY[@]}"; do
+    if [[ ! -d "$path" ]]; then
+      mkdir -p "$path"
+    fi
+  done
 
   return 0
 }

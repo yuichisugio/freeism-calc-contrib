@@ -21,6 +21,29 @@ if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
   exit 0
 fi
 
+readonly RESULTS_DIR="./results/${OWNER}/${REPO}"
+readonly RAW_DIR="${RESULTS_DIR}/raw-data"
+readonly RAW_REPO_META_DIR="${RAW_DIR}/repo-meta"
+readonly RAW_INTEGRATION_DIR="${RAW_DIR}/integration"
+readonly RAW_PULL_REQUEST_DIR="${RAW_DIR}/pull-request"
+readonly PROCESSED_DIR="${RESULTS_DIR}/processed-data"
+readonly PROCESSED_REPO_META_DIR="${PROCESSED_DIR}/repo-meta"
+readonly PROCESSED_INTEGRATION_DIR="${PROCESSED_DIR}/integration"
+readonly PROCESSED_PULL_REQUEST_DIR="${PROCESSED_DIR}/pull-request"
+readonly PROCESSED_ISSUE_DIR="${PROCESSED_DIR}/issue"
+
+readonly PATH_ARRAY=(
+  "${RAW_DIR}"
+  "${RAW_REPO_META_DIR}"
+  "${RAW_INTEGRATION_DIR}"
+  "${RAW_PULL_REQUEST_DIR}"
+  "${PROCESSED_DIR}"
+  "${PROCESSED_REPO_META_DIR}"
+  "${PROCESSED_INTEGRATION_DIR}"
+  "${PROCESSED_PULL_REQUEST_DIR}"
+  "${PROCESSED_ISSUE_DIR}"
+)
+
 # データを加工するファイルを読み込む
 source "$(dirname "$0")/scripts/process-data/github-processor.sh"
 

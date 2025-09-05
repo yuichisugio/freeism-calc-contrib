@@ -12,11 +12,6 @@ function integration_graphql_query() {
 
   # 引数の値
   local owner="$1" repo="$2"
-  # local RAW_DATA_PATH PROCESSED_DATA_PATH
-
-  # rawデータを統合したファイルを保存する
-  # readonly RAW_DATA_PATH="../../archive/raw-data.json"
-  # readonly PROCESSED_DATA_PATH="../../archive/processed-data.json"
 
   get_repo_meta "$owner" "$repo"
 

@@ -9,11 +9,6 @@ set -euo pipefail
 cd "$(cd "$(dirname -- "$0")" && pwd -P)"
 
 function process_repo_meta() {
-  local RAW_DATA_PATH PROCESSED_DATA_PATH
-
-  readonly RAW_DATA_PATH="../../archive/raw-data.json"
-  readonly PROCESSED_DATA_PATH="../../archive/processed-data.json"
-
   jq '{
         host:"github.com",
         ownerUsername:.data.repository.owner.login,
@@ -23,7 +18,7 @@ function process_repo_meta() {
         repositoryUrl:.data.repository.url,
         createdAt:.data.repository.createdAt,
         defaultBranch:.data.repository.defaultBranchRef.name
-      }' "$RAW_DATA_PATH" >"$PROCESSED_DATA_PATH"
+      }' "$RAW_REPO_META_DIR" >"$PROCESSED_REPO_META_DIR"
 
   return 0
 }
