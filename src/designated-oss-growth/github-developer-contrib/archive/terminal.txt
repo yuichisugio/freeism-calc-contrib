@@ -1,3 +1,6 @@
+# integration.sh
+./src/designated-oss-growth/github-developer-contrib/scripts/get-data/integration.sh ryoppippi ccusage ../../archive/results.json
+
 
 gh api -H "Accept: application/vnd.github+json" "/repos/ryoppippi/ccusage" | jq -r '.default_branch'
 

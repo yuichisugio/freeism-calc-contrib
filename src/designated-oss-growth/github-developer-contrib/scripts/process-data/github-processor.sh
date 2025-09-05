@@ -4,6 +4,9 @@
 
 set -euo pipefail
 
+# jq_query='.data.repository.defaultBranchRef.name'
+
+
 # プルリクエストのデータを加工
 function process_pr_data() {
 
