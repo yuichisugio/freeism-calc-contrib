@@ -1,0 +1,3585 @@
+{
+  "repository": "yoshiko-pg/difit",
+  "branch": "main",
+  "qualifiedRef": "refs/heads/main",
+  "since": null,
+  "collectedAt": "2025-09-05T17:43:04Z",
+  "rateLimit": {
+    "cost": 1,
+    "remaining": 4897,
+    "resetAt": "2025-09-05T17:55:14Z"
+  },
+  "count": 210,
+  "nodes": [
+    {
+      "oid": "2320a9faf6ce4963bea547fe84bcf5ae33a6dfa4",
+      "abbreviatedOid": "2320a9f",
+      "committedDate": "2025-08-26T11:10:36Z",
+      "messageHeadline": "add username on copyright",
+      "url": "https://github.com/yoshiko-pg/difit/commit/2320a9faf6ce4963bea547fe84bcf5ae33a6dfa4",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6e00ec4f19c1347bcaa1033e7f450b8b7de4f0ca",
+      "abbreviatedOid": "6e00ec4",
+      "committedDate": "2025-08-24T23:56:00Z",
+      "messageHeadline": "chore: release v2.2.1",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6e00ec4f19c1347bcaa1033e7f450b8b7de4f0ca",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0ce75126c84b5ec2049e4b95dbc6241d64435dd0",
+      "abbreviatedOid": "0ce7512",
+      "committedDate": "2025-08-06T16:10:18Z",
+      "messageHeadline": "add claude code action",
+      "url": "https://github.com/yoshiko-pg/difit/commit/0ce75126c84b5ec2049e4b95dbc6241d64435dd0",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "617e1db461657475df21e2c838152c53ad1ba89b",
+      "abbreviatedOid": "617e1db",
+      "committedDate": "2025-08-03T12:27:43Z",
+      "messageHeadline": "Release v2.2.0",
+      "url": "https://github.com/yoshiko-pg/difit/commit/617e1db461657475df21e2c838152c53ad1ba89b",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6e4830e28bb9b9c062d8ad235adc574c7d3397a4",
+      "abbreviatedOid": "6e4830e",
+      "committedDate": "2025-08-02T14:03:06Z",
+      "messageHeadline": "add test for copy prompt",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6e4830e28bb9b9c062d8ad235adc574c7d3397a4",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a0a1fe4e8ddc9b84e01cec955dab2d3e8f309f4f",
+      "abbreviatedOid": "a0a1fe4",
+      "committedDate": "2025-08-02T08:33:17Z",
+      "messageHeadline": "feat: Change refresh keybinding from 'r' to 'Shift+R'",
+      "url": "https://github.com/yoshiko-pg/difit/commit/a0a1fe4e8ddc9b84e01cec955dab2d3e8f309f4f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ed133cc8019a8ce838316680bd75c7d975d0f52c",
+      "abbreviatedOid": "ed133cc",
+      "committedDate": "2025-07-30T05:48:36Z",
+      "messageHeadline": "Release v2.1.2",
+      "url": "https://github.com/yoshiko-pg/difit/commit/ed133cc8019a8ce838316680bd75c7d975d0f52c",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "64fb443c71971be06f92cef1aaab88fecce0838e",
+      "abbreviatedOid": "64fb443",
+      "committedDate": "2025-07-30T05:43:06Z",
+      "messageHeadline": "cleanup README",
+      "url": "https://github.com/yoshiko-pg/difit/commit/64fb443c71971be06f92cef1aaab88fecce0838e",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "02e7ee0945c9d6b56b82ef2544ccebed66ae7b23",
+      "abbreviatedOid": "02e7ee0",
+      "committedDate": "2025-07-30T05:41:22Z",
+      "messageHeadline": "feat: Add keyboard shortcuts to jump to first/last file",
+      "url": "https://github.com/yoshiko-pg/difit/commit/02e7ee0945c9d6b56b82ef2544ccebed66ae7b23",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "668e9d8f76449230ac1a15e223920bab2c3e82ed",
+      "abbreviatedOid": "668e9d8",
+      "committedDate": "2025-07-30T05:21:49Z",
+      "messageHeadline": "feat: Change keyboard shortcuts - 'v' for toggle viewed state, 'r' fo…",
+      "url": "https://github.com/yoshiko-pg/difit/commit/668e9d8f76449230ac1a15e223920bab2c3e82ed",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f414aefbc890bc31decafc8ba83e92a1f0298d4e",
+      "abbreviatedOid": "f414aef",
+      "committedDate": "2025-07-30T05:06:23Z",
+      "messageHeadline": "feat: Highlight selected file in the file list",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f414aefbc890bc31decafc8ba83e92a1f0298d4e",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6961e3d9a973d9ddb438e1c48497ccad32e19dd9",
+      "abbreviatedOid": "6961e3d",
+      "committedDate": "2025-07-30T04:57:21Z",
+      "messageHeadline": "fix: Remove border-top from td elements containing comment forms",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6961e3d9a973d9ddb438e1c48497ccad32e19dd9",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a0b9e386047bb8ee13048374db6a1c5b4fc5f1ec",
+      "abbreviatedOid": "a0b9e38",
+      "committedDate": "2025-07-30T04:11:35Z",
+      "messageHeadline": "feat: Improve row selection styling with yellow highlight",
+      "url": "https://github.com/yoshiko-pg/difit/commit/a0b9e386047bb8ee13048374db6a1c5b4fc5f1ec",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "90764806070b6ec880306c897e8170609a9fa521",
+      "abbreviatedOid": "9076480",
+      "committedDate": "2025-07-30T04:11:35Z",
+      "messageHeadline": "feat: Auto-close empty comment forms on outside click",
+      "url": "https://github.com/yoshiko-pg/difit/commit/90764806070b6ec880306c897e8170609a9fa521",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3f2b897e94e64bee56f89b13b2bc7988b20dd9fe",
+      "abbreviatedOid": "3f2b897",
+      "committedDate": "2025-07-30T03:39:48Z",
+      "messageHeadline": "feat: Add click-to-deselect functionality for row selection",
+      "url": "https://github.com/yoshiko-pg/difit/commit/3f2b897e94e64bee56f89b13b2bc7988b20dd9fe",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8bef5764ff97d90c5d87c3e36bfb3aad56042fbd",
+      "abbreviatedOid": "8bef576",
+      "committedDate": "2025-07-30T03:23:58Z",
+      "messageHeadline": "feat: Restore row selection on mouse click",
+      "url": "https://github.com/yoshiko-pg/difit/commit/8bef5764ff97d90c5d87c3e36bfb3aad56042fbd",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "33cc779d29236387a7c37dbbdd82b12a7a8038d7",
+      "abbreviatedOid": "33cc779",
+      "committedDate": "2025-07-28T01:07:40Z",
+      "messageHeadline": "Release v2.1.1",
+      "url": "https://github.com/yoshiko-pg/difit/commit/33cc779d29236387a7c37dbbdd82b12a7a8038d7",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ec96740e38c3265911e7c8455f7fa36902af08a7",
+      "abbreviatedOid": "ec96740",
+      "committedDate": "2025-07-28T01:04:47Z",
+      "messageHeadline": "refactor: Reorganize keyboard shortcuts modal layout",
+      "url": "https://github.com/yoshiko-pg/difit/commit/ec96740e38c3265911e7c8455f7fa36902af08a7",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "699aed9baf328c8391626125eb0c6f4f44171c1d",
+      "abbreviatedOid": "699aed9",
+      "committedDate": "2025-07-28T01:04:47Z",
+      "messageHeadline": "feat: Change Reload button to Refresh with updated icon",
+      "url": "https://github.com/yoshiko-pg/difit/commit/699aed9baf328c8391626125eb0c6f4f44171c1d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1999e15564033f9f08b88bc877d525db70881f49",
+      "abbreviatedOid": "1999e15",
+      "committedDate": "2025-07-28T01:04:47Z",
+      "messageHeadline": "Add protobuf support to README",
+      "url": "https://github.com/yoshiko-pg/difit/commit/1999e15564033f9f08b88bc877d525db70881f49",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6c0bcbfdb1b54384e3b413160c1b1b1da752a00f",
+      "abbreviatedOid": "6c0bcbf",
+      "committedDate": "2025-07-27T17:02:01Z",
+      "messageHeadline": "Add screenshot to all README files",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6c0bcbfdb1b54384e3b413160c1b1b1da752a00f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "c8297ab38f60d825eea6f14ecc5cae3e2ab59dab",
+      "abbreviatedOid": "c8297ab",
+      "committedDate": "2025-07-27T17:02:01Z",
+      "messageHeadline": "Add keyboard shortcuts button to sidebar footer",
+      "url": "https://github.com/yoshiko-pg/difit/commit/c8297ab38f60d825eea6f14ecc5cae3e2ab59dab",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "033746e5254b0c2c9d142d9037fe4ec183f949e1",
+      "abbreviatedOid": "033746e",
+      "committedDate": "2025-07-27T16:30:04Z",
+      "messageHeadline": "chore: release v2.1.0",
+      "url": "https://github.com/yoshiko-pg/difit/commit/033746e5254b0c2c9d142d9037fe4ec183f949e1",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e932447774ed907d4f5545600eb5aebfcce5fea9",
+      "abbreviatedOid": "e932447",
+      "committedDate": "2025-07-27T16:06:08Z",
+      "messageHeadline": "feat: Change default port from 3000 to 4966",
+      "url": "https://github.com/yoshiko-pg/difit/commit/e932447774ed907d4f5545600eb5aebfcce5fea9",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "66e4708630d13eb9476481edc41c2191d697f68c",
+      "abbreviatedOid": "66e4708",
+      "committedDate": "2025-07-27T15:59:08Z",
+      "messageHeadline": "fix: Disable row selection on mouse click",
+      "url": "https://github.com/yoshiko-pg/difit/commit/66e4708630d13eb9476481edc41c2191d697f68c",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f1feb9793b397488206f40a9a3378aab47b3e536",
+      "abbreviatedOid": "f1feb97",
+      "committedDate": "2025-07-27T15:49:38Z",
+      "messageHeadline": "Cleanup README and Update README files for all languages",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f1feb9793b397488206f40a9a3378aab47b3e536",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d19f8ab8d1e59f159cb6e4da64e88a15ec632053",
+      "abbreviatedOid": "d19f8ab",
+      "committedDate": "2025-07-27T15:37:38Z",
+      "messageHeadline": "Make watch option default by removing --watch flag and always enablin…",
+      "url": "https://github.com/yoshiko-pg/difit/commit/d19f8ab8d1e59f159cb6e4da64e88a15ec632053",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0fee036069e51c79cfc9f2959e3d57663a2df549",
+      "abbreviatedOid": "0fee036",
+      "committedDate": "2025-07-27T15:26:42Z",
+      "messageHeadline": "Unify comment form styles between Add and Edit modes",
+      "url": "https://github.com/yoshiko-pg/difit/commit/0fee036069e51c79cfc9f2959e3d57663a2df549",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "79b3441c5da62d7688b90b12c13568bd17dd89f7",
+      "abbreviatedOid": "79b3441",
+      "committedDate": "2025-07-27T14:48:51Z",
+      "messageHeadline": "Add protobuf syntax highlighting support",
+      "url": "https://github.com/yoshiko-pg/difit/commit/79b3441c5da62d7688b90b12c13568bd17dd89f7",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "16b58dafa344d2258d0277cfd94eeec19aa896e7",
+      "abbreviatedOid": "16b58da",
+      "committedDate": "2025-07-21T12:31:39Z",
+      "messageHeadline": "chore: release v2.0.11",
+      "url": "https://github.com/yoshiko-pg/difit/commit/16b58dafa344d2258d0277cfd94eeec19aa896e7",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7b9000cd2adb547658368b41bbe338c7eace67e4",
+      "abbreviatedOid": "7b9000c",
+      "committedDate": "2025-07-21T02:59:52Z",
+      "messageHeadline": "fix: improve GitHub Enterprise Server authentication error messages",
+      "url": "https://github.com/yoshiko-pg/difit/commit/7b9000cd2adb547658368b41bbe338c7eace67e4",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b9276d03fd07097b7042423553aad31b88dd28b8",
+      "abbreviatedOid": "b9276d0",
+      "committedDate": "2025-07-20T15:35:24Z",
+      "messageHeadline": "docs: add --clean option to README",
+      "url": "https://github.com/yoshiko-pg/difit/commit/b9276d03fd07097b7042423553aad31b88dd28b8",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "da68e0f84481e916cdde48e9219a6f8d43e39253",
+      "abbreviatedOid": "da68e0f",
+      "committedDate": "2025-07-20T15:29:25Z",
+      "messageHeadline": "Release v2.0.10",
+      "url": "https://github.com/yoshiko-pg/difit/commit/da68e0f84481e916cdde48e9219a6f8d43e39253",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6008c3d9e8bd968ec497172747e46b0f84a2ab3d",
+      "abbreviatedOid": "6008c3d",
+      "committedDate": "2025-07-20T15:19:38Z",
+      "messageHeadline": "feat: add sparkle animation when all files are viewed",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6008c3d9e8bd968ec497172747e46b0f84a2ab3d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "829bb3191d13dcd5142a2a165c8f44589c2cdbbf",
+      "abbreviatedOid": "829bb31",
+      "committedDate": "2025-07-20T14:52:42Z",
+      "messageHeadline": "feat: change Copy All Prompts button icon to check mark when copied",
+      "url": "https://github.com/yoshiko-pg/difit/commit/829bb3191d13dcd5142a2a165c8f44589c2cdbbf",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "489f3d33bc8053f901e2adda4c8c6eee1cbae780",
+      "abbreviatedOid": "489f3d3",
+      "committedDate": "2025-07-20T14:50:23Z",
+      "messageHeadline": "feat: consolidate Copy/Delete All Comments buttons into dropdown UI",
+      "url": "https://github.com/yoshiko-pg/difit/commit/489f3d33bc8053f901e2adda4c8c6eee1cbae780",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5cc06279af2383a1d8e45561986e141bae99891a",
+      "abbreviatedOid": "5cc0627",
+      "committedDate": "2025-07-20T13:53:13Z",
+      "messageHeadline": "feat: add GitHub Enterprise support for --pr option",
+      "url": "https://github.com/yoshiko-pg/difit/commit/5cc06279af2383a1d8e45561986e141bae99891a",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8e1a756ac7c17970be28a8b9a40a36b3305bd638",
+      "abbreviatedOid": "8e1a756",
+      "committedDate": "2025-07-17T01:08:04Z",
+      "messageHeadline": "Release v2.0.9",
+      "url": "https://github.com/yoshiko-pg/difit/commit/8e1a756ac7c17970be28a8b9a40a36b3305bd638",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9470e371509f715fad7b881b5e4382185cc7369b",
+      "abbreviatedOid": "9470e37",
+      "committedDate": "2025-07-17T01:03:03Z",
+      "messageHeadline": "fix: add pointer-events-none to selection overlays",
+      "url": "https://github.com/yoshiko-pg/difit/commit/9470e371509f715fad7b881b5e4382185cc7369b",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1c3b7d48c38b7fd19c144f64c40f278ce4a88ed3",
+      "abbreviatedOid": "1c3b7d4",
+      "committedDate": "2025-07-17T00:53:40Z",
+      "messageHeadline": "fix: reduce min-height of diff lines from 20px to 16px",
+      "url": "https://github.com/yoshiko-pg/difit/commit/1c3b7d48c38b7fd19c144f64c40f278ce4a88ed3",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f79ce5692c55feafcf59db21f9b5ae8418f53836",
+      "abbreviatedOid": "f79ce56",
+      "committedDate": "2025-07-17T00:46:18Z",
+      "messageHeadline": "refactor: improve code quality in diff view components",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f79ce5692c55feafcf59db21f9b5ae8418f53836",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0aae8726edc6f1096418db46a9fa4ed06fdb96b0",
+      "abbreviatedOid": "0aae872",
+      "committedDate": "2025-07-17T00:34:58Z",
+      "messageHeadline": "feat: add GitHub-style comment button on hover in diff view",
+      "url": "https://github.com/yoshiko-pg/difit/commit/0aae8726edc6f1096418db46a9fa4ed06fdb96b0",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "da7bfef574dc023518b0ba44c50cc04e9db06c71",
+      "abbreviatedOid": "da7bfef",
+      "committedDate": "2025-07-17T00:05:17Z",
+      "messageHeadline": "gitignore .kiro",
+      "url": "https://github.com/yoshiko-pg/difit/commit/da7bfef574dc023518b0ba44c50cc04e9db06c71",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3193f7d41dad5e08e4f4713b3b9d71a3a9cfed1c",
+      "abbreviatedOid": "3193f7d",
+      "committedDate": "2025-07-15T11:00:03Z",
+      "messageHeadline": "refactor: simplify eslint config by extracting shared rules and plugins",
+      "url": "https://github.com/yoshiko-pg/difit/commit/3193f7d41dad5e08e4f4713b3b9d71a3a9cfed1c",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3da78c1ddd0300e558105aea6a724199398aa1d9",
+      "abbreviatedOid": "3da78c1",
+      "committedDate": "2025-07-15T10:49:13Z",
+      "messageHeadline": "fix: resolve ESLint warnings across the codebase",
+      "url": "https://github.com/yoshiko-pg/difit/commit/3da78c1ddd0300e558105aea6a724199398aa1d9",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d9d2ba96ac5e28f1054b3468612e0f519bd6d872",
+      "abbreviatedOid": "d9d2ba9",
+      "committedDate": "2025-07-15T00:17:22Z",
+      "messageHeadline": "Release v2.0.8",
+      "url": "https://github.com/yoshiko-pg/difit/commit/d9d2ba96ac5e28f1054b3468612e0f519bd6d872",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3d5286f4bbdfba6d722cb485f6b544ba0eb23045",
+      "abbreviatedOid": "3d5286f",
+      "committedDate": "2025-07-15T00:01:32Z",
+      "messageHeadline": "feat: transform progress bar into HP bar style",
+      "url": "https://github.com/yoshiko-pg/difit/commit/3d5286f4bbdfba6d722cb485f6b544ba0eb23045",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "01b7265398a736ce865843627d3c43cb68c97e15",
+      "abbreviatedOid": "01b7265",
+      "committedDate": "2025-07-14T07:53:42Z",
+      "messageHeadline": "Release v2.0.7",
+      "url": "https://github.com/yoshiko-pg/difit/commit/01b7265398a736ce865843627d3c43cb68c97e15",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "88b17fb543ea60def28644920cc81b47bc62fa85",
+      "abbreviatedOid": "88b17fb",
+      "committedDate": "2025-07-14T07:51:26Z",
+      "messageHeadline": "add FUNIDING.yml",
+      "url": "https://github.com/yoshiko-pg/difit/commit/88b17fb543ea60def28644920cc81b47bc62fa85",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "546c295043643e42fa48d26697581785b30a6984",
+      "abbreviatedOid": "546c295",
+      "committedDate": "2025-07-12T13:48:19Z",
+      "messageHeadline": "Release v2.0.6",
+      "url": "https://github.com/yoshiko-pg/difit/commit/546c295043643e42fa48d26697581785b30a6984",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "802dc21f5da83fc915ee55a9e8b73ca9fc4815b5",
+      "abbreviatedOid": "802dc21",
+      "committedDate": "2025-07-12T13:38:06Z",
+      "messageHeadline": "fix: prevent collapsing root node in file tree to maintain proper fol…",
+      "url": "https://github.com/yoshiko-pg/difit/commit/802dc21f5da83fc915ee55a9e8b73ca9fc4815b5",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1d1f6dad8deb1b37d6da5f2cb81da25521282dfd",
+      "abbreviatedOid": "1d1f6da",
+      "committedDate": "2025-07-11T00:14:34Z",
+      "messageHeadline": "Release v2.0.5",
+      "url": "https://github.com/yoshiko-pg/difit/commit/1d1f6dad8deb1b37d6da5f2cb81da25521282dfd",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "74f153db952b9cb0732ab1c1acb40fb1eb521757",
+      "abbreviatedOid": "74f153d",
+      "committedDate": "2025-07-10T12:44:52Z",
+      "messageHeadline": "Release v2.0.4",
+      "url": "https://github.com/yoshiko-pg/difit/commit/74f153db952b9cb0732ab1c1acb40fb1eb521757",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3f2455e5965c2c869d4b78f4052932bc9d24d7d8",
+      "abbreviatedOid": "3f2455e",
+      "committedDate": "2025-07-10T12:40:48Z",
+      "messageHeadline": "Move header spacer border to right side with 8px vertical margin",
+      "url": "https://github.com/yoshiko-pg/difit/commit/3f2455e5965c2c869d4b78f4052932bc9d24d7d8",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "85823cf514b7a192fa8ce58187adb3d936619aa6",
+      "abbreviatedOid": "85823cf",
+      "committedDate": "2025-07-10T12:33:29Z",
+      "messageHeadline": "Add smooth animations to sidebar toggle",
+      "url": "https://github.com/yoshiko-pg/difit/commit/85823cf514b7a192fa8ce58187adb3d936619aa6",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f1c77f1bd86bb110ef004676e48f94ad57dbbea9",
+      "abbreviatedOid": "f1c77f1",
+      "committedDate": "2025-07-10T00:46:51Z",
+      "messageHeadline": "Release v2.0.3",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f1c77f1bd86bb110ef004676e48f94ad57dbbea9",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "831ba49b512f779a48f29316d197d20873312cc7",
+      "abbreviatedOid": "831ba49",
+      "committedDate": "2025-07-10T00:43:15Z",
+      "messageHeadline": "Fix file status display to show line edits as modified",
+      "url": "https://github.com/yoshiko-pg/difit/commit/831ba49b512f779a48f29316d197d20873312cc7",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "137c34fdb0ccfac91a40f4f48f4075e9a4ec4ee6",
+      "abbreviatedOid": "137c34f",
+      "committedDate": "2025-07-09T15:14:31Z",
+      "messageHeadline": "Change default host from 127.0.0.1 to localhost",
+      "url": "https://github.com/yoshiko-pg/difit/commit/137c34fdb0ccfac91a40f4f48f4075e9a4ec4ee6",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ee880ff09c36d36add40f9d5f50f65173ae4ca98",
+      "abbreviatedOid": "ee880ff",
+      "committedDate": "2025-07-09T14:54:34Z",
+      "messageHeadline": "Implement proper Git branch name validation rules",
+      "url": "https://github.com/yoshiko-pg/difit/commit/ee880ff09c36d36add40f9d5f50f65173ae4ca98",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "cb7ee3c3348f78542152455e4fe0bfa841eef7d4",
+      "abbreviatedOid": "cb7ee3c",
+      "committedDate": "2025-07-09T14:09:22Z",
+      "messageHeadline": "Release v2.0.2 with changelog update",
+      "url": "https://github.com/yoshiko-pg/difit/commit/cb7ee3c3348f78542152455e4fe0bfa841eef7d4",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "55ed87f238ef75f0f6577cef6979ce17d6d64de1",
+      "abbreviatedOid": "55ed87f",
+      "committedDate": "2025-07-09T14:00:00Z",
+      "messageHeadline": "Refactor line number type to use LineNumber type alias",
+      "url": "https://github.com/yoshiko-pg/difit/commit/55ed87f238ef75f0f6577cef6979ce17d6d64de1",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d8273ea3984a8c117cff796b605cd444c20bbcef",
+      "abbreviatedOid": "d8273ea",
+      "committedDate": "2025-07-09T13:54:50Z",
+      "messageHeadline": "Fix branch name validation to allow @ character",
+      "url": "https://github.com/yoshiko-pg/difit/commit/d8273ea3984a8c117cff796b605cd444c20bbcef",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "16940c519dca86a19ae4971ce4fcf009fb14cdc6",
+      "abbreviatedOid": "16940c5",
+      "committedDate": "2025-07-09T13:52:11Z",
+      "messageHeadline": "Claude Code -> AI coding agent",
+      "url": "https://github.com/yoshiko-pg/difit/commit/16940c519dca86a19ae4971ce4fcf009fb14cdc6",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0d8bb42abe8e751b0abb4c297d5f907b3f790d2b",
+      "abbreviatedOid": "0d8bb42",
+      "committedDate": "2025-07-09T13:49:08Z",
+      "messageHeadline": "Improve comment UI with resolve button and simplified tooltips",
+      "url": "https://github.com/yoshiko-pg/difit/commit/0d8bb42abe8e751b0abb4c297d5f907b3f790d2b",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "4b3fadacb57449b5758bca111145b70f95a7da80",
+      "abbreviatedOid": "4b3fada",
+      "committedDate": "2025-07-09T13:45:55Z",
+      "messageHeadline": "improve icons",
+      "url": "https://github.com/yoshiko-pg/difit/commit/4b3fadacb57449b5758bca111145b70f95a7da80",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "34a4587dff54a017652aab042593228090362c6c",
+      "abbreviatedOid": "34a4587",
+      "committedDate": "2025-07-09T13:23:27Z",
+      "messageHeadline": "Add GitHub link to sidebar footer with Star on GitHub label",
+      "url": "https://github.com/yoshiko-pg/difit/commit/34a4587dff54a017652aab042593228090362c6c",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e0e2558091cce4741056d8dd3e72149d3e8fe509",
+      "abbreviatedOid": "e0e2558",
+      "committedDate": "2025-07-09T13:23:27Z",
+      "messageHeadline": "Change logo color from currentColor to secondary text color",
+      "url": "https://github.com/yoshiko-pg/difit/commit/e0e2558091cce4741056d8dd3e72149d3e8fe509",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "c553f0a916ca9e89ea1cac2d7e9e758816a21770",
+      "abbreviatedOid": "c553f0a",
+      "committedDate": "2025-07-09T03:34:42Z",
+      "messageHeadline": "chore: release v2.0.1",
+      "url": "https://github.com/yoshiko-pg/difit/commit/c553f0a916ca9e89ea1cac2d7e9e758816a21770",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "35cc87ef6fcbcd23629e052cf028bdfc016ab70b",
+      "abbreviatedOid": "35cc87e",
+      "committedDate": "2025-07-09T03:28:26Z",
+      "messageHeadline": "feat: add @prettier/plugin-oxc and update prettier setup",
+      "url": "https://github.com/yoshiko-pg/difit/commit/35cc87ef6fcbcd23629e052cf028bdfc016ab70b",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "74e519a974590cd6a14a917517495ee5208c1c1e",
+      "abbreviatedOid": "74e519a",
+      "committedDate": "2025-07-09T03:23:51Z",
+      "messageHeadline": "re-format with experimentalTernaries option",
+      "url": "https://github.com/yoshiko-pg/difit/commit/74e519a974590cd6a14a917517495ee5208c1c1e",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f4b030b7db3f7c3f1850fba50ad35ecf40a9cf0f",
+      "abbreviatedOid": "f4b030b",
+      "committedDate": "2025-07-09T03:14:09Z",
+      "messageHeadline": "Release v2.0.0",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f4b030b7db3f7c3f1850fba50ad35ecf40a9cf0f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a1c937e57e33b8272a89cfcad611a78be4c91cf8",
+      "abbreviatedOid": "a1c937e",
+      "committedDate": "2025-07-07T09:56:06Z",
+      "messageHeadline": "Release v1.1.12",
+      "url": "https://github.com/yoshiko-pg/difit/commit/a1c937e57e33b8272a89cfcad611a78be4c91cf8",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "4dbbd4afd0ac9f50dadf0c8500c04b4ca4d1a634",
+      "abbreviatedOid": "4dbbd4a",
+      "committedDate": "2025-07-06T15:32:52Z",
+      "messageHeadline": "Release v1.1.11",
+      "url": "https://github.com/yoshiko-pg/difit/commit/4dbbd4afd0ac9f50dadf0c8500c04b4ca4d1a634",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9b49f6a84816e8405060ec64b7ff1f430d6af17d",
+      "abbreviatedOid": "9b49f6a",
+      "committedDate": "2025-07-06T15:27:52Z",
+      "messageHeadline": "Refactor: Extract file extension utility to shared utils",
+      "url": "https://github.com/yoshiko-pg/difit/commit/9b49f6a84816e8405060ec64b7ff1f430d6af17d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8f3a684051bbac545efa103ed209cdc6942b7427",
+      "abbreviatedOid": "8f3a684",
+      "committedDate": "2025-07-03T23:43:41Z",
+      "messageHeadline": "Update CHANGELOG.md version links and release command documentation",
+      "url": "https://github.com/yoshiko-pg/difit/commit/8f3a684051bbac545efa103ed209cdc6942b7427",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f11e5737da77a753553e586d2fb784ac7f3480e5",
+      "abbreviatedOid": "f11e573",
+      "committedDate": "2025-07-03T15:11:52Z",
+      "messageHeadline": "Release v1.1.10 version",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f11e5737da77a753553e586d2fb784ac7f3480e5",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9d3ee5b44fd7bd6c48976fd7d7b51694fba075e2",
+      "abbreviatedOid": "9d3ee5b",
+      "committedDate": "2025-07-03T15:09:50Z",
+      "messageHeadline": "Release v1.1.10",
+      "url": "https://github.com/yoshiko-pg/difit/commit/9d3ee5b44fd7bd6c48976fd7d7b51694fba075e2",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f4661147ead8defd081d45bb6b7fad4a8f7898af",
+      "abbreviatedOid": "f466114",
+      "committedDate": "2025-07-03T14:57:08Z",
+      "messageHeadline": "Add --host option documentation to README",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f4661147ead8defd081d45bb6b7fad4a8f7898af",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "49a7bb329b446df0e95f3dc95c0c4c022f953537",
+      "abbreviatedOid": "49a7bb3",
+      "committedDate": "2025-07-03T14:55:05Z",
+      "messageHeadline": "Improve untracked files prompt UX",
+      "url": "https://github.com/yoshiko-pg/difit/commit/49a7bb329b446df0e95f3dc95c0c4c022f953537",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ac20b97b8498d8907cb004a454689395bb1e53ca",
+      "abbreviatedOid": "ac20b97",
+      "committedDate": "2025-07-03T14:51:16Z",
+      "messageHeadline": "Update Unreleased",
+      "url": "https://github.com/yoshiko-pg/difit/commit/ac20b97b8498d8907cb004a454689395bb1e53ca",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a6af98ed8c2e490f6c06375473bd566d9a8f816e",
+      "abbreviatedOid": "a6af98e",
+      "committedDate": "2025-07-03T14:40:11Z",
+      "messageHeadline": "Implement directory path collapsing in left pane",
+      "url": "https://github.com/yoshiko-pg/difit/commit/a6af98ed8c2e490f6c06375473bd566d9a8f816e",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0594f2c9b80567786e3cbf5ad33f01670695e815",
+      "abbreviatedOid": "0594f2c",
+      "committedDate": "2025-07-03T14:40:11Z",
+      "messageHeadline": "Add visual feedback for file path copy button",
+      "url": "https://github.com/yoshiko-pg/difit/commit/0594f2c9b80567786e3cbf5ad33f01670695e815",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "cb4201a134d10e0db44c917572754e9c81b76d78",
+      "abbreviatedOid": "cb4201a",
+      "committedDate": "2025-07-03T14:40:11Z",
+      "messageHeadline": "Add visible border on top of file header in right pane",
+      "url": "https://github.com/yoshiko-pg/difit/commit/cb4201a134d10e0db44c917572754e9c81b76d78",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "79ee628a34c6dadab0bc840c66133c5989bc1457",
+      "abbreviatedOid": "79ee628",
+      "committedDate": "2025-07-03T14:40:11Z",
+      "messageHeadline": "Remove comment badges from directories in left pane",
+      "url": "https://github.com/yoshiko-pg/difit/commit/79ee628a34c6dadab0bc840c66133c5989bc1457",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5dfb9ec00b9df5ec169c0793fde83dfae50c9f11",
+      "abbreviatedOid": "5dfb9ec",
+      "committedDate": "2025-07-03T00:54:26Z",
+      "messageHeadline": "Update Unreleased",
+      "url": "https://github.com/yoshiko-pg/difit/commit/5dfb9ec00b9df5ec169c0793fde83dfae50c9f11",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "603c57a5e11bf36eef370c122d7f853bbc42f38c",
+      "abbreviatedOid": "603c57a",
+      "committedDate": "2025-07-03T00:44:28Z",
+      "messageHeadline": "Simplify TUI mode handling by unifying with web client",
+      "url": "https://github.com/yoshiko-pg/difit/commit/603c57a5e11bf36eef370c122d7f853bbc42f38c",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ce36da59031e500dd1277a2148bc66623cdfdacf",
+      "abbreviatedOid": "ce36da5",
+      "committedDate": "2025-07-02T23:23:31Z",
+      "messageHeadline": "Update Unreleased",
+      "url": "https://github.com/yoshiko-pg/difit/commit/ce36da59031e500dd1277a2148bc66623cdfdacf",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "537f42764527ed91b314a62195d919c3478efc63",
+      "abbreviatedOid": "537f427",
+      "committedDate": "2025-07-02T23:23:12Z",
+      "messageHeadline": "fix command option descriptions",
+      "url": "https://github.com/yoshiko-pg/difit/commit/537f42764527ed91b314a62195d919c3478efc63",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f4a8ee1e4182701d7773809684d0814823362697",
+      "abbreviatedOid": "f4a8ee1",
+      "committedDate": "2025-07-02T01:32:40Z",
+      "messageHeadline": "Release v1.1.9",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f4a8ee1e4182701d7773809684d0814823362697",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fffc1766104d9a63459b40bc108dd9abdad53e7b",
+      "abbreviatedOid": "fffc176",
+      "committedDate": "2025-07-02T01:14:21Z",
+      "messageHeadline": "Make comment areas full width in inline mode",
+      "url": "https://github.com/yoshiko-pg/difit/commit/fffc1766104d9a63459b40bc108dd9abdad53e7b",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "76f0568c6f58823b828f167237807d477373d8d8",
+      "abbreviatedOid": "76f0568",
+      "committedDate": "2025-07-02T01:11:50Z",
+      "messageHeadline": "Improve comment theme colors and button styles",
+      "url": "https://github.com/yoshiko-pg/difit/commit/76f0568c6f58823b828f167237807d477373d8d8",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "59bdbc2d09ac9a8d834a3c9bf8b584e5a8211fe2",
+      "abbreviatedOid": "59bdbc2",
+      "committedDate": "2025-07-02T00:48:06Z",
+      "messageHeadline": "Move settings icon to logo area and update icons",
+      "url": "https://github.com/yoshiko-pg/difit/commit/59bdbc2d09ac9a8d834a3c9bf8b584e5a8211fe2",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "afdf0d558ab30b1db9d7d1f06e0e606983b0784a",
+      "abbreviatedOid": "afdf0d5",
+      "committedDate": "2025-07-02T00:43:48Z",
+      "messageHeadline": "Skip browser auto-launch when no differences found",
+      "url": "https://github.com/yoshiko-pg/difit/commit/afdf0d558ab30b1db9d7d1f06e0e606983b0784a",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "4d0b827ae5d81628496a87e1007554d8fcba2dc0",
+      "abbreviatedOid": "4d0b827",
+      "committedDate": "2025-07-01T23:42:12Z",
+      "messageHeadline": "udpate release slash command",
+      "url": "https://github.com/yoshiko-pg/difit/commit/4d0b827ae5d81628496a87e1007554d8fcba2dc0",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "aae0f322fe0a302a5d0ad75d4bef1100a89fdc90",
+      "abbreviatedOid": "aae0f32",
+      "committedDate": "2025-07-01T23:39:33Z",
+      "messageHeadline": "Release v1.1.8",
+      "url": "https://github.com/yoshiko-pg/difit/commit/aae0f322fe0a302a5d0ad75d4bef1100a89fdc90",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "23d4967e7d4e171e75d51103fb61047aa7b0ac1c",
+      "abbreviatedOid": "23d4967",
+      "committedDate": "2025-07-01T23:37:43Z",
+      "messageHeadline": "udpate release slash command",
+      "url": "https://github.com/yoshiko-pg/difit/commit/23d4967e7d4e171e75d51103fb61047aa7b0ac1c",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f6bd559e31c7d375be1302afa87fdf28ca2f4340",
+      "abbreviatedOid": "f6bd559",
+      "committedDate": "2025-07-01T16:11:23Z",
+      "messageHeadline": "udpate release slash command",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f6bd559e31c7d375be1302afa87fdf28ca2f4340",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "2060d01336a3f0168b200f96c064bfd73843cb29",
+      "abbreviatedOid": "2060d01",
+      "committedDate": "2025-07-01T16:08:29Z",
+      "messageHeadline": "Release v1.1.7",
+      "url": "https://github.com/yoshiko-pg/difit/commit/2060d01336a3f0168b200f96c064bfd73843cb29",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f5c9dbb03c867e349cce14017d041126152f274a",
+      "abbreviatedOid": "f5c9dbb",
+      "committedDate": "2025-07-01T16:02:37Z",
+      "messageHeadline": "Fix validateCommitish to support SHA hashes with parent/ancestor refe…",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f5c9dbb03c867e349cce14017d041126152f274a",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e883025384ed985d9203cdae2aaf115775bb73b3",
+      "abbreviatedOid": "e883025",
+      "committedDate": "2025-07-01T15:38:59Z",
+      "messageHeadline": "Release v1.1.6",
+      "url": "https://github.com/yoshiko-pg/difit/commit/e883025384ed985d9203cdae2aaf115775bb73b3",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9fa7e9f40fba8490771b3508d0a01a733fe80fb7",
+      "abbreviatedOid": "9fa7e9f",
+      "committedDate": "2025-07-01T15:34:05Z",
+      "messageHeadline": "simplify readme",
+      "url": "https://github.com/yoshiko-pg/difit/commit/9fa7e9f40fba8490771b3508d0a01a733fe80fb7",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e8efd16e43bd4ca23b75e5c2f3db8131b9f0502f",
+      "abbreviatedOid": "e8efd16",
+      "committedDate": "2025-07-01T15:34:05Z",
+      "messageHeadline": "remove unused interface",
+      "url": "https://github.com/yoshiko-pg/difit/commit/e8efd16e43bd4ca23b75e5c2f3db8131b9f0502f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "bd4b7513e075b5b245284c38fd23427b9bd0f42e",
+      "abbreviatedOid": "bd4b751",
+      "committedDate": "2025-07-01T15:34:05Z",
+      "messageHeadline": "Add PR URL support for GitHub pull request reviews",
+      "url": "https://github.com/yoshiko-pg/difit/commit/bd4b7513e075b5b245284c38fd23427b9bd0f42e",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "696f111a0db62b1a5aca5aea83603109f8d6f509",
+      "abbreviatedOid": "696f111",
+      "committedDate": "2025-07-01T08:49:11Z",
+      "messageHeadline": "Fix working parameter validation to allow working vs staged comparison",
+      "url": "https://github.com/yoshiko-pg/difit/commit/696f111a0db62b1a5aca5aea83603109f8d6f509",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "487090c2247e5ecf665af4ca980584fa5422ea6f",
+      "abbreviatedOid": "487090c",
+      "committedDate": "2025-07-01T05:11:21Z",
+      "messageHeadline": "Release v1.1.5",
+      "url": "https://github.com/yoshiko-pg/difit/commit/487090c2247e5ecf665af4ca980584fa5422ea6f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "263972d17f903794947b40385a9741231af69784",
+      "abbreviatedOid": "263972d",
+      "committedDate": "2025-07-01T05:03:23Z",
+      "messageHeadline": "Add MIT License",
+      "url": "https://github.com/yoshiko-pg/difit/commit/263972d17f903794947b40385a9741231af69784",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "396b91297ac477ec84070844d85ecf1d3623b521",
+      "abbreviatedOid": "396b912",
+      "committedDate": "2025-07-01T04:54:52Z",
+      "messageHeadline": "Implement line-type specific comment positioning",
+      "url": "https://github.com/yoshiko-pg/difit/commit/396b91297ac477ec84070844d85ecf1d3623b521",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "583dedfecf8f042fc0a07b4589ea6473b84c37b4",
+      "abbreviatedOid": "583dedf",
+      "committedDate": "2025-07-01T04:37:47Z",
+      "messageHeadline": "Release v1.1.4",
+      "url": "https://github.com/yoshiko-pg/difit/commit/583dedfecf8f042fc0a07b4589ea6473b84c37b4",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b52c9756ce36335f5a246e39542c235bb5760b50",
+      "abbreviatedOid": "b52c975",
+      "committedDate": "2025-07-01T04:35:50Z",
+      "messageHeadline": "Fix three-dot notation bugs",
+      "url": "https://github.com/yoshiko-pg/difit/commit/b52c9756ce36335f5a246e39542c235bb5760b50",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ab76b4add3580fb293f393023942e70deaa3e87a",
+      "abbreviatedOid": "ab76b4a",
+      "committedDate": "2025-07-01T04:06:20Z",
+      "messageHeadline": "Release v1.1.3",
+      "url": "https://github.com/yoshiko-pg/difit/commit/ab76b4add3580fb293f393023942e70deaa3e87a",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "af1f50f4a233cd2c7d2f840b95d2c38f0093bb6f",
+      "abbreviatedOid": "af1f50f",
+      "committedDate": "2025-07-01T04:03:05Z",
+      "messageHeadline": "not 100% vibe coding currently",
+      "url": "https://github.com/yoshiko-pg/difit/commit/af1f50f4a233cd2c7d2f840b95d2c38f0093bb6f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "76a744b164e6d0894dc7771bf80ef542be3c8b3b",
+      "abbreviatedOid": "76a744b",
+      "committedDate": "2025-07-01T04:02:35Z",
+      "messageHeadline": "Update Node.js requirement to 21+ and ES2022",
+      "url": "https://github.com/yoshiko-pg/difit/commit/76a744b164e6d0894dc7771bf80ef542be3c8b3b",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7e80d024a8916c46b6a0c36a38c62b60c4bab658",
+      "abbreviatedOid": "7e80d02",
+      "committedDate": "2025-07-01T03:54:17Z",
+      "messageHeadline": "Refactor commit comparison to use three dots",
+      "url": "https://github.com/yoshiko-pg/difit/commit/7e80d024a8916c46b6a0c36a38c62b60c4bab658",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a0b7c104b524ba086ee198f16fa0679322af5689",
+      "abbreviatedOid": "a0b7c10",
+      "committedDate": "2025-07-01T01:01:18Z",
+      "messageHeadline": "update claude slash command",
+      "url": "https://github.com/yoshiko-pg/difit/commit/a0b7c104b524ba086ee198f16fa0679322af5689",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7326510de95c6f004c34e76c6d535d2ff1a0342a",
+      "abbreviatedOid": "7326510",
+      "committedDate": "2025-07-01T00:57:00Z",
+      "messageHeadline": "Release v1.1.2",
+      "url": "https://github.com/yoshiko-pg/difit/commit/7326510de95c6f004c34e76c6d535d2ff1a0342a",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "748cc6b7bb622e78cabfb84e019871342059e5fc",
+      "abbreviatedOid": "748cc6b",
+      "committedDate": "2025-07-01T00:51:52Z",
+      "messageHeadline": "setup /release",
+      "url": "https://github.com/yoshiko-pg/difit/commit/748cc6b7bb622e78cabfb84e019871342059e5fc",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "cd6ca8b0dc599a5ffbf6df037680b9e90d516db4",
+      "abbreviatedOid": "cd6ca8b",
+      "committedDate": "2025-07-01T00:23:47Z",
+      "messageHeadline": "fix lint",
+      "url": "https://github.com/yoshiko-pg/difit/commit/cd6ca8b0dc599a5ffbf6df037680b9e90d516db4",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "44864de261d915cf324973201c01890a0ed8c740",
+      "abbreviatedOid": "44864de",
+      "committedDate": "2025-07-01T00:23:27Z",
+      "messageHeadline": "fix pre-commit target",
+      "url": "https://github.com/yoshiko-pg/difit/commit/44864de261d915cf324973201c01890a0ed8c740",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a4d2a89681efa33febc88167607b79b7de19286f",
+      "abbreviatedOid": "a4d2a89",
+      "committedDate": "2025-07-01T00:22:34Z",
+      "messageHeadline": "package update",
+      "url": "https://github.com/yoshiko-pg/difit/commit/a4d2a89681efa33febc88167607b79b7de19286f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6e77006946654c3cae17135ceac7ffc1ceecdb59",
+      "abbreviatedOid": "6e77006",
+      "committedDate": "2025-06-30T23:59:45Z",
+      "messageHeadline": "CI for PR",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6e77006946654c3cae17135ceac7ffc1ceecdb59",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "09f247bfa728b23c1604633951b94c8141637cc8",
+      "abbreviatedOid": "09f247b",
+      "committedDate": "2025-06-30T23:43:15Z",
+      "messageHeadline": "update claude setting",
+      "url": "https://github.com/yoshiko-pg/difit/commit/09f247bfa728b23c1604633951b94c8141637cc8",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d7b680efa32c045b4a255335aa4f54422948e959",
+      "abbreviatedOid": "d7b680e",
+      "committedDate": "2025-06-30T23:31:01Z",
+      "messageHeadline": "Create CHANGELOG.md",
+      "url": "https://github.com/yoshiko-pg/difit/commit/d7b680efa32c045b4a255335aa4f54422948e959",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f32b28a9f8dda33b1c779289f469aba4e101de8e",
+      "abbreviatedOid": "f32b28a",
+      "committedDate": "2025-06-30T17:50:53Z",
+      "messageHeadline": "1.1.1",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f32b28a9f8dda33b1c779289f469aba4e101de8e",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "288d5a6b119777be2865944d8522549320949539",
+      "abbreviatedOid": "288d5a6",
+      "committedDate": "2025-06-30T17:47:48Z",
+      "messageHeadline": "update readme",
+      "url": "https://github.com/yoshiko-pg/difit/commit/288d5a6b119777be2865944d8522549320949539",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "0a675a4c0eae245b51dfbf2fd3dacd44795eece2",
+      "abbreviatedOid": "0a675a4",
+      "committedDate": "2025-06-30T17:23:17Z",
+      "messageHeadline": "Add compare-with option support",
+      "url": "https://github.com/yoshiko-pg/difit/commit/0a675a4c0eae245b51dfbf2fd3dacd44795eece2",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "143842189d193f7bd1a009d6478a2d885c4afde5",
+      "abbreviatedOid": "1438421",
+      "committedDate": "2025-06-30T17:23:17Z",
+      "messageHeadline": "remove lowercase",
+      "url": "https://github.com/yoshiko-pg/difit/commit/143842189d193f7bd1a009d6478a2d885c4afde5",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "accb636c49967d9cd0e87793f06cdee79b8f8434",
+      "abbreviatedOid": "accb636",
+      "committedDate": "2025-06-30T17:23:16Z",
+      "messageHeadline": "Refactor commitish handling to separate target and base",
+      "url": "https://github.com/yoshiko-pg/difit/commit/accb636c49967d9cd0e87793f06cdee79b8f8434",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3bee4a79df7552d79589f908567fb214c12155a6",
+      "abbreviatedOid": "3bee4a7",
+      "committedDate": "2025-06-30T13:16:04Z",
+      "messageHeadline": "1.1.0",
+      "url": "https://github.com/yoshiko-pg/difit/commit/3bee4a79df7552d79589f908567fb214c12155a6",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "90aa0bbe7b10762a5f0b0ab080cc132ef0aa324f",
+      "abbreviatedOid": "90aa0bb",
+      "committedDate": "2025-06-30T12:53:05Z",
+      "messageHeadline": "Add TUI mode documentation to README",
+      "url": "https://github.com/yoshiko-pg/difit/commit/90aa0bbe7b10762a5f0b0ab080cc132ef0aa324f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e1799df4a07c951c2249f41eaebbe6bde9f868f0",
+      "abbreviatedOid": "e1799df",
+      "committedDate": "2025-06-30T12:42:13Z",
+      "messageHeadline": "Unify argument handling between web and TUI modes",
+      "url": "https://github.com/yoshiko-pg/difit/commit/e1799df4a07c951c2249f41eaebbe6bde9f868f0",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6718daf3485ed78a316af1670b608d5bd65ef78c",
+      "abbreviatedOid": "6718daf",
+      "committedDate": "2025-06-30T12:14:39Z",
+      "messageHeadline": "fix build script",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6718daf3485ed78a316af1670b608d5bd65ef78c",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fffda36be81c88e7c67a8f31eeb3557966316a95",
+      "abbreviatedOid": "fffda36",
+      "committedDate": "2025-06-30T11:33:07Z",
+      "messageHeadline": "1.0.8",
+      "url": "https://github.com/yoshiko-pg/difit/commit/fffda36be81c88e7c67a8f31eeb3557966316a95",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5f1dc55852771bdf62107c779482207c2a5daa24",
+      "abbreviatedOid": "5f1dc55",
+      "committedDate": "2025-06-30T11:32:05Z",
+      "messageHeadline": "update readme section",
+      "url": "https://github.com/yoshiko-pg/difit/commit/5f1dc55852771bdf62107c779482207c2a5daa24",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e6977fed27ff3ffa30a77c97a0e9fcd5cf61c6c3",
+      "abbreviatedOid": "e6977fe",
+      "committedDate": "2025-06-30T11:28:54Z",
+      "messageHeadline": "update README logo",
+      "url": "https://github.com/yoshiko-pg/difit/commit/e6977fed27ff3ffa30a77c97a0e9fcd5cf61c6c3",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "66ff7c621b95eb12a01ea4f2f6aff06091c760b8",
+      "abbreviatedOid": "66ff7c6",
+      "committedDate": "2025-06-30T11:27:13Z",
+      "messageHeadline": "Update README with syntax highlighting documentation",
+      "url": "https://github.com/yoshiko-pg/difit/commit/66ff7c621b95eb12a01ea4f2f6aff06091c760b8",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f527039153486b8cbbcd0b96514a33e4c794b87f",
+      "abbreviatedOid": "f527039",
+      "committedDate": "2025-06-30T11:25:52Z",
+      "messageHeadline": "Add dynamic syntax highlighting for additional languages",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f527039153486b8cbbcd0b96514a33e4c794b87f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "39bea2c5beacfa993670a7173363b0e8a399c7d3",
+      "abbreviatedOid": "39bea2c",
+      "committedDate": "2025-06-30T10:59:19Z",
+      "messageHeadline": "1.0.7",
+      "url": "https://github.com/yoshiko-pg/difit/commit/39bea2c5beacfa993670a7173363b0e8a399c7d3",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5d5cfb430906d7c33fcbeae921bea38884aa9070",
+      "abbreviatedOid": "5d5cfb4",
+      "committedDate": "2025-06-30T09:02:42Z",
+      "messageHeadline": "1.0.6",
+      "url": "https://github.com/yoshiko-pg/difit/commit/5d5cfb430906d7c33fcbeae921bea38884aa9070",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7c500cd5dc2055f90fb362ea6a39c2100e0fd675",
+      "abbreviatedOid": "7c500cd",
+      "committedDate": "2025-06-30T09:01:56Z",
+      "messageHeadline": "Add syntax highlighting support for shell scripts and more languages",
+      "url": "https://github.com/yoshiko-pg/difit/commit/7c500cd5dc2055f90fb362ea6a39c2100e0fd675",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "db7612edf438876284ebf675cc73d8a7c073d0c2",
+      "abbreviatedOid": "db7612e",
+      "committedDate": "2025-06-30T08:55:45Z",
+      "messageHeadline": "Add automatic server shutdown when browser tab is closed",
+      "url": "https://github.com/yoshiko-pg/difit/commit/db7612edf438876284ebf675cc73d8a7c073d0c2",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "217445add82858727eb5d62588712c21917a2f5d",
+      "abbreviatedOid": "217445a",
+      "committedDate": "2025-06-30T08:55:45Z",
+      "messageHeadline": "Document working directory diff feature in README",
+      "url": "https://github.com/yoshiko-pg/difit/commit/217445add82858727eb5d62588712c21917a2f5d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "44139ad27789d1c1a4096982741ee6503c6a0e06",
+      "abbreviatedOid": "44139ad",
+      "committedDate": "2025-06-30T08:44:05Z",
+      "messageHeadline": "1.0.5",
+      "url": "https://github.com/yoshiko-pg/difit/commit/44139ad27789d1c1a4096982741ee6503c6a0e06",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "c104b379a1b949d87c3fc05411f79634ea50d85a",
+      "abbreviatedOid": "c104b37",
+      "committedDate": "2025-06-30T08:43:31Z",
+      "messageHeadline": "Fix '.' argument to properly show working directory changes",
+      "url": "https://github.com/yoshiko-pg/difit/commit/c104b379a1b949d87c3fc05411f79634ea50d85a",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8b4e0084a23d4fe1324a85715a292a9da313922b",
+      "abbreviatedOid": "8b4e008",
+      "committedDate": "2025-06-30T08:20:15Z",
+      "messageHeadline": "Fix '.' argument to show HEAD vs working directory diff",
+      "url": "https://github.com/yoshiko-pg/difit/commit/8b4e0084a23d4fe1324a85715a292a9da313922b",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9ff6d8c19ac5e62ce0541f5b7782fc37bea662b8",
+      "abbreviatedOid": "9ff6d8c",
+      "committedDate": "2025-06-30T08:15:52Z",
+      "messageHeadline": "1.0.4",
+      "url": "https://github.com/yoshiko-pg/difit/commit/9ff6d8c19ac5e62ce0541f5b7782fc37bea662b8",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8b41a700051e8cecf40ba382f0336a8e147e6279",
+      "abbreviatedOid": "8b41a70",
+      "committedDate": "2025-06-30T08:15:41Z",
+      "messageHeadline": "Show commit hash range in short format",
+      "url": "https://github.com/yoshiko-pg/difit/commit/8b41a700051e8cecf40ba382f0336a8e147e6279",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "85b5e885389be4e542720eebade52ad6873265d8",
+      "abbreviatedOid": "85b5e88",
+      "committedDate": "2025-06-30T08:09:06Z",
+      "messageHeadline": "1.0.3",
+      "url": "https://github.com/yoshiko-pg/difit/commit/85b5e885389be4e542720eebade52ad6873265d8",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1ea62b884ab6d906550f7c04f4527599d4fa11e5",
+      "abbreviatedOid": "1ea62b8",
+      "committedDate": "2025-06-30T08:07:23Z",
+      "messageHeadline": "Fix folder name truncation in file tree",
+      "url": "https://github.com/yoshiko-pg/difit/commit/1ea62b884ab6d906550f7c04f4527599d4fa11e5",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "acf86984f65e7d5fd1dc68533e70c654d016309e",
+      "abbreviatedOid": "acf8698",
+      "committedDate": "2025-06-30T08:01:57Z",
+      "messageHeadline": "Simplify comment prompt format to file:line format",
+      "url": "https://github.com/yoshiko-pg/difit/commit/acf86984f65e7d5fd1dc68533e70c654d016309e",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fb453e4e2d70f00be8cd95d442a9999c6894ae4f",
+      "abbreviatedOid": "fb453e4",
+      "committedDate": "2025-06-30T00:19:04Z",
+      "messageHeadline": "Fix no-floating-promises and require-await ESLint errors",
+      "url": "https://github.com/yoshiko-pg/difit/commit/fb453e4e2d70f00be8cd95d442a9999c6894ae4f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6679354663c0b7cc05a0bb5676f9264336c51182",
+      "abbreviatedOid": "6679354",
+      "committedDate": "2025-06-30T00:00:31Z",
+      "messageHeadline": "1.0.2",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6679354663c0b7cc05a0bb5676f9264336c51182",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b3138287e1725b3b1c1843375556c2dd07857304",
+      "abbreviatedOid": "b313828",
+      "committedDate": "2025-06-30T00:00:09Z",
+      "messageHeadline": "Upgrade logo to 800px for high-resolution displays",
+      "url": "https://github.com/yoshiko-pg/difit/commit/b3138287e1725b3b1c1843375556c2dd07857304",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "dfbdf3d91177abb8fd8e05a616b2ac2c4653118d",
+      "abbreviatedOid": "dfbdf3d",
+      "committedDate": "2025-06-29T23:58:49Z",
+      "messageHeadline": "Add transparent pixel art logo to README",
+      "url": "https://github.com/yoshiko-pg/difit/commit/dfbdf3d91177abb8fd8e05a616b2ac2c4653118d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e38882ed61f9dd2e3481116eb8bfc1d24044ef4c",
+      "abbreviatedOid": "e38882e",
+      "committedDate": "2025-06-29T23:53:24Z",
+      "messageHeadline": "Add 100% vibe coding to README",
+      "url": "https://github.com/yoshiko-pg/difit/commit/e38882ed61f9dd2e3481116eb8bfc1d24044ef4c",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b87d21033f5757baa14014dedc1ab3b41e02e3ea",
+      "abbreviatedOid": "b87d210",
+      "committedDate": "2025-06-29T23:51:49Z",
+      "messageHeadline": "Update favicon with trimmed image for better clarity",
+      "url": "https://github.com/yoshiko-pg/difit/commit/b87d21033f5757baa14014dedc1ab3b41e02e3ea",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "78a26824dc7d0ae6867066d3e8b45d108177389e",
+      "abbreviatedOid": "78a2682",
+      "committedDate": "2025-06-29T23:48:45Z",
+      "messageHeadline": "Add custom favicon with ReviewIt branding",
+      "url": "https://github.com/yoshiko-pg/difit/commit/78a26824dc7d0ae6867066d3e8b45d108177389e",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "37972228c5701755646096f0f3e8fb4953c5c20d",
+      "abbreviatedOid": "3797222",
+      "committedDate": "2025-06-29T23:43:57Z",
+      "messageHeadline": "Apply mira-reborn format settings (partial)",
+      "url": "https://github.com/yoshiko-pg/difit/commit/37972228c5701755646096f0f3e8fb4953c5c20d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "58a9a005ffc1b0bc435dc933e589ab59bd376508",
+      "abbreviatedOid": "58a9a00",
+      "committedDate": "2025-06-29T23:30:59Z",
+      "messageHeadline": "1.0.1",
+      "url": "https://github.com/yoshiko-pg/difit/commit/58a9a005ffc1b0bc435dc933e589ab59bd376508",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a84a7a762c29f17240c19c05855c14f8e9cf05dd",
+      "abbreviatedOid": "a84a7a7",
+      "committedDate": "2025-06-29T23:28:59Z",
+      "messageHeadline": "Auto-collapse lock files by default",
+      "url": "https://github.com/yoshiko-pg/difit/commit/a84a7a762c29f17240c19c05855c14f8e9cf05dd",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1f988eebe9a3427000b319502771dd5e9f6b58c9",
+      "abbreviatedOid": "1f988ee",
+      "committedDate": "2025-06-29T23:24:26Z",
+      "messageHeadline": "1.0.0",
+      "url": "https://github.com/yoshiko-pg/difit/commit/1f988eebe9a3427000b319502771dd5e9f6b58c9",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "758037fb00e74a98964e2b77c856bec476956dc5",
+      "abbreviatedOid": "758037f",
+      "committedDate": "2025-06-29T23:23:40Z",
+      "messageHeadline": "0.0.6",
+      "url": "https://github.com/yoshiko-pg/difit/commit/758037fb00e74a98964e2b77c856bec476956dc5",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ea6a35033ef599722d7975111946eb6a87b9b40b",
+      "abbreviatedOid": "ea6a350",
+      "committedDate": "2025-06-29T23:23:22Z",
+      "messageHeadline": "Remove uncommitted changes feature from README",
+      "url": "https://github.com/yoshiko-pg/difit/commit/ea6a35033ef599722d7975111946eb6a87b9b40b",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "dc465af6f398397d98740be5d32b00260e268c2d",
+      "abbreviatedOid": "dc465af",
+      "committedDate": "2025-06-29T23:22:23Z",
+      "messageHeadline": "Update README to reflect localStorage comments and new features",
+      "url": "https://github.com/yoshiko-pg/difit/commit/dc465af6f398397d98740be5d32b00260e268c2d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "83fbb0d368a0ab937b453ddc56a4aad36839157a",
+      "abbreviatedOid": "83fbb0d",
+      "committedDate": "2025-06-29T23:20:28Z",
+      "messageHeadline": "Replace native checkboxes with custom Checkbox component",
+      "url": "https://github.com/yoshiko-pg/difit/commit/83fbb0d368a0ab937b453ddc56a4aad36839157a",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f2a941ffaf21f9bd37b5d4021e9b71029b99bdac",
+      "abbreviatedOid": "f2a941f",
+      "committedDate": "2025-06-29T23:14:34Z",
+      "messageHeadline": "Add file filtering and improve UI elements",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f2a941ffaf21f9bd37b5d4021e9b71029b99bdac",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "656dd81f17bbdaffc7ff02b969465c7e84c1ee4a",
+      "abbreviatedOid": "656dd81",
+      "committedDate": "2025-06-29T23:08:02Z",
+      "messageHeadline": "Add comment editing functionality and fix prompt format",
+      "url": "https://github.com/yoshiko-pg/difit/commit/656dd81f17bbdaffc7ff02b969465c7e84c1ee4a",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d9f864e434bcb4d41e3ac18e50d1e28f866305a3",
+      "abbreviatedOid": "d9f864e",
+      "committedDate": "2025-06-29T23:03:36Z",
+      "messageHeadline": "feat: improve UX with resizable sidebar and instant scroll",
+      "url": "https://github.com/yoshiko-pg/difit/commit/d9f864e434bcb4d41e3ac18e50d1e28f866305a3",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f884c133748199a55430259df7958a84f317588a",
+      "abbreviatedOid": "f884c13",
+      "committedDate": "2025-06-29T23:02:28Z",
+      "messageHeadline": "feat: improve minor design elements",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f884c133748199a55430259df7958a84f317588a",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6f3ec325f8617bda2b476dc75f439c88a68b2f90",
+      "abbreviatedOid": "6f3ec32",
+      "committedDate": "2025-06-29T22:51:48Z",
+      "messageHeadline": "fix: allow '.' argument for working directory diff",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6f3ec325f8617bda2b476dc75f439c88a68b2f90",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1bad0607b4963d53f9e315636043e6bb50b70fd9",
+      "abbreviatedOid": "1bad060",
+      "committedDate": "2025-06-29T22:45:05Z",
+      "messageHeadline": "fix: support HEAD^ syntax in commitish validation",
+      "url": "https://github.com/yoshiko-pg/difit/commit/1bad0607b4963d53f9e315636043e6bb50b70fd9",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6bd4d33618145bdf2d5a75eb52af52dfd941f53f",
+      "abbreviatedOid": "6bd4d33",
+      "committedDate": "2025-06-29T22:40:52Z",
+      "messageHeadline": "feat: major UI/UX improvements and new features",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6bd4d33618145bdf2d5a75eb52af52dfd941f53f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5961a39d557475bf483a06ee5578b313292b40f7",
+      "abbreviatedOid": "5961a39",
+      "committedDate": "2025-06-29T22:40:52Z",
+      "messageHeadline": "refactor: remove obsolete file-based comment storage",
+      "url": "https://github.com/yoshiko-pg/difit/commit/5961a39d557475bf483a06ee5578b313292b40f7",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9cd6123f27bd5f649a2e53948b4b5130cea7d0cf",
+      "abbreviatedOid": "9cd6123",
+      "committedDate": "2025-06-29T16:41:12Z",
+      "messageHeadline": "0.0.5",
+      "url": "https://github.com/yoshiko-pg/difit/commit/9cd6123f27bd5f649a2e53948b4b5130cea7d0cf",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "760738c7985be53a5b4d21e7cec90d5d327fad67",
+      "abbreviatedOid": "760738c",
+      "committedDate": "2025-06-29T16:39:46Z",
+      "messageHeadline": "fix: remove unused DiffLine import",
+      "url": "https://github.com/yoshiko-pg/difit/commit/760738c7985be53a5b4d21e7cec90d5d327fad67",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b7bb77710a62af1a48a9c3a1c68f74cc931b72d7",
+      "abbreviatedOid": "b7bb777",
+      "committedDate": "2025-06-29T16:22:49Z",
+      "messageHeadline": "fix: update tests for new prompt format",
+      "url": "https://github.com/yoshiko-pg/difit/commit/b7bb77710a62af1a48a9c3a1c68f74cc931b72d7",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a27c146f7f8a35cd00ba78eccd766079d1ce6a47",
+      "abbreviatedOid": "a27c146",
+      "committedDate": "2025-06-29T16:04:11Z",
+      "messageHeadline": "fix: auto-stage formatted files in pre-commit hook",
+      "url": "https://github.com/yoshiko-pg/difit/commit/a27c146f7f8a35cd00ba78eccd766079d1ce6a47",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8ac5c94845030d826e83d8ed4cfb46cb368b4057",
+      "abbreviatedOid": "8ac5c94",
+      "committedDate": "2025-06-29T15:59:43Z",
+      "messageHeadline": "fix: prevent duplicate comment forms in side-by-side mode",
+      "url": "https://github.com/yoshiko-pg/difit/commit/8ac5c94845030d826e83d8ed4cfb46cb368b4057",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5152cd6197ffcd83d243c120bec99a7661352ca0",
+      "abbreviatedOid": "5152cd6",
+      "committedDate": "2025-06-29T15:53:07Z",
+      "messageHeadline": "feat: enhance UX with comment cancellation, improved viewed button, a…",
+      "url": "https://github.com/yoshiko-pg/difit/commit/5152cd6197ffcd83d243c120bec99a7661352ca0",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "fdf8d81436beb3beaba9bbfb9a21f0268e6f31b6",
+      "abbreviatedOid": "fdf8d81",
+      "committedDate": "2025-06-29T15:50:28Z",
+      "messageHeadline": "feat: improve UI design - header layout and file header enhancements",
+      "url": "https://github.com/yoshiko-pg/difit/commit/fdf8d81436beb3beaba9bbfb9a21f0268e6f31b6",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "65c2bafc88eb22b9cbe3d298b7143703de86f9d5",
+      "abbreviatedOid": "65c2baf",
+      "committedDate": "2025-06-29T15:14:05Z",
+      "messageHeadline": "fix: ensure syntax highlighting works in production builds",
+      "url": "https://github.com/yoshiko-pg/difit/commit/65c2bafc88eb22b9cbe3d298b7143703de86f9d5",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "d0b1fc2a427fa612cda84d40de4c6bd5d83fb55d",
+      "abbreviatedOid": "d0b1fc2",
+      "committedDate": "2025-06-29T15:13:17Z",
+      "messageHeadline": "pnpm version",
+      "url": "https://github.com/yoshiko-pg/difit/commit/d0b1fc2a427fa612cda84d40de4c6bd5d83fb55d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "61cf3a648d258760f2a551ede79b7cde4becd758",
+      "abbreviatedOid": "61cf3a6",
+      "committedDate": "2025-06-29T14:40:15Z",
+      "messageHeadline": "refactor: simplify dev script without concurrently dependency",
+      "url": "https://github.com/yoshiko-pg/difit/commit/61cf3a648d258760f2a551ede79b7cde4becd758",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7cb42280a67b8e87ea194165a4ff2d004d4aeda0",
+      "abbreviatedOid": "7cb4228",
+      "committedDate": "2025-06-29T14:37:07Z",
+      "messageHeadline": "0.0.4",
+      "url": "https://github.com/yoshiko-pg/difit/commit/7cb42280a67b8e87ea194165a4ff2d004d4aeda0",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "f9c2d6250c0585e056df7949cf363d0d0e432f3f",
+      "abbreviatedOid": "f9c2d62",
+      "committedDate": "2025-06-29T14:36:45Z",
+      "messageHeadline": "feat: expand all diff chunks by default",
+      "url": "https://github.com/yoshiko-pg/difit/commit/f9c2d6250c0585e056df7949cf363d0d0e432f3f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "59c7d473236a9468368d5500e94c34c795598612",
+      "abbreviatedOid": "59c7d47",
+      "committedDate": "2025-06-29T14:34:48Z",
+      "messageHeadline": "feat: allow passing commit-ish argument to dev script",
+      "url": "https://github.com/yoshiko-pg/difit/commit/59c7d473236a9468368d5500e94c34c795598612",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "618e9b32e3984cb91e35905942095f867b2abe5f",
+      "abbreviatedOid": "618e9b3",
+      "committedDate": "2025-06-29T14:31:10Z",
+      "messageHeadline": "0.0.3",
+      "url": "https://github.com/yoshiko-pg/difit/commit/618e9b32e3984cb91e35905942095f867b2abe5f",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "7e705fa6e7ca20f7f55198d2e00abf5529d46a5d",
+      "abbreviatedOid": "7e705fa",
+      "committedDate": "2025-06-29T14:27:14Z",
+      "messageHeadline": "refactor: translate all Japanese text to English for international re…",
+      "url": "https://github.com/yoshiko-pg/difit/commit/7e705fa6e7ca20f7f55198d2e00abf5529d46a5d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "81641873b33af6135d84a3bd6803e8883aaba428",
+      "abbreviatedOid": "8164187",
+      "committedDate": "2025-06-29T14:23:16Z",
+      "messageHeadline": "待ちを1秒にする",
+      "url": "https://github.com/yoshiko-pg/difit/commit/81641873b33af6135d84a3bd6803e8883aaba428",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "97c3091f41b3e1f2f6ea916a2345a632c9cf3417",
+      "abbreviatedOid": "97c3091",
+      "committedDate": "2025-06-29T14:21:10Z",
+      "messageHeadline": "0.0.2",
+      "url": "https://github.com/yoshiko-pg/difit/commit/97c3091f41b3e1f2f6ea916a2345a632c9cf3417",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "319e69f46e6a323b64bc9ad1797d3fb42af05317",
+      "abbreviatedOid": "319e69f",
+      "committedDate": "2025-06-29T14:20:28Z",
+      "messageHeadline": "feat: commit-ish引数をオプショナルに変更、デフォルトをHEADに設定",
+      "url": "https://github.com/yoshiko-pg/difit/commit/319e69f46e6a323b64bc9ad1797d3fb42af05317",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9e1c1d2e0415ee2da14cddee2b7b34193513420d",
+      "abbreviatedOid": "9e1c1d2",
+      "committedDate": "2025-06-29T14:18:42Z",
+      "messageHeadline": "fix: lockファイルをprettier対象から除外",
+      "url": "https://github.com/yoshiko-pg/difit/commit/9e1c1d2e0415ee2da14cddee2b7b34193513420d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "35afb4970c4d0caee5260be61ea644abfecec045",
+      "abbreviatedOid": "35afb49",
+      "committedDate": "2025-06-29T14:18:14Z",
+      "messageHeadline": "fix: ポートフォールバック機能の修正とwait-on削除",
+      "url": "https://github.com/yoshiko-pg/difit/commit/35afb4970c4d0caee5260be61ea644abfecec045",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "9e43a6a6d05ef7227cb71bd41de1b9bfcf0b7dab",
+      "abbreviatedOid": "9e43a6a",
+      "committedDate": "2025-06-29T14:08:10Z",
+      "messageHeadline": "feat: 開発ワークフローの改善とスクリプト整理",
+      "url": "https://github.com/yoshiko-pg/difit/commit/9e43a6a6d05ef7227cb71bd41de1b9bfcf0b7dab",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ca31f9f3b31730ebe9059a12c565eb49ff125ffb",
+      "abbreviatedOid": "ca31f9f",
+      "committedDate": "2025-06-29T13:55:02Z",
+      "messageHeadline": "fix: CLIツールでNODE_ENV未設定時もproductionモードで動作するよう修正",
+      "url": "https://github.com/yoshiko-pg/difit/commit/ca31f9f3b31730ebe9059a12c565eb49ff125ffb",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "ac2d5974f78ba0810f089cbe1dc5ca7f5787162a",
+      "abbreviatedOid": "ac2d597",
+      "committedDate": "2025-06-29T13:40:45Z",
+      "messageHeadline": "feat: READMEを楽しい感じにemoji付きで更新",
+      "url": "https://github.com/yoshiko-pg/difit/commit/ac2d5974f78ba0810f089cbe1dc5ca7f5787162a",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "59c02b5ce2188c77a26274112f6ffc501148e31d",
+      "abbreviatedOid": "59c02b5",
+      "committedDate": "2025-06-29T13:31:05Z",
+      "messageHeadline": "feat: CSS ModulesからTailwind CSSへ完全移行",
+      "url": "https://github.com/yoshiko-pg/difit/commit/59c02b5ce2188c77a26274112f6ffc501148e31d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "88c7e34892eade9188e64a03062d501e527d22cf",
+      "abbreviatedOid": "88c7e34",
+      "committedDate": "2025-06-29T13:13:32Z",
+      "messageHeadline": "remove commit.sh",
+      "url": "https://github.com/yoshiko-pg/difit/commit/88c7e34892eade9188e64a03062d501e527d22cf",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "8a81c009fe9a46ea946d7d5b73403839df6281dc",
+      "abbreviatedOid": "8a81c00",
+      "committedDate": "2025-06-29T12:44:26Z",
+      "messageHeadline": "feat: ファイルヘッダーの再設計とグローバルdiffモード切り替え",
+      "url": "https://github.com/yoshiko-pg/difit/commit/8a81c009fe9a46ea946d7d5b73403839df6281dc",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "1239c120abb621bef7ba7c28aa8ff040490f15f1",
+      "abbreviatedOid": "1239c12",
+      "committedDate": "2025-06-29T12:19:04Z",
+      "messageHeadline": "fix: サイドバイサイドモードでのコメント重複表示を修正",
+      "url": "https://github.com/yoshiko-pg/difit/commit/1239c120abb621bef7ba7c28aa8ff040490f15f1",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "a5e26fe8dbe061c4b7c00fa102db53312bea7903",
+      "abbreviatedOid": "a5e26fe",
+      "committedDate": "2025-06-29T12:16:22Z",
+      "messageHeadline": "feat: ファイルパスコピーボタンを追加",
+      "url": "https://github.com/yoshiko-pg/difit/commit/a5e26fe8dbe061c4b7c00fa102db53312bea7903",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "5d76d8e6204f2e9621b237e4ce46c3d7aaab0bfc",
+      "abbreviatedOid": "5d76d8e",
+      "committedDate": "2025-06-29T12:10:23Z",
+      "messageHeadline": "feat: レビュー済みチェックボックス機能を追加",
+      "url": "https://github.com/yoshiko-pg/difit/commit/5d76d8e6204f2e9621b237e4ce46c3d7aaab0bfc",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "33134b94226bca1fe50cab40159ededdd4f75533",
+      "abbreviatedOid": "33134b9",
+      "committedDate": "2025-06-29T12:08:06Z",
+      "messageHeadline": "feat: 全ファイル縦一列表示とスクロール機能を実装",
+      "url": "https://github.com/yoshiko-pg/difit/commit/33134b94226bca1fe50cab40159ededdd4f75533",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "6bbff0f5d14be243d23200f939a4712df4eeb630",
+      "abbreviatedOid": "6bbff0f",
+      "committedDate": "2025-06-29T12:06:07Z",
+      "messageHeadline": "fix: 横幅はみ出しテキストの折り返し対応",
+      "url": "https://github.com/yoshiko-pg/difit/commit/6bbff0f5d14be243d23200f939a4712df4eeb630",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "3779d0924b30fbf388f545e143d58988dd8b0651",
+      "abbreviatedOid": "3779d09",
+      "committedDate": "2025-06-29T12:02:37Z",
+      "messageHeadline": "feat: 自動コミットスクリプトを追加",
+      "url": "https://github.com/yoshiko-pg/difit/commit/3779d0924b30fbf388f545e143d58988dd8b0651",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "e0845e766c9de893b45aacc4c0e980db47fcbf9d",
+      "abbreviatedOid": "e0845e7",
+      "committedDate": "2025-06-29T12:01:32Z",
+      "messageHeadline": "chore: pre-commitによるコード整形",
+      "url": "https://github.com/yoshiko-pg/difit/commit/e0845e766c9de893b45aacc4c0e980db47fcbf9d",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "271018d9bc7092064d1f41741a70014b6d2bc614",
+      "abbreviatedOid": "271018d",
+      "committedDate": "2025-06-29T12:01:21Z",
+      "messageHeadline": "feat: prism-react-rendererによるシンタックスハイライト実装とnightOwlテーマ適用",
+      "url": "https://github.com/yoshiko-pg/difit/commit/271018d9bc7092064d1f41741a70014b6d2bc614",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "13afba9602050729e97055c384d6cf48599d3dd1",
+      "abbreviatedOid": "13afba9",
+      "committedDate": "2025-06-29T11:38:27Z",
+      "messageHeadline": "feat: シンタックスハイライト機能を追加とUI改善",
+      "url": "https://github.com/yoshiko-pg/difit/commit/13afba9602050729e97055c384d6cf48599d3dd1",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "4b0be58edda828b78b81a56d5bb9a4ad6d2f0013",
+      "abbreviatedOid": "4b0be58",
+      "committedDate": "2025-06-29T11:32:47Z",
+      "messageHeadline": "feat: side-by-side diff表示機能を追加",
+      "url": "https://github.com/yoshiko-pg/difit/commit/4b0be58edda828b78b81a56d5bb9a4ad6d2f0013",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "06a6c66b41bb28f12f482e8a63f033294078d4aa",
+      "abbreviatedOid": "06a6c66",
+      "committedDate": "2025-06-29T11:10:54Z",
+      "messageHeadline": "chore: add *.tsbuildinfo to .gitignore",
+      "url": "https://github.com/yoshiko-pg/difit/commit/06a6c66b41bb28f12f482e8a63f033294078d4aa",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    },
+    {
+      "oid": "b099338b74002b1654bb8ab0239d3ec360250c14",
+      "abbreviatedOid": "b099338",
+      "committedDate": "2025-06-29T11:10:04Z",
+      "messageHeadline": "feat: ReviewItプロジェクトの初期実装",
+      "url": "https://github.com/yoshiko-pg/difit/commit/b099338b74002b1654bb8ab0239d3ec360250c14",
+      "author": {
+        "name": "maasa",
+        "email": "maasa.giss2@gmail.com",
+        "user": {
+          "login": "yoshiko-pg"
+        }
+      },
+      "associatedPullRequests": {
+        "totalCount": 0
+      }
+    }
+  ]
+}
