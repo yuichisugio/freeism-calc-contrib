@@ -202,6 +202,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 - 対応タスク
   1. 「タスクの種類」に記載の全てのタスク
+     - コミット・プルリクエストについては、`git commit`した日を実行日とする
 
 #### 作業量
 
@@ -209,23 +210,28 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
   - 作業量で重みづけ
   - 作業量は、「コードの追加・削除の行数」、「コメントの追加・削除の行数」で評価する
-  - `x`が行数orコメントの文字数
-  - 
+  - `x`が行数 or コメントの文字数
+  -
   - 無駄に冗長な場合は、バッドマークの絵文字を付けてマイナスに重み付けされるので良さげな長さになるはず
 
 - 計算式
+
   - コード行数
-  $$f(a, b) = \begin{cases} 0.1x & (y \geq 1) \\ 1 & (y \lt 1)\end{cases}$$
+    $$f(a, b) = \begin{cases} 0.1x & (y \geq 1) \\ 1 & (y \lt 1)\end{cases}$$
   - コメントの文字数
-  $$f(a, b) = \begin{cases} 0.05x & (y \geq 1) \\ 1 & (y \lt 1)\end{cases}$$
+    $$f(a, b) = \begin{cases} 0.05x & (y \geq 1) \\ 1 & (y \lt 1)\end{cases}$$
 
 - 対応タスク
   - プルリク
-    - プルリクの作成時のコード行数
-    - プルリクのレビュー時のコード行数
-    - プルリクのレビュー時のコメント数
-    - プルリクの作成者による作成時のコメントの文字数
-    - プルリクの作成者以外によるコメントの文字数
+    - 作成者
+      - プルリクの作成者のコード行数(commitごとにカウントする`addictions`,`deletions`)
+      - プルリクの作成者による作成時のコメントの文字数
+    - レビュー時
+      - プルリクのレビュー時のコード行数
+      - プルリクのレビュー時のコメント数
+    - コメント
+      - プルリクの作成者以外によるコメントの文字数
+      - プルリクの作成者以外によるコード行数
   - Issue
     - Issue のコメントの文字数
   - Discussions
@@ -282,12 +288,11 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   1.  Pull Request
       - Pull Request 作成から、`Rejected`or`Approved`or`Merged`までの日数
       - Pull Request 作成から、コメントまでの日数
-      - Pull Request 作成から、ステータス変更までの日数
       - Pull Request 作成から、リアクションするまでの日数
       - Pull Request 作成から、ラベル付けするまでの日数
       - Pull Request 作成から、レビュワー担当者アサインまでの日数
       - Pull Request 作成から、プルリクエスト担当者のアサインまでの日数
-  1.  Discussions
+  2.  Discussions
       - Discussions 作成から、コメントまでの日数
       - Discussions 作成から、リアクションするまでの日数
       - Discussions 作成から、ラベル付けするまでの日数
@@ -298,7 +303,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 #### タスクの種類
 
 - 説明
-  - GitHub API から取得できるタスクの重み付け
+  - GitHub API **から取得できるタスクの重み付け**
 
 ##### プルリクエスト
 
@@ -307,7 +312,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - `3`
 2. プルリクエストの作成（`Draft`,`Rejected`,`Open`,`Pending`,`Changes requested`）
    - `0`
-   - 不要なAIコードばかりを送り付けるハックを防ぐため
+   - 不要な AI コードばかりを送り付けるハックを防ぐため
 3. プルリクエストにコメント投稿
    - `1`
 4. プルリクエストをマージ

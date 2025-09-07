@@ -6,20 +6,23 @@ usage() {
   cat <<'USAGE'
     Description:
       Get all commits in a repo (optionally filtered by date) and their associated PRs
-      Output: JSON array (each element = 1 commit + its PR array)
-      Example:
-        commit.sh -r yoshiko-pg/difit -b main --since 2024-01-01 --until 2024-01-01 --page-size 100 --prs-per-commit 20
+      
+    Output:
+      JSONL (each line = 1 commit + its PR array)
+      JSON array (each element = 1 commit + its PR array)
+
+    Example:
+      commit.sh -r yoshiko-pg/difit -s 2024-01-01 -u 2024-01-01 -p 100 -pe 20
 
     Usage: 
       commit.sh -r OWNER/REPO [options]
 
     Options:
       -r, --repo OWNER/REPO         Target repository (required)
-      -b, --branch BRANCH           Target branch (default: check main and master in order, then use the first one that exists)
-          --since YYYY-MM-DD[..]    Start date (GitTimestamp; 2024-01-01 or 2024-01-01T00:00:00Z)
-          --until YYYY-MM-DD[..]    End date (GitTimestamp; 2024-01-01 or 2024-01-01T00:00:00Z)
-          --page-size N             Number of commits to fetch per request (default: 100 / max 100)
-          --prs-per-commit N        Maximum number of PRs to follow from each commit (default: 20)
+      -s, --since YYYY-MM-DD[..]    Start date (GitTimestamp; 2024-01-01 or 2024-01-01T00:00:00Z)
+      -u, --until YYYY-MM-DD[..]    End date (GitTimestamp; 2024-01-01 or 2024-01-01T00:00:00Z)
+      -p, --page-size N             Number of commits to fetch per request (default: 100 / max 100)
+      -pe, --prs-per-commit N        Maximum number of PRs to follow from each commit (default: 20)
       -h, --help
 
     Dependencies: 
@@ -28,11 +31,10 @@ USAGE
 }
 
 REPO=""
-BRANCH=""
 SINCE=""
 UNTIL=""
 PAGE_SIZE=100
-PRS_PER_COMMIT=20
+PRS_PER_COMMIT=100
 RAW_DATA_PATH="./src/designated-oss-growth/github-developer-contrib/archive/raw-commit.json"
 
 get_ratelimit() {
@@ -51,23 +53,19 @@ while [[ $# -gt 0 ]]; do
     REPO="$2"
     shift 2
     ;;
-  -b | --branch)
-    BRANCH="$2"
-    shift 2
-    ;;
-  --since)
+  -s | --since)
     SINCE="$2"
     shift 2
     ;;
-  --until)
+  -u | --until)
     UNTIL="$2"
     shift 2
     ;;
-  --page-size)
+  -p | --page-size)
     PAGE_SIZE="$2"
     shift 2
     ;;
-  --prs-per-commit)
+  -pe | --prs-per-commit)
     PRS_PER_COMMIT="$2"
     shift 2
     ;;
@@ -90,13 +88,16 @@ for tool in gh jq; do
   fi
 done
 
-[[ -n "$REPO" ]] || { printf '%s\n' "-r/--repo is required" >&2; exit 1; }
+[[ -n "$REPO" ]] || {
+  printf '%s\n' "-r/--repo is required" >&2
+  exit 1
+}
 
 OWNER="${REPO%%/*}"
 NAME="${REPO#*/}"
 
 # --- ブランチ存在チェック関数 ---
-branch_exists() {
+function branch_exists() {
   local b="$1" ok query
   # shellcheck disable=SC2016
   query='
@@ -104,29 +105,25 @@ branch_exists() {
       repository(owner:$owner, name:$name){ ref(qualifiedName:$qualified){ name } }
     }
   '
+
+  # ブランチが存在するかどうかをチェック
   ok="$(gh api graphql \
     -F owner="$OWNER" -F name="$NAME" -F qualified="refs/heads/$b" \
     -f query="$query" --jq '.data.repository.ref != null' 2>/dev/null || echo false)"
+
+  # 返す値をtrue/falseにする
   [[ "$ok" == "true" ]]
 }
 
-# --- 走査対象ブランチの決定 ---
-CANDIDATES=()
-if [[ -n "$BRANCH" ]]; then
-  CANDIDATES+=("$BRANCH")
-else
-  CANDIDATES+=(main master) # デフォルトブランチ探索せず、両方をチェック
-fi
-
 FOUND=()
-for b in "${CANDIDATES[@]}"; do
+for b in main master; do
   if branch_exists "$b"; then
     FOUND+=("$b")
   fi
 done
 
 if [[ ${#FOUND[@]} -eq 0 ]]; then
-  echo "Specified branch does not exist (when -b is not specified, main/master are checked)." >&2
+  printf '%s\n' "master/main branch does not exist" >&2
   exit 1
 fi
 
@@ -134,11 +131,14 @@ fi
 # shellcheck disable=SC2016
 GQL='
 query(
-  $owner: String!, $name: String!,
+  $owner: String!,
+  $name: String!,
   $qualified: String!,
-  $since: GitTimestamp, $until: GitTimestamp,
-  $pageSize: Int!, $endCursor: String,
-  $prsPerCommit: Int!
+  $pageSize: Int!,
+  $prsPerCommit: Int!,
+  $since: GitTimestamp,
+  $until: GitTimestamp,
+  $endCursor: String
 ){
   repository(owner:$owner, name:$name){
     ref(qualifiedName:$qualified){
@@ -148,12 +148,16 @@ query(
           history(first:$pageSize, after:$endCursor, since:$since, until:$until) {
             pageInfo { hasNextPage endCursor }
             nodes {
-              oid
-              abbreviatedOid
-              messageHeadline
-              message
+              id
               committedDate
+              messageHeadline
+              messageBody
+              message
+              additions
+              deletions
+              authoredByCommitter
               author { name email user { login id } }
+              authors(first:100) { nodes { name email user { login id } } }
               associatedPullRequests(first:$prsPerCommit) {
                 nodes {
                   number
