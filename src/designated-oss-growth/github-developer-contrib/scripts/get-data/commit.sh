@@ -1,25 +1,50 @@
 #!/usr/bin/env bash
-# 直pushコミットだけを取得し、最後に単一JSONへ集約
+
 set -euo pipefail
 
-cd "$(cd "$(dirname -- "$0")" && pwd -P)"
-
 usage() {
-  cat <<USAGE
-Usage: $0 -r OWNER/REPO [options]
-  -r, --repo OWNER/REPO
-  -b, --branch BRANCH
-      --since YYYY-MM-DD
-      --days N
-      --page-size N      (default 100, max 100)
+  cat <<'USAGE'
+    Description:
+      Get all commits in a repo (optionally filtered by date) and their associated PRs
+      Output: JSON array (each element = 1 commit + its PR array)
+      Example:
+        commit.sh -r yoshiko-pg/difit -b main --since 2024-01-01 --until 2024-01-01 --page-size 100 --prs-per-commit 20
+
+    Usage: 
+      commit.sh -r OWNER/REPO [options]
+
+    Options:
+      -r, --repo OWNER/REPO         Target repository (required)
+      -b, --branch BRANCH           Target branch (default: check main and master in order, then use the first one that exists)
+          --since YYYY-MM-DD[..]    Start date (GitTimestamp; 2024-01-01 or 2024-01-01T00:00:00Z)
+          --until YYYY-MM-DD[..]    End date (GitTimestamp; 2024-01-01 or 2024-01-01T00:00:00Z)
+          --page-size N             Number of commits to fetch per request (default: 100 / max 100)
+          --prs-per-commit N        Maximum number of PRs to follow from each commit (default: 20)
+      -h, --help
+
+    Dependencies: 
+      gh, jq
 USAGE
 }
 
 REPO=""
 BRANCH=""
 SINCE=""
-DAYS=""
+UNTIL=""
 PAGE_SIZE=100
+PRS_PER_COMMIT=20
+RAW_DATA_PATH="./src/designated-oss-growth/github-developer-contrib/archive/raw-commit.json"
+
+get_ratelimit() {
+  printf '%s\n' "$(gh api graphql -f query='
+  query(){
+    rateLimit { remaining }
+  }' --jq '.data.rateLimit.remaining')"
+}
+
+printf 'before-remaining:%s\n' "$(get_ratelimit)"
+
+# --- 引数パース ---
 while [[ $# -gt 0 ]]; do
   case "$1" in
   -r | --repo)
@@ -34,12 +59,16 @@ while [[ $# -gt 0 ]]; do
     SINCE="$2"
     shift 2
     ;;
-  --days)
-    DAYS="$2"
+  --until)
+    UNTIL="$2"
     shift 2
     ;;
   --page-size)
     PAGE_SIZE="$2"
+    shift 2
+    ;;
+  --prs-per-commit)
+    PRS_PER_COMMIT="$2"
     shift 2
     ;;
   -h | --help)
@@ -47,76 +76,101 @@ while [[ $# -gt 0 ]]; do
     exit 0
     ;;
   *)
-    echo "Unknown option: $1" >&2
+    printf '%s\n' "Unknown option: $1" >&2
     usage
     exit 1
     ;;
   esac
 done
-[[ -z "${REPO}" ]] && {
-  echo "Error: --repo は必須です" >&2
-  usage
-  exit 1
-}
 
-command -v gh >/dev/null || {
-  echo "gh が必要です（gh auth login）" >&2
-  exit 1
-}
-command -v jq >/dev/null || {
-  echo "jq が必要です" >&2
-  exit 1
-}
+for tool in gh jq; do
+  if ! command -v "$tool" >/dev/null; then
+    printf '%s\n' "$tool not found" >&2
+    exit 1
+  fi
+done
 
-OWNER="${REPO%/*}"
+[[ -n "$REPO" ]] || { printf '%s\n' "-r/--repo is required" >&2; exit 1; }
+
+OWNER="${REPO%%/*}"
 NAME="${REPO#*/}"
 
-# since 計算
-if [[ -z "${SINCE}" && -n "${DAYS}" ]]; then
-  if date -v -"${DAYS}"d >/dev/null 2>&1; then
-    SINCE="$(date -u -v -"${DAYS}"d +"%Y-%m-%dT%H:%M:%SZ")" # macOS/BSD
-  else
-    SINCE="$(date -u -d "-${DAYS} days" +"%Y-%m-%dT%H:%M:%SZ")" # GNU
+# --- ブランチ存在チェック関数 ---
+branch_exists() {
+  local b="$1" ok query
+  # shellcheck disable=SC2016
+  query='
+    query($owner:String!,$name:String!,$qualified:String!){
+      repository(owner:$owner, name:$name){ ref(qualifiedName:$qualified){ name } }
+    }
+  '
+  ok="$(gh api graphql \
+    -F owner="$OWNER" -F name="$NAME" -F qualified="refs/heads/$b" \
+    -f query="$query" --jq '.data.repository.ref != null' 2>/dev/null || echo false)"
+  [[ "$ok" == "true" ]]
+}
+
+# --- 走査対象ブランチの決定 ---
+CANDIDATES=()
+if [[ -n "$BRANCH" ]]; then
+  CANDIDATES+=("$BRANCH")
+else
+  CANDIDATES+=(main master) # デフォルトブランチ探索せず、両方をチェック
+fi
+
+FOUND=()
+for b in "${CANDIDATES[@]}"; do
+  if branch_exists "$b"; then
+    FOUND+=("$b")
   fi
-fi
-if [[ -n "${SINCE}" && "${SINCE}" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
-  SINCE="${SINCE}T00:00:00Z"
+done
+
+if [[ ${#FOUND[@]} -eq 0 ]]; then
+  echo "Specified branch does not exist (when -b is not specified, main/master are checked)." >&2
+  exit 1
 fi
 
-# ブランチ自動検出（main→master）
-if [[ -z "${BRANCH}" ]]; then
-  BRJSON="$(gh api graphql -f owner="$OWNER" -f name="$NAME" -f query='
-    query($owner:String!,$name:String!){
-      repository(owner:$owner,name:$name){
-        refMain: ref(qualifiedName:"refs/heads/main"){ name }
-        refMaster: ref(qualifiedName:"refs/heads/master"){ name }
-      }
-    }')"
-  BRANCH="$(jq -r '.data.repository.refMain.name // .data.repository.refMaster.name // empty' <<<"$BRJSON")"
-  [[ -z "${BRANCH}" ]] && {
-    echo "Error: main/master が見つかりません。--branch を指定してください。" >&2
-    exit 1
-  }
-fi
-QUALIFIED="refs/heads/${BRANCH}"
-
-# GraphQL（Commit.history の since/after/firstを利用）
-# Commit.associatedPullRequests: デフォルトブランチ上なら導入した merged PR を返す。無ければ0件＝直push。:contentReference[oaicite:1]{index=1}
-GQL=$(
-  cat <<'EOF'
-query($owner:String!, $name:String!, $qualifiedRef:String!, $pageSize:Int!, $since:GitTimestamp, $after:String){
-  rateLimit { cost remaining resetAt }
-  repository(owner:$owner, name:$name) {
-    ref(qualifiedName: $qualifiedRef) {
+# --- GraphQL クエリ本体（共通） ---
+# shellcheck disable=SC2016
+GQL='
+query(
+  $owner: String!, $name: String!,
+  $qualified: String!,
+  $since: GitTimestamp, $until: GitTimestamp,
+  $pageSize: Int!, $endCursor: String,
+  $prsPerCommit: Int!
+){
+  repository(owner:$owner, name:$name){
+    ref(qualifiedName:$qualified){
       name
       target {
         ... on Commit {
-          history(first: $pageSize, after: $after, since: $since) {
+          history(first:$pageSize, after:$endCursor, since:$since, until:$until) {
             pageInfo { hasNextPage endCursor }
             nodes {
-              oid abbreviatedOid committedDate messageHeadline url
-              author { name email user { login } }
-              associatedPullRequests(first: 1) { totalCount }
+              oid
+              abbreviatedOid
+              messageHeadline
+              message
+              committedDate
+              author { name email user { login id } }
+              associatedPullRequests(first:$prsPerCommit) {
+                nodes {
+                  number
+                  title
+                  body
+                  url
+                  state
+                  merged
+                  mergedAt
+                  baseRefName
+                  headRefName
+                  reactionGroups {
+                    content
+                    reactors { totalCount }
+                  }
+                }
+              }
             }
           }
         }
@@ -124,66 +178,29 @@ query($owner:String!, $name:String!, $qualifiedRef:String!, $pageSize:Int!, $sin
     }
   }
 }
-EOF
-)
+'
 
-# 一時ファイル（直pushだけをJSONLで貯める）
-TMP_JSONL="$(mktemp)"
-trap 'rm -f "$TMP_JSONL"' EXIT
+# --- 各ブランチを取得・整形して一時保存 ---
+TMPDIR="$(mktemp -d)"
+# raw を確認したい場合に最後に纏めて書き出す
+RAW_ALL=()
 
-AFTER=""
-LAST_RL="null"
+for b in "${FOUND[@]}"; do
+  QUAL="refs/heads/$b"
+  RAW="$TMPDIR/raw-$b.json"
 
-while :; do
-  RESP="$(
-    gh api graphql \
-      -f query="$GQL" \
-      -F owner="$OWNER" \
-      -F name="$NAME" \
-      -F qualifiedRef="$QUALIFIED" \
-      -F pageSize="$PAGE_SIZE" \
-      ${SINCE:+-F since="$SINCE"} \
-      ${AFTER:+-F after="$AFTER"}
-  )"
+  gh api graphql \
+    --paginate --slurp \
+    -F owner="$OWNER" -F name="$NAME" -F qualified="$QUAL" \
+    -F pageSize="$PAGE_SIZE" -F prsPerCommit="$PRS_PER_COMMIT" \
+    -F since="${SINCE:-null}" -F until="${UNTIL:-null}" \
+    -f query="$GQL" | jq '.' >"$RAW"
 
-  # ブランチ存在チェック
-  if [[ "$(jq -r '.data.repository.ref == null' <<<"$RESP")" == "true" ]]; then
-    echo "Error: ブランチ ${BRANCH} が見つかりません（${OWNER}/${NAME})." >&2
-    exit 1
-  fi
-
-  # ★ 直pushのみをJSONLで追記（ここでフィルタするので「全部表示」にならない）
-  jq -c '.data.repository.ref.target.history.nodes[]
-         | select(.associatedPullRequests.totalCount == 0)' \
-    <<<"$RESP" >>"$TMP_JSONL"
-
-  # rate limit（最後のページの値を使う）
-  LAST_RL="$(jq '.data.rateLimit' <<<"$RESP")"
-
-  # ページング
-  if [[ "$(jq -r '.data.repository.ref.target.history.pageInfo.hasNextPage' <<<"$RESP")" == "true" ]]; then
-    AFTER="$(jq -r '.data.repository.ref.target.history.pageInfo.endCursor' <<<"$RESP")"
-  else
-    break
-  fi
+  RAW_ALL+=("$RAW")
 done
 
-# 単一JSONへ集約（JSONL -> 配列）
-# jq -s は入力中の各JSON行を配列にまとめる。argvは1ファイルだけなので「Argument list too long」を回避。
-jq -s \
-  --arg repo "$OWNER/$NAME" \
-  --arg branch "$BRANCH" \
-  --arg qualified "$QUALIFIED" \
-  --arg since "${SINCE:-}" \
-  --arg collected "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
-  --argjson rateLimit "$LAST_RL" \
-  '{
-    repository: $repo,
-    branch: $branch,
-    qualifiedRef: $qualified,
-    since: (if $since=="" then null else $since end),
-    collectedAt: $collected,
-    rateLimit: $rateLimit,
-    count: length,
-    nodes: .
-  }' "$TMP_JSONL"
+# raw の結合を残しておく
+jq -s '[ .[] ]' "${RAW_ALL[@]}" >"$RAW_DATA_PATH"
+
+printf 'success\n'
+printf 'after-remaining:%s\n' "$(get_ratelimit)"
