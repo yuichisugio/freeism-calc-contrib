@@ -209,24 +209,30 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
   - 作業量で重みづけ
   - 作業量は、「コードの追加・削除の行数」、「コメントの追加・削除の行数」で評価する
-  - `x`が行数
+  - `x`が行数orコメントの文字数
+  - 
   - 無駄に冗長な場合は、バッドマークの絵文字を付けてマイナスに重み付けされるので良さげな長さになるはず
 
 - 計算式
+  - コード行数
   $$f(a, b) = \begin{cases} 0.1x & (y \geq 1) \\ 1 & (y \lt 1)\end{cases}$$
+  - コメントの文字数
+  $$f(a, b) = \begin{cases} 0.05x & (y \geq 1) \\ 1 & (y \lt 1)\end{cases}$$
 
 - 対応タスク
   - プルリク
     - プルリクの作成時のコード行数
-    - プルリクの作成者による作成時のコメント行数
-    - プルリクの作成者以外によるコメント行数
+    - プルリクのレビュー時のコード行数
+    - プルリクのレビュー時のコメント数
+    - プルリクの作成者による作成時のコメントの文字数
+    - プルリクの作成者以外によるコメントの文字数
   - Issue
-    - Issue のコメント行数
+    - Issue のコメントの文字数
   - Discussions
-    - Discussions のコメント行数
+    - Discussions のコメントの文字数
   - コミット
     - コミットのコード行数
-    - コミットの`git commit`のコメント行数
+    - コミットの`git commit`のコメントの文字数
 
 #### 参加者からの評価
 
@@ -297,25 +303,24 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 ##### プルリクエスト
 
 1. プルリクエストの作成（Merged、Approved）
-   - `approved`は承認済みだけどマージはまだ
-   - `5`
-1. プルリクエストの作成（`Draft`）
-   - `0.5`
-1. プルリクエストの作成（`Rejected`,`Open`,`Pending`,`Changes requested`）
+   - `approved`は承認済みだけどマージはされていない状態
    - `3`
-1. プルリクエストにコメント投稿
+2. プルリクエストの作成（`Draft`,`Rejected`,`Open`,`Pending`,`Changes requested`）
+   - `0`
+   - 不要なAIコードばかりを送り付けるハックを防ぐため
+3. プルリクエストにコメント投稿
    - `1`
-1. プルリクエストをマージ
+4. プルリクエストをマージ
    - `2`
-1. プルリクエストをレビューして、Approved or Rejected
+5. プルリクエストをレビューして、Approved or Rejected
    - `3`
-1. プルリクエストにラベル付け
+6. プルリクエストにラベル付け
    - `1`
-1. プルリクエストの作成担当者のアサイン
+7. プルリクエストの作成担当者のアサイン
    - `1`
-1. プルリクエストのレビュー担当者のアサイン
+8. プルリクエストのレビュー担当者のアサイン
    - `1`
-1. プルリクエストにリアクションをつける
+9. プルリクエストにリアクションをつける
    - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
    - `1`
 
@@ -408,13 +413,13 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   - コメント作成者のユーザー名
   - コメント作成者のユーザー ID
   - コメント作成日
-  - コメント行数
+  - コメントの文字数
 - プルリクの作成
   - プルリク作成者のユーザー名
   - プルリク作成者のユーザー ID
   - プルリク作成日
   - コードの追加・削除の行数
-  - コメント行数
+  - コメントの文字数
 - プルリクのステータス変更
   - ステータス変更者のユーザー名
   - ステータス変更者のユーザー ID
@@ -440,7 +445,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   - コミット者のユーザー名
   - コミット者のユーザー ID
   - コード行数
-  - コメント行数
+  - コメントの文字数
 
 #### Issue
 
@@ -456,12 +461,12 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   - Issue 作成者のユーザー名
   - Issue 作成者のユーザー ID
   - Issue 作成日
-  - コメント行数
+  - コメントの文字数
 - Issue 提案へのコメント
   - コメント作成者のユーザー名
   - コメント作成者のユーザー ID
   - コメント作成日
-  - コメント行数
+  - コメントの文字数
 - Issue のステータス変更
   - ステータス変更者のユーザー名
   - ステータス変更者のユーザー ID
@@ -495,12 +500,12 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   - 作成者のユーザー名
   - 作成者のユーザー ID
   - 作成日
-  - コメント行数
+  - コメントの文字数
 - 議題提案へのコメント
   - 作成者のユーザー名
   - 作成者のユーザー ID
   - 作成日
-  - コメント行数
+  - コメントの文字数
 - 議題提案へのリアクション
   - 作成者のユーザー名
   - 作成者のユーザー ID
