@@ -27,21 +27,25 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
                   user{login bio}
                 }
               }
-              blame{ranges{age commit endingLine startingLine}}
               changedFiles
               changedFilesIfAvailable
               checkSuites(first: 5) {
                 totalCount
                 nodes {
-                  app
-                  branch
+                  app{
+                    description
+                    name
+                  }
+                  branch{
+                    name
+                  }
                   conclusion
                 }
               }
               comments(first: 5) {
                 totalCount
                 nodes {
-                  author
+                  author { login avatarUrl resourcePath url }
                   body
                   bodyHTML
                   bodyText
@@ -188,7 +192,27 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
                       }
                     }
                   }
-                  reviews(first:5){nodes{author{login ... on User{id}} state submittedAt}}
+                  reviews(first:5){
+                    totalCount
+                    nodes{
+                      body
+                      comments(first:10){
+                        totalCount
+                        nodes{
+                          author { login avatarUrl resourcePath url }
+                          body
+                          createdAt
+                        }
+                      }
+                      author{
+                        login ... on User{
+                          id
+                        }
+                      } 
+                      state 
+                      submittedAt
+                    }
+                  }
                   state
                   title
                   titleHTML

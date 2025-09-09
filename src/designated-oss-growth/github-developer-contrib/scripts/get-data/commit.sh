@@ -160,8 +160,6 @@ query(
               authors(first:2) { nodes { name email user { login id } } }
               associatedPullRequests(first:$prsPerCommit) {
                 nodes {
-                  activeLockReason
-                  additions
                   assignedActors(first: 2) { totalCount nodes { ... on User { login id } } }
                   assignees(first: 2) { nodes { login ... on User { id } } }
                   author { login avatarUrl resourcePath url }
