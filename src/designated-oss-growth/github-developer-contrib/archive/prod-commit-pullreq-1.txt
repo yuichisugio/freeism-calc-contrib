@@ -260,4 +260,4 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
       }
     }
   }
-}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/terminal_4.json
+}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/prod-commit-pullreq-1.json
