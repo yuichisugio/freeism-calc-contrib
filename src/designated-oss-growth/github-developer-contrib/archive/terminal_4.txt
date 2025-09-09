@@ -1,6 +1,6 @@
 gh api graphql \
-  -f owner="yoshiko-pg" \
-  -f name="difit" \
+  -f owner="yuichisugio" \
+  -f name="myFirstTest" \
   -f qualified="refs/heads/main" \
   -F prsPerCommit="1" \
   -f query='
@@ -10,12 +10,101 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
       name
       target {
         ... on Commit {
-          history(first: 50) {
+          history(first: 100) {
             nodes {
-              oid
-              committedDate
-              messageHeadline
+              abbreviatedOid
+              additions
               author { name email user { login id } }
+              authoredByCommitter
+              authoredDate
+              authors(first: 2) {
+                totalCount
+                nodes{
+                  avatarUrl
+                  date
+                  email
+                  name
+                  user{login bio}
+                }
+              }
+              blame{ranges{age commit endingLine startingLine}}
+              changedFiles
+              changedFilesIfAvailable
+              checkSuites(first: 5) {
+                totalCount
+                nodes {
+                  app
+                  branch
+                  conclusion
+                }
+              }
+              comments(first: 5) {
+                totalCount
+                nodes {
+                  author
+                  body
+                  bodyHTML
+                  bodyText
+                  createdAt
+                  publishedAt
+                  reactionGroups {
+                    content
+                    reactors {
+                      totalCount
+                    }
+                  }
+                }
+              }
+              commitResourcePath
+              commitUrl
+              committedDate
+              committedViaWeb
+              committer { name email user { login id } }
+              deletions
+              deployments(first: 5) {
+                totalCount
+                nodes {
+                  createdAt
+                  description
+                }
+              }
+              id
+              message
+              messageBody
+              messageBodyHTML
+              messageHeadline
+              messageHeadlineHTML
+              oid
+              onBehalfOf{
+                createdAt
+                description
+                email
+              }
+              parents(first: 1){
+                totalCount
+                nodes{
+                  message
+                  oid
+                }
+              }
+              pushedDate
+              repository{
+                nameWithOwner
+              }
+              resourcePath
+              signature{
+                verifiedAt
+              }
+              status{
+                id
+                state
+              }
+              statusCheckRollup{
+                state
+              }
+              url
+              viewerCanSubscribe
+              viewerSubscription
               associatedPullRequests(first: $prsPerCommit) {
                 totalCount
                 nodes {
@@ -88,9 +177,9 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
                   revertUrl
                   reviewDecision
                   reviewRequests(first:2){ nodes { requestedReviewer { __typename ... on User { login id } ... on Team { name id } } } }
-                  reviewThreads(first:2){
+                  reviewThreads(first:5){
                     nodes {
-                      comments(first:2){ nodes {
+                      comments(first:5){ nodes {
                         author { login ... on User { id } }
                         createdAt
                         bodyText
@@ -147,4 +236,4 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
       }
     }
   }
-}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/terminal_3.json
+}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/terminal_4.json
