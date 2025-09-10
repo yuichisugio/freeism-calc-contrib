@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#--------------------------------------
+# sponsor関連のデータ取得を行うファイル
+#--------------------------------------
+
 set -euo pipefail
 
 readonly RAW_SPONSOR_RECIPIENTS_PATH="./src/designated-oss-growth/github-developer-contrib/archive/sponsor/raw-sponsor-recipients.json"
