@@ -45,9 +45,13 @@
 ### リポジトリ全体で初回のみ
 
 1. <a href="https://cli.github.com/" target="_blank" rel="noopener noreferrer">GitHub CLI(`gh`)</a>のインストール
-1. <a href="https://cli.github.com/manual/gh_auth_login" target="_blank" rel="noopener noreferrer">`gh auth login`</a>でログイン
-1. <a href="https://stedolan.github.io/jq/download/" target="_blank" rel="noopener noreferrer">`jq`</a>をインストール
-1. シェルで、以下を実行
+2. <a href="https://cli.github.com/manual/gh_auth_login" target="_blank" rel="noopener noreferrer">`gh auth login`</a>でログイン
+3. <a href="https://stedolan.github.io/jq/download/" target="_blank" rel="noopener noreferrer">`jq`</a>をインストール
+4. `gh`に、権限を付与
+   ```shell
+   gh auth refresh --scopes read:user
+   ```
+5. シェルで、以下を実行
    ```shell
    git clone https://github.com/yuichisugio/freeism-calc-contrib.git
    ```
@@ -224,7 +228,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 - 対応タスク
   - プルリク
     - 作成者
-      - プルリクの作成者のコード行数(commitごとにカウントする`addictions`,`deletions`)
+      - プルリクの作成者のコード行数(commit ごとにカウントする`addictions`,`deletions`)
       - プルリクの作成者による作成時のコメントの文字数
     - レビュー時
       - プルリクのレビュー時のコード行数
@@ -292,7 +296,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
       - Pull Request 作成から、ラベル付けするまでの日数
       - Pull Request 作成から、レビュワー担当者アサインまでの日数
       - Pull Request 作成から、プルリクエスト担当者のアサインまでの日数
-  2.  Discussions
+  1.  Discussions
       - Discussions 作成から、コメントまでの日数
       - Discussions 作成から、リアクションするまでの日数
       - Discussions 作成から、ラベル付けするまでの日数
@@ -381,8 +385,13 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - `1`
 1. Fork する
    - `1`
+   - fork回数が何度あっても重複カウントしない
 1. Watch する
    - `1`
+1. スポンサーをする
+   - 一旦は、GitHub Sponsors のみ対象
+   - `owner`,`funding.yaml`記載のユーザー・組織に対して、リポジトリ関係なくスポンサーしている人たちが対象。このリポジトリに限らずとも支援していたら評価する
+   - `50`
 
 ### 必要なカラム
 
