@@ -1,12 +1,10 @@
 gh api graphql \
   -f owner="yuichisugio" \
   -f name="myFirstTest" \
-  -f qualified="refs/heads/main" \
-  -F prsPerCommit="1" \
   -f query='
-query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!) {
+query($owner: String!, $name: String!) {
   repository(owner:$owner, name:$name) {
-    ref(qualifiedName:$qualified) {
+    ref(qualifiedName:"refs/heads/main") {
       name
       target {
         ... on Commit {
@@ -14,7 +12,7 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
             nodes {
               abbreviatedOid
               additions
-              author { name email user { login id } }
+              author { name user { login id } }
               authoredByCommitter
               authoredDate
               authors(first: 2) {
@@ -109,7 +107,7 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
               url
               viewerCanSubscribe
               viewerSubscription
-              associatedPullRequests(first: $prsPerCommit) {
+              associatedPullRequests(first: 3) {
                 totalCount
                 nodes {
                   activeLockReason
@@ -260,4 +258,4 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
       }
     }
   }
-}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/prod-pullreq-review-1.json
+}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/pull-request-review-1.json

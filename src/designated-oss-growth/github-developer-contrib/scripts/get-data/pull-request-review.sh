@@ -1,10 +1,44 @@
 #!/usr/bin/env bash
 
 #--------------------------------------
-# Pull Request Reviewerの情報を取得する
+# Pull Request Review関連のデータ取得を行うファイル
 #--------------------------------------
 
 set -euo pipefail
+
+# ページ単位の生レスポンスを置く一時JSON
+readonly RAW_PULL_REQUEST_REVIEW_PER_PAGE_JSONL="./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/raw-pull-request-review.jsonl"
+# 最終成果物（配列JSON）
+readonly RESULTS_PULL_REQUEST_REVIEW_JSON_PATH="./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/results-pull-request-review.json"
+
+mkdir -p "$(dirname "$RAW_PULL_REQUEST_REVIEW_PER_PAGE_JSONL")"
+
+function usage() {
+  cat <<'USAGE'
+    Description:
+      Get all pull request reviews in a repo (optionally filtered by date)
+
+    Output:
+      JSONL (each line = 100 pull request reviews)
+      JSON array (each element = 1 pull request review)
+
+    Example:
+      pull-request-review.sh -o yoshiko-pg -r difit -s 2024-01-01 -u 2024-01-01
+
+    Usage:
+      pull-request-review.sh -o OWNER -r REPO [options]
+
+    Options:
+      -o, --owner OWNER         Target owner (required)
+      -r, --repo REPO         Target repository (required)
+      -s, --since YYYY-MM-DD[..]    Start date (GitTimestamp; 2024-01-01 or 2024-01-01T00:00:00Z)
+      -u, --until YYYY-MM-DD[..]    End date (GitTimestamp; 2024-01-01 or 2024-01-01T00:00:00Z)
+      -h, --help
+
+    Dependencies:
+      gh, jq
+USAGE
+}
 
 function get_pull_request_review() {
   local OWNER="$1" REPO="$2" QUERY
@@ -108,3 +142,15 @@ function get_pull_request_review() {
 
   return 0
 }
+
+get_ratelimit() {
+  printf '%s\n' "$(gh api graphql -f query='
+  query(){
+    rateLimit { remaining }
+  }' --jq '.data.rateLimit.remaining')"
+}
+
+printf 'before-pull-request-review-remaining:%s\n' "$(get_ratelimit)"
+get_pull_request_review "$@"
+printf 'success\n'
+printf 'after-pull-request-review-remaining:%s\n' "$(get_ratelimit)"

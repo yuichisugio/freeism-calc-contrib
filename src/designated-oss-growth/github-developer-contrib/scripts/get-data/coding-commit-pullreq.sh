@@ -19,14 +19,14 @@ function usage() {
       Get all commits in a repo (optionally filtered by date) and their associated PRs
 
     Output:
-      JSONL (each line = 1 commit + its PR array)
-      JSON array (each element = 1 commit + its PR array)
+      JSONL (each line = 100 commits + its PR array)
+      JSON array (each element = 100 commits + its PR array)
 
     Example:
-      commit.sh -o yoshiko-pg -r difit -s 2024-01-01 -u 2024-01-01
+      coding-commit-pullreq.sh -o yoshiko-pg -r difit -s 2024-01-01 -u 2024-01-01
 
     Usage:
-      commit.sh -o OWNER -r REPO [options]
+      coding-commit-pullreq.sh -o OWNER -r REPO [options]
 
     Options:
       -o, --owner OWNER         Target owner (required)
