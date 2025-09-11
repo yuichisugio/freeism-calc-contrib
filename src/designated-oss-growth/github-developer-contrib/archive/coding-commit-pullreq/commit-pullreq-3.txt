@@ -1,169 +1,119 @@
-#!/usr/bin/env bash
-
-#--------------------------------------
-# commit関連のデータ取得を行うファイル
-#--------------------------------------
-
-set -euo pipefail
-
-usage() {
-  cat <<'USAGE'
-    Description:
-      Get all commits in a repo (optionally filtered by date) and their associated PRs
-
-    Output:
-      JSONL (each line = 1 commit + its PR array)
-      JSON array (each element = 1 commit + its PR array)
-
-    Example:
-      commit.sh -r yoshiko-pg/difit -s 2024-01-01 -u 2024-01-01 -p 100 -pe 20
-
-    Usage:
-      commit.sh -r OWNER/REPO [options]
-
-    Options:
-      -r, --repo OWNER/REPO         Target repository (required)
-      -s, --since YYYY-MM-DD[..]    Start date (GitTimestamp; 2024-01-01 or 2024-01-01T00:00:00Z)
-      -u, --until YYYY-MM-DD[..]    End date (GitTimestamp; 2024-01-01 or 2024-01-01T00:00:00Z)
-      -p, --page-size N             Number of commits to fetch per request (default: 100 / max 100)
-      -pe, --prs-per-commit N        Maximum number of PRs to follow from each commit (default: 20)
-      -h, --help
-
-    Dependencies:
-      gh, jq
-USAGE
-}
-
-REPO=""
-SINCE=""
-UNTIL=""
-PAGE_SIZE=100
-PRS_PER_COMMIT=100
-RAW_DATA_PATH="./src/designated-oss-growth/github-developer-contrib/archive/raw-commit.json"
-
-get_ratelimit() {
-  printf '%s\n' "$(gh api graphql -f query='
-  query(){
-    rateLimit { remaining }
-  }' --jq '.data.rateLimit.remaining')"
-}
-
-printf 'before-remaining:%s\n' "$(get_ratelimit)"
-
-# --- 引数パース ---
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-  -r | --repo)
-    REPO="$2"
-    shift 2
-    ;;
-  -s | --since)
-    SINCE="$2"
-    shift 2
-    ;;
-  -u | --until)
-    UNTIL="$2"
-    shift 2
-    ;;
-  -p | --page-size)
-    PAGE_SIZE="$2"
-    shift 2
-    ;;
-  -pe | --prs-per-commit)
-    PRS_PER_COMMIT="$2"
-    shift 2
-    ;;
-  -h | --help)
-    usage
-    exit 0
-    ;;
-  *)
-    printf '%s\n' "Unknown option: $1" >&2
-    usage
-    exit 1
-    ;;
-  esac
-done
-
-for tool in gh jq; do
-  if ! command -v "$tool" >/dev/null; then
-    printf '%s\n' "$tool not found" >&2
-    exit 1
-  fi
-done
-
-[[ -n "$REPO" ]] || {
-  printf '%s\n' "-r/--repo is required" >&2
-  exit 1
-}
-
-OWNER="${REPO%%/*}"
-NAME="${REPO#*/}"
-
-# --- ブランチ存在チェック関数 ---
-function branch_exists() {
-  local b="$1" ok query
-  # shellcheck disable=SC2016
-  query='
-    query($owner:String!,$name:String!,$qualified:String!){
-      repository(owner:$owner, name:$name){ ref(qualifiedName:$qualified){ name } }
-    }
-  '
-
-  # ブランチが存在するかどうかをチェック
-  ok="$(gh api graphql \
-    -F owner="$OWNER" -F name="$NAME" -F qualified="refs/heads/$b" \
-    -f query="$query" --jq '.data.repository.ref != null' 2>/dev/null || echo false)"
-
-  # 返す値をtrue/falseにする
-  [[ "$ok" == "true" ]]
-}
-
-FOUND=()
-for b in main master; do
-  if branch_exists "$b"; then
-    FOUND+=("$b")
-  fi
-done
-
-if [[ ${#FOUND[@]} -eq 0 ]]; then
-  printf '%s\n' "master/main branch does not exist" >&2
-  exit 1
-fi
-
-# --- GraphQL クエリ本体（共通） ---
-# shellcheck disable=SC2016
-GQL='
-query(
-  $owner: String!,
-  $name: String!,
-  $qualified: String!,
-  $pageSize: Int!,
-  $prsPerCommit: Int!,
-  $since: GitTimestamp,
-  $until: GitTimestamp,
-  $endCursor: String
-){
-  repository(owner:$owner, name:$name){
-    ref(qualifiedName:$qualified){
+gh api graphql \
+  -f owner="yuichisugio" \
+  -f name="myFirstTest" \
+  -f qualified="refs/heads/main" \
+  -F prsPerCommit="1" \
+  -f query='
+query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!) {
+  repository(owner:$owner, name:$name) {
+    ref(qualifiedName:$qualified) {
       name
       target {
         ... on Commit {
-          history(first:$pageSize, after:$endCursor, since:$since, until:$until) {
-            pageInfo { hasNextPage endCursor }
+          history(first: 100) {
             nodes {
-              id
-              committedDate
-              messageHeadline
-              messageBody
-              message
+              abbreviatedOid
               additions
-              deletions
-              authoredByCommitter
               author { name email user { login id } }
-              authors(first:2) { nodes { name email user { login id } } }
-              associatedPullRequests(first:$prsPerCommit) {
+              authoredByCommitter
+              authoredDate
+              authors(first: 2) {
+                totalCount
+                nodes{
+                  avatarUrl
+                  date
+                  email
+                  name
+                  user{login bio}
+                }
+              }
+              changedFiles
+              changedFilesIfAvailable
+              checkSuites(first: 5) {
+                totalCount
                 nodes {
+                  app{
+                    description
+                    name
+                  }
+                  branch{
+                    name
+                  }
+                  conclusion
+                }
+              }
+              comments(first: 5) {
+                totalCount
+                nodes {
+                  author { login avatarUrl resourcePath url }
+                  body
+                  bodyHTML
+                  bodyText
+                  createdAt
+                  publishedAt
+                  reactionGroups {
+                    content
+                    reactors {
+                      totalCount
+                    }
+                  }
+                }
+              }
+              commitResourcePath
+              commitUrl
+              committedDate
+              committedViaWeb
+              committer { name email user { login id } }
+              deletions
+              deployments(first: 5) {
+                totalCount
+                nodes {
+                  createdAt
+                  description
+                }
+              }
+              id
+              message
+              messageBody
+              messageBodyHTML
+              messageHeadline
+              messageHeadlineHTML
+              oid
+              onBehalfOf{
+                createdAt
+                description
+                email
+              }
+              parents(first: 1){
+                totalCount
+                nodes{
+                  message
+                  oid
+                }
+              }
+              pushedDate
+              repository{
+                nameWithOwner
+              }
+              resourcePath
+              signature{
+                verifiedAt
+              }
+              status{
+                id
+                state
+              }
+              statusCheckRollup{
+                state
+              }
+              url
+              viewerCanSubscribe
+              viewerSubscription
+              associatedPullRequests(first: $prsPerCommit) {
+                totalCount
+                nodes {
+                  activeLockReason
+                  additions
                   assignedActors(first: 2) { totalCount nodes { ... on User { login id } } }
                   assignees(first: 2) { nodes { login ... on User { id } } }
                   author { login avatarUrl resourcePath url }
@@ -183,7 +133,7 @@ query(
                   closed
                   closedAt
                   closingIssuesReferences(first:2) { totalCount nodes { author { login ... on User { id } } number title state } }
-                  comments(first:2) { totalCount nodes { author { login } createdAt bodyText reactionGroups { content users { totalCount } } } }
+                  comments(first:2) { totalCount nodes { author { login } createdAt bodyText reactionGroups { content reactors { totalCount } } } }
                   createdAt
                   createdViaEmail
                   deletions
@@ -231,9 +181,9 @@ query(
                   revertUrl
                   reviewDecision
                   reviewRequests(first:2){ nodes { requestedReviewer { __typename ... on User { login id } ... on Team { name id } } } }
-                  reviewThreads(first:2){
+                  reviewThreads(first:5){
                     nodes {
-                      comments(first:2){ nodes {
+                      comments(first:5){ nodes {
                         author { login ... on User { id } }
                         createdAt
                         bodyText
@@ -242,7 +192,27 @@ query(
                       }
                     }
                   }
-                  reviews{nodes{author{login ... on User{id}} state submittedAt}}
+                  reviews(first:5){
+                    totalCount
+                    nodes{
+                      body
+                      comments(first:10){
+                        totalCount
+                        nodes{
+                          author { login avatarUrl resourcePath url }
+                          body
+                          createdAt
+                        }
+                      }
+                      author{
+                        login ... on User{
+                          id
+                        }
+                      }
+                      state
+                      submittedAt
+                    }
+                  }
                   state
                   title
                   titleHTML
@@ -290,30 +260,4 @@ query(
       }
     }
   }
-}
-'
-
-# --- 各ブランチを取得・整形して一時保存 ---
-TMPDIR="$(mktemp -d)"
-# raw を確認したい場合に最後に纏めて書き出す
-RAW_ALL=()
-
-for b in "${FOUND[@]}"; do
-  QUAL="refs/heads/$b"
-  RAW="$TMPDIR/raw-$b.json"
-
-  gh api graphql \
-    --paginate --slurp \
-    -F owner="$OWNER" -F name="$NAME" -F qualified="$QUAL" \
-    -F pageSize="$PAGE_SIZE" -F prsPerCommit="$PRS_PER_COMMIT" \
-    -F since="${SINCE:-null}" -F until="${UNTIL:-null}" \
-    -f query="$GQL" | jq '.' >"$RAW"
-
-  RAW_ALL+=("$RAW")
-done
-
-# raw の結合を残しておく
-jq -s '[ .[] ]' "${RAW_ALL[@]}" >"$RAW_DATA_PATH"
-
-printf 'success\n'
-printf 'after-remaining:%s\n' "$(get_ratelimit)"
+}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/commit-pullreq-1.json

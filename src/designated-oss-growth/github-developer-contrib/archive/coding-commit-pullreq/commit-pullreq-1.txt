@@ -14,7 +14,7 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
             nodes {
               abbreviatedOid
               additions
-              author { name email user { login id } }
+              author { name user { login id } }
               authoredByCommitter
               authoredDate
               authors(first: 2) {
@@ -22,7 +22,6 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
                 nodes{
                   avatarUrl
                   date
-                  email
                   name
                   user{login bio}
                 }
@@ -63,7 +62,7 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
               commitUrl
               committedDate
               committedViaWeb
-              committer { name email user { login id } }
+              committer { name user { login id } }
               deletions
               deployments(first: 5) {
                 totalCount
@@ -82,7 +81,6 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
               onBehalfOf{
                 createdAt
                 description
-                email
               }
               parents(first: 1){
                 totalCount
@@ -260,4 +258,4 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
       }
     }
   }
-}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/prod-commit-pullreq-1.json
+}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/commit-pullreq-1.json

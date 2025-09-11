@@ -10,7 +10,9 @@ readonly RAW_SPONSOR_RECIPIENTS_PATH="./src/designated-oss-growth/github-develop
 readonly PROCESSED_SPONSOR_RECIPIENTS_PATH="./src/designated-oss-growth/github-developer-contrib/archive/sponsor/processed-sponsor-recipients.txt"
 readonly RAW_SPONSOR_SUPPORTERS_PATH="./src/designated-oss-growth/github-developer-contrib/archive/sponsor/raw-sponsor-supporters.json"
 
-function get_sponsors_recipients() {
+mkdir -p "$(dirname "$RAW_SPONSOR_RECIPIENTS_PATH")"
+
+function get_github_sponsors_recipients() {
   local owner="${1:-ryoppippi}" repo="${2:-ccusage}" QUERY
 
   # shellcheck disable=SC2016
@@ -84,11 +86,12 @@ get_ratelimit() {
   }' --jq '.data.rateLimit.remaining')"
 }
 
-function get_sponsors() {
-  printf 'before--sponsor-remaining:%s\n' "$(get_ratelimit)"
-  get_sponsors_recipients "$@"
+function get_github_sponsors() {
+  get_github_sponsors_recipients "$@"
   get_github_sponsors_supporters "$@"
-  printf 'after-sponsor-remaining:%s\n' "$(get_ratelimit)"
 }
 
-get_sponsors "$@"
+printf 'before--sponsor-remaining:%s\n' "$(get_ratelimit)"
+get_github_sponsors "$@"
+printf 'success\n'
+printf 'after-sponsor-remaining:%s\n' "$(get_ratelimit)"

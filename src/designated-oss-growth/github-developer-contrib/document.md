@@ -385,7 +385,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - `1`
 1. Fork する
    - `1`
-   - fork回数が何度あっても重複カウントしない
+   - fork 回数が何度あっても重複カウントしない
 1. Watch する
    - `1`
 1. スポンサーをする
@@ -400,18 +400,21 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 - 押した人のユーザー名
 - 押した人のユーザー ID
 - 押した日
+  - 期間指定できないため`--paginate`を使用せず、手動ページネーションで期間のみを掲載してページネーションの for 文を止める処理を入れている
 
 #### Fork
 
 - 押した人のユーザー名
 - 押した人のユーザー ID
 - 押した日
+  - 期間指定できないため`--paginate`を使用せず、手動ページネーションで期間のみを掲載してページネーションの for 文を止める処理を入れている
 
 #### Watch
 
 - 押した人のユーザー名
 - 押した人のユーザー ID
 - 押した日
+  - カラムが存在しない。ソートもできないのでローカルで名前順に並び替えて差分を見るしかない？
 
 #### Pull Request
 
@@ -452,8 +455,6 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 #### Commit
 
-- 条件
-  - main ブランチに直接コミットした場合のみ取得
 - 取得項目
   - コミット日
   - コミット者のユーザー名
