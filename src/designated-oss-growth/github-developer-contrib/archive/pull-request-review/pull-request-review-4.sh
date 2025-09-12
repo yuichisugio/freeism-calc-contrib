@@ -4,17 +4,21 @@
 # Pull Request のReview関連のデータをテスト的に取得する
 # --------------------------------------
 
+readonly OWNER="${1:-yuichisugio}"
+readonly REPO="${2:-myFirstTest}"
+readonly OUTPUT_FILE="./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/${REPO}-4.json"
+
 set -euo pipefail
 
 # shellcheck disable=SC2016
 gh api graphql \
   --header X-Github-Next-Global-ID:1 \
-  -f owner="${1:-yuichisugio}" \
-  -f name="${2:-myFirstTest}" \
+  -f owner="${OWNER}" \
+  -f name="${REPO}" \
   -f query='
     query($owner: String!, $name: String!) {
       repository(owner:$owner, name:$name) {
-        pullRequests(first: 100 ,orderBy:{field : CREATED_AT,direction: ASC}){
+        pullRequests(first: 100 ,orderBy: {field : CREATED_AT,direction: ASC}){
           totalCount
           pageInfo { hasNextPage endCursor }
           nodes {
@@ -36,8 +40,8 @@ gh api graphql \
             mergedAt
             reactionGroups { content reactors { totalCount } }
             totalCommentsCount
-            comments(first: 100){ 
-              totalCount 
+            comments(first: 20){
+              totalCount
               nodes {
                 fullDatabaseId
                 author { login url }
@@ -45,22 +49,22 @@ gh api graphql \
                 createdAt
                 url
                 reactionGroups { content reactors { totalCount } }
-              } 
+              }
             }
-            reviewRequests(first: 100){ 
-              totalCount 
+            reviewRequests(first: 3){
+              totalCount
               nodes {
                 databaseId
-                requestedReviewer { 
-                  __typename 
-                  ... on User { login name url databaseId } 
+                requestedReviewer {
+                  __typename
+                  ... on User { login name url databaseId }
                   ... on Bot { login url databaseId }
-                  ... on Team { name login url databaseId }
+                  ... on Team { name url databaseId }
                   ... on Mannequin { login name url databaseId }
                 }
               }
             }
-            latestReviews(first: 100){
+            latestReviews(first: 30){
               totalCount
               nodes {
                 fullDatabaseId
@@ -74,30 +78,26 @@ gh api graphql \
                 updatedAt
               }
             }
-            reviewThreads(first: 100){ 
-              totalCount 
+            reviewThreads(first: 30){
+              totalCount
               nodes {
-                comments(first: 100){ 
+                subjectType
+                comments(first: 50){
                   totalCount
-                  nodes { 
-                    comments(first: 100){ 
-                      totalCount
-                      nodes {
-                        fullDatabaseId
-                        url
-                        author { login url } 
-                        createdAt # Openのコメントの作成日（draftも含む）
-                        publishedAt # Openのコメントの作成日
-                        bodyText
-                        reactionGroups { content reactors { totalCount } } 
-                      }
-                    }
-                    subjectType
-                  } }
+                  nodes {
+                    fullDatabaseId
+                    url
+                    author { login url }
+                    bodyText
+                    createdAt
+                    publishedAt
+                    reactionGroups { content reactors { totalCount } }
+                  }
+                }
               }
             }
-            reviews(first: 100){ 
-              totalCount 
+            reviews(first: 30){
+              totalCount
               nodes {
                 fullDatabaseId
                 url
@@ -107,8 +107,9 @@ gh api graphql \
                 submittedAt
                 createdAt
                 publishedAt
+                bodyText
                 reactionGroups { content reactors { totalCount } }
-                comments(first: 100){ 
+                comments(first: 50){
                   totalCount
                   nodes {
                     fullDatabaseId
@@ -120,18 +121,14 @@ gh api graphql \
                     publishedAt
                     reactionGroups { content reactors { totalCount } }
                   }
-                  bodyText
-                  createdAt
-                  publishedAt
-                  reactionGroups { content reactors { totalCount } }
                 }
               }
             }
-            timelineItems(first: 100){ 
-              totalCount 
+            timelineItems(first: 100){
+              totalCount
               nodes {
                 __typename
-                ... on ReviewRequestedEvent { createdAt requestedReviewer { __typename ... on User { login url } ... on Team { name login url } } actor { login } }
+                ... on ReviewRequestedEvent { createdAt requestedReviewer { __typename ... on User { login url } ... on Team { name url } } actor { login } }
                 ... on ReadyForReviewEvent { createdAt actor { login } }
                 ... on MergedEvent { createdAt mergeRefName }
                 ... on ClosedEvent { createdAt }
@@ -141,4 +138,4 @@ gh api graphql \
         }
       }
     }
-  ' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/pull-request-review-4.json
+  ' | jq '.' >"${OUTPUT_FILE}"

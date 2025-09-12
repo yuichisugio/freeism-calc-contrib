@@ -258,4 +258,4 @@ query($owner: String!, $name: String!) {
       }
     }
   }
-}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/pull-request-review-1.json
+}' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/1.json
