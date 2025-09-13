@@ -437,7 +437,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   - プルリク作成日
   - コードの追加・削除の行数
   - コメントの文字数
-- プルリクのステータス変更
+- プルリクのマージ担当者
   - ステータス変更者のユーザー名
   - ステータス変更者のユーザー ID
   - ステータス変更日

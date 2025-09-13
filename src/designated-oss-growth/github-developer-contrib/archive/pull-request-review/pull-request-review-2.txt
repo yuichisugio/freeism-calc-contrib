@@ -16,4 +16,4 @@ gh api graphql \
         }
       }
     }
-  ' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/2.json
+  ' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/2-pull-request-review.json

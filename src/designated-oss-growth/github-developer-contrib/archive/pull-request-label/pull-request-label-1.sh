@@ -16,7 +16,7 @@ gh api graphql \
   --header X-Github-Next-Global-ID:1 \
   -f owner="${OWNER}" \
   -f name="${REPO}" \
-  -F perPage="${PER_PAGE}" \
+  -f perPage="${PER_PAGE}" \
   -f query='
     query($owner: String!, $name: String!, $perPage: Int!) {
       repository(owner:$owner, name:$name) {

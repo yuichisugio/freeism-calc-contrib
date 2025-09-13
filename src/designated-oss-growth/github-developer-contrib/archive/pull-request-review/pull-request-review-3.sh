@@ -6,8 +6,8 @@
 
 readonly OWNER="${1:-yuichisugio}"
 readonly REPO="${2:-myFirstTest}"
-readonly RAW_OUTPUT_FILE="./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/${REPO}-3-raw.json"
-readonly OUTPUT_FILE="./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/${REPO}-3.json"
+readonly OUTPUT_FILE="./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/3-${REPO}.json"
+readonly PER_PAGE="${3:-50}"
 
 set -euo pipefail
 
@@ -17,10 +17,11 @@ gh api graphql \
   --header X-Github-Next-Global-ID:1 \
   -f owner="${OWNER}" \
   -f name="${REPO}" \
+  -F perPage="${PER_PAGE}" \
   -f query='
-    query($owner: String!, $name: String!, $endCursor: String) {
+    query($owner: String!, $name: String!, $endCursor: String, $perPage: Int!) {
       repository(owner:$owner, name:$name) {
-        pullRequests(first: 100 ,after:$endCursor,orderBy:{field : CREATED_AT,direction: ASC}){
+        pullRequests(first: $perPage ,after:$endCursor,orderBy:{field : CREATED_AT,direction: ASC}){
           totalCount
           pageInfo { hasNextPage endCursor }
           nodes {
@@ -32,17 +33,15 @@ gh api graphql \
             reactions(first:1){ totalCount }
             reviewRequests(first: 1){ totalCount }
             timelineItems(first: 1){ totalCount }
-            reviewThreads(first: 30){ totalCount nodes { comments(first: 1){ totalCount } } }
-            reviews(first: 30){ totalCount nodes { comments(first: 1){ totalCount } } }
-            latestReviews(first: 30){ totalCount nodes { comments(first: 1){ totalCount } } }
-            latestOpinionatedReviews(first: 30){ totalCount nodes { comments(first: 1){ totalCount } } }
+            reviewThreads(first: $perPage){ totalCount nodes { comments(first: 1){ totalCount } } }
+            reviews(first: $perPage){ totalCount nodes { comments(first: 1){ totalCount } } }
+            latestReviews(first: $perPage){ totalCount nodes { comments(first: 1){ totalCount } } }
+            latestOpinionatedReviews(first: $perPage){ totalCount nodes { comments(first: 1){ totalCount } } }
           }
         }
       }
     }
-    ' | jq '.' >"${RAW_OUTPUT_FILE}"
-
-jq '
+    ' | jq '
     def max0(a): (if (a|length)>0 then (a|max) else 0 end);
     . as $pages
     | ($pages[0].data.repository.pullRequests.totalCount) as $pr_total
@@ -64,4 +63,4 @@ jq '
         latestOpinionatedReviews_max:  max0([ $nodes[] | .latestOpinionatedReviews.totalCount ]),
         latestOpinionatedReviews_comments_max: max0([ $nodes[] | ([.latestOpinionatedReviews.nodes[]? | .comments.totalCount] | max0(.)) ]),
       }
-  ' "${RAW_OUTPUT_FILE}" >"${OUTPUT_FILE}"
+  ' >"${OUTPUT_FILE}"
