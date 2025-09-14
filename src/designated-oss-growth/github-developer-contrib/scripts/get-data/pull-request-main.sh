@@ -21,8 +21,9 @@ source "$(dirname "$0")/pull-request-reviewer.sh"
 #--------------------------------------
 # 出力先のファイルを作成する
 #--------------------------------------
-readonly RAW_PULL_REQUEST_DIR="${RAW_DIR}/pull-request"
-mkdir -p "$RAW_PULL_REQUEST_DIR"
+readonly GET_PR_DIR="${GET_DIR}/pull-request"
+readonly RESULT_PR_NODE_ID_PATH="${GET_PR_DIR}/result-pull-request-node-id.json"
+mkdir -p "$GET_PR_DIR"
 
 #--------------------------------------
 # プルリクエストのデータを取得する
@@ -60,7 +61,4 @@ function get_pull_request() {
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-pull-request()" "$before_remaining_ratelimit"
-
-  # 終了ステータスを成功にする
-  return 0
 }

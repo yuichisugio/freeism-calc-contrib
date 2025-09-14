@@ -35,6 +35,7 @@
       - [Commit](#commit)
       - [Issue](#issue-1)
       - [Discussions](#discussions-1)
+  - [工夫したポイント](#工夫したポイント)
 
 ## 概要
 
@@ -531,3 +532,9 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   - 作成者のユーザー ID
   - 作成日
   - リアクションの種類（バッドか否か）
+
+## 工夫したポイント
+
+1. ①`Pull　Request`の`id`フィールド(node の id)の取得と ②`id`を使用して`node`クエリで情報を取得する場合に、① は期間外だが、② は期間内のデータがあったときに、② のデータを確実に取得できるように、すべての ① のデータを取得しておく設計
+   - 今後実装したい
+   - 目的は期間を指定して取得することじたいではなく、データの漏れを無くすことなため、`-s`,`-un`で期間の漏れがなく指定できれば、すべてのデータを取得できるので、一旦は簡潔な設計にするため後回し

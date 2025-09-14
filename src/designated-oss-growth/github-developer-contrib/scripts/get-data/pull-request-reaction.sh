@@ -7,9 +7,20 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のファイルのPATHを定義する
+#--------------------------------------
+readonly RAW_PR_REACTION_PATH="${GET_PR_DIR}/raw-pr-reaction.json"
+readonly RESULT_PR_REACTION_PATH="${GET_PR_DIR}/result-pr-reaction.json"
+
+#--------------------------------------
 # プルリクエストのリアクションを取得する関数
 #--------------------------------------
 function get_pull_request_reaction() {
+
+  # データ取得前のRateLimit変数
+  local before_remaining_ratelimit
+  # データ取得前のRateLimitを取得
+  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-reaction")"
 
   local QUERY
   local RAW_PATH="${RAW_PULL_REQUEST_DIR}/raw-pull-request-reaction.json"
@@ -79,4 +90,7 @@ function get_pull_request_reaction() {
 
   # クエリを実行。
   get_paginated_repository_data "$QUERY" "$RAW_PATH" "$RESULTS_PATH"
+
+  # データ取得後のRateLimitを出力
+  get_ratelimit "after:get-pull-request-reaction" "$before_remaining_ratelimit" "false"
 }

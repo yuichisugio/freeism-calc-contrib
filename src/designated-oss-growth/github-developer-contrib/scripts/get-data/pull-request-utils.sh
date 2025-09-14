@@ -25,9 +25,11 @@ function get_paginated_repository_data() {
 
     # OWNERとREPOはmain.shでグローバル変数として定義されている
     gh api graphql \
+      --header X-Github-Next-Global-ID:1 \
       -f owner="$OWNER" \
       -f name="$REPO" \
       -F endCursor="$END_CURSOR" \
+      -F perPage=50 \
       -f query="$QUERY" |
       jq '.' >>"$RAW_PATH"
 
@@ -42,6 +44,61 @@ function get_paginated_repository_data() {
     HAS_NEXT_PAGE="$(jq -r '.data.repository.pullRequests.pageInfo.hasNextPage' "$RAW_PATH")"
     END_CURSOR="$(jq -r '.data.repository.pullRequests.pageInfo.endCursor' "$RAW_PATH")"
     LAST_DATE="$(jq -r '(.data.repository.pullRequests.nodes | last | .publishedAt) // empty' "$RAW_PATH")"
+
+    # 続きがない、もしくは期間外の場合は終了
+    if [[ "$HAS_NEXT_PAGE" != "true" || "$END_CURSOR" == "null" || -z "$END_CURSOR" || (-n "$LAST_DATE" && "$LAST_DATE" > "$UNTIL") ]]; then
+      break
+    fi
+  done
+}
+
+#--------------------------------------
+# 手動ページネーションで、node_id・SINCEからUNTILの期間で絞ってJSONLに追記
+#--------------------------------------
+function get_paginated_data_by_node_id() {
+
+  # raw_pathは取得したままのデータ。resultはlocal側で、期間で絞ったデータ
+  local QUERY="$1" RAW_PATH="$2" RESULT_PATH="$3" FIRST_CHECK_FIELD_NAME="$4" SECOND_CHECK_FIELD_NAME="$5"
+  local HAS_NEXT_PAGE END_CURSOR LAST_DATE RESPONSE
+
+
+  # 同じPATHに実行する場合に、前回の内容をファイルを空にする
+  : >"$RAW_PATH"
+  : >"$RESULT_PATH"
+
+  # 手動ページネーションで、SINCEからUNTILの期間で絞ってJSONLに追記
+  while :; do
+
+    # OWNERとREPOはmain.shでグローバル変数として定義されている
+    gh api graphql \
+      --header X-Github-Next-Global-ID:1 \
+      -f node_id="$NODE_ID" \
+      -F endCursor="$END_CURSOR" \
+      -F perPage=50 \
+      -f query="$QUERY" |
+      jq '.' >>"$RAW_PATH"
+
+    # 期間で絞ってJSONLに追記
+    # SINCEとUNTILはmain.shでグローバル変数として定義されている
+    jq -r \
+    --arg SINCE "$SINCE" \
+    --arg UNTIL "$UNTIL" \
+    --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
+    --arg SECOND_CHECK_FIELD_NAME "$SECOND_CHECK_FIELD_NAME" \
+    '
+      .data.node.${FIRST_CHECK_FIELD_NAME}.nodes[]
+      | select(.${SECOND_CHECK_FIELD_NAME} >= $SINCE and .${SECOND_CHECK_FIELD_NAME} <= $UNTIL)
+    ' "$RAW_PATH" >>"$RESULT_PATH"
+
+    # 次ページの準備
+    HAS_NEXT_PAGE="$(jq -r '.data.repository.pullRequests.pageInfo.hasNextPage' "$RAW_PATH")"
+    END_CURSOR="$(jq -r '.data.repository.pullRequests.pageInfo.endCursor' "$RAW_PATH")"
+    LAST_DATE="$(
+      jq -r \
+      --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
+      --arg SECOND_CHECK_FIELD_NAME "$SECOND_CHECK_FIELD_NAME" \
+      '(.data.node.${FIRST_CHECK_FIELD_NAME}.nodes | last | .${SECOND_CHECK_FIELD_NAME}) // empty' "$RAW_PATH"
+    )"
 
     # 続きがない、もしくは期間外の場合は終了
     if [[ "$HAS_NEXT_PAGE" != "true" || "$END_CURSOR" == "null" || -z "$END_CURSOR" || (-n "$LAST_DATE" && "$LAST_DATE" > "$UNTIL") ]]; then

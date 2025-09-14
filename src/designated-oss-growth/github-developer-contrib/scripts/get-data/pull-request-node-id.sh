@@ -11,12 +11,15 @@ set -euo pipefail
 #--------------------------------------
 function get_pull_request_node_id() {
 
+  # データ取得前のRateLimit変数
+  local before_remaining_ratelimit
+  # データ取得前のRateLimitを取得
+  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-node-id")"
+
   local QUERY
-  local RAW_PATH="${RAW_PULL_REQUEST_DIR}/raw-pull-request-node-id.json"
-  local RESULTS_PATH="${RAW_PULL_REQUEST_DIR}/results-pull-request-node-id.json"
+  local RAW_PATH="${RAW_PR_DIR}/raw-pull-request-node-id.json"
 
   : >"$RAW_PATH"
-  : >"$RESULTS_PATH"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -72,5 +75,8 @@ function get_pull_request_node_id() {
   '
 
   # クエリを実行。
-  get_paginated_repository_data "$QUERY" "$RAW_PATH" "$RESULTS_PATH"
+  get_paginated_repository_data "$QUERY" "$RAW_PATH" "$RESULT_PR_NODE_ID_PATH"
+
+  # データ取得後のRateLimitを出力
+  get_ratelimit "after:get-pull-request-node-id" "$before_remaining_ratelimit" "false"
 }

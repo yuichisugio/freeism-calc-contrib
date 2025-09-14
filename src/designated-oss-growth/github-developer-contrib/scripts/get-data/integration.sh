@@ -21,12 +21,6 @@ source "$(dirname "$0")/sponsor.sh"
 # source "$(dirname "$0")/issue.sh"
 
 #--------------------------------------
-# 出力先のファイルを作成する
-#--------------------------------------
-readonly RAW_DIR="${RESULTS_DIR}/raw-data"
-mkdir -p "$RAW_DIR"
-
-#--------------------------------------
 # データ取得を統合する関数
 #--------------------------------------
 function get_data() {
@@ -35,16 +29,13 @@ function get_data() {
   local before_remaining_ratelimit
 
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before-get-data")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-data")"
 
   # リポジトリのメタデータを取得
   get_repo_meta
 
   # プルリクエストのデータを取得
   get_pull_request
-
-  # コミットのデータを取得
-  get_commit
 
   # スターのデータを取得
   get_star
@@ -58,6 +49,9 @@ function get_data() {
   # スポンサーのデータを取得
   get_sponsor
 
+  # コミットのデータを取得
+  # get_commit
+
   # コメントのデータを取得
   # get_comment
 
@@ -65,8 +59,5 @@ function get_data() {
   # get_issue
 
   # データ取得後のRateLimitを出力
-  get_ratelimit "after-get-data" "$before_remaining_ratelimit"
-
-  # 終了ステータスを成功にする
-  return 0
+  get_ratelimit "after:get-data" "$before_remaining_ratelimit" "false"
 }

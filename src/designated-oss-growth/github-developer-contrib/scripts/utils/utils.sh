@@ -60,7 +60,7 @@ function parse_args() {
       ;;
     -h | --help)
       show_usage
-      exit 0
+      exit 1
       ;;
     *)
       printf '%s\n' "Unknown option: $1" >&2
@@ -98,6 +98,7 @@ function parse_args() {
     ;;
   esac
   # リポジトリのオーナー名とリポジトリ名を返す
+  printf '%s %s %s %sの貢献度を算出します。\n' "$OWNER" "$REPO" "$SINCE" "$UNTIL" >&2
   printf '%s %s %s %s\n' "$OWNER" "$REPO" "$SINCE" "$UNTIL"
   return 0
 }
@@ -187,7 +188,7 @@ function gql_paginate_nodes() {
 # 使い方の表示
 #--------------------------------------
 function show_usage() {
-  cat <<EOF
+  cat <<EOF >&2
     Usage: 
       $0 -u [GITHUB_URL]
       $0 -u [GITHUB_URL] -s [YYYY-MM-DD] -un [YYYY-MM-DD]
@@ -239,17 +240,19 @@ function setup_output_directory() {
 # Example: get_ratelimit "before-get-pull-request" "100"
 #--------------------------------------
 function get_ratelimit() {
-  local message="$1" before="$2"
+  local message="$1" before="${2:-}" is_output="${3:-true}"
   local remaining cost
 
   remaining="$(gh api graphql -f query='query(){ rateLimit { remaining } }' --jq '.data.rateLimit.remaining')"
 
-  printf '%s:%s\n' "$message" "$remaining" >&2
+  printf '%s:remaining:%s\n' "$message" "$remaining" >&2
 
-  if [[ -n "$before" ]]; then
-    cost="$before"-"$remaining"
-    printf 'cost:%s\n' "$cost" >&2
+  if [[ "$before" =~ ^[0-9]+$ && "$remaining" =~ ^[0-9]+$ ]]; then
+    cost=$((before - remaining))
+    printf '%s:cost:%d\n' "$message" "$cost" >&2
   fi
 
-  printf '%s\n' "$remaining"
+  if [[ "$is_output" == "true" ]]; then
+    printf '%s\n' "$remaining"
+  fi
 }
