@@ -6,15 +6,23 @@
 
 set -euo pipefail
 
-cd "$(cd "$(dirname -- "$0")" && pwd -P)"
+#--------------------------------------
+# 出力先のファイルを作成する
+#--------------------------------------
+readonly RAW_REPO_META_DIR="${RAW_DIR}/repo-meta.json"
+mkdir -p "$(dirname "$RAW_REPO_META_DIR")"
 
+
+#--------------------------------------
+# リポジトリのメタデータを取得する
+#--------------------------------------
 function get_repo_meta() {
-  # 引数の値
-  local owner="$1" repo="$2" query
+
+  local QUERY
 
   # クエリを定義
   # shellcheck disable=SC2016
-  query='
+  QUERY='
     query($owner: String!, $repo: String!) {
       repository(owner: $owner, name: $repo) {
         id
@@ -32,11 +40,6 @@ function get_repo_meta() {
     }
   '
 
-  # クエリを実行。jq '.' で、JSONを指定ファイルに出力。
-  gh api graphql -F owner="$owner" -F repo="$repo" -f query="$query" | jq '.' >"$RAW_REPO_META_DIR"
-
-  # 終了ステータスを成功にする
-  return 0
+  # クエリを実行。jq '.' で、JSONを整形して指定ファイルに出力。
+  gh api graphql -F owner="$OWNER" -F repo="$REPO" -f query="$QUERY" | jq '.' >"$RAW_REPO_META_DIR"
 }
-
-get_repo_meta "$@"

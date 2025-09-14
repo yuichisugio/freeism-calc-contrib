@@ -29,10 +29,6 @@ function get_star() {
   local LAST_DATE
   END="$(date -u +%Y-%m-%dT23:59:59Z)"
 
-  # ISO 8601 に正規化
-  [[ "$START" == *T* ]] || START="${START}T00:00:00Z"
-  [[ "$END" == *T* ]] || END="${END}T23:59:59Z"
-
   # --- 引数パース。引数がある場合はデフォルト値を上書きする ---
   while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -58,6 +54,10 @@ function get_star() {
       ;;
     esac
   done
+
+  # ISO 8601 に正規化
+  [[ "$START" == *T* ]] || START="${START}T00:00:00Z"
+  [[ "$END" == *T* ]] || END="${END}T23:59:59Z"
 
   # GraphQL クエリ
   # shellcheck disable=SC2016

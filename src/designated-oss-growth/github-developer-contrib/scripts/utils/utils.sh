@@ -7,27 +7,20 @@
 set -euo pipefail
 
 #--------------------------------------
-# Print to stderr
-#--------------------------------------
-function log() {
-  printf '%s\n' "$*" >&2
-}
-
-#--------------------------------------
 # Require tools
 #--------------------------------------
 function require_tools() {
   # 依存コマンドの確認
   for cmd in gh jq; do
     if ! command -v "$cmd" >/dev/null; then
-      log "ERROR: $cmd が必要です。" >&2
+      printf '%s\n' "ERROR: $cmd not found" >&2
       exit 1
     fi
   done
 
   # gh 認証確認
   if ! gh auth status >/dev/null; then
-    log "ERROR: gh が認証されていません。" >&2
+    printf '%s\n' "ERROR: gh not authenticated" >&2
     exit 1
   fi
 
@@ -39,42 +32,73 @@ function require_tools() {
 # Examples:
 # - https://github.com/OWNER/REPO(.git)?
 # - git@github.com:OWNER/REPO(.git)?
-# return: OWNER REPO
+# return: OWNER REPO SINCE UNTIL
 #--------------------------------------
-function parse_github_url_args() {
+function parse_args() {
   # 引数の値
-  local input="${1:-}"
-  # 引数の値が空の場合
-  if [[ -z "$input" ]]; then
-    log "parse_github_url_args: empty input"
-    return 1
-  fi
+  local URL="https://github.com/ryoppippi/ccusage"
+  local OWNER="ryoppippi"
+  local REPO="ccusage"
+  local SINCE="1970-01-01"
+  local UNTIL
+  UNTIL="$(date -u +%Y-%m-%dT23:59:59Z)"
+
+  # --- 引数パース。引数がある場合はデフォルト値を上書きする ---
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+    -u | --url)
+      URL="$2"
+      shift 2
+      ;;
+    -s | --since)
+      SINCE="$2"
+      shift 2
+      ;;
+    -un | --until)
+      UNTIL="$2"
+      shift 2
+      ;;
+    -h | --help)
+      show_usage
+      exit 0
+      ;;
+    *)
+      printf '%s\n' "Unknown option: $1" >&2
+      show_usage
+      exit 1
+      ;;
+    esac
+  done
+
+  # ISO 8601 に正規化
+  [[ "$SINCE" == *T* ]] || SINCE="${SINCE}T00:00:00Z"
+  [[ "$UNTIL" == *T* ]] || UNTIL="${UNTIL}T23:59:59Z"
+
   # リポジトリのオーナー名とリポジトリ名を格納する変数
-  local owner repo
-  case "$input" in
+  case "$URL" in
   # http*://github.com/* の場合。クエリパラメータやフラグメントが含まれていても抽出しない対応あり
   http*://github.com/*)
-    owner="$(printf '%s' "$input" | sed -E 's#https?://github.com/([^/]+)/([^/?#.]+).*#\1#')"
-    repo="$(printf '%s' "$input" | sed -E 's#https?://github.com/([^/]+)/([^/?#.]+).*#\2#')"
+    OWNER="$(printf '%s' "$URL" | sed -E 's#https?://github.com/([^/]+)/([^/?#.]+).*#\1#')"
+    REPO="$(printf '%s' "$URL" | sed -E 's#https?://github.com/([^/]+)/([^/?#.]+).*#\2#')"
     ;;
   # git@github.com:* の場合。.git がある場合も抽出しない対応`'..*`。
   git@github.com:*)
-    owner="$(printf '%s' "$input" | sed -E 's#git@github.com:([^/]+)/([^/.]+)(\..*)?#\1#')"
-    repo="$(printf '%s' "$input" | sed -E 's#git@github.com:([^/]+)/([^/.]+)(\..*)?#\2#')"
+    OWNER="$(printf '%s' "$URL" | sed -E 's#git@github.com:([^/]+)/([^/.]+)(\..*)?#\1#')"
+    REPO="$(printf '%s' "$URL" | sed -E 's#git@github.com:([^/]+)/([^/.]+)(\..*)?#\2#')"
     ;;
   # owner/repo の場合
   */*)
-    owner="${input%%/*}"
-    repo="${input##*/}"
+    OWNER="${URL%%/*}"
+    REPO="${URL##*/}"
     ;;
   # それ以外の場合
   *)
-    log "Unsupported repo format: $input"
+    printf '%s\n' "Unsupported repo format: $URL" >&2
     return 1
     ;;
   esac
   # リポジトリのオーナー名とリポジトリ名を返す
-  printf '%s %s\n' "$owner" "$repo"
+  printf '%s %s %s %s\n' "$OWNER" "$REPO" "$SINCE" "$UNTIL"
   return 0
 }
 
@@ -164,20 +188,29 @@ function gql_paginate_nodes() {
 #--------------------------------------
 function show_usage() {
   cat <<EOF
-    Usage: $0 [GITHUB_URL]
+    Usage: 
+      $0 -u [GITHUB_URL]
+      $0 -u [GITHUB_URL] -s [YYYY-MM-DD] -un [YYYY-MM-DD]
+      $0 -h
 
-    GitHub リポジトリのプルリクエスト貢献者を分析し、
-    各ユーザーの貢献度をCSV形式で出力します。
+    Description:
+      GitHub リポジトリのプルリクエスト貢献者を分析し、各ユーザーの貢献度をCSV形式で出力します。
 
     Parameters:
-      GITHUB_URL    リポジトリのURL (デフォルト: https://github.com/ryoppippi/ccusage)
+      -u, --url         リポジトリのURL (デフォルト: https://github.com/ryoppippi/ccusage)
+      -s, --since       開始日 (デフォルト: 1970-01-01)
+      -un, --until      終了日 (デフォルト: 今日)
+      -h, --help        ヘルプを表示
 
     Output:
       userId,username,pullrequest回数
 
     Examples:
-      $0 https://github.com/ryoppippi/ccusage     # ryoppippi/ccusage を分析
-      $0 https://github.com/microsoft/vscode   # microsoft/vscode を分析
+      $0 -h
+      $0 --help
+      $0 -u https://github.com/microsoft/vscode
+      $0 -u https://github.com/ryoppippi/ccusage -s 2024-01-01 -un 2024-01-01
+      $0 --url https://github.com/microsoft/vscode --since 2024-01-01 --until 2024-01-01
 EOF
 
   return 0
@@ -187,15 +220,36 @@ EOF
 # 出力ディレクトリの準備
 #--------------------------------------
 function setup_output_directory() {
-  # 引数の値
-  local owner="$1" repo="$2"
 
   # 結果ディレクトリの準備
-  for path in "${PATH_ARRAY[@]}"; do
+  for path in "${CREATE_PATH_ARRAY[@]}"; do
     if [[ ! -d "$path" ]]; then
       mkdir -p "$path"
     fi
   done
 
   return 0
+}
+
+#--------------------------------------
+# Description: RateLimitを取得して、メッセージやコストを出力する関数
+# Args: message before
+# 第一引数: 出力するメッセージ
+# 第二引数: （任意）前回の残りのリミット
+# Example: get_ratelimit "before-get-pull-request" "100"
+#--------------------------------------
+function get_ratelimit() {
+  local message="$1" before="$2"
+  local remaining cost
+
+  remaining="$(gh api graphql -f query='query(){ rateLimit { remaining } }' --jq '.data.rateLimit.remaining')"
+
+  printf '%s:%s\n' "$message" "$remaining" >&2
+
+  if [[ -n "$before" ]]; then
+    cost="$before"-"$remaining"
+    printf 'cost:%s\n' "$cost" >&2
+  fi
+
+  printf '%s\n' "$remaining"
 }
