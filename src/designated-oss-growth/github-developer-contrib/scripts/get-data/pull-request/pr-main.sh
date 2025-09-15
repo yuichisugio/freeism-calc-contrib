@@ -9,15 +9,15 @@ set -euo pipefail
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "${GET_DIR}/pull-request-node-id.sh"
-source "${GET_DIR}/pull-request-utils.sh"
-# source "${GET_DIR}/pull-request-reaction.sh"
-# source "${GET_DIR}/pull-request-comment.sh"
-# source "${GET_DIR}/pull-request-review.sh"
-# source "${GET_DIR}/pull-request-review-comment.sh"
-# source "${GET_DIR}/pull-request-label.sh"
-# source "${GET_DIR}/pull-request-assignee.sh"
-# source "${GET_DIR}/pull-request-reviewer.sh"
+source "${GET_DIR}/pull-request/pr-node-id.sh"
+source "${GET_DIR}/pull-request/pr-utils.sh"
+# source "${GET_DIR}/pull-request/pr-reaction.sh"
+# source "${GET_DIR}/pull-request/pr-comment.sh"
+# source "${GET_DIR}/pull-request/pr-review.sh"
+# source "${GET_DIR}/pull-request/pr-review-comment.sh"
+# source "${GET_DIR}/pull-request/pr-label.sh"
+# source "${GET_DIR}/pull-request/pr-assignee.sh"
+# source "${GET_DIR}/pull-request/pr-reviewer.sh"
 
 #--------------------------------------
 # 出力先のファイルを作成する

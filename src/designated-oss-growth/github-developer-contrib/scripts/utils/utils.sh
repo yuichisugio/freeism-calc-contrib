@@ -58,6 +58,10 @@ function parse_args() {
       UNTIL="$2"
       shift 2
       ;;
+    -r | --ratelimit)
+      get_ratelimit "ratelimit" null "false"
+      exit 1
+      ;;
     -h | --help)
       show_usage
       exit 1
@@ -192,6 +196,7 @@ function show_usage() {
     Usage: 
       $0 -u [GITHUB_URL]
       $0 -u [GITHUB_URL] -s [YYYY-MM-DD] -un [YYYY-MM-DD]
+      $0 -r
       $0 -h
 
     Description:
@@ -201,6 +206,7 @@ function show_usage() {
       -u, --url         リポジトリのURL (デフォルト: https://github.com/ryoppippi/ccusage)
       -s, --since       開始日 (デフォルト: 1970-01-01)
       -un, --until      終了日 (デフォルト: 今日)
+      -r, --ratelimit   リミットを表示
       -h, --help        ヘルプを表示
 
     Output:
@@ -212,6 +218,7 @@ function show_usage() {
       $0 -u https://github.com/microsoft/vscode
       $0 -u https://github.com/ryoppippi/ccusage -s 2024-01-01 -un 2024-01-01
       $0 --url https://github.com/microsoft/vscode --since 2024-01-01 --until 2024-01-01
+      $0 -r
 EOF
 
   return 0

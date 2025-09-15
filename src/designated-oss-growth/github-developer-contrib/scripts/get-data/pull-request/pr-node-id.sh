@@ -1,45 +1,31 @@
 #!/bin/bash
 
 #--------------------------------------
-# pull requestのリアクションを取得するファイル
+# pull requestのnode_idと各種フィールドのtotalCountを取得するファイル
 #--------------------------------------
 
 set -euo pipefail
 
 #--------------------------------------
-# 出力先のファイルのPATHを定義する
+# プルリクエストのnode_idと各種フィールドのtotalCountを取得する関数
 #--------------------------------------
-readonly RAW_PR_REACTION_PATH="${GET_PR_DIR}/raw-pr-reaction.json"
-readonly RESULT_PR_REACTION_PATH="${GET_PR_DIR}/result-pr-reaction.json"
-
-#--------------------------------------
-# プルリクエストのリアクションを取得する関数
-#--------------------------------------
-function get_pull_request_reaction() {
+function get_pull_request_node_id() {
 
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-reaction")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-node-id()")"
 
   local QUERY
-  local RAW_PATH="${RAW_PULL_REQUEST_DIR}/raw-pull-request-reaction.json"
-  local RESULTS_PATH="${RAW_PULL_REQUEST_DIR}/results-pull-request-reaction.json"
+  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-node-id.json"
 
   : >"$RAW_PATH"
-  : >"$RESULTS_PATH"
-
-  if [[ -n "$(jq -r '.data.repository.pullRequests.nodes[] | .reactionGroups' "$RESULT_PR_NODE_ID_PATH")" ]]; then
-    jq -r '.data.repository.pullRequests.nodes[] | .reactionGroups' "$RAW_PATH"
-  else
-    jq -r '.data.repository.pullRequests.nodes[] | .reactionGroups' "$RAW_PATH"
-  fi
 
   # shellcheck disable=SC2016
   QUERY='
-   query($owner: String!, $name: String!, $perPage: Int!) {
+   query($owner: String!, $name: String!, $perPage: Int!, $endCursor: String) {
       repository(owner:$owner, name:$name) {
-        pullRequests(first: $perPage ,orderBy: {field : CREATED_AT,direction: ASC}){
+        pullRequests(first: $perPage, after:$endCursor, orderBy: {field : CREATED_AT,direction: ASC}){
           totalCount
           pageInfo { hasNextPage endCursor }
           nodes {
@@ -89,8 +75,8 @@ function get_pull_request_reaction() {
   '
 
   # クエリを実行。
-  get_paginated_repository_data "$QUERY" "$RAW_PATH" "$RESULTS_PATH"
+  get_paginated_repository_data "$QUERY" "$RAW_PATH" "$RESULT_PR_NODE_ID_PATH"
 
   # データ取得後のRateLimitを出力
-  get_ratelimit "after:get-pull-request-reaction" "$before_remaining_ratelimit" "false"
+  get_ratelimit "after:get-pull-request-node-id()" "$before_remaining_ratelimit" "false"
 }
