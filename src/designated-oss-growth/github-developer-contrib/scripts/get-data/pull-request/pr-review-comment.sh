@@ -53,7 +53,7 @@ function get_pull_request_review_comment() {
   '
 
   # クエリを実行。node_id単位でページネーションしながら取得
-  get_paginated_data_by_node_id "$QUERY" "$RAW_PATH" "$RESULT_PATH" "reactions" "createdAt" "$RESULT_PR_COMMENT_NODE_ID_PATH"
+  get_paginated_data_by_node_id "$QUERY" "$RAW_PATH" "$RESULT_PATH" "comments" "createdAt" "$RESULT_PR_REVIEW_NODE_ID_PATH"
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-pull-request-comment-reaction()" "$before_remaining_ratelimit" "false"

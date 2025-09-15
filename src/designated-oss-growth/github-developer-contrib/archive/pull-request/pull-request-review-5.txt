@@ -359,7 +359,7 @@ gh api graphql \
 gh api graphql \
   --header X-Github-Next-Global-ID:1 \
   -F perPage=50 \
-  -f node_id="PRR_kwDOOyw9fc6tWmXC" \
+  -f node_id="PRR_kwDOPDzQl86xH7ob" \
   -f query='
     query($node_id: ID!, $perPage: Int!) {
       node(id: $node_id) {
@@ -389,7 +389,7 @@ gh api graphql \
         }
       }
     }
-  ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/5-11-ccusage.json"
+  ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request/pr-5/5-11-ccusage.json"
 
 
 # nodeクエリで、第3階層のtotalCount>0の場合にデータ(reviewRequests)を取得
