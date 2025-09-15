@@ -61,6 +61,7 @@ function get_paginated_repository_data() {
 # nodeクエリ指定で、手動ページネーションで、SINCEからUNTILの期間に絞って出力
 # SECOND_CHECK_FIELD_NAMEが空の場合は、期間で絞り込まない
 # RAWには取得したままのデータが入り、RESULTには期間で絞り、多少データ加工したデータが入る
+# nodeクエリ直下のフィールドには、node_プレフィックスを設定して、各オブジェクトのキーと衝突しないようにする
 # すべてのノードでtotalCountが0の場合は、空のファイルになる
 # timelineItemsは、labelが空でも、assignedのイベントがあればtotalCountがあるので、nodeクエリは実行されるがnodesは空になる
 #--------------------------------------
@@ -138,7 +139,8 @@ function get_paginated_data_by_node_id() {
       # 期間で絞ってJSONLに追記
       # SINCEとUNTILはmain.shでグローバル変数として定義されている
       # assignedActorsはSECOND_CHECK_FIELD_NAMEがないため、空文字で絞り込まない
-      # nodeクエリ直下のフィールドには、node_プレフィックスを設定して、各オブジェクトのキーと衝突しないようにする
+      # nodeクエリ直下のフィールドには、node_プレフィックスを設定して、各オブジェクトのキーと衝突しないようにする。
+      # 例: node.id → node_id
       jq -c \
         --arg SINCE "$SINCE" \
         --arg UNTIL "$UNTIL" \

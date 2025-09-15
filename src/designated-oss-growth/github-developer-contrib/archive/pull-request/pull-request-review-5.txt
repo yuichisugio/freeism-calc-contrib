@@ -354,7 +354,7 @@ gh api graphql \
   ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/5-10-ccusage.json"
 
 
-# Pull Requestのnumber指定で、第5階層のtotalCount>0の場合にデータ取得(reviews.comments)を取得
+# nodeクエリで、第5階層のtotalCount>0の場合にデータ取得(reviews.comments)を取得
 # reviewsのnode_idを指定する必要があるので注意。間違うとデータなしでもdata.node{}のみになる
 gh api graphql \
   --header X-Github-Next-Global-ID:1 \
@@ -384,11 +384,6 @@ gh api graphql \
               bodyText
               publishedAt
               reactionGroups { content reactors { totalCount } }
-              reactions(first: $perPage){
-                totalCount
-                pageInfo { hasNextPage endCursor }
-                nodes{ databaseId id content createdAt user { databaseId id login name url } }
-              }
             }
           }
         }
@@ -473,3 +468,34 @@ gh api graphql \
       }
     }
   ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/5-13-ccusage.json"
+
+
+# nodeクエリで、第5階層のtotalCount>0の場合にデータ取得(reviews.comments.reactions)を取得
+# reviewsのnode_idを指定する必要があるので注意。間違うとデータなしでもdata.node{}のみになる
+gh api graphql \
+  --header X-Github-Next-Global-ID:1 \
+  -F perPage=50 \
+  -f node_id="PRR_kwDOOyw9fc6tWmXC" \
+  -f query='
+    query($node_id: ID!, $perPage: Int!) {
+      node(id: $node_id) {
+        ... on PullRequestReviewComment {
+          id
+          fullDatabaseId
+          bodyText
+          url
+          reactions(first: $perPage){
+            totalCount
+            pageInfo { hasNextPage endCursor }
+            nodes{
+              databaseId
+              id
+              content
+              createdAt
+              user { databaseId id login name url }
+            }
+          }
+        }
+      }
+    }
+  ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/5-14-ccusage.json"
