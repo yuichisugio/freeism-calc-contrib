@@ -32,11 +32,11 @@ function get_pull_request() {
             changedFiles
             author { login ... on User { id } }
             authorAssociation
-            assignees(first:100) { nodes { login ... on User { id } } }
-            labels(first:100) { nodes { name } }
+            assignees(first:50) { nodes { login ... on User { id } } }
+            labels(first:50) { nodes { name } }
             reactionGroups { content users { totalCount } }
 
-            comments(first:100) {
+            comments(first:50) {
               totalCount
               nodes {
                 author { login ... on User { id } }
@@ -46,7 +46,7 @@ function get_pull_request() {
               }
             }
 
-            reviews(first:100) {
+            reviews(first:50) {
               totalCount
               nodes {
                 author { login ... on User { id } }
@@ -55,10 +55,10 @@ function get_pull_request() {
               }
             }
 
-            reviewThreads(first:100) {
+            reviewThreads(first:50) {
               totalCount
               nodes {
-                comments(first:100) {
+                comments(first:50) {
                   totalCount
                   nodes {
                     author { login ... on User { id } }
@@ -70,7 +70,7 @@ function get_pull_request() {
               }
             }
 
-            timelineItems(first:100, itemTypes: [
+            timelineItems(first:50, itemTypes: [
               LABELED_EVENT,
               UNLABELED_EVENT,
               ASSIGNED_EVENT,

@@ -53,7 +53,7 @@ function get_github_sponsors_supporters() {
     }
 
     fragment SponsorableFields on Sponsorable {
-      sponsorshipsAsMaintainer(first: 100, after: $endCursor,activeOnly: false) {
+      sponsorshipsAsMaintainer(first: 50, after: $endCursor,activeOnly: false) {
         nodes {
           privacyLevel
           isActive

@@ -9,8 +9,7 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のファイルを作成する
 #--------------------------------------
-readonly RAW_REPO_META_DIR="${GET_DIR}/repo-meta.json"
-mkdir -p "$(dirname "$RAW_REPO_META_DIR")"
+readonly RAW_REPO_META_DIR="${RESULTS_GET_DIR}/result-repo-meta.json"
 
 #--------------------------------------
 # リポジトリのメタデータを取得する
@@ -20,7 +19,7 @@ function get_repo_meta() {
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before:get-repo-meta")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-repo-meta()")"
 
   local QUERY
 
@@ -48,5 +47,5 @@ function get_repo_meta() {
   gh api graphql -F owner="$OWNER" -F repo="$REPO" -f query="$QUERY" | jq '.' >"$RAW_REPO_META_DIR"
 
   # データ取得後のRateLimitを出力
-  get_ratelimit "after:get-repo-meta" "$before_remaining_ratelimit" "false"
+  get_ratelimit "after:get-repo-meta()" "$before_remaining_ratelimit" "false"
 }

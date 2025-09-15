@@ -1,7 +1,7 @@
 gh api graphql -F owner="ryoppippi" -F name="ccusage" -f query='
   query($owner:String!, $name:String!) {
     repository(owner:$owner, name:$name) {
-      watchers(first: 100) {
+      watchers(first: 50) {
         totalCount
         pageInfo { hasNextPage endCursor }
         nodes {

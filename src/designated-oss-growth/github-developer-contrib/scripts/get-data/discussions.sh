@@ -16,7 +16,7 @@ function get_discussions() {
   QUERY='
     query($owner: String!, $repo: String!) {
       repository(owner: $owner, name: $repo) {
-        discussions(first: 100) {
+        discussions(first: 50) {
           nodes {
             id
             title

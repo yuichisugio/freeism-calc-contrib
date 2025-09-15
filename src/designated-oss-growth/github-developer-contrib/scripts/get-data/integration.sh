@@ -6,19 +6,26 @@
 
 set -euo pipefail
 
+# --------------------------------------
+# 出力先のファイルを作成する
+# --------------------------------------
+readonly RESULTS_GET_DIR="${RESULTS_DIR}/get-data"
+mkdir -p "$RESULTS_GET_DIR"
+
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "$(dirname "$0")/repo-meta.sh"
-source "$(dirname "$0")/pull-request-main.sh"
-source "$(dirname "$0")/coding-commit-pullreq.sh"
-source "$(dirname "$0")/star.sh"
-source "$(dirname "$0")/fork.sh"
-source "$(dirname "$0")/watch.sh"
-source "$(dirname "$0")/pull-request-comment.sh"
-source "$(dirname "$0")/sponsor.sh"
-# source "$(dirname "$0")/reaction.sh"
-# source "$(dirname "$0")/issue.sh"
+readonly GET_DIR="${SCRIPT_DIR}/scripts/get-data"
+source "${GET_DIR}/repo-meta.sh"
+source "${GET_DIR}/pull-request-main.sh"
+# source "${GET_DIR}/coding-commit-pullreq.sh"
+# source "${GET_DIR}/star.sh"
+# source "${GET_DIR}/fork.sh"
+# source "${GET_DIR}/watch.sh"
+# source "${GET_DIR}/pull-request-comment.sh"
+# source "${GET_DIR}/sponsor.sh"
+# source "${GET_DIR}/reaction.sh"
+# source "${GET_DIR}/issue.sh"
 
 #--------------------------------------
 # データ取得を統合する関数
@@ -29,7 +36,7 @@ function get_data() {
   local before_remaining_ratelimit
 
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before:get-data")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-data()")"
 
   # リポジトリのメタデータを取得
   get_repo_meta
@@ -38,16 +45,16 @@ function get_data() {
   get_pull_request
 
   # スターのデータを取得
-  get_star
+  # get_star
 
-  # フォークのデータを取得
-  get_fork
+  # # フォークのデータを取得
+  # get_fork
 
-  # ウォッチのデータを取得
-  get_watch
+  # # ウォッチのデータを取得
+  # get_watch
 
-  # スポンサーのデータを取得
-  get_sponsor
+  # # スポンサーのデータを取得
+  # get_sponsor
 
   # コミットのデータを取得
   # get_commit
@@ -59,5 +66,5 @@ function get_data() {
   # get_issue
 
   # データ取得後のRateLimitを出力
-  get_ratelimit "after:get-data" "$before_remaining_ratelimit" "false"
+  get_ratelimit "after:get-data()" "$before_remaining_ratelimit" "false"
 }

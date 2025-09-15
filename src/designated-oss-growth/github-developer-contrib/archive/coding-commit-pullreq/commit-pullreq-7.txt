@@ -10,7 +10,7 @@ query($owner: String!, $name: String!, $qualified: String!, $prsPerCommit: Int!)
       name
       target {
         ... on Commit {
-          history(first: 100) {
+          history(first: 50) {
             nodes {
               abbreviatedOid
               additions

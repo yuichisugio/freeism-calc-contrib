@@ -40,7 +40,7 @@ function get_watch() {
   QUERY='
     query($owner: String!, $name: String!, $endCursor: String) {
       repository(owner: $owner, name: $name) {
-        watchers(first:100, after:$endCursor) {
+        watchers(first:50, after:$endCursor) {
           totalCount
           pageInfo { hasNextPage endCursor }
           nodes {

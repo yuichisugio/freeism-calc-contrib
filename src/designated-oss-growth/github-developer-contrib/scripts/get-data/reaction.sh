@@ -20,13 +20,13 @@ function get_issue_node_id() {
   QUERY='
     query($owner:String!, $name:String!, $endCursor:String, $since:String) {
     repository(owner:$owner, name:$name) {
-      issues(first:100, after:$endCursor, orderBy:{field:UPDATED_AT, direction:DESC}) {
+      issues(first:50, after:$endCursor, orderBy:{field:UPDATED_AT, direction:DESC}) {
         pageInfo { hasNextPage endCursor }
         nodes {
           id
           url
           number
-          comments(first:100) {
+          comments(first:50) {
             nodes { id url createdAt }
             pageInfo { hasNextPage endCursor }
           }
@@ -57,7 +57,7 @@ function get_reaction() {
   gh api graphql -F owner="$owner" -F name="$repo" -F since="$since" -f query='
     query($owner: String!, $name: String!, $since: String!) {
       repository(owner: $owner, name: $name) {
-        reactions(first: 100, since: $since) {
+        reactions(first: 50, since: $since) {
           nodes {
             id
             content

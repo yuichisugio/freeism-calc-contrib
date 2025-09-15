@@ -19,7 +19,7 @@ gh api graphql -f query='
 '
 
 # 直接 main/master に push されたコミット候補（= PR 非紐付）のみ判定材料を取る
-query($owner: String!, $name: String!, $pageSize: Int = 100, $since: GitTimestamp, $after: String) {
+query($owner: String!, $name: String!, $pageSize: Int = 50, $since: GitTimestamp, $after: String) {
   repository(owner: $owner, name: $name) {
     nameWithOwner
     defaultBranchRef {
@@ -46,10 +46,10 @@ query($owner: String!, $name: String!, $pageSize: Int = 100, $since: GitTimestam
   }
 }
 
-# 例: 2025-01-01 以降、直近100件ずつ取りつつ PR 非紐付コミットだけ出力
+# 例: 2025-01-01 以降、直近50件ずつ取りつつ PR 非紐付コミットだけ出力
 gh api graphql \
   -F owner=OWNER -F name=REPO \
-  -F since='2025-01-01T00:00:00Z' -F pageSize=100 \
+  -F since='2025-01-01T00:00:00Z' -F pageSize=50 \
   -f query='
 query($owner:String!,$name:String!,$pageSize:Int,$since:GitTimestamp,$after:String){
   repository(owner:$owner,name:$name){

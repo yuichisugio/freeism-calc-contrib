@@ -1,0 +1,17 @@
+{
+  "data": {
+    "repository": {
+      "id": "R_kgDOPDzQlw",
+      "name": "difit",
+      "url": "https://github.com/yoshiko-pg/difit",
+      "createdAt": "2025-06-29T13:09:26Z",
+      "owner": {
+        "login": "yoshiko-pg",
+        "id": "MDQ6VXNlcjY4MjI5MjM="
+      },
+      "defaultBranchRef": {
+        "name": "main"
+      }
+    }
+  }
+}

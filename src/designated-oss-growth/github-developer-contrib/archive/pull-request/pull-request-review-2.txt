@@ -4,7 +4,7 @@ gh api graphql \
   -F q="repo:yuichisugio/myFirstTest is:pr created:1970-01-01T00:00:00Z.."2025-09-11T23:59:59Z"" \
   -f query='
     query($q: String!, $endCursor: String) {
-      search(query:$q, type:ISSUE, first:100, after:$endCursor) {
+      search(query:$q, type:ISSUE, first:50, after:$endCursor) {
         issueCount
         pageInfo { hasNextPage endCursor }
         nodes { 

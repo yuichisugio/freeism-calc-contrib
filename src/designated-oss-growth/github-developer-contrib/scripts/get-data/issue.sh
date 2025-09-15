@@ -15,7 +15,7 @@ function get_github_issue_contributors() {
   gh api graphql -F owner="$OWNER" -F name="$REPO" -f query='
       query($owner: String!, $name: String!) {
         repository(owner: $owner, name: $name) {
-          issues(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
+          issues(first: 50, orderBy: {field: CREATED_AT, direction: DESC}) {
             totalCount
             nodes {
               author {

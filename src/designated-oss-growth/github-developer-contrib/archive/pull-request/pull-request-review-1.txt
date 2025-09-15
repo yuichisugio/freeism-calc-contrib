@@ -8,7 +8,7 @@ query($owner: String!, $name: String!) {
       name
       target {
         ... on Commit {
-          history(first: 100) {
+          history(first: 50) {
             nodes {
               abbreviatedOid
               additions

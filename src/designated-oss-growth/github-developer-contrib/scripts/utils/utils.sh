@@ -237,7 +237,7 @@ function setup_output_directory() {
 # Args: message before
 # 第一引数: 出力するメッセージ
 # 第二引数: （任意）前回の残りのリミット
-# Example: get_ratelimit "before-get-pull-request" "100"
+# Example: get_ratelimit "before-get-pull-request" "50"
 #--------------------------------------
 function get_ratelimit() {
   local message="$1" before="${2:-}" is_output="${3:-true}"

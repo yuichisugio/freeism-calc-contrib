@@ -11,7 +11,7 @@ gh api graphql \
         name
         target {
           ... on Commit {
-            history(first:100) {
+            history(first:50) {
               pageInfo { hasNextPage endCursor }
               nodes {
                 oid

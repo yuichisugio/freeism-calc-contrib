@@ -19,7 +19,7 @@ function usage() {
       Get all pull request reviews in a repo (optionally filtered by date)
 
     Output:
-      JSONL (each line = 100 pull request reviews)
+      JSONL (each line = 50 pull request reviews)
       JSON array (each element = 1 pull request review)
 
     Example:
@@ -47,7 +47,7 @@ function get_pull_request_review() {
   QUERY='
     query($owner:String!, $name:String!, $endCursor:String, $since:String) {
       repository(owner:$owner, name:$name) {
-        pullRequests(first:100, after:$endCursor, orderBy:{field:UPDATED_AT, direction:DESC}) {
+        pullRequests(first:50, after:$endCursor, orderBy:{field:UPDATED_AT, direction:DESC}) {
           pageInfo { hasNextPage endCursor }
           nodes {
             number
@@ -64,11 +64,11 @@ function get_pull_request_review() {
             changedFiles
             author { login ... on User { id } }
             authorAssociation
-            assignees(first:100) { nodes { login ... on User { id } } }
-            labels(first:100) { nodes { name } }
+            assignees(first:50) { nodes { login ... on User { id } } }
+            labels(first:50) { nodes { name } }
             reactionGroups { content users { totalCount } }
 
-            comments(first:100) {
+            comments(first:50) {
               totalCount
               nodes {
                 author { login ... on User { id } }
@@ -78,7 +78,7 @@ function get_pull_request_review() {
               }
             }
 
-            reviews(first:100) {
+            reviews(first:50) {
               totalCount
               nodes {
                 author { login ... on User { id } }
@@ -87,10 +87,10 @@ function get_pull_request_review() {
               }
             }
 
-            reviewThreads(first:100) {
+            reviewThreads(first:50) {
               totalCount
               nodes {
-                comments(first:100) {
+                comments(first:50) {
                   totalCount
                   nodes {
                     author { login ... on User { id } }
@@ -102,7 +102,7 @@ function get_pull_request_review() {
               }
             }
 
-            timelineItems(first:100, itemTypes: [
+            timelineItems(first:50, itemTypes: [
               LABELED_EVENT,
               UNLABELED_EVENT,
               ASSIGNED_EVENT,

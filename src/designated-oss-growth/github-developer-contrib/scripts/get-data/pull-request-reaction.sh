@@ -29,7 +29,7 @@ function get_pull_request_reaction() {
   : >"$RAW_PATH"
   : >"$RESULTS_PATH"
 
-  if [[ -n "$(jq -r '.data.repository.pullRequests.nodes[] | .reactionGroups' "$RAW_PATH")" ]]; then
+  if [[ -n "$(jq -r '.data.repository.pullRequests.nodes[] | .reactionGroups' "$RESULT_PR_NODE_ID_PATH")" ]]; then
     jq -r '.data.repository.pullRequests.nodes[] | .reactionGroups' "$RAW_PATH"
   else
     jq -r '.data.repository.pullRequests.nodes[] | .reactionGroups' "$RAW_PATH"

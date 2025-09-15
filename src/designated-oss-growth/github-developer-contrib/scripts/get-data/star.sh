@@ -65,7 +65,7 @@ function get_star() {
     query($owner: String!, $name: String!, $endCursor: String) {
       repository(owner: $owner, name: $name) {
         stargazerCount
-        stargazers(first:100, after:$endCursor, orderBy:{field: STARRED_AT, direction: ASC}) {
+        stargazers(first:50, after:$endCursor, orderBy:{field: STARRED_AT, direction: ASC}) {
           totalCount
           pageInfo { hasNextPage endCursor }
           edges {

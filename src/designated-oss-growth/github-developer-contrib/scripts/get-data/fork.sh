@@ -65,7 +65,7 @@ get_fork() {
     query($owner: String!, $name: String!, $endCursor: String) {
       repository(owner: $owner, name: $name) {
         forkCount
-        forks(first: 100, after: $endCursor, orderBy: { field: CREATED_AT, direction: ASC }) {
+        forks(first: 50, after: $endCursor, orderBy: { field: CREATED_AT, direction: ASC }) {
           totalCount
           pageInfo { hasNextPage endCursor }
           nodes {

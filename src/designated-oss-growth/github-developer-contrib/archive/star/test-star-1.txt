@@ -2,7 +2,7 @@ gh api graphql --paginate --slurp -F owner="ryoppippi" -F name="ccusage" -f quer
   query($owner:String!, $name:String!, $endCursor:String) {
     repository(owner:$owner, name:$name) {
       stargazerCount
-      stargazers(first:100, after:$endCursor, orderBy:{field: STARRED_AT, direction: ASC}) {
+      stargazers(first:50, after:$endCursor, orderBy:{field: STARRED_AT, direction: ASC}) {
         pageInfo { hasNextPage endCursor }
         edges {
           starredAt

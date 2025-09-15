@@ -11,7 +11,7 @@ Usage: $0 -r OWNER/REPO [options]
   -b, --branch BRANCH
       --since YYYY-MM-DD
       --days N
-      --page-size N      (default 100, max 100)
+      --page-size N      (default 50, max 100)
 USAGE
 }
 
@@ -19,7 +19,7 @@ REPO=""
 BRANCH=""
 SINCE=""
 DAYS=""
-PAGE_SIZE=100
+PAGE_SIZE=50
 while [[ $# -gt 0 ]]; do
   case "$1" in
   -r | --repo)

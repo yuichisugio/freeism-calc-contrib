@@ -138,7 +138,7 @@ function get_commit() {
         name
         target {
           ... on Commit {
-            history(first:100, after:$endCursor, since:$since, until:$until) {
+            history(first:50, after:$endCursor, since:$since, until:$until) {
               pageInfo { hasNextPage endCursor }
               totalCount
               nodes {

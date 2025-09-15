@@ -58,7 +58,7 @@ gh api graphql \
         }
       }
     }
-  ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/5-1-ccusage.json"
+  ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request/pr-5/5-1-ccusage.json"
 
 
 # nodeクエリで、第3階層のtotalCount>0の場合にデータ(reactions)を取得
