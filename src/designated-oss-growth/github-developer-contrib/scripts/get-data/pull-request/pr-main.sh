@@ -11,12 +11,14 @@ set -euo pipefail
 #--------------------------------------
 source "${GET_DIR}/pull-request/pr-node-id.sh"
 source "${GET_DIR}/pull-request/pr-utils.sh"
-# source "${GET_DIR}/pull-request/pr-reaction.sh"
+source "${GET_DIR}/pull-request/pr-reaction.sh"
+source "${GET_DIR}/pull-request/pr-assigned-actors.sh"
+source "${GET_DIR}/pull-request/pr-timeline-assigned.sh"
+source "${GET_DIR}/pull-request/pr-label.sh"
+source "${GET_DIR}/pull-request/pr-timeline-label.sh"
 # source "${GET_DIR}/pull-request/pr-comment.sh"
 # source "${GET_DIR}/pull-request/pr-review.sh"
 # source "${GET_DIR}/pull-request/pr-review-comment.sh"
-# source "${GET_DIR}/pull-request/pr-label.sh"
-# source "${GET_DIR}/pull-request/pr-assignee.sh"
 # source "${GET_DIR}/pull-request/pr-reviewer.sh"
 
 #--------------------------------------
@@ -38,7 +40,19 @@ function get_pull_request() {
   get_pull_request_node_id
 
   # プルリクエストのリアクションを取得
-  # get_pull_request_reaction
+  get_pull_request_reaction
+
+  # プルリクエストの現在の担当者を取得
+  get_pull_request_assigned_actors
+
+  # プルリクエストの担当者のタイムラインを取得
+  get_pull_request_timeline_assigned
+
+  # プルリクエストの現在のラベルを取得
+  get_pull_request_label
+
+  # プルリクエストのラベルのタイムラインを取得
+  get_pull_request_timeline_label
 
   # # プルリクエストのコメントを取得
   # get_pull_request_comment
@@ -48,12 +62,6 @@ function get_pull_request() {
 
   # # プルリクエストのレビューコメントを取得
   # get_pull_request_review_comment
-
-  # # プルリクエストのラベルを取得
-  # get_pull_request_label
-
-  # # プルリクエストの担当者を取得
-  # get_pull_request_assignee
 
   # # プルリクエストのレビュワーを取得
   # get_pull_request_reviewer

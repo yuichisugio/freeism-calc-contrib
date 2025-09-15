@@ -58,12 +58,14 @@ function get_paginated_repository_data() {
 }
 
 #--------------------------------------
-# 手動ページネーションで、node_id・SINCEからUNTILの期間で絞ってJSONLに追記
+# nodeクエリ指定で、手動ページネーションで、SINCEからUNTILの期間に絞って出力
+# SECOND_CHECK_FIELD_NAMEが空の場合は、期間で絞り込まない
+# FIRST_CHECK_FIELD_NAME直下のnodes配列を出力するので、prのnumberが必要な場合は、RESULTファイルには、その情報が抜かれた状態で出力されるので、rawファイルを利用して分析する
 #--------------------------------------
 function get_paginated_data_by_node_id() {
 
   # raw_pathは取得したままのデータ。resultはlocal側で、期間で絞ったデータ
-  local QUERY="$1" RAW_PATH="$2" RESULT_PATH="$3" FIRST_CHECK_FIELD_NAME="$4" SECOND_CHECK_FIELD_NAME="$5"
+  local QUERY="$1" RAW_PATH="$2" RESULT_PATH="$3" FIRST_CHECK_FIELD_NAME="$4" SECOND_CHECK_FIELD_NAME="${5:-}"
   local HAS_NEXT_PAGE END_CURSOR LAST_DATE RESPONSE
   local NODE_ID FIELD_TOTAL_COUNT
 
@@ -79,50 +81,85 @@ function get_paginated_data_by_node_id() {
   # RESULT_PR_NODE_ID_PATHのすべてのnode_idに対して実行するよう繰り返す
   for NODE_ID in $(jq -r '.[].id' "$RESULT_PR_NODE_ID_PATH"); do
 
-    FIELD_TOTAL_COUNT="$(jq -r \
-      --arg NODE_ID "$NODE_ID" \
-      --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
-      '.[] | select(.id==$NODE_ID) | .$FIRST_CHECK_FIELD_NAME.totalCount' \
-      "$RESULT_PR_NODE_ID_PATH")"
+    FIELD_TOTAL_COUNT="$(
+      jq -r \
+        --arg NODE_ID "$NODE_ID" \
+        --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
+        '(.[] | select(.id==$NODE_ID) | .[$FIRST_CHECK_FIELD_NAME].totalCount // 0) | tonumber' \
+        "$RESULT_PR_NODE_ID_PATH"
+    )"
 
     # フィールドのtotalCountが0の場合は次のnode_idに進む
-    if [[ "$FIELD_TOTAL_COUNT" == "0" ]]; then
+    if ((FIELD_TOTAL_COUNT == 0)); then
       continue
     fi
+
+    # 各Nodeごとにカーソルを初期化
+    END_CURSOR=""
 
     # 手動ページネーションで、SINCEからUNTILの期間で絞ってJSONLに追記
     while :; do
 
-      # OWNERとREPOはmain.shでグローバル変数として定義されている
-      RESPONSE="$(gh api graphql \
-        --header X-Github-Next-Global-ID:1 \
-        -f node_id="$NODE_ID" \
-        -F endCursor="${END_CURSOR:-null}" \
-        -F perPage=50 \
-        -f query="$QUERY" |
-        jq '.')"
+      # timelineItemsはSINCEを指定できるので、サーバー側でもフィルターで絞る
+      if [[ "$FIRST_CHECK_FIELD_NAME" == "timelineItems" ]]; then
+
+        # OWNERとREPOはmain.shでグローバル変数として定義されている
+        RESPONSE="$(
+          gh api graphql \
+            --header X-Github-Next-Global-ID:1 \
+            -f node_id="$NODE_ID" \
+            -F endCursor="${END_CURSOR:-null}" \
+            -F perPage=50 \
+            -f since="$SINCE" \
+            -f query="$QUERY" |
+            jq '.'
+        )"
+
+      else
+
+        # OWNERとREPOはmain.shでグローバル変数として定義されている
+        RESPONSE="$(
+          gh api graphql \
+            --header X-Github-Next-Global-ID:1 \
+            -f node_id="$NODE_ID" \
+            -F endCursor="${END_CURSOR:-null}" \
+            -F perPage=50 \
+            -f query="$QUERY" |
+            jq '.'
+        )"
+
+      fi
 
       printf '%s\n' "$RESPONSE" >>"$RAW_PATH"
 
       # 期間で絞ってJSONLに追記
       # SINCEとUNTILはmain.shでグローバル変数として定義されている
+      # assignedActorsはSECOND_CHECK_FIELD_NAMEがないため、空文字で絞り込まない
       jq -r \
         --arg SINCE "$SINCE" \
         --arg UNTIL "$UNTIL" \
         --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
-        --arg SECOND_CHECK_FIELD_NAME "$SECOND_CHECK_FIELD_NAME" \
-        '.data.node.${FIRST_CHECK_FIELD_NAME}.nodes[]
-      | select(.${SECOND_CHECK_FIELD_NAME} >= $SINCE and .${SECOND_CHECK_FIELD_NAME} <= $UNTIL)
+        --arg SECOND_CHECK_FIELD_NAME "${SECOND_CHECK_FIELD_NAME:-}" \
+        '.data.node[$FIRST_CHECK_FIELD_NAME].nodes[]
+      | if $SECOND_CHECK_FIELD_NAME == "" then . else select(.[$SECOND_CHECK_FIELD_NAME] >= $SINCE and .[$SECOND_CHECK_FIELD_NAME] <= $UNTIL) end
     ' <<<"$RESPONSE" >>"$RESULT_PATH"
 
       # 次ページの準備
-      HAS_NEXT_PAGE="$(jq -r '.data.repository.pullRequests.pageInfo.hasNextPage' <<<"$RESPONSE")"
-      END_CURSOR="$(jq -r '.data.repository.pullRequests.pageInfo.endCursor' <<<"$RESPONSE")"
+      HAS_NEXT_PAGE="$(
+        jq -r \
+          --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
+          '.data.node[$FIRST_CHECK_FIELD_NAME].pageInfo.hasNextPage' <<<"$RESPONSE"
+      )"
+      END_CURSOR="$(
+        jq -r \
+          --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
+          '.data.node[$FIRST_CHECK_FIELD_NAME].pageInfo.endCursor' <<<"$RESPONSE"
+      )"
       LAST_DATE="$(
         jq -r \
           --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
-          --arg SECOND_CHECK_FIELD_NAME "$SECOND_CHECK_FIELD_NAME" \
-          '(.data.node.${FIRST_CHECK_FIELD_NAME}.nodes | last | .${SECOND_CHECK_FIELD_NAME})' <<<"$RESPONSE"
+          --arg SECOND_CHECK_FIELD_NAME "${SECOND_CHECK_FIELD_NAME:-}" \
+          '(.data.node[$FIRST_CHECK_FIELD_NAME].nodes | last | if $SECOND_CHECK_FIELD_NAME == "" then . else .[$SECOND_CHECK_FIELD_NAME] end)' <<<"$RESPONSE"
       )"
 
       # 続きがない、もしくは期間外の場合は終了
@@ -139,62 +176,3 @@ function get_paginated_data_by_node_id() {
   trap 'rm -f "$tmp"' EXIT
   jq -s '.' "$RESULT_PATH" >"$tmp" && mv -f "$tmp" "$RESULT_PATH"
 }
-
-#--------------------------------------
-# 手動ページネーションで、SINCEからUNTILの期間で絞ってJSONLに追記
-#--------------------------------------
-# function get_paginated_timeline_data() {
-
-#   # raw_pathは取得したままのデータ。resultはlocal側で、期間で絞ったデータ
-#   local QUERY="$1" RAW_PATH="$2" RESULT_PATH="$3" IS_REPOSITORY="$4" IS_TIMELINE="$5"
-#   local HAS_NEXT_END_CURSOR RESPONSE
-
-#   while :; do
-
-#     if [[ "$IS_REPOSITORY" == "true" ]]; then
-#       gh api graphql \
-#         -f owner="$OWNER" \
-#         -f name="$REPO" \
-#         -f query="$QUERY" |
-#         jq '.' >>"$RAW_PATH"
-#     elif [[ "$IS_TIMELINE" == "true" ]]; then
-#       gh api graphql \
-#         -f node_id="$NODE_ID" \
-#         -f since="$SINCE" \
-#         -f query="$QUERY" |
-#         jq '.' >>"$RAW_PATH"
-#     else
-#       gh api graphql \
-#         -f node_id="$NODE_ID" \
-#         -f query="$QUERY" |
-#         jq '.' >>"$RAW_PATH"
-#     fi
-
-#     # 期間で絞ってJSONLに追記
-#     jq -r --arg START "$START" --arg END "$END" '
-#       .data.repository.stargazers.edges[]
-#       | select(.starredAt >= $START and .starredAt <= $END)
-#     ' "$RAW_STAR_PER_PAGE_JSON" >>"$RAW_STAR_JSONL_PATH"
-
-#     # 次ページの準備
-#     HAS_NEXT="$(jq -r '.data.repository.stargazers.pageInfo.hasNextPage' "$RAW_STAR_PER_PAGE_JSON")"
-#     CURSOR="$(jq -r '.data.repository.stargazers.pageInfo.endCursor' "$RAW_STAR_PER_PAGE_JSON")"
-#     LAST_DATE="$(jq -r '(.data.repository.stargazers.edges | last | .starredAt) // empty' "$RAW_STAR_PER_PAGE_JSON")"
-
-#     # 続きがない、もしくは期間外の場合は終了
-#     if [[ "$HAS_NEXT" != "true" || "$CURSOR" == "null" || -z "$CURSOR" ]] || [[ -n "$LAST_DATE" && "$LAST_DATE" > "$END" ]]; then
-#       break
-#     fi
-#   done
-
-#   # 最後に配列化して成果物（※入力と出力は別ファイルにする！）
-#   jq -s '.' "$RAW_PULL_REQUEST_JSONL_PATH" >"$RESULTS_PULL_REQUEST_JSON_PATH"
-
-#   gh api graphql \
-#     --paginate --slurp \
-#     --header X-Github-Next-Global-ID:1 \
-#     -f owner="$OWNER" \
-#     -f name="$REPO" \
-#     -F perPage=50 \
-#     -f query="$QUERY" | jq '.' >"$RESULTS_PULL_REQUEST_JSON_PATH"
-# }

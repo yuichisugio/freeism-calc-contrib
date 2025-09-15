@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# --------------------------------------
-# Pull Request のReview関連(+リアクション)に必要なすべてのデータをテスト的に取得する
-# --------------------------------------
-
 set -euo pipefail
 
 # shellcheck disable=SC2016
@@ -37,6 +33,8 @@ LAST_DATE=""
 RESPONSE=""
 NODE_ID=""
 FIELD_TOTAL_COUNT=""
+SINCE="1970-01-01T00:00:00Z"
+UNTIL="2025-09-15T23:59:59Z"
 
 # 同じPATHに実行する場合に、前回の内容をファイルを空にする
 : >"$RAW_PATH"
@@ -50,28 +48,35 @@ fi
 # RESULT_PR_NODE_ID_PATHのすべてのnode_idに対して実行するよう繰り返す
 for NODE_ID in $(jq -r '.[].id' "$RESULT_PR_NODE_ID_PATH"); do
 
-  FIELD_TOTAL_COUNT="$(jq -r \
-    --arg NODE_ID "$NODE_ID" \
-    --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
-    '.[] | select(.id==$NODE_ID) | .$FIRST_CHECK_FIELD_NAME.totalCount' \
-    "$RESULT_PR_NODE_ID_PATH")"
+  FIELD_TOTAL_COUNT="$(
+    jq -r \
+      --arg NODE_ID "$NODE_ID" \
+      --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
+      '(.[] | select(.id==$NODE_ID) | .[$FIRST_CHECK_FIELD_NAME].totalCount // 0) | tonumber' \
+      "$RESULT_PR_NODE_ID_PATH"
+  )"
 
   # フィールドのtotalCountが0の場合は次のnode_idに進む
-  if [[ "$FIELD_TOTAL_COUNT" == "0" ]]; then
+  if ((FIELD_TOTAL_COUNT == 0)); then
     continue
   fi
+
+  # 各Nodeごとにカーソルを初期化
+  END_CURSOR=""
 
   # 手動ページネーションで、SINCEからUNTILの期間で絞ってJSONLに追記
   while :; do
 
     # OWNERとREPOはmain.shでグローバル変数として定義されている
-    RESPONSE="$(gh api graphql \
-      --header X-Github-Next-Global-ID:1 \
-      -f node_id="$NODE_ID" \
-      -F endCursor="${END_CURSOR:-null}" \
-      -F perPage=50 \
-      -f query="$QUERY" |
-      jq '.')"
+    RESPONSE="$(
+      gh api graphql \
+        --header X-Github-Next-Global-ID:1 \
+        -f node_id="$NODE_ID" \
+        -F endCursor="${END_CURSOR:-null}" \
+        -F perPage=50 \
+        -f query="$QUERY" |
+        jq '.'
+    )"
 
     printf '%s\n' "$RESPONSE" >>"$RAW_PATH"
 
@@ -82,18 +87,26 @@ for NODE_ID in $(jq -r '.[].id' "$RESULT_PR_NODE_ID_PATH"); do
       --arg UNTIL "$UNTIL" \
       --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
       --arg SECOND_CHECK_FIELD_NAME "$SECOND_CHECK_FIELD_NAME" \
-      '.data.node.${FIRST_CHECK_FIELD_NAME}.nodes[]
-      | select(.${SECOND_CHECK_FIELD_NAME} >= $SINCE and .${SECOND_CHECK_FIELD_NAME} <= $UNTIL)
+      '.data.node[$FIRST_CHECK_FIELD_NAME].nodes[]
+      | select(.[$SECOND_CHECK_FIELD_NAME] >= $SINCE and .[$SECOND_CHECK_FIELD_NAME] <= $UNTIL)
     ' <<<"$RESPONSE" >>"$RESULT_PATH"
 
     # 次ページの準備
-    HAS_NEXT_PAGE="$(jq -r '.data.repository.pullRequests.pageInfo.hasNextPage' <<<"$RESPONSE")"
-    END_CURSOR="$(jq -r '.data.repository.pullRequests.pageInfo.endCursor' <<<"$RESPONSE")"
+    HAS_NEXT_PAGE="$(
+      jq -r \
+        --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
+        '.data.node[$FIRST_CHECK_FIELD_NAME].pageInfo.hasNextPage' <<<"$RESPONSE"
+    )"
+    END_CURSOR="$(
+      jq -r \
+        --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
+        '.data.node[$FIRST_CHECK_FIELD_NAME].pageInfo.endCursor' <<<"$RESPONSE"
+    )"
     LAST_DATE="$(
       jq -r \
         --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
         --arg SECOND_CHECK_FIELD_NAME "$SECOND_CHECK_FIELD_NAME" \
-        '(.data.node.${FIRST_CHECK_FIELD_NAME}.nodes | last | .${SECOND_CHECK_FIELD_NAME})' <<<"$RESPONSE"
+        '(.data.node[$FIRST_CHECK_FIELD_NAME].nodes | last | .[$SECOND_CHECK_FIELD_NAME])' <<<"$RESPONSE"
     )"
 
     # 続きがない、もしくは期間外の場合は終了

@@ -162,8 +162,6 @@ gh api graphql \
   -f query='
     query($node_id: ID!, $perPage: Int!) {
       node(id: $node_id) {
-        id
-        url
         ... on PullRequest{
           id
           number
@@ -181,7 +179,7 @@ gh api graphql \
         }
       }
     }
-  ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/5-5-ccusage.json"
+  ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request/pr-5/5-5-ccusage.json"
 
 
 # nodeクエリで、第3階層のtotalCount>0の場合にデータ(timelineItems.LABELED_EVENT)を取得
@@ -225,7 +223,7 @@ gh api graphql \
         }
       }
     }
-  ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/5-6-ccusage.json"
+  ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request/pr-5/5-6-ccusage.json"
 
 
 # nodeクエリで、第3階層のtotalCount>0の場合にデータ(comments) + さらにネストした第4階層のtotalCountを取得

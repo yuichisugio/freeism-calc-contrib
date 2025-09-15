@@ -35,8 +35,8 @@ function get_pull_request_reaction() {
     }
   '
 
-  # クエリを実行。
-  get_paginated_repository_data "$QUERY" "$RAW_PATH" "$RESULT_PATH" "reactions" "createdAt"
+  # クエリを実行。node_id単位でページネーションしながら取得
+  get_paginated_data_by_node_id "$QUERY" "$RAW_PATH" "$RESULT_PATH" "reactions" "createdAt"
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-pull-request-reaction()" "$before_remaining_ratelimit" "false"
