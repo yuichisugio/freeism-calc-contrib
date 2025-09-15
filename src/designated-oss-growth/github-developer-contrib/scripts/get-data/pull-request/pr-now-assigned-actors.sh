@@ -14,8 +14,8 @@ function get_pull_request_now_assigned_actors() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-now-assigned-actors()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-now-assigned-actors.jsonl"
-  local RESULT_PATH="${RESULTS_GET_DIR}/result-pr-now-assigned-actors.json"
+  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-now-assigned-actors.jsonl"
+  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-now-assigned-actors.json"
 
   # shellcheck disable=SC2016
   QUERY='

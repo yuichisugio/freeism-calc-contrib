@@ -16,13 +16,13 @@ mkdir -p "$RESULTS_GET_DIR"
 # 使用するファイルを読み込む
 #--------------------------------------
 readonly GET_DIR="${SCRIPT_DIR}/scripts/get-data"
-source "${GET_DIR}/repo-meta.sh"
-source "${GET_DIR}/pull-request/pr-main.sh"
-# source "${GET_DIR}/coding-commit-pullreq.sh"
+# source "${GET_DIR}/repo-meta.sh"
+# source "${GET_DIR}/pull-request/pr-main.sh"
 # source "${GET_DIR}/star.sh"
-# source "${GET_DIR}/fork.sh"
+source "${GET_DIR}/fork.sh"
 # source "${GET_DIR}/watch.sh"
 # source "${GET_DIR}/sponsor.sh"
+# source "${GET_DIR}/coding-commit-pullreq.sh"
 # source "${GET_DIR}/reaction.sh"
 # source "${GET_DIR}/issue.sh"
 
@@ -38,21 +38,21 @@ function get_data() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-data()")"
 
   # リポジトリのメタデータを取得
-  get_repo_meta
+  # get_repo_meta
 
   # プルリクエストのデータを取得
-  get_pull_request
+  # get_pull_request
 
   # スターのデータを取得
   # get_star
 
-  # # フォークのデータを取得
-  # get_fork
+  # フォークのデータを取得
+  get_fork
 
-  # # ウォッチのデータを取得
+  # ウォッチのデータを取得
   # get_watch
 
-  # # スポンサーのデータを取得
+  # スポンサーのデータを取得
   # get_sponsor
 
   # コミットのデータを取得

@@ -17,8 +17,8 @@ function get_pull_request_comment_reaction() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-comment-reaction()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-comment-reaction.jsonl"
-  local RESULT_PATH="${RESULTS_GET_DIR}/result-pr-comment-reaction.json"
+  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-comment-reaction.jsonl"
+  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-comment-reaction.json"
 
   # shellcheck disable=SC2016
   QUERY='

@@ -14,8 +14,8 @@ function get_pull_request_timeline_assigned() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-timeline-assigned()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-timeline-assigned.jsonl"
-  local RESULT_PATH="${RESULTS_GET_DIR}/result-pr-timeline-assigned.json"
+  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-timeline-assigned.jsonl"
+  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-timeline-assigned.json"
 
   # shellcheck disable=SC2016
   QUERY='

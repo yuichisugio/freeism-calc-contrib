@@ -9,7 +9,8 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のファイルを作成する
 #--------------------------------------
-readonly RAW_REPO_META_DIR="${RESULTS_GET_DIR}/result-repo-meta.json"
+readonly RAW_REPO_META_DIR="${RESULTS_GET_DIR}/repo-meta/result-repo-meta.json"
+mkdir -p "$(dirname "$RAW_REPO_META_DIR")"
 
 #--------------------------------------
 # リポジトリのメタデータを取得する

@@ -14,8 +14,8 @@ function get_pull_request_now_label() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-now-label()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-now-label.jsonl"
-  local RESULT_PATH="${RESULTS_GET_DIR}/result-pr-now-label.json"
+  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-now-label.jsonl"
+  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-now-label.json"
 
   # shellcheck disable=SC2016
   QUERY='

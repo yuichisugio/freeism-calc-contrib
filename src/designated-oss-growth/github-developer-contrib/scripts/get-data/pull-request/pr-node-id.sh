@@ -17,7 +17,7 @@ function get_pull_request_node_id() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-node-id()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-node-id.jsonl"
+  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-node-id.jsonl"
 
   : >"$RAW_PATH"
 
@@ -75,7 +75,7 @@ function get_pull_request_node_id() {
   '
 
   # クエリを実行。
-  get_paginated_repository_data "$QUERY" "$RAW_PATH" "$RESULT_PR_NODE_ID_PATH"
+  get_paginated_repository_data "$QUERY" "$RAW_PATH" "$RESULT_PR_NODE_ID_PATH" "pullRequests" "publishedAt"
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-pull-request-node-id()" "$before_remaining_ratelimit" "false"

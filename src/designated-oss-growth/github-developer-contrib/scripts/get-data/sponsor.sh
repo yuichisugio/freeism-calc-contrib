@@ -79,19 +79,9 @@ function get_github_sponsors_supporters() {
   done <"$PROCESSED_SPONSOR_RECIPIENTS_PATH"
 }
 
-get_ratelimit() {
-  printf '%s\n' "$(gh api graphql -f query='
-  query(){
-    rateLimit { remaining }
-  }' --jq '.data.rateLimit.remaining')"
-}
-
 function get_github_sponsors() {
   get_github_sponsors_recipients "$@"
   get_github_sponsors_supporters "$@"
 }
 
-printf 'before--sponsor-remaining:%s\n' "$(get_ratelimit)"
 get_github_sponsors "$@"
-printf 'success\n'
-printf 'after-sponsor-remaining:%s\n' "$(get_ratelimit)"

@@ -17,7 +17,7 @@ function get_pull_request_review() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-review()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-review.jsonl"
+  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-review.jsonl"
 
   # shellcheck disable=SC2016
   QUERY='

@@ -17,7 +17,7 @@ function get_pull_request_comment() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-comment()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-comment.jsonl"
+  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-comment.jsonl"
 
   # shellcheck disable=SC2016
   QUERY='

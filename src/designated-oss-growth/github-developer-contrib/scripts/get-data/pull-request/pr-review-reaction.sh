@@ -17,8 +17,8 @@ function get_pull_request_review_reaction() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-review-reaction()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-review-reaction.jsonl"
-  local RESULT_PATH="${RESULTS_GET_DIR}/result-pr-review-reaction.json"
+  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-review-reaction.jsonl"
+  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-review-reaction.json"
 
   # shellcheck disable=SC2016
   QUERY='

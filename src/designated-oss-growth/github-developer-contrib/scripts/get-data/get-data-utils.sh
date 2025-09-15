@@ -11,8 +11,14 @@ set -euo pipefail
 #--------------------------------------
 function get_paginated_repository_data() {
 
-  # raw_pathは取得したままのデータ。resultはlocal側で、期間で絞ったデータ
-  local QUERY="$1" RAW_PATH="$2" RESULT_PATH="$3"
+  # 引数
+  local QUERY="$1"
+  local RAW_PATH="$2"
+  local RESULT_PATH="$3"
+  local FIRST_FIELD="$4"
+  local SECOND_FIELD="$5"
+
+  # 変数
   local HAS_NEXT_PAGE END_CURSOR LAST_DATE RESPONSE
 
   # 同じPATHに実行する場合に、前回の内容をファイルを空にする
@@ -35,20 +41,108 @@ function get_paginated_repository_data() {
 
     # 期間で絞ってJSONLに追記
     # SINCEとUNTILはmain.shでグローバル変数として定義されている
-    jq -r --arg SINCE "$SINCE" --arg UNTIL "$UNTIL" '
-      .data.repository.pullRequests.nodes[]
-      | select(.publishedAt >= $SINCE and .publishedAt <= $UNTIL)
-    ' <<<"$RESPONSE" >>"$RESULT_PATH"
+    jq -r \
+      --arg SINCE "$SINCE" \
+      --arg UNTIL "$UNTIL" \
+      --arg FIRST_FIELD "$FIRST_FIELD" \
+      --arg SECOND_FIELD "$SECOND_FIELD" \
+      '.data.repository[$FIRST_FIELD].nodes[]
+        | select(.[$SECOND_FIELD] >= $SINCE and .[$SECOND_FIELD] <= $UNTIL) // select(.[$SECOND_FIELD] >= $SINCE and .[$SECOND_FIELD] <= $UNTIL)
+      ' <<<"$RESPONSE" >>"$RESULT_PATH"
 
     # 次ページの準備
-    HAS_NEXT_PAGE="$(jq -r '.data.repository.pullRequests.pageInfo.hasNextPage' <<<"$RESPONSE")"
-    END_CURSOR="$(jq -r '.data.repository.pullRequests.pageInfo.endCursor' <<<"$RESPONSE")"
-    LAST_DATE="$(jq -r '(.data.repository.pullRequests.nodes | last | .publishedAt)' <<<"$RESPONSE")"
+    HAS_NEXT_PAGE="$(
+      jq -r \
+        --arg FIRST_FIELD "$FIRST_FIELD" \
+        '.data.repository[$FIRST_FIELD].pageInfo.hasNextPage' <<<"$RESPONSE"
+    )"
+    END_CURSOR="$(
+      jq -r \
+        --arg FIRST_FIELD "$FIRST_FIELD" \
+        '.data.repository[$FIRST_FIELD].pageInfo.endCursor' <<<"$RESPONSE"
+    )"
+    LAST_DATE="$(
+      jq -r \
+        --arg FIRST_FIELD "$FIRST_FIELD" \
+        --arg SECOND_FIELD "$SECOND_FIELD" \
+        '(.data.repository[$FIRST_FIELD].nodes | last | .[$SECOND_FIELD])' <<<"$RESPONSE"
+    )"
 
     # 続きがない、もしくは期間外の場合は終了
-    if [[ "$HAS_NEXT_PAGE" != "true" || "$END_CURSOR" == "null" || -z "$END_CURSOR" || (-n "$LAST_DATE" && "$LAST_DATE" > "$UNTIL") ]]; then
+    if [[ 
+      "$HAS_NEXT_PAGE" != "true" ||
+      "$END_CURSOR" == "null" ||
+      -z "$END_CURSOR" ||
+      (-n "$LAST_DATE" && "$LAST_DATE" > "$UNTIL")
+    ]]; then
       break
     fi
+
+  done
+
+  # 最後に配列化して保存する。JSONL → 配列（安全な書き換え）
+  tmp="$(mktemp "${RESULT_PATH}.XXXX")"
+  trap 'rm -f "$tmp"' EXIT
+  jq -s '.' "$RESULT_PATH" >"$tmp" && mv -f "$tmp" "$RESULT_PATH"
+}
+
+#--------------------------------------
+# starのデータ構造専用
+# 手動ページネーションで、SINCEからUNTILの期間で絞って出力
+# starのstarredAtはnodes内ではなく、edges内にある
+#--------------------------------------
+function get_paginated_star_data() {
+
+  # 引数
+  local QUERY="$1"
+  local RAW_PATH="$2"
+  local RESULT_PATH="$3"
+
+  # 変数
+  local HAS_NEXT_PAGE END_CURSOR LAST_DATE RESPONSE
+
+  # 同じPATHに実行する場合に、前回の内容をファイルを空にする
+  : >"$RAW_PATH"
+  : >"$RESULT_PATH"
+
+  # 手動ページネーションで、SINCEからUNTILの期間で絞ってJSONLに追記
+  while :; do
+
+    # OWNERとREPOはmain.shでグローバル変数として定義されている
+    RESPONSE="$(gh api graphql \
+      --header X-Github-Next-Global-ID:1 \
+      -f owner="$OWNER" \
+      -f name="$REPO" \
+      -F endCursor="${END_CURSOR:-null}" \
+      -F perPage=50 \
+      -f query="$QUERY" | jq '.')"
+
+    printf '%s\n' "$RESPONSE" >>"$RAW_PATH"
+
+    # 期間で絞ってJSONLに追記
+    # SINCEとUNTILはmain.shでグローバル変数として定義されている
+    jq -r \
+      --arg SINCE "$SINCE" \
+      --arg UNTIL "$UNTIL" \
+      '.data.repository.stargazers.edges[]
+        | select(.starredAt >= $SINCE and .starredAt <= $UNTIL)
+      ' <<<"$RESPONSE" >>"$RESULT_PATH"
+
+    # 次ページの準備
+    HAS_NEXT_PAGE="$(jq -r '.data.repository.stargazers.pageInfo.hasNextPage' <<<"$RESPONSE")"
+    END_CURSOR="$(jq -r '.data.repository.stargazers.pageInfo.endCursor' <<<"$RESPONSE")"
+    LAST_DATE="$(jq -r 'try .data.repository.stargazers.edges[-1].starredAt // empty' <<<"$RESPONSE")"
+
+    # 続きがない、もしくは期間外の場合は終了
+    if [[ 
+      "$HAS_NEXT_PAGE" != "true" ||
+      "$END_CURSOR" == "null" ||
+      -z "$END_CURSOR" ||
+      (-n "$LAST_DATE" && "$LAST_DATE" > "$UNTIL")
+    ]]; then
+      break
+    fi
+
   done
 
   # 最後に配列化して保存する。JSONL → 配列（安全な書き換え）
@@ -68,7 +162,12 @@ function get_paginated_repository_data() {
 function get_paginated_data_by_node_id() {
 
   # raw_pathは取得したままのデータ。resultはlocal側で、期間で絞ったデータ
-  local QUERY="$1" RAW_PATH="$2" RESULT_PATH="$3" FIRST_CHECK_FIELD_NAME="$4" SECOND_CHECK_FIELD_NAME="${5:-}" NODE_ID_PATH="${6:-${RESULT_PR_NODE_ID_PATH}}"
+  local QUERY="$1"
+  local RAW_PATH="$2"
+  local RESULT_PATH="$3"
+  local FIRST_CHECK_FIELD_NAME="$4"
+  local SECOND_CHECK_FIELD_NAME="${5:-}"
+  local NODE_ID_PATH="${6:-${RESULT_PR_NODE_ID_PATH}}"
   local HAS_NEXT_PAGE END_CURSOR LAST_DATE RESPONSE
   local NODE_ID FIELD_TOTAL_COUNT
 
