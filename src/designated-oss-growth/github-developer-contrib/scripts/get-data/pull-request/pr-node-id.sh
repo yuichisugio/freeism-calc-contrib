@@ -17,7 +17,7 @@ function get_pull_request_node_id() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-node-id()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-node-id.json"
+  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-node-id.jsonl"
 
   : >"$RAW_PATH"
 

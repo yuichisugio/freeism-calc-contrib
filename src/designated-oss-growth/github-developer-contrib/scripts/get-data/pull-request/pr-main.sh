@@ -20,7 +20,7 @@ source "${GET_DIR}/pull-request/pr-utils.sh"
 # source "${GET_DIR}/pull-request/pr-reviewer.sh"
 
 #--------------------------------------
-# 出力先のファイルを作成する
+# 出力先のファイルを定義
 #--------------------------------------
 readonly RESULT_PR_NODE_ID_PATH="${RESULTS_GET_DIR}/result-pr-node-id.json"
 
