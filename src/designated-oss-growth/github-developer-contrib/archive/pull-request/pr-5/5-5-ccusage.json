@@ -1,29 +1,16 @@
 {
   "data": {
     "node": {
-      "id": "PR_kwDOOyw9fc6Zk0o_",
-      "number": 31,
-      "url": "https://github.com/ryoppippi/ccusage/pull/31",
+      "id": "PR_kwDOPDzQl86cqQUY",
+      "number": 1,
+      "url": "https://github.com/yoshiko-pg/difit/pull/1",
       "labels": {
-        "totalCount": 2,
+        "totalCount": 0,
         "pageInfo": {
           "hasNextPage": false,
-          "endCursor": "Mg"
+          "endCursor": null
         },
-        "nodes": [
-          {
-            "id": "LA_kwDOOyw9fc8AAAACCWevBg",
-            "url": "https://github.com/ryoppippi/ccusage/labels/dependencies",
-            "name": "dependencies",
-            "description": null
-          },
-          {
-            "id": "LA_kwDOOyw9fc8AAAACCWevDg",
-            "url": "https://github.com/ryoppippi/ccusage/labels/renovate",
-            "name": "renovate",
-            "description": null
-          }
-        ]
+        "nodes": []
       }
     }
   }

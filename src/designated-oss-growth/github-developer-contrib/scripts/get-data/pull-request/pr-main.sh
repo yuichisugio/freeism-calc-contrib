@@ -16,7 +16,8 @@ source "${GET_DIR}/pull-request/pr-assigned-actors.sh"
 source "${GET_DIR}/pull-request/pr-timeline-assigned.sh"
 source "${GET_DIR}/pull-request/pr-label.sh"
 source "${GET_DIR}/pull-request/pr-timeline-label.sh"
-# source "${GET_DIR}/pull-request/pr-comment.sh"
+source "${GET_DIR}/pull-request/pr-comment.sh"
+source "${GET_DIR}/pull-request/pr-comment-reaction.sh"
 # source "${GET_DIR}/pull-request/pr-review.sh"
 # source "${GET_DIR}/pull-request/pr-review-comment.sh"
 # source "${GET_DIR}/pull-request/pr-reviewer.sh"
@@ -24,7 +25,10 @@ source "${GET_DIR}/pull-request/pr-timeline-label.sh"
 #--------------------------------------
 # 出力先のファイルを定義
 #--------------------------------------
+# プルリクエストのnode_idを取得するファイル
 readonly RESULT_PR_NODE_ID_PATH="${RESULTS_GET_DIR}/result-pr-node-id.json"
+# プルリクエストのコメントのnode_idを取得するファイル
+readonly RESULT_PR_COMMENT_NODE_ID_PATH="${RESULTS_GET_DIR}/result-pr-comment.json"
 
 #--------------------------------------
 # プルリクエストのデータを取得する
@@ -54,8 +58,11 @@ function get_pull_request() {
   # プルリクエストのラベルのタイムラインを取得
   get_pull_request_timeline_label
 
-  # # プルリクエストのコメントを取得
-  # get_pull_request_comment
+  # プルリクエストのコメントを取得
+  get_pull_request_comment
+
+  # プルリクエストのコメントのリアクションを取得
+  get_pull_request_comment_reaction
 
   # # プルリクエストのレビューを取得
   # get_pull_request_review

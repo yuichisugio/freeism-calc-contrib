@@ -157,7 +157,7 @@ gh api graphql \
 # nodeクエリで、第3階層のtotalCount>0の場合にデータ(labels)を取得
 gh api graphql \
   --header X-Github-Next-Global-ID:1 \
-  -f node_id="PR_kwDOOyw9fc6Zk0o_" \
+  -f node_id="PR_kwDOPDzQl86cqQUY" \
   -F perPage=50 \
   -f query='
     query($node_id: ID!, $perPage: Int!) {

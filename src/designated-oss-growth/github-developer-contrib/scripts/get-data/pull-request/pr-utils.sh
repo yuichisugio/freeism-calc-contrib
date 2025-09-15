@@ -60,12 +60,14 @@ function get_paginated_repository_data() {
 #--------------------------------------
 # nodeクエリ指定で、手動ページネーションで、SINCEからUNTILの期間に絞って出力
 # SECOND_CHECK_FIELD_NAMEが空の場合は、期間で絞り込まない
-# FIRST_CHECK_FIELD_NAME直下のnodes配列を出力するので、prのnumberが必要な場合は、RESULTファイルには、その情報が抜かれた状態で出力されるので、rawファイルを利用して分析する
+# RAWには取得したままのデータが入り、RESULTには期間で絞り、多少データ加工したデータが入る
+# すべてのノードでtotalCountが0の場合は、空のファイルになる
+# timelineItemsは、labelが空でも、assignedのイベントがあればtotalCountがあるので、nodeクエリは実行されるがnodesは空になる
 #--------------------------------------
 function get_paginated_data_by_node_id() {
 
   # raw_pathは取得したままのデータ。resultはlocal側で、期間で絞ったデータ
-  local QUERY="$1" RAW_PATH="$2" RESULT_PATH="$3" FIRST_CHECK_FIELD_NAME="$4" SECOND_CHECK_FIELD_NAME="${5:-}"
+  local QUERY="$1" RAW_PATH="$2" RESULT_PATH="$3" FIRST_CHECK_FIELD_NAME="$4" SECOND_CHECK_FIELD_NAME="${5:-}" NODE_ID_PATH="${6:-${RESULT_PR_NODE_ID_PATH}}"
   local HAS_NEXT_PAGE END_CURSOR LAST_DATE RESPONSE
   local NODE_ID FIELD_TOTAL_COUNT
 
@@ -74,19 +76,20 @@ function get_paginated_data_by_node_id() {
   : >"$RESULT_PATH"
 
   # node_idが0の場合は終了
-  if [[ "$(jq -r 'length' "$RESULT_PR_NODE_ID_PATH")" == "0" ]]; then
+  if [[ "$(jq -r 'length' "$NODE_ID_PATH")" == "0" ]]; then
     return 0
   fi
 
   # RESULT_PR_NODE_ID_PATHのすべてのnode_idに対して実行するよう繰り返す
-  for NODE_ID in $(jq -r '.[].id' "$RESULT_PR_NODE_ID_PATH"); do
+  for NODE_ID in $(jq -r '.[].id' "$NODE_ID_PATH"); do
 
+    # フィールドのtotalCountを取得
     FIELD_TOTAL_COUNT="$(
       jq -r \
         --arg NODE_ID "$NODE_ID" \
         --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
         '(.[] | select(.id==$NODE_ID) | .[$FIRST_CHECK_FIELD_NAME].totalCount // 0) | tonumber' \
-        "$RESULT_PR_NODE_ID_PATH"
+        "$NODE_ID_PATH"
     )"
 
     # フィールドのtotalCountが0の場合は次のnode_idに進む
@@ -135,14 +138,29 @@ function get_paginated_data_by_node_id() {
       # 期間で絞ってJSONLに追記
       # SINCEとUNTILはmain.shでグローバル変数として定義されている
       # assignedActorsはSECOND_CHECK_FIELD_NAMEがないため、空文字で絞り込まない
-      jq -r \
+      # nodeクエリ直下のフィールドには、node_プレフィックスを設定して、各オブジェクトのキーと衝突しないようにする
+      jq -c \
         --arg SINCE "$SINCE" \
         --arg UNTIL "$UNTIL" \
-        --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
-        --arg SECOND_CHECK_FIELD_NAME "${SECOND_CHECK_FIELD_NAME:-}" \
-        '.data.node[$FIRST_CHECK_FIELD_NAME].nodes[]
-      | if $SECOND_CHECK_FIELD_NAME == "" then . else select(.[$SECOND_CHECK_FIELD_NAME] >= $SINCE and .[$SECOND_CHECK_FIELD_NAME] <= $UNTIL) end
-    ' <<<"$RESPONSE" >>"$RESULT_PATH"
+        --arg FIRST "$FIRST_CHECK_FIELD_NAME" \
+        --arg SECOND "${SECOND_CHECK_FIELD_NAME:-}" \
+        --arg meta_prefix "node_" \
+        '
+        # node直下の情報を取得
+        .data.node as $node
+        # node直下の情報から connection部(.[$field])だけ除外 すべてのキーにprefix付与
+        | ($node
+          | del(.[$FIRST])
+          | with_entries(.key |= ($meta_prefix + .))
+          ) as $meta
+        # 各ノードを取り出し、必要なら期間でフィルタ
+        | $node[$FIRST].nodes[]
+        | (if $SECOND == "" then . 
+            else select(.[$SECOND] >= $SINCE and .[$SECOND] <= $UNTIL) 
+            end)
+        # 衝突しない形で結合（右側ノード側を優先、prefix付き$metaは衝突しない）
+        | $meta + .
+        ' <<<"$RESPONSE" >>"$RESULT_PATH"
 
       # 次ページの準備
       HAS_NEXT_PAGE="$(
@@ -171,7 +189,7 @@ function get_paginated_data_by_node_id() {
 
   done
 
-  # 最後に配列化して保存する。JSONL → 配列（安全な書き換え）
+  # RESULT_PATHを配列化して保存する
   tmp="$(mktemp "${RESULT_PATH}.XXXX")"
   trap 'rm -f "$tmp"' EXIT
   jq -s '.' "$RESULT_PATH" >"$tmp" && mv -f "$tmp" "$RESULT_PATH"

@@ -1,97 +1,53 @@
 #!/bin/bash
 
 #--------------------------------------
-# pull request関連のデータ取得を行うファイル
+# pull requestのコメントを取得するファイル
 #--------------------------------------
 
 set -euo pipefail
 
-cd "$(cd "$(dirname -- "$0")" && pwd -P)"
+#--------------------------------------
+# プルリクエストのコメントを取得する関数
+#--------------------------------------
+function get_pull_request_comment() {
 
-function get_pull_request() {
-  local owner="$1" repo="$2" QUERY
+  # データ取得前のRateLimit変数
+  local before_remaining_ratelimit
+  # データ取得前のRateLimitを取得
+  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-comment()")"
+
+  local QUERY
+  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-comment.jsonl"
 
   # shellcheck disable=SC2016
   QUERY='
-    query($owner:String!, $name:String!, $cursor:String) {
-      repository(owner:$owner, name:$name) {
-        pullRequests(first: 50, after: $cursor, orderBy:{field:CREATED_AT, direction:ASC}, states:[OPEN, CLOSED, MERGED]) {
-          pageInfo { hasNextPage endCursor }
-          nodes {
-            number
-            url
-            title
-            state
-            isDraft
-            createdAt
-            closedAt
-            mergedAt
-            mergeStateStatus
-            additions
-            deletions
-            changedFiles
-            author { login ... on User { id } }
-            authorAssociation
-            assignees(first:50) { nodes { login ... on User { id } } }
-            labels(first:50) { nodes { name } }
-            reactionGroups { content users { totalCount } }
-
-            comments(first:50) {
-              totalCount
-              nodes {
-                author { login ... on User { id } }
-                createdAt
-                bodyText
-                reactionGroups { content users { totalCount } }
-              }
-            }
-
-            reviews(first:50) {
-              totalCount
-              nodes {
-                author { login ... on User { id } }
-                state
-                submittedAt
-              }
-            }
-
-            reviewThreads(first:50) {
-              totalCount
-              nodes {
-                comments(first:50) {
-                  totalCount
-                  nodes {
-                    author { login ... on User { id } }
-                    createdAt
-                    bodyText
-                    reactionGroups { content users { totalCount } }
-                  }
-                }
-              }
-            }
-
-            timelineItems(first:50, itemTypes: [
-              LABELED_EVENT,
-              UNLABELED_EVENT,
-              ASSIGNED_EVENT,
-              UNASSIGNED_EVENT,
-              REVIEW_REQUESTED_EVENT,
-              READY_FOR_REVIEW_EVENT,
-              MERGED_EVENT,
-              CLOSED_EVENT
-            ]) {
-              totalCount
-              pageInfo { hasNextPage endCursor }
-              nodes {
+    query($node_id: ID!, $perPage: Int!, $endCursor: String) {
+      node(id: $node_id) {
+        ... on PullRequest{
+          id
+          number
+          url
+          comments(first: $perPage, after: $endCursor){
+            totalCount
+            pageInfo { hasNextPage endCursor }
+            nodes {
+              fullDatabaseId
+              databaseId
+              id
+              url
+              author { 
                 __typename
-                ... on LabeledEvent { createdAt label { name } actor { login } }
-                ... on UnlabeledEvent { createdAt label { name } actor { login } }
-                ... on AssignedEvent { createdAt assignee { __typename ... on User { login id } } actor { login } }
-                ... on UnassignedEvent { createdAt assignee { __typename ... on User { login id } } actor { login } }
-                ... on ReviewRequestedEvent { createdAt requestedReviewer { __typename ... on User { login id } ... on Team { name id } } actor { login } }
-                ... on ReadyForReviewEvent { createdAt actor { login } }
-                ... on MergedEvent { createdAt mergeRefName }
-                ... on ClosedEvent { createdAt }
+                ... on User { databaseId id login name url }
+                ... on Bot { databaseId id login url }
+                ... on Mannequin { databaseId id login name url }
+                ... on Organization { databaseId id login name url }
+                ... on EnterpriseUserAccount { user { databaseId id login name url } }
+              }
+              bodyText
+              publishedAt
+              reactionGroups { content reactors { totalCount } }
+              reactions(first: 1){
+                totalCount
               }
             }
           }
@@ -100,15 +56,9 @@ function get_pull_request() {
     }
   '
 
-  local STATE="${3:-ALL}"
-  # Paginate and emit one PR per line
-  gql_paginate_nodes "$QUERY" "$owner" "$repo" '.data.repository.pullRequests' '.nodes[]' |
-    case "$STATE" in
-    OPEN | CLOSED | MERGED) jq -c --arg s "$STATE" 'select(.state==$s)' >"$RAW_PULL_REQUEST_DIR" ;;
-    *) cat ;;
-    esac
+  # クエリを実行。node_id単位でページネーションしながら取得
+  get_paginated_data_by_node_id "$QUERY" "$RAW_PATH" "$RESULT_PR_COMMENT_NODE_ID_PATH" "comments" "publishedAt"
 
-  return 0
+  # データ取得後のRateLimitを出力
+  get_ratelimit "after:get-pull-request-comment()" "$before_remaining_ratelimit" "false"
 }
-
-get_pull_request "$@"
