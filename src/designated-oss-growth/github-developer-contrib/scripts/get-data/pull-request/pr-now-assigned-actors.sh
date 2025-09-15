@@ -1,21 +1,21 @@
 #!/bin/bash
 
 #--------------------------------------
-# pull requestの担当者取得を統合するファイル
+# pull requestの現在の担当者を取得するファイル
 #--------------------------------------
 
 set -euo pipefail
 
-function get_pull_request_assigned_actors() {
+function get_pull_request_now_assigned_actors() {
 
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-assigned-actors()")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-now-assigned-actors()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-assigned-actors.jsonl"
-  local RESULT_PATH="${RESULTS_GET_DIR}/result-pr-assigned-actors.json"
+  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-now-assigned-actors.jsonl"
+  local RESULT_PATH="${RESULTS_GET_DIR}/result-pr-now-assigned-actors.json"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -45,5 +45,5 @@ function get_pull_request_assigned_actors() {
   get_paginated_data_by_node_id "$QUERY" "$RAW_PATH" "$RESULT_PATH" "assignedActors"
 
   # データ取得後のRateLimitを出力
-  get_ratelimit "after:get-pull-request-assigned-actors()" "$before_remaining_ratelimit" "false"
+  get_ratelimit "after:get-pull-request-now-assigned-actors()" "$before_remaining_ratelimit" "false"
 }

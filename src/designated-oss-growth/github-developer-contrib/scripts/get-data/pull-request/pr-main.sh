@@ -12,9 +12,9 @@ set -euo pipefail
 source "${GET_DIR}/pull-request/pr-node-id.sh"
 source "${GET_DIR}/pull-request/pr-utils.sh"
 source "${GET_DIR}/pull-request/pr-reaction.sh"
-source "${GET_DIR}/pull-request/pr-assigned-actors.sh"
+source "${GET_DIR}/pull-request/pr-now-assigned-actors.sh"
 source "${GET_DIR}/pull-request/pr-timeline-assigned.sh"
-source "${GET_DIR}/pull-request/pr-label.sh"
+source "${GET_DIR}/pull-request/pr-now-label.sh"
 source "${GET_DIR}/pull-request/pr-timeline-label.sh"
 source "${GET_DIR}/pull-request/pr-comment.sh"
 source "${GET_DIR}/pull-request/pr-comment-reaction.sh"
@@ -22,7 +22,8 @@ source "${GET_DIR}/pull-request/pr-review.sh"
 source "${GET_DIR}/pull-request/pr-review-reaction.sh"
 source "${GET_DIR}/pull-request/pr-review-comment.sh"
 source "${GET_DIR}/pull-request/pr-review-comment-reaction.sh"
-# source "${GET_DIR}/pull-request/pr-reviewer.sh"
+source "${GET_DIR}/pull-request/pr-now-reviewer.sh"
+source "${GET_DIR}/pull-request/pr-timeline-reviewer.sh"
 
 #--------------------------------------
 # 出力先のファイルを定義
@@ -53,13 +54,13 @@ function get_pull_request() {
   get_pull_request_reaction
 
   # プルリクエストの現在の担当者を取得
-  get_pull_request_assigned_actors
+  get_pull_request_now_assigned_actors
 
   # プルリクエストの担当者のタイムラインを取得
   get_pull_request_timeline_assigned
 
   # プルリクエストの現在のラベルを取得
-  get_pull_request_label
+  get_pull_request_now_label
 
   # プルリクエストのラベルのタイムラインを取得
   get_pull_request_timeline_label
@@ -83,10 +84,10 @@ function get_pull_request() {
   get_pull_request_review_comment_reaction
 
   # # プルリクエストの現在のレビュワーを取得
-  # get_pull_request_reviewer
+  get_pull_request_now_reviewer
 
   # # プルリクエストのレビュワーのタイムラインを取得
-  # get_pull_request_reviewer
+  get_pull_request_timeline_reviewer
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-pull-request()" "$before_remaining_ratelimit" "false"

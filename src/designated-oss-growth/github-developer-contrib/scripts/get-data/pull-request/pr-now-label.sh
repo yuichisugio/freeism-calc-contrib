@@ -6,16 +6,16 @@
 
 set -euo pipefail
 
-function get_pull_request_label() {
+function get_pull_request_now_label() {
 
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-label()")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-now-label()")"
 
   local QUERY
-  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-label.jsonl"
-  local RESULT_PATH="${RESULTS_GET_DIR}/result-pr-label.json"
+  local RAW_PATH="${RESULTS_GET_DIR}/raw-pr-now-label.jsonl"
+  local RESULT_PATH="${RESULTS_GET_DIR}/result-pr-now-label.json"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -44,5 +44,5 @@ function get_pull_request_label() {
   get_paginated_data_by_node_id "$QUERY" "$RAW_PATH" "$RESULT_PATH" "labels"
 
   # データ取得後のRateLimitを出力
-  get_ratelimit "after:get-pull-request-label()" "$before_remaining_ratelimit" "false"
+  get_ratelimit "after:get-pull-request-now-label()" "$before_remaining_ratelimit" "false"
 }
