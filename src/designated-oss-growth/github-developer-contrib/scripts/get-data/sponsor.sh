@@ -6,45 +6,57 @@
 
 set -euo pipefail
 
-readonly RAW_SPONSOR_RECIPIENTS_PATH="./src/designated-oss-growth/github-developer-contrib/archive/sponsor/raw-sponsor-recipients.json"
-readonly PROCESSED_SPONSOR_RECIPIENTS_PATH="./src/designated-oss-growth/github-developer-contrib/archive/sponsor/processed-sponsor-recipients.txt"
-readonly RAW_SPONSOR_SUPPORTERS_PATH="./src/designated-oss-growth/github-developer-contrib/archive/sponsor/raw-sponsor-supporters.json"
+#--------------------------------------
+# 出力先のファイルを定義
+#--------------------------------------
+readonly RESULT_GET_SPONSOR_DIR="${RESULTS_GET_DIR}/sponsor"
+readonly RAW_SPONSOR_RECIPIENTS_PATH="${RESULT_GET_SPONSOR_DIR}/raw-sponsor-recipients.json"
+readonly PROCESSED_SPONSOR_RECIPIENTS_PATH="${RESULT_GET_SPONSOR_DIR}/processed-sponsor-recipients.txt"
+readonly RAW_SPONSOR_SUPPORTERS_PATH="${RESULT_GET_SPONSOR_DIR}/raw-sponsor-supporters.json"
 
-mkdir -p "$(dirname "$RAW_SPONSOR_RECIPIENTS_PATH")"
+mkdir -p "$RESULT_GET_SPONSOR_DIR"
 
+#--------------------------------------
+# スポンサーを受け取る人のデータを取得
+#--------------------------------------
 function get_github_sponsors_recipients() {
-  local owner="${1:-ryoppippi}" repo="${2:-ccusage}" QUERY
+  local QUERY
 
   # shellcheck disable=SC2016
   QUERY='
     query($owner:String!, $name:String!) {
       repository(owner:$owner, name:$name) {
+        hasSponsorshipsEnabled
+        homepageUrl
         owner { login __typename }
         fundingLinks { platform url }
       }
     }
   '
 
-  gh api graphql -f owner="$owner" -f name="$repo" -f query="$QUERY" | jq '.' >"$RAW_SPONSOR_RECIPIENTS_PATH"
+  gh api graphql -f owner="$OWNER" -f name="$REPO" -f query="$QUERY" | jq '.' >"$RAW_SPONSOR_RECIPIENTS_PATH"
 
   jq -r '
     .data.repository as $r
-    | ([$r.owner.login]                       # Owner
+    | ([$r.owner.login]                   # Owner
       + ($r.fundingLinks
       | map(select(.platform=="GITHUB")   # GitHub Sponsors のみ
       | .url
       | capture("/sponsors/(?<login>[^/?#]+)/*$").login)))
     | unique[]
   ' "$RAW_SPONSOR_RECIPIENTS_PATH" >"$PROCESSED_SPONSOR_RECIPIENTS_PATH"
-
-  return 0
 }
 
+#--------------------------------------
+# スポンサーを提供する人のデータを取得
+#--------------------------------------
 function get_github_sponsors_supporters() {
+
+  local QUERY
 
   # shellcheck disable=SC2016
   QUERY='
-    query($login: String!, $endCursor: String) {
+    query($login: String!, $endCursor: String, $perPage: Int!) {
       repositoryOwner(login: $login) {
         __typename
         ... on User { ...SponsorableFields }
@@ -53,7 +65,9 @@ function get_github_sponsors_supporters() {
     }
 
     fragment SponsorableFields on Sponsorable {
-      sponsorshipsAsMaintainer(first: 50, after: $endCursor,activeOnly: false) {
+      sponsorshipsAsMaintainer(first: $perPage, after: $endCursor,activeOnly: false) {
+        totalCount
+        pageInfo { hasNextPage endCursor }
         nodes {
           privacyLevel
           isActive
@@ -68,20 +82,39 @@ function get_github_sponsors_supporters() {
             ... on Organization { login name url }
           }
         }
-        pageInfo { hasNextPage endCursor }
       }
     }
   '
 
+  # スポンサーされている人ごとに、そのスポンサーを提供する人のデータを繰り返し処理で取得
   while read -r LOGIN; do
-    gh api graphql --paginate --slurp -F login="$LOGIN" -f query="$QUERY" |
+    gh api graphql \
+      --paginate --slurp \
+      -F login="$LOGIN" \
+      -F perPage=50 \
+      -f query="$QUERY" |
       jq '.' >"$RAW_SPONSOR_SUPPORTERS_PATH"
   done <"$PROCESSED_SPONSOR_RECIPIENTS_PATH"
 }
 
-function get_github_sponsors() {
-  get_github_sponsors_recipients "$@"
-  get_github_sponsors_supporters "$@"
-}
+#--------------------------------------
+# sponsor関連のデータ取得を行う関数
+#--------------------------------------
+function get_sponsor() {
+  # データ取得前のRateLimit変数
+  local before_remaining_ratelimit
+  # データ取得前のRateLimitを取得
+  before_remaining_ratelimit="$(get_ratelimit "before:get-sponsor()")"
 
-get_github_sponsors "$@"
+  # スポンサーを受け取る人のデータを取得
+  get_github_sponsors_recipients
+
+  # スポンサーを提供する人のデータを取得
+  get_github_sponsors_supporters
+
+  # データ取得後のRateLimitを出力
+  get_ratelimit \
+    "after:get-sponsor()" \
+    "$before_remaining_ratelimit" \
+    "false"
+}

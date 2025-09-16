@@ -28,9 +28,9 @@ source "${GET_DIR}/pull-request/pr-timeline-reviewer.sh"
 #--------------------------------------
 # 出力先のファイルを定義
 #--------------------------------------
-# プルリクエストのnode_idを取得するファイル
 readonly RESULT_GET_PR_DIR="${RESULTS_GET_DIR}/pull-request"
 mkdir -p "$RESULT_GET_PR_DIR"
+# プルリクエストのnode_idを取得するファイル
 readonly RESULT_PR_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-node-id.json"
 # プルリクエストのコメントのnode_idを取得するファイル
 readonly RESULT_PR_COMMENT_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-comment.json"

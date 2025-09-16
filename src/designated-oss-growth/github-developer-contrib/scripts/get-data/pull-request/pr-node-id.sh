@@ -23,9 +23,9 @@ function get_pull_request_node_id() {
 
   # shellcheck disable=SC2016
   QUERY='
-   query($owner: String!, $name: String!, $perPage: Int!, $endCursor: String) {
+    query($owner: String!, $name: String!, $perPage: Int!, $endCursor: String) {
       repository(owner:$owner, name:$name) {
-        pullRequests(first: $perPage, after:$endCursor, orderBy: {field : CREATED_AT,direction: ASC}){
+        pullRequests(first: $perPage, after:$endCursor, orderBy: {field: CREATED_AT,direction: ASC}){
           totalCount
           pageInfo { hasNextPage endCursor }
           nodes {
@@ -44,6 +44,14 @@ function get_pull_request_node_id() {
             closedAt # REJECTEDかCLOSEDになった日
             mergedAt # マージ日
             mergedBy { login url } # マージ担当者
+            author {
+              __typename
+              ... on Bot { databaseId id login url }
+              ... on EnterpriseUserAccount { databaseId id login name url }
+              ... on Mannequin { databaseId id login name url }
+              ... on Organization { databaseId id login name url }
+              ... on User { databaseId id login name url }
+            }
             reactionGroups { content reactors { totalCount } } # リアクション数
             reactions(first: 1){
               totalCount
@@ -75,8 +83,16 @@ function get_pull_request_node_id() {
   '
 
   # クエリを実行。
-  get_paginated_repository_data "$QUERY" "$RAW_PATH" "$RESULT_PR_NODE_ID_PATH" "pullRequests" "publishedAt"
+  get_paginated_repository_data \
+    "$QUERY" \
+    "$RAW_PATH" \
+    "$RESULT_PR_NODE_ID_PATH" \
+    "pullRequests" \
+    "publishedAt"
 
   # データ取得後のRateLimitを出力
-  get_ratelimit "after:get-pull-request-node-id()" "$before_remaining_ratelimit" "false"
+  get_ratelimit \
+    "after:get-pull-request-node-id()" \
+    "$before_remaining_ratelimit" \
+    "false"
 }

@@ -1,0 +1,27 @@
+# Issue：リポジトリ指定でIssue一覧&node_id取得「issue-node-id.sh」の内容
+gh api graphql \
+  --paginate \
+  --slurp \
+  --header X-Github-Next-Global-ID:1 \
+  -f owner="yoshiko-pg" \
+  -f name="difit" \
+  -F perPage=50 \
+  -f query='
+    query(
+      $owner: String!,
+      $name: String!,
+      $perPage: Int!,
+      $endCursor: String
+    ) {
+      repository(owner:$owner, name:$name) {
+        id
+        databaseId
+        createdAt
+        description
+        homepageUrl
+        hasIssuesEnabled
+        isBlankIssuesEnabled
+        issueTemplates
+      }
+    }
+  ' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/get-data/issue/1-1-issue.json

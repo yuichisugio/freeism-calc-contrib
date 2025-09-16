@@ -1,0 +1,41 @@
+# Discussion：リポジトリ指定でDiscussion一覧&node_id取得「discussion-node-id.sh」の内容
+gh api graphql \
+  --paginate \
+  --slurp \
+  --header X-Github-Next-Global-ID:1 \
+  -f owner="yoshiko-pg" \
+  -f name="difit" \
+  -F perPage=50 \
+  -f query='
+    query(
+      $owner: String!,
+      $name: String!,
+      $perPage: Int!,
+      $endCursor: String
+    ) {
+      repository(owner:$owner, name:$name) {
+        databaseId
+        createdAt
+        description
+        hasDiscussionsEnabled
+        discussionCategories(first: 50) {
+          totalCount
+          pageInfo { hasNextPage endCursor }
+          nodes {
+            id
+            name
+            description
+            slug
+            createdAt
+            updatedAt
+          }
+        }
+        discussions(first: $perPage, after: $endCursor) {
+          totalCount
+          pageInfo { hasNextPage endCursor }
+          nodes {
+          }
+        }
+      }
+    }
+  ' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/get-data/discussion/1-1-discussion.json

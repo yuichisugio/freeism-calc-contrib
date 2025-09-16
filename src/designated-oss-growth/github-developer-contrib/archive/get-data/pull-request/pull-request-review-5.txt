@@ -30,6 +30,14 @@ gh api graphql \
             closedAt # REJECTEDかCLOSEDになった日
             mergedAt # マージ日
             mergedBy { login url } # マージ担当者
+            author {
+              __typename
+              ... on Bot { databaseId id login url }
+              ... on EnterpriseUserAccount { databaseId id login name url }
+              ... on Mannequin { databaseId id login name url }
+              ... on Organization { databaseId id login name url }
+              ... on User { databaseId id login name url }
+            }
             reactionGroups { content reactors { totalCount } } # リアクション数
             reactions(first: 1){
               totalCount
@@ -246,7 +254,7 @@ gh api graphql \
               databaseId
               id
               url
-              author { 
+              author {
                 __typename
                 ... on User { databaseId id login name url }
                 ... on Bot { databaseId id login url }

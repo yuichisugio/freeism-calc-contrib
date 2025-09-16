@@ -69,7 +69,7 @@ function get_paginated_repository_data() {
     )"
 
     # 続きがない、もしくは期間外の場合は終了
-    if [[ 
+    if [[
       "$HAS_NEXT_PAGE" != "true" ||
       "$END_CURSOR" == "null" ||
       -z "$END_CURSOR" ||
@@ -134,7 +134,7 @@ function get_paginated_star_data() {
     LAST_DATE="$(jq -r 'try .data.repository.stargazers.edges[-1].starredAt // empty' <<<"$RESPONSE")"
 
     # 続きがない、もしくは期間外の場合は終了
-    if [[ 
+    if [[
       "$HAS_NEXT_PAGE" != "true" ||
       "$END_CURSOR" == "null" ||
       -z "$END_CURSOR" ||
@@ -256,8 +256,8 @@ function get_paginated_data_by_node_id() {
           ) as $meta
         # 各ノードを取り出し、必要なら期間でフィルタ
         | $node[$FIRST].nodes[]
-        | (if $SECOND == "" then . 
-            else select(.[$SECOND] >= $SINCE and .[$SECOND] <= $UNTIL) 
+        | (if $SECOND == "" then .
+            else select(.[$SECOND] >= $SINCE and .[$SECOND] <= $UNTIL)
             end)
         # 衝突しない形で結合（右側ノード側を優先、prefix付き$metaは衝突しない）
         | $meta + .

@@ -1,0 +1,42 @@
+{
+	"meta": {
+		"createdAt": "2025-09-16T11:09:53Z"
+	},
+	"data": {
+		"user": [
+			{
+				"user_id": "user-id-1",
+				"user_name": "test-user-1",
+				"task": [
+					{
+						"task_node_id": "taskのnodeのidを取得",
+						"task_database_id": "taskのdatabaseのidを取得",
+            "other_field": "taskの貢献度の算出に必要なデータ",
+						"task_name": "task-name-1",
+						"reference_date": "publishedAt",
+						"task_date": "2025-09-16T11:09:53Z"
+					},
+					{
+						"task_node_id": "task-node-id-2",
+            "task_database_id": "task-database-id-2",
+						"task_name": "task-name-2",
+						"reference_date": "publishedAt",
+						"task_date": "2025-09-16T11:09:53Z"
+					}
+				]
+			},
+			{
+				"user_id": "user-id-2",
+				"user_name": "test-user-2",
+				"task": [
+					{
+						"task_id": "task-id-3",
+						"task_name": "task-name-3",
+						"reference_date": "publishedAt",
+						"task_date": "2025-09-16T11:09:53Z"
+					}
+				]
+			}
+		]
+	}
+}

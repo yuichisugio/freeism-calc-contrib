@@ -39,9 +39,8 @@ function parse_args() {
   local URL="https://github.com/ryoppippi/ccusage"
   local OWNER="ryoppippi"
   local REPO="ccusage"
-  local SINCE="1970-01-01"
-  local UNTIL
-  UNTIL="$(date -u +%Y-%m-%dT23:59:59Z)"
+  local SINCE="1970-01-01T00:00:00Z" # ドキュメント上の最小値
+  local UNTIL="2099-12-13T23:59:59Z" # ドキュメント上の最大値
 
   # --- 引数パース。引数がある場合はデフォルト値を上書きする ---
   while [[ $# -gt 0 ]]; do

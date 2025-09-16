@@ -6,34 +6,22 @@
 
 set -euo pipefail
 
-# 最終成果物（配列JSON）
-readonly RESULTS_WATCH_JSON_PATH="./src/designated-oss-growth/github-developer-contrib/archive/watch/results-watch.json"
+#--------------------------------------
+# 出力先のファイルを定義
+#--------------------------------------
+readonly RESULT_GET_WATCH_DIR="${RESULTS_GET_DIR}/watch"
+readonly RESULT_WATCH_PATH="${RESULT_GET_WATCH_DIR}/result-watch.json"
 
-mkdir -p "$(dirname "$RESULTS_WATCH_JSON_PATH")"
+mkdir -p "$RESULT_GET_WATCH_DIR"
 
 function get_watch() {
-  # 引数のデフォルト値
-  local OWNER="ryoppippi"
-  local REPO="ccusage"
-  local QUERY
 
-  # --- 引数パース。引数がある場合はデフォルト値を上書きする ---
-  while [[ $# -gt 0 ]]; do
-    case "$1" in
-    -o | --owner)
-      OWNER="$2"
-      shift 2
-      ;;
-    -r | --repo)
-      REPO="$2"
-      shift 2
-      ;;
-    *)
-      printf '%s\n' "Unknown option: $1" >&2
-      exit 1
-      ;;
-    esac
-  done
+  # データ取得前のRateLimit変数
+  local before_remaining_ratelimit
+  # データ取得前のRateLimitを取得
+  before_remaining_ratelimit="$(get_ratelimit "before:get-watch()")"
+
+  local QUERY
 
   # GraphQL クエリ
   # shellcheck disable=SC2016
@@ -54,19 +42,15 @@ function get_watch() {
     }
   '
 
+  # watchはcreatedAtがないので、get_paginated_repository_data関数は使用しない
   gh api graphql \
     --paginate --slurp \
     -F owner="$OWNER" -F name="$REPO" -f query="$QUERY" |
-    jq '.' >"$RESULTS_WATCH_JSON_PATH"
-}
+    jq '.' >"$RESULT_WATCH_PATH"
 
-get_ratelimit() {
-  printf '%s\n' "$(gh api graphql -f query='
-  query { rateLimit { remaining } }
-  ' --jq '.data.rateLimit.remaining')"
+  # データ取得後のRateLimitを出力
+  get_ratelimit \
+    "after:get-watch()" \
+    "$before_remaining_ratelimit" \
+    "false"
 }
-
-printf 'before-watch-remaining:%s\n' "$(get_ratelimit)"
-get_watch "$@"
-printf 'success\n'
-printf 'after-watch-remaining:%s\n' "$(get_ratelimit)"
