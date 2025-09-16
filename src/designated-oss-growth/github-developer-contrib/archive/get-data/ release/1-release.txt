@@ -1,0 +1,32 @@
+# Release：リポジトリ指定でRelease一覧&node_id取得「release-node-id.sh」の内容
+gh api graphql \
+  --paginate \
+  --slurp \
+  --header X-Github-Next-Global-ID:1 \
+  -f owner="yoshiko-pg" \
+  -f name="difit" \
+  -F perPage=50 \
+  -f query='
+    query(
+      $owner: String!,
+      $name: String!,
+      $perPage: Int!,
+      $endCursor: String
+    ) {
+      repository(owner:$owner, name:$name) {
+        id
+        databaseId
+        createdAt
+        name
+        description
+        homepageUrl
+        releases (first: $perPage, after:$endCursor){
+          totalCount
+          pageInfo { hasNextPage endCursor }
+          nodes {
+
+          }
+        }
+      }
+    }
+  ' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/get-data/release/1-1-release.json

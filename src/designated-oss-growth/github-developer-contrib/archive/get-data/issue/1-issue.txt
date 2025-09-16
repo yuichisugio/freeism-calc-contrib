@@ -1,4 +1,4 @@
-# Issue：リポジトリ指定でIssue一覧&node_id取得「issue-node-id.sh」の内容
+# repositoryクエリ：Issues&node_idの取得
 gh api graphql \
   --paginate \
   --slurp \
@@ -17,11 +17,99 @@ gh api graphql \
         id
         databaseId
         createdAt
+        name
         description
         homepageUrl
+        url
         hasIssuesEnabled
         isBlankIssuesEnabled
-        issueTemplates
+        issueTemplates {
+          about
+          body
+          filename
+          name
+          title
+          type {
+            id
+            name
+            description
+            isEnabled
+          }
+        }
+        issueTypes (first: 5){
+          totalCount
+          pageInfo { hasNextPage endCursor }
+          nodes {
+            id
+            name
+            description
+            isEnabled
+          }
+        }
+        issues( first: $perPage, after: $endCursor, orderBy:{field: CREATED_AT, direction: ASC } ){
+          totalCount
+          pageInfo { hasNextPage endCursor }
+          nodes {
+            fullDatabaseId
+            databaseId
+            id # node_id
+            number
+            url
+            bodyUrl
+            bodyText
+            title
+            state
+            publishedAt # draftからOpenになった日 or 直接Openになった日
+            createdAt
+            closedAt
+            author {
+              __typename
+              ... on Bot { databaseId id login url }
+              ... on EnterpriseUserAccount { id login name url }
+              ... on Mannequin { databaseId id login name url }
+              ... on Organization { databaseId id login name url }
+              ... on User { databaseId id login name url }
+            }
+            reactionGroups { content reactors { totalCount } } # リアクション数
+            reactions(first: 1){
+              totalCount
+            }
+            assignedActors(first: 1){
+              totalCount
+            }
+            labels(first: 1){
+              totalCount
+            }
+            timelineItems(last: 1, itemTypes: [LABELED_EVENT, ASSIGNED_EVENT]) {
+              totalCount
+              pageCount
+              filteredCount
+            }
+            comments(first: 1){
+              totalCount
+            }
+          }
+        }
       }
     }
   ' | jq '.'> ./src/designated-oss-growth/github-developer-contrib/archive/get-data/issue/1-1-issue.json
+
+
+# nodeクエリ：Issue.reactionsの取得
+gh api graphql \
+  --header X-Github-Next-Global-ID:1 \
+  -f node_id="PR_kwDOOyw9fc6Zs9sY" \
+  -F perPage=50 \
+  -f query='
+    query($node_id: ID!, $perPage: Int!) {
+      node(id: $node_id) {
+        ... on PullRequest{
+          reactions(first: $perPage){
+            totalCount
+            pageInfo { hasNextPage endCursor }
+            nodes { databaseId id content createdAt user { databaseId id login name url } }
+          }
+        }
+      }
+    }
+  ' | jq '.' >"./src/designated-oss-growth/github-developer-contrib/archive/pull-request-review/5-2-ccusage.json"
