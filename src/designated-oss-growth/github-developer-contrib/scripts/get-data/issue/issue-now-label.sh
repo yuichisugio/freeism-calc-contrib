@@ -1,44 +1,48 @@
 #!/bin/bash
 
 #--------------------------------------
-# pull requestの現在の担当者を取得するファイル
+# issueの現在のラベルを取得するファイル
 #--------------------------------------
 
 set -euo pipefail
 
 #--------------------------------------
-# pull requestの現在の担当者を取得する関数
+# issueの現在のラベルを取得する関数
 #--------------------------------------
-function get_pull_request_now_assigned_actors() {
+function get_issue_now_label() {
 
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-now-assigned-actors()")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-issue-now-label()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-now-assigned-actors.jsonl"
-  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-now-assigned-actors.json"
+  local RAW_PATH="${RESULT_GET_ISSUE_DIR}/raw-issue-now-label.jsonl"
+  local RESULT_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-now-label.json"
 
   # shellcheck disable=SC2016
   QUERY='
     query($node_id: ID!, $perPage: Int!, $endCursor: String) {
       node(id: $node_id) {
         __typename
-        ... on PullRequest{
+        ... on Issue{
           id
+          fullDatabaseId
+          databaseId
           number
           url
-          assignedActors(first: $perPage, after: $endCursor){
+          title
+          state
+          publishedAt
+          labels(first: $perPage, after: $endCursor, orderBy: {field: CREATED_AT, direction: ASC}) {
             totalCount
             pageInfo { hasNextPage endCursor }
-            nodes {
-              __typename
-              ... on User { databaseId id login name url }
-              ... on Bot { databaseId id login url }
-              ... on Mannequin { databaseId id login name url }
-              ... on Organization { databaseId id login name url }
-             }
+            nodes { 
+              id
+              url
+              name
+              description
+            }
           }
         }
       }
@@ -50,12 +54,12 @@ function get_pull_request_now_assigned_actors() {
     "$QUERY" \
     "$RAW_PATH" \
     "$RESULT_PATH" \
-    "assignedActors" \
-    "$RESULT_PR_NODE_ID_PATH"
+    "labels" \
+    "$RESULT_ISSUE_NODE_ID_PATH"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \
-    "after:get-pull-request-now-assigned-actors()" \
+    "after:get-issue-now-label()" \
     "$before_remaining_ratelimit" \
     "false"
 }

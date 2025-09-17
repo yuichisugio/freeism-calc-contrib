@@ -166,8 +166,8 @@ function get_paginated_data_by_node_id() {
   local RAW_PATH="$2"
   local RESULT_PATH="$3"
   local FIRST_CHECK_FIELD_NAME="$4"
-  local SECOND_CHECK_FIELD_NAME="${5:-}"
-  local NODE_ID_PATH="${6:-${RESULT_PR_NODE_ID_PATH}}"
+  local NODE_ID_PATH="${5}"
+  local SECOND_CHECK_FIELD_NAME="${6:-}"
   local HAS_NEXT_PAGE END_CURSOR LAST_DATE RESPONSE
   local NODE_ID FIELD_TOTAL_COUNT
 

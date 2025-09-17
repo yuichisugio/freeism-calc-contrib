@@ -1,37 +1,42 @@
 #!/bin/bash
 
 #--------------------------------------
-# pull requestのラベルのタイムラインを取得するファイル
+# issueのラベルのタイムラインを取得するファイル
 #--------------------------------------
 
 set -euo pipefail
 
 #--------------------------------------
-# pull requestのラベルのタイムラインを取得する関数
+# issueのラベルのタイムラインを取得する関数
 #--------------------------------------
-function get_pull_request_timeline_label() {
+function get_issue_timeline_label() {
 
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-timeline-label()")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-issue-timeline-label()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-timeline-label.jsonl"
-  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-timeline-label.json"
+  local RAW_PATH="${RESULT_GET_ISSUE_DIR}/raw-issue-timeline-label.jsonl"
+  local RESULT_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-timeline-label.json"
 
   # shellcheck disable=SC2016
   QUERY='
-    query($node_id: ID!, $perPage: Int!, $endCursor: String, $since:DateTime!) {
+    query($node_id: ID!, $perPage: Int!, $endCursor: String, $since: DateTime!) {
       node(id: $node_id) {
         __typename
-        ... on PullRequest{
+        ... on Issue{
           id
+          fullDatabaseId
+          databaseId
           number
           url
+          title
+          state
+          publishedAt
           timelineItems(first: $perPage, after: $endCursor, itemTypes: [LABELED_EVENT], since: $since) {
             totalCount
-            pageInfo{ hasNextPage endCursor }
+            pageInfo { hasNextPage endCursor }
             nodes {
               __typename
               ... on LabeledEvent {
@@ -65,12 +70,12 @@ function get_pull_request_timeline_label() {
     "$RAW_PATH" \
     "$RESULT_PATH" \
     "timelineItems" \
-    "$RESULT_PR_NODE_ID_PATH" \
+    "$RESULT_ISSUE_NODE_ID_PATH" \
     "createdAt"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \
-    "after:get-pull-request-timeline-label()" \
+    "after:get-issue-timeline-label()" \
     "$before_remaining_ratelimit" \
     "false"
 }

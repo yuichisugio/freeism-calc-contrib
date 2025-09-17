@@ -1,42 +1,42 @@
 #!/bin/bash
 
 #--------------------------------------
-# pull requestのコメントのリアクションを取得するファイル
+# issueのコメントのリアクションを取得するファイル
 #--------------------------------------
 
 set -euo pipefail
 
 #--------------------------------------
-# プルリクエストのコメントのリアクションを取得する関数
+# issueのコメントのリアクションを取得する関数
 #--------------------------------------
-function get_pull_request_comment_reaction() {
+function get_issue_comment_reaction() {
 
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-comment-reaction()")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-issue-comment-reaction()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-comment-reaction.jsonl"
-  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-comment-reaction.json"
+  local RAW_PATH="${RESULT_GET_ISSUE_DIR}/raw-issue-comment-reaction.jsonl"
+  local RESULT_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-comment-reaction.json"
 
   # shellcheck disable=SC2016
   QUERY='
     query($node_id: ID!, $perPage: Int!, $endCursor: String) {
       node(id: $node_id) {
         __typename
-        ... on IssueComment {
+        ... on IssueComment{
           id
           url
           reactions(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }
             nodes{ 
-              databaseId 
+              databaseId
               id
-              content 
-              createdAt 
-              user { databaseId id login name url } 
+              content
+              createdAt
+              user { databaseId id login name url }
             }
           }
         }
@@ -50,12 +50,12 @@ function get_pull_request_comment_reaction() {
     "$RAW_PATH" \
     "$RESULT_PATH" \
     "reactions" \
-    "$RESULT_PR_COMMENT_NODE_ID_PATH" \
+    "$RESULT_ISSUE_COMMENT_NODE_ID_PATH" \
     "createdAt"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \
-    "after:get-pull-request-comment-reaction()" \
+    "after:get-issue-comment-reaction()" \
     "$before_remaining_ratelimit" \
     "false"
 }

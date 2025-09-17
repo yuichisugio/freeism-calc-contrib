@@ -24,6 +24,7 @@ function get_pull_request_review_comment() {
   QUERY='
     query($node_id: ID!, $perPage: Int!, $endCursor: String) {
       node(id: $node_id) {
+        __typename
         ... on PullRequestReview {
           id
           url
@@ -53,8 +54,17 @@ function get_pull_request_review_comment() {
   '
 
   # クエリを実行。node_id単位でページネーションしながら取得
-  get_paginated_data_by_node_id "$QUERY" "$RAW_PATH" "$RESULT_PATH" "comments" "createdAt" "$RESULT_PR_REVIEW_NODE_ID_PATH"
+  get_paginated_data_by_node_id \
+    "$QUERY" \
+    "$RAW_PATH" \
+    "$RESULT_PATH" \
+    "comments" \
+    "$RESULT_PR_REVIEW_NODE_ID_PATH" \
+    "createdAt"
 
   # データ取得後のRateLimitを出力
-  get_ratelimit "after:get-pull-request-comment-reaction()" "$before_remaining_ratelimit" "false"
+  get_ratelimit \
+    "after:get-pull-request-review-comment()" \
+    "$before_remaining_ratelimit" \
+    "false"
 }

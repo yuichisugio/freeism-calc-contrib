@@ -9,7 +9,6 @@ set -euo pipefail
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "${GET_DIR}/get-data-utils.sh"
 source "${GET_DIR}/pull-request/pr-node-id.sh"
 source "${GET_DIR}/pull-request/pr-reaction.sh"
 source "${GET_DIR}/pull-request/pr-now-assigned-actors.sh"

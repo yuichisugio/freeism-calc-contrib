@@ -1,34 +1,39 @@
 #!/bin/bash
 
 #--------------------------------------
-# pull requestのコメントを取得するファイル
+# issueのコメントを取得するファイル
 #--------------------------------------
 
 set -euo pipefail
 
 #--------------------------------------
-# プルリクエストのコメントを取得する関数
+# issueのコメントを取得する関数
 #--------------------------------------
-function get_pull_request_comment() {
+function get_issue_comment() {
 
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-comment()")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-issue-comment()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-comment.jsonl"
+  local RAW_PATH="${RESULT_GET_ISSUE_DIR}/raw-issue-comment.jsonl"
 
   # shellcheck disable=SC2016
   QUERY='
     query($node_id: ID!, $perPage: Int!, $endCursor: String) {
       node(id: $node_id) {
         __typename
-        ... on PullRequest{
+        ... on Issue{
           id
+          fullDatabaseId
+          databaseId
           number
           url
-          comments(first: $perPage, after: $endCursor){
+          title
+          state
+          publishedAt
+          comments(first: $perPage, after:$endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }
             nodes {
@@ -36,7 +41,7 @@ function get_pull_request_comment() {
               databaseId
               id
               url
-              author { 
+              author {
                 __typename
                 ... on User { databaseId id login name url }
                 ... on Bot { databaseId id login url }
@@ -61,14 +66,14 @@ function get_pull_request_comment() {
   get_paginated_data_by_node_id \
     "$QUERY" \
     "$RAW_PATH" \
-    "$RESULT_PR_COMMENT_NODE_ID_PATH" \
+    "$RESULT_ISSUE_COMMENT_NODE_ID_PATH" \
     "comments" \
-    "$RESULT_PR_NODE_ID_PATH" \
+    "$RESULT_ISSUE_NODE_ID_PATH" \
     "publishedAt"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \
-    "after:get-pull-request-comment()" \
+    "after:get-issue-comment()" \
     "$before_remaining_ratelimit" \
     "false"
 }

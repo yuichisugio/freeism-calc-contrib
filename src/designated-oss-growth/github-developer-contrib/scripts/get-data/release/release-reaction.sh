@@ -24,7 +24,9 @@ function get_release_reaction() {
   QUERY='
     query($node_id: ID!, $perPage: Int!, $endCursor: String) {
       node(id: $node_id) {
+        __typename
         ... on Release{
+          id
           reactions(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }
@@ -41,8 +43,8 @@ function get_release_reaction() {
     "$RAW_PATH" \
     "$RESULT_PATH" \
     "reactions" \
-    "createdAt" \
-    "$RESULT_RELEASE_NODE_ID_PATH"
+    "$RESULT_RELEASE_NODE_ID_PATH" \
+    "createdAt"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

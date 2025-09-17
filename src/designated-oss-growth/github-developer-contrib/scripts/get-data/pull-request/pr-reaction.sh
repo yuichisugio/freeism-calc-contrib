@@ -24,11 +24,19 @@ function get_pull_request_reaction() {
   QUERY='
     query($node_id: ID!, $perPage: Int!, $endCursor: String) {
       node(id: $node_id) {
+        __typename
         ... on PullRequest{
+          id
           reactions(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }
-            nodes { databaseId id content createdAt user { databaseId id login name url } }
+            nodes { 
+              databaseId
+              id
+              content
+              createdAt
+              user { databaseId id login name url } 
+            }
           }
         }
       }
@@ -36,8 +44,17 @@ function get_pull_request_reaction() {
   '
 
   # クエリを実行。node_id単位でページネーションしながら取得
-  get_paginated_data_by_node_id "$QUERY" "$RAW_PATH" "$RESULT_PATH" "reactions" "createdAt"
+  get_paginated_data_by_node_id \
+    "$QUERY" \
+    "$RAW_PATH" \
+    "$RESULT_PATH" \
+    "reactions" \
+    "$RESULT_PR_NODE_ID_PATH" \
+    "createdAt"
 
   # データ取得後のRateLimitを出力
-  get_ratelimit "after:get-pull-request-reaction()" "$before_remaining_ratelimit" "false"
+  get_ratelimit \
+    "after:get-pull-request-reaction()" \
+    "$before_remaining_ratelimit" \
+    "false"
 }

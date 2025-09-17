@@ -51,8 +51,8 @@ function get_commit_comment_reaction() {
     "$RAW_PATH" \
     "$RESULT_PATH" \
     "reactions" \
-    "createdAt" \
-    "$RESULT_COMMIT_COMMENT_PATH"
+    "$RESULT_COMMIT_COMMENT_PATH" \
+    "createdAt"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

@@ -1,44 +1,49 @@
 #!/bin/bash
 
 #--------------------------------------
-# pull requestの現在の担当者を取得するファイル
+# issueのリアクションを取得するファイル
 #--------------------------------------
 
 set -euo pipefail
 
 #--------------------------------------
-# pull requestの現在の担当者を取得する関数
+# issueのリアクションを取得する関数
 #--------------------------------------
-function get_pull_request_now_assigned_actors() {
+function get_issue_reaction() {
 
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
-  before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-now-assigned-actors()")"
+  before_remaining_ratelimit="$(get_ratelimit "before:get-issue-reaction()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-now-assigned-actors.jsonl"
-  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-now-assigned-actors.json"
+  local RAW_PATH="${RESULT_GET_ISSUE_DIR}/raw-issue-reaction.jsonl"
+  local RESULT_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-reaction.json"
 
   # shellcheck disable=SC2016
   QUERY='
     query($node_id: ID!, $perPage: Int!, $endCursor: String) {
       node(id: $node_id) {
         __typename
-        ... on PullRequest{
+        ... on Issue{
           id
+          fullDatabaseId
+          databaseId
           number
           url
-          assignedActors(first: $perPage, after: $endCursor){
+          title
+          state
+          publishedAt
+          reactions(first: $perPage, after:$endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }
             nodes {
-              __typename
-              ... on User { databaseId id login name url }
-              ... on Bot { databaseId id login url }
-              ... on Mannequin { databaseId id login name url }
-              ... on Organization { databaseId id login name url }
-             }
+              databaseId
+              id
+              content
+              createdAt
+              user { databaseId id login name url }
+            }
           }
         }
       }
@@ -50,12 +55,13 @@ function get_pull_request_now_assigned_actors() {
     "$QUERY" \
     "$RAW_PATH" \
     "$RESULT_PATH" \
-    "assignedActors" \
-    "$RESULT_PR_NODE_ID_PATH"
+    "reactions" \
+    "$RESULT_ISSUE_NODE_ID_PATH" \
+    "createdAt"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \
-    "after:get-pull-request-now-assigned-actors()" \
+    "after:get-issue-reaction()" \
     "$before_remaining_ratelimit" \
     "false"
 }
