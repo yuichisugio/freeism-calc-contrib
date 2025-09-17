@@ -18,9 +18,10 @@ mkdir -p "$RESULTS_GET_DIR"
 readonly GET_DIR="${SCRIPT_DIR}/scripts/get-data"
 source "${GET_DIR}/get-data-utils.sh"
 # source "${GET_DIR}/issue/issue-main.sh"
+source "${GET_DIR}/discussion/discus-main.sh"
 # source "${GET_DIR}/commit/commit-main.sh"
 # source "${GET_DIR}/pull-request/pr-main.sh"
-source "${GET_DIR}/release/release-main.sh"
+# source "${GET_DIR}/release/release-main.sh"
 # source "${GET_DIR}/star.sh"
 # source "${GET_DIR}/fork.sh"
 # source "${GET_DIR}/watch.sh"
@@ -66,11 +67,11 @@ function get_data() {
   # イシューのデータを取得
   # get_issue
 
-  # ディスカッションのデータを取得
-  get_discussion
-
   # リリースのデータを取得
   # get_release
+
+  # ディスカッションのデータを取得
+  get_discussion
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-data()" "$before_remaining_ratelimit" "false"

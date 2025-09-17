@@ -364,11 +364,15 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
    - `1`
 1. Discussions にラベル付け
-   - `1`
+   - APIで、`timelineItems`が無いため取得できない
 1. Discussions にカテゴリー分けをする
    - `1`
+1. Discussions に回答する
+   - `3`
+1. Discussions の回答を決定する
+   - `3`
 1. Discussions に投票する
-   - `1`
+   - 取得できるAPIがない
 
 ##### コミット
 

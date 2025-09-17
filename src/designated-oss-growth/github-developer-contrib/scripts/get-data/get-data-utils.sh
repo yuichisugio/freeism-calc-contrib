@@ -183,7 +183,7 @@ function get_paginated_data_by_node_id() {
   # RESULT_PR_NODE_ID_PATHのすべてのnode_idに対して実行するよう繰り返す
   for NODE_ID in $(jq -r '.[].id' "$NODE_ID_PATH"); do
 
-    # フィールドのtotalCountを取得
+    # フィールドのtotalCountを取得。.[$FIRST_CHECK_FIELD_NAME].totalCountで、FIRST自身がnullの可能性もあるため、// 0で0を返すようにする。
     FIELD_TOTAL_COUNT="$(
       jq -r \
         --arg NODE_ID "$NODE_ID" \

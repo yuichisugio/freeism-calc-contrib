@@ -7,6 +7,20 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のファイルを定義
+#--------------------------------------
+readonly RESULT_GET_PR_DIR="${RESULTS_GET_DIR}/pull-request"
+mkdir -p "$RESULT_GET_PR_DIR"
+# プルリクエストのnode_idを取得するファイル
+readonly RESULT_PR_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-node-id.json"
+# プルリクエストのコメントのnode_idを取得するファイル
+readonly RESULT_PR_COMMENT_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-comment.json"
+# プルリクエストのレビューのnode_idを取得するファイル
+readonly RESULT_PR_REVIEW_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-review.json"
+# プルリクエストのレビューのコメントのnode_idを取得するファイル
+readonly RESULT_PR_REVIEW_COMMENT_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-review-comment.json"
+
+#--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
 source "${GET_DIR}/pull-request/pr-node-id.sh"
@@ -23,20 +37,6 @@ source "${GET_DIR}/pull-request/pr-review-comment.sh"
 source "${GET_DIR}/pull-request/pr-review-comment-reaction.sh"
 source "${GET_DIR}/pull-request/pr-now-reviewer.sh"
 source "${GET_DIR}/pull-request/pr-timeline-reviewer.sh"
-
-#--------------------------------------
-# 出力先のファイルを定義
-#--------------------------------------
-readonly RESULT_GET_PR_DIR="${RESULTS_GET_DIR}/pull-request"
-mkdir -p "$RESULT_GET_PR_DIR"
-# プルリクエストのnode_idを取得するファイル
-readonly RESULT_PR_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-node-id.json"
-# プルリクエストのコメントのnode_idを取得するファイル
-readonly RESULT_PR_COMMENT_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-comment.json"
-# プルリクエストのレビューのnode_idを取得するファイル
-readonly RESULT_PR_REVIEW_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-review.json"
-# プルリクエストのレビューのコメントのnode_idを取得するファイル
-readonly RESULT_PR_REVIEW_COMMENT_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-review-comment.json"
 
 #--------------------------------------
 # プルリクエストのデータを取得する
