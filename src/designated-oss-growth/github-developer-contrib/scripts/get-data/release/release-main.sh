@@ -1,20 +1,10 @@
 #!/bin/bash
 
 #--------------------------------------
-# リリースのnode_idと各種フィールドのtotalCountを取得するファイル
+# リリースのデータ取得を統合するファイル
 #--------------------------------------
 
 set -euo pipefail
-
-#--------------------------------------
-# 出力先のファイルを定義
-#--------------------------------------
-readonly RESULT_GET_RELEASE_DIR="${RESULTS_GET_DIR}/release"
-mkdir -p "$RESULT_GET_RELEASE_DIR"
-# リリースのnode_idを取得するファイル
-readonly RESULT_RELEASE_NODE_ID_PATH="${RESULT_GET_RELEASE_DIR}/result-release-node-id.json"
-# リリースのリアクションを取得するファイル
-readonly RESULT_RELEASE_REACTION_PATH="${RESULT_GET_RELEASE_DIR}/result-release-reaction.json"
 
 #--------------------------------------
 # 使用するファイルを読み込む
@@ -23,7 +13,14 @@ source "${GET_DIR}/release/release-node-id.sh"
 source "${GET_DIR}/release/release-reaction.sh"
 
 #--------------------------------------
-# リリースのnode_idと各種フィールドのtotalCountを取得する関数
+# 出力先のファイルを定義
+#--------------------------------------
+readonly RESULT_GET_RELEASE_DIR="${RESULTS_GET_DIR}/release"
+mkdir -p "$RESULT_GET_RELEASE_DIR"
+readonly RESULT_RELEASE_NODE_ID_PATH="${RESULT_GET_RELEASE_DIR}/result-release-node-id.json"
+
+#--------------------------------------
+# リリースのデータを取得する関数
 #--------------------------------------
 function get_release() {
 

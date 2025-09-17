@@ -7,14 +7,6 @@
 set -euo pipefail
 
 #--------------------------------------
-# 出力先のファイルを定義
-#--------------------------------------
-readonly RESULT_GET_RELEASE_DIR="${RESULTS_GET_DIR}/release"
-mkdir -p "$RESULT_GET_RELEASE_DIR"
-# リリースのnode_idを取得するファイル
-readonly RESULT_RELEASE_NODE_ID_PATH="${RESULT_GET_RELEASE_DIR}/result-release-node-id.json"
-
-#--------------------------------------
 # リリースのnode_idと各種フィールドのtotalCountを取得する関数
 #--------------------------------------
 function get_release_node_id() {
@@ -31,12 +23,38 @@ function get_release_node_id() {
 
   # shellcheck disable=SC2016
   QUERY='
-    query($owner: String!, $name: String!, $perPage: Int!, $endCursor: String) {
-      repository(owner: $owner, name: $name) {
-        releases(first: $perPage, after: $endCursor) {
+    query(
+      $owner: String!,
+      $name: String!,
+      $perPage: Int!,
+      $endCursor: String
+    ) {
+      repository(owner:$owner, name:$name) {
+        id
+        databaseId
+        createdAt
+        name
+        description
+        homepageUrl
+        url
+        releases(first: $perPage, after:$endCursor, orderBy:{field: CREATED_AT, direction: ASC } ){
           totalCount
           pageInfo { hasNextPage endCursor }
-          nodes { id }
+          nodes {
+            databaseId
+            id
+            name
+            description
+            url
+            author {
+              databaseId id login name url
+            }
+            publishedAt
+            reactionGroups { content reactors { totalCount } }
+            reactions(first: 1){
+              totalCount
+            }
+          }
         }
       }
     }

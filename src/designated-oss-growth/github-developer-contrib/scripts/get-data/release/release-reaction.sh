@@ -26,11 +26,22 @@ function get_release_reaction() {
       node(id: $node_id) {
         __typename
         ... on Release{
+          databaseId
           id
-          reactions(first: $perPage, after: $endCursor){
+          name
+          description
+          url
+          publishedAt
+          reactions(first: $perPage, after:$endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }
-            nodes { databaseId id content createdAt user { databaseId id login name url } }
+            nodes {
+              databaseId
+              id
+              content
+              createdAt
+              user { databaseId id login name url }
+            }
           }
         }
       }
