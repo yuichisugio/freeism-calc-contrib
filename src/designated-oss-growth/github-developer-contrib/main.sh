@@ -30,33 +30,21 @@ fi
 read -r OWNER REPO SINCE UNTIL <<<"$parsed"
 
 #--------------------------------------
-# 出力ディレクトリの準備。OWNERなど取得後に準備する
+# 出力先のディレクトリを作成する
 #--------------------------------------
 # shellcheck disable=SC2155
-readonly RESULTS_DIR="${SCRIPT_DIR}/results/${OWNER}-${REPO}-${SINCE}-${UNTIL}-$(date +%Y%m%dT%H%M%S)"
-# readonly RESULTS_PROCESSED_DIR="${RESULTS_DIR}/processed-data"
-# readonly RESULTS_WEIGHTED_DIR="${RESULTS_DIR}/weighted-data"
-# readonly RESULTS_CONTRIB_DIR="${RESULTS_DIR}/contrib-data"
-# readonly RESULT_DIR="${RESULTS_DIR}/result"
+readonly OUTPUT_DIR="${SCRIPT_DIR}/results/${OWNER}-${REPO}-${SINCE}-${UNTIL}-$(date +%Y%m%dT%H%M%S)"
+mkdir -p "$OUTPUT_DIR"
 
-readonly CREATE_PATH_ARRAY=(
-  "${RESULTS_DIR}"
-  # "${RESULTS_PROCESSED_DIR}"
-  # "${RESULTS_WEIGHTED_DIR}"
-  # "${RESULTS_WEIGHTED_DIR}"
-  # "${RESULTS_CONTRIB_DIR}"
-  # "${RESULT_DIR}"
-)
-
-# データ取得を統合するファイル/それに使用するファイルを取得（RESULTS_DIR 定義後に読み込む）
+#--------------------------------------
+# 使用するファイルを読み込む
+#--------------------------------------
+# データ取得を統合するファイルを取得
 source "${SCRIPT_DIR}/scripts/get-data/integration.sh"
-
 # データ加工を統合するファイルを取得
 # source "${SCRIPT_DIR}/scripts/process-data/integration.sh"
-
 # 重み付けを統合するファイルを取得
 # source "${SCRIPT_DIR}/scripts/calc-weighting/integration.sh"
-
 # 貢献度の算出を統合するファイルを取得
 # source "${SCRIPT_DIR}/scripts/calc-contrib/integration.sh"
 
@@ -65,17 +53,13 @@ source "${SCRIPT_DIR}/scripts/get-data/integration.sh"
 #--------------------------------------
 function main() {
 
-  # データ取得前のRateLimit変数
-  local before_remaining_ratelimit
-
   # 依存コマンドの確認
   require_tools
 
+  # データ取得前のRateLimit変数
+  local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
   before_remaining_ratelimit="$(get_ratelimit "before:main()")"
-
-  # 出力ディレクトリの準備
-  setup_output_directory
 
   # データ取得
   get_data
@@ -93,7 +77,10 @@ function main() {
   # output_result
 
   # データ取得後のRateLimitを出力
-  get_ratelimit "after:main()" "$before_remaining_ratelimit" "false"
+  get_ratelimit \
+    "after:main()" \
+    "$before_remaining_ratelimit" \
+    "false"
 
   return 0
 }

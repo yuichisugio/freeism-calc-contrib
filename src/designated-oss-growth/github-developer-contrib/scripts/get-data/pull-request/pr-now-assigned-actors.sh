@@ -38,7 +38,7 @@ function get_pull_request_now_assigned_actors() {
               ... on Bot { databaseId id login url }
               ... on Mannequin { databaseId id login name url }
               ... on Organization { databaseId id login name url }
-             }
+            }
           }
         }
       }

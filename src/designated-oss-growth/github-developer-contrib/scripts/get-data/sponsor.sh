@@ -9,7 +9,7 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のファイルを定義
 #--------------------------------------
-readonly RESULT_GET_SPONSOR_DIR="${RESULTS_GET_DIR}/sponsor"
+readonly RESULT_GET_SPONSOR_DIR="${OUTPUT_GET_DIR}/sponsor"
 readonly RAW_SPONSOR_RECIPIENTS_PATH="${RESULT_GET_SPONSOR_DIR}/raw-sponsor-recipients.json"
 readonly PROCESSED_SPONSOR_RECIPIENTS_PATH="${RESULT_GET_SPONSOR_DIR}/processed-sponsor-recipients.txt"
 readonly RAW_SPONSOR_SUPPORTERS_PATH="${RESULT_GET_SPONSOR_DIR}/raw-sponsor-supporters.json"

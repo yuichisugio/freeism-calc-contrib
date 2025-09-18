@@ -30,7 +30,7 @@ function get_discussion_comment_reply_reaction() {
           reactions(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }
-            nodes{ 
+            nodes{
               databaseId
               id
               content

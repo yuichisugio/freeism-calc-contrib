@@ -7,6 +7,16 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のファイルを定義
+#--------------------------------------
+readonly RESULT_GET_ISSUE_DIR="${OUTPUT_GET_DIR}/issue"
+mkdir -p "$RESULT_GET_ISSUE_DIR"
+# issueのnode_idを取得するファイル
+readonly RESULT_ISSUE_NODE_ID_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-node-id.json"
+# issueのコメントのnode_idを取得するファイル
+readonly RESULT_ISSUE_COMMENT_NODE_ID_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-comment.json"
+
+#--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
 source "${GET_DIR}/issue/issue-node-id.sh"
@@ -16,16 +26,6 @@ source "${GET_DIR}/issue/issue-timeline-label.sh"
 source "${GET_DIR}/issue/issue-comment.sh"
 source "${GET_DIR}/issue/issue-comment-reaction.sh"
 source "${GET_DIR}/issue/issue-reaction.sh"
-
-#--------------------------------------
-# 出力先のファイルを定義
-#--------------------------------------
-readonly RESULT_GET_ISSUE_DIR="${RESULTS_GET_DIR}/issue"
-mkdir -p "$RESULT_GET_ISSUE_DIR"
-# issueのnode_idを取得するファイル
-readonly RESULT_ISSUE_NODE_ID_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-node-id.json"
-# issueのコメントのnode_idを取得するファイル
-readonly RESULT_ISSUE_COMMENT_NODE_ID_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-comment.json"
 
 #--------------------------------------
 # データ取得を統合する関数

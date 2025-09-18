@@ -36,6 +36,7 @@
       - [Issue](#issue-1)
       - [Discussions](#discussions-1)
   - [工夫したポイント](#工夫したポイント)
+  - [改善点](#改善点)
 
 ## 概要
 
@@ -364,7 +365,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
    - `1`
 1. Discussions にラベル付け
-   - APIで、`timelineItems`が無いため取得できない
+   - API で、`timelineItems`が無いため取得できない
 1. Discussions にカテゴリー分けをする
    - `1`
 1. Discussions に回答する
@@ -372,7 +373,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 1. Discussions の回答を決定する
    - `3`
 1. Discussions に投票する
-   - 取得できるAPIがない
+   - 取得できる API がない
 
 ##### コミット
 
@@ -539,6 +540,16 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 ## 工夫したポイント
 
-1. ①`Pull　Request`の`id`フィールド(node の id)の取得と ②`id`を使用して`node`クエリで情報を取得する場合に、① は期間外だが、② は期間内のデータがあったときに、② のデータを確実に取得できるように、すべての ① のデータを取得しておく設計
+1. User オブジェクトの`id`フィールドは、`MDQ6SIOlcjg0MzI4Ng==`と`U_kgDOCihAMg`のような形式があるので、以下オプションで統一して取得している
+   - `--header X-Github-Next-Global-ID:1`オプションを指定することで、新しい形式を取得できる
+1. 何かしらの ID で突合できるように、得られる ID 系フィールド全てを取得する
+
+## 改善点
+
+1. `nodes`クエリのテスト
+   - `nodes`クエリでノード ID をバッチで取得して、リクエストごとの数ではなく 100 分の 1 の数の消費に抑えたい
+   - 現在は`node`クエリで一つずつしか取得しておらず、rateLimit のポイントを多く消費してしまう実装になっている
+   - ページネーションの設計が複雑になるので、プルリクや Issue の label 数など現実的に 50 個以上つかない場合で使用できそう
+1. ①`Pull Request`の`id`フィールド(node の id)の取得と ②`id`を使用して`node`クエリで情報を取得する場合に、① は期間外だが、② は期間内のデータがあったときに、② のデータを確実に取得できるように、すべての ① のデータを取得しておく設計
    - 今後実装したい
    - 目的は期間を指定して取得することじたいではなく、データの漏れを無くすことなため、`-s`,`-un`で期間の漏れがなく指定できれば、すべてのデータを取得できるので、一旦は簡潔な設計にするため後回し

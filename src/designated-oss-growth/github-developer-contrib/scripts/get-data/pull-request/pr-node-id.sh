@@ -19,8 +19,6 @@ function get_pull_request_node_id() {
   local QUERY
   local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-node-id.jsonl"
 
-  : >"$RAW_PATH"
-
   # shellcheck disable=SC2016
   QUERY='
     query($owner: String!, $name: String!, $perPage: Int!, $endCursor: String) {
@@ -47,7 +45,7 @@ function get_pull_request_node_id() {
             author {
               __typename
               ... on Bot { databaseId id login url }
-              ... on EnterpriseUserAccount { databaseId id login name url }
+              ... on EnterpriseUserAccount { id login name url }
               ... on Mannequin { databaseId id login name url }
               ... on Organization { databaseId id login name url }
               ... on User { databaseId id login name url }

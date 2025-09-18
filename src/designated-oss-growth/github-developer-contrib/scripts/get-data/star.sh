@@ -9,7 +9,7 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のファイルを定義
 #--------------------------------------
-readonly RESULT_GET_STAR_DIR="${RESULTS_GET_DIR}/star"
+readonly RESULT_GET_STAR_DIR="${OUTPUT_GET_DIR}/star"
 readonly RAW_STAR_PATH="${RESULT_GET_STAR_DIR}/raw-star.jsonl"
 readonly RESULT_STAR_PATH="${RESULT_GET_STAR_DIR}/result-star.json"
 
@@ -38,9 +38,11 @@ function get_star() {
           edges {
             starredAt
             node {
-              login
               id
               databaseId
+              login
+              name
+              url
             }
           }
         }

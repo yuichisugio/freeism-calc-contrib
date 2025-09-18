@@ -66,9 +66,8 @@ function get_commit_comment() {
     "$RAW_COMMIT_COMMENT_PATH" \
     "$RESULT_COMMIT_COMMENT_PATH" \
     "comments" \
-    "$RESULT_COMMIT_WITH_PR_PATH" \
+    "$RESULT_COMMIT_NODE_ID_WITH_PR_PATH" \
     "publishedAt"
-    
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

@@ -9,7 +9,7 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のファイルを定義
 #--------------------------------------
-readonly RESULT_GET_DISCUSSION_DIR="${RESULTS_GET_DIR}/discussion"
+readonly RESULT_GET_DISCUSSION_DIR="${OUTPUT_GET_DIR}/discussion"
 mkdir -p "$RESULT_GET_DISCUSSION_DIR"
 # discussionのnode_idを取得するファイル
 readonly RESULT_DISCUSSION_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-node-id.json"

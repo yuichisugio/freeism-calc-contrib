@@ -121,11 +121,12 @@ function get_paginated_star_data() {
 
     # 期間で絞ってJSONLに追記
     # SINCEとUNTILはmain.shでグローバル変数として定義されている
-    jq -r \
+    jq -c \
       --arg SINCE "$SINCE" \
       --arg UNTIL "$UNTIL" \
       '.data.repository.stargazers.edges[]
         | select(.starredAt >= $SINCE and .starredAt <= $UNTIL)
+        | {"starredAt": .starredAt} + (.node // {})
       ' <<<"$RESPONSE" >>"$RESULT_PATH"
 
     # 次ページの準備

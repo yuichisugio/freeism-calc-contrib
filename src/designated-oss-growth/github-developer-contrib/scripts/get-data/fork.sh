@@ -9,7 +9,7 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のファイルを定義
 #--------------------------------------
-readonly RESULT_GET_FORK_DIR="${RESULTS_GET_DIR}/fork"
+readonly RESULT_GET_FORK_DIR="${OUTPUT_GET_DIR}/fork"
 readonly RAW_FORK_PATH="${RESULT_GET_FORK_DIR}/raw-fork.jsonl"
 readonly RESULT_FORK_PATH="${RESULT_GET_FORK_DIR}/result-fork.json"
 
@@ -36,13 +36,13 @@ get_fork() {
           totalCount
           pageInfo { hasNextPage endCursor }
           nodes {
+            id
+            databaseId
             createdAt
             owner {
               __typename
-              login
-              id
-              ... on User { databaseId }
-              ... on Organization { databaseId }
+              ... on Organization { databaseId id login name url }
+              ... on User { databaseId id login name url }
             }
           }
         }

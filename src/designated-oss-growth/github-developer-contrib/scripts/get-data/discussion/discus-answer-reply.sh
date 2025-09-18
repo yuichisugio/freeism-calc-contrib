@@ -18,8 +18,6 @@ function get_discussion_answer_reply() {
   local QUERY
   local RAW_PATH="${RESULT_GET_DISCUSSION_DIR}/raw-discus-answer-reply.jsonl"
 
-  : >"$RAW_PATH"
-
   # shellcheck disable=SC2016
   QUERY='
     query($node_id: ID!, $perPage: Int!, $endCursor: String) {

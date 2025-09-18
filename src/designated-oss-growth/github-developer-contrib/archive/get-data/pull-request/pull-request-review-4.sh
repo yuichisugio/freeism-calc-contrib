@@ -59,7 +59,7 @@ gh api graphql \
                   ... on Bot { databaseId id login url }
                   ... on Mannequin { databaseId id login name url }
                   ... on Organization { databaseId id login name url }
-                  ... on EnterpriseUserAccount { databaseId id login name url }
+                  ... on EnterpriseUserAccount { id login name url }
                 }
                 bodyText
                 publishedAt
@@ -76,12 +76,12 @@ gh api graphql \
                   ... on Bot { databaseId id login url }
                   ... on Mannequin { databaseId id login name url }
                   ... on Organization { databaseId id login name url }
-                  ... on EnterpriseUserAccount { databaseId id login name url }
+                  ... on EnterpriseUserAccount { id login name url }
                 }
                 userContentEdits(first: $perPage){
                   totalCount
                   pageInfo { hasNextPage endCursor }
-                  nodes{ 
+                  nodes{
                     id
                     deletedBy {
                       __typename
@@ -89,7 +89,7 @@ gh api graphql \
                       ... on Bot { databaseId id login url }
                       ... on Mannequin { databaseId id login name url }
                       ... on Organization { databaseId id login name url }
-                      ... on EnterpriseUserAccount { databaseId id login name url }
+                      ... on EnterpriseUserAccount { id login name url }
                     }
                     deletedAt
                     editedAt
@@ -100,7 +100,7 @@ gh api graphql \
                       ... on Bot { databaseId id login url }
                       ... on Mannequin { databaseId id login name url }
                       ... on Organization { databaseId id login name url }
-                      ... on EnterpriseUserAccount { databaseId id login name url }
+                      ... on EnterpriseUserAccount { id login name url }
                     }
                   }
                 }
@@ -119,7 +119,7 @@ gh api graphql \
                   ... on Bot { databaseId id login url }
                   ... on Mannequin { databaseId id login name url }
                   ... on Organization { databaseId id login name url }
-                  ... on EnterpriseUserAccount { databaseId id login name url }
+                  ... on EnterpriseUserAccount { id login name url }
                 }
                 bodyText
                 state
@@ -143,7 +143,7 @@ gh api graphql \
                       ... on Bot { databaseId id login url }
                       ... on Mannequin { databaseId id login name url }
                       ... on Organization { databaseId id login name url }
-                      ... on EnterpriseUserAccount { databaseId id login name url }
+                      ... on EnterpriseUserAccount { id login name url }
                     }
                     bodyText
                     publishedAt

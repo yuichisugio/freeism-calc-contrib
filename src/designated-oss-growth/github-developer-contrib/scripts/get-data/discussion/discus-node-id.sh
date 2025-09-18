@@ -18,8 +18,6 @@ function get_discussion_node_id() {
 
   local QUERY
   local RAW_PATH="${RESULT_GET_DISCUSSION_DIR}/raw-discus-node-id.jsonl"
-  
-  : >"$RAW_PATH"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -146,7 +144,7 @@ function get_discussion_node_id() {
     "$RAW_PATH" \
     "$RESULT_DISCUSSION_NODE_ID_PATH" \
     "discussions" \
-    "createdAt"
+    "publishedAt"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

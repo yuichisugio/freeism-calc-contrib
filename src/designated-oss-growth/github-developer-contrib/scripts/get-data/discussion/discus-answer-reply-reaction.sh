@@ -19,9 +19,6 @@ function get_discussion_answer_reply_reaction() {
   local RAW_PATH="${RESULT_GET_DISCUSSION_DIR}/raw-discus-answer-reply-reaction.jsonl"
   local RESULT_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-answer-reply-reaction.json"
 
-  : >"$RAW_PATH"
-  : >"$RESULT_PATH"
-
   # shellcheck disable=SC2016
   QUERY='
     query($node_id: ID!, $perPage: Int!, $endCursor: String) {

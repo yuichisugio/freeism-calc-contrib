@@ -11,14 +11,12 @@ set -euo pipefail
 #--------------------------------------
 source "$(dirname "$0")/calc-amount-contrib.sh"
 
-
 #--------------------------------------
 # 出力先のファイルを作成する
 #--------------------------------------
-readonly CONTRIB_DIR="${RESULTS_DIR}/contrib-data"
+readonly CONTRIB_DIR="${OUTPUT_DIR}/contrib-data"
 readonly CONTRIB_RESULT_PATH="${CONTRIB_DIR}/result-contrib.json"
 mkdir -p "$(dirname "$CONTRIB_RESULT_PATH")"
-
 
 #--------------------------------------
 # 各種の評価軸で重み付けの値を受け取った後に合計して、一覧にする

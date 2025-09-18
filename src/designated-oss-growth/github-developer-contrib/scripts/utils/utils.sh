@@ -224,21 +224,6 @@ EOF
 }
 
 #--------------------------------------
-# 出力ディレクトリの準備
-#--------------------------------------
-function setup_output_directory() {
-
-  # 結果ディレクトリの準備
-  for path in "${CREATE_PATH_ARRAY[@]}"; do
-    if [[ ! -d "$path" ]]; then
-      mkdir -p "$path"
-    fi
-  done
-
-  return 0
-}
-
-#--------------------------------------
 # Description: RateLimitを取得して、メッセージやコストを出力する関数
 # Args: message before
 # 第一引数: 出力するメッセージ

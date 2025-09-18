@@ -19,8 +19,6 @@ function get_release_node_id() {
   local QUERY
   local RAW_PATH="${RESULT_GET_RELEASE_DIR}/raw-release-node-id.jsonl"
 
-  : >"$RAW_PATH"
-
   # shellcheck disable=SC2016
   QUERY='
     query(

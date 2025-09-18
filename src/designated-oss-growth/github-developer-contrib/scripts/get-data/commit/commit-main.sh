@@ -9,7 +9,7 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のファイルを定義
 #--------------------------------------
-readonly RESULT_GET_COMMIT_DIR="${RESULTS_GET_DIR}/commit"
+readonly RESULT_GET_COMMIT_DIR="${OUTPUT_GET_DIR}/commit"
 mkdir -p "$RESULT_GET_COMMIT_DIR"
 # コミットのデータ&node_idを取得するファイル
 readonly RESULT_COMMIT_NODE_ID_WITH_PR_PATH="${RESULT_GET_COMMIT_DIR}/result-commit-node-id-with-pr.json"

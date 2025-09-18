@@ -15,14 +15,12 @@ source "$(dirname "$0")/calc-lines-of-code-weighting.sh"
 source "$(dirname "$0")/calc-reaction-count-weighting.sh"
 source "$(dirname "$0")/calc-reaction-speed-weighting.sh"
 
-
 #--------------------------------------
 # 出力先のファイルを作成する
 #--------------------------------------
-readonly WEIGHTED_DIR="${RESULTS_DIR}/weighted-data"
+readonly WEIGHTED_DIR="${OUTPUT_DIR}/weighted-data"
 readonly RESULT_WEIGHTED_PATH="${WEIGHTED_DIR}/result-weighted.json"
 mkdir -p "$(dirname "$RESULT_WEIGHTED_PATH")"
-
 
 #--------------------------------------
 # 各種の評価軸で重み付けの値を受け取った後に合計して、一覧にする

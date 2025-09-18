@@ -32,7 +32,7 @@ function get_pull_request_now_label() {
           labels(first: $perPage, after: $endCursor) {
             totalCount
             pageInfo { hasNextPage endCursor }
-            nodes { 
+            nodes {
               id
               url
               name

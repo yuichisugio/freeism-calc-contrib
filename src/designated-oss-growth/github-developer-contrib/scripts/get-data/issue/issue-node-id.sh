@@ -19,8 +19,6 @@ function get_issue_node_id() {
   local QUERY
   local RAW_PATH="${RESULT_GET_ISSUE_DIR}/raw-issue-node-id.json"
 
-  : >"$RAW_PATH"
-
   # shellcheck disable=SC2016
   QUERY='
     query(
