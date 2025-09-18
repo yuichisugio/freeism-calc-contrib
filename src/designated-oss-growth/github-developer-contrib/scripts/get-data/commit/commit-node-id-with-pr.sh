@@ -31,6 +31,7 @@ function branch_exists() {
   # ブランチが存在するかどうかをチェック。
   IS_BRANCH_EXISTS="$(
     gh api graphql \
+      --header X-Github-Next-Global-ID:1 \
       -f owner="$OWNER" \
       -f name="$REPO" \
       -f qualified="refs/heads/$BRANCH" \
@@ -113,7 +114,7 @@ function get_commit_node_id_with_pr() {
                     date
                     user { databaseId id login name url }
                   }
-                  authors(first: 10) {
+                  authors(first: 5) {
                     totalCount
                     pageInfo { hasNextPage endCursor }
                     nodes{
@@ -181,7 +182,7 @@ function get_commit_node_id_with_pr() {
       -F prsPerCommit=3 \
       -F since="$SINCE" \
       -F until="$UNTIL" \
-      -F perPage=40 \
+      -F perPage=30 \
       -f query="$QUERY" |
       jq '.' >>"$RAW_COMMIT_WITH_PR_PATH"
 

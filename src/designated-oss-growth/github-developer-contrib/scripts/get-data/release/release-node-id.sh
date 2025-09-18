@@ -48,7 +48,6 @@ function get_release_node_id() {
               databaseId id login name url
             }
             publishedAt
-            reactionGroups { content reactors { totalCount } }
             reactions(first: 1){
               totalCount
             }

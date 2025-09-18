@@ -30,12 +30,15 @@ function get_repo_meta() {
     query($owner: String!, $repo: String!) {
       repository(owner: $owner, name: $repo) {
         id
+        databaseId
         name
-        url
+        description
         createdAt
+        url
+        homepageUrl
         owner {
-          login
-          id
+          ... on Organization { databaseId id login name url }
+          ... on User { databaseId id login name url }
         }
         defaultBranchRef {
           name
@@ -45,7 +48,12 @@ function get_repo_meta() {
   '
 
   # クエリを実行。jq '.' で、JSONを整形して指定ファイルに出力。
-  gh api graphql -F owner="$OWNER" -F repo="$REPO" -f query="$QUERY" | jq '.' >"$RAW_REPO_META_DIR"
+  gh api graphql \
+    --header X-Github-Next-Global-ID:1 \
+    -f owner="$OWNER" \
+    -f repo="$REPO" \
+    -f query="$QUERY" \
+    | jq '.' >"$RAW_REPO_META_DIR"
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-repo-meta()" "$before_remaining_ratelimit" "false"

@@ -19,13 +19,13 @@ readonly GET_DIR="${SCRIPT_DIR}/scripts/get-data"
 source "${GET_DIR}/get-data-utils.sh"
 # source "${GET_DIR}/issue/issue-main.sh"
 # source "${GET_DIR}/discussion/discus-main.sh"
-# source "${GET_DIR}/commit/commit-main.sh"
+source "${GET_DIR}/commit/commit-main.sh"
 # source "${GET_DIR}/pull-request/pr-main.sh"
 # source "${GET_DIR}/release/release-main.sh"
 # source "${GET_DIR}/star.sh"
 # source "${GET_DIR}/fork.sh"
 # source "${GET_DIR}/watch.sh"
-source "${GET_DIR}/sponsor.sh"
+# source "${GET_DIR}/sponsor.sh"
 # source "${GET_DIR}/repo-meta.sh"
 
 #--------------------------------------
@@ -41,7 +41,7 @@ function get_data() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-data()")"
 
   # コミットのデータを取得
-  # get_commit
+  get_commit
 
   # ディスカッションのデータを取得
   # get_discussion
@@ -62,7 +62,7 @@ function get_data() {
   # get_repo_meta
 
   # スポンサーのデータを取得
-  get_sponsor
+  # get_sponsor
 
   # スターのデータを取得
   # get_star

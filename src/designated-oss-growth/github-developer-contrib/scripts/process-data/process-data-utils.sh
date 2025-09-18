@@ -1,12 +1,35 @@
-# ver1。nullを明示的に許容しなくてもエラーにならず勝手にnullになってくれる
-jq '
+#!/usr/bin/env bash
+
+#--------------------------------------
+# データ加工の共通関数を定義するファイル
+#--------------------------------------
+
+set -euo pipefail
+
+#--------------------------------------
+# データ加工の共通関数を定義する
+#--------------------------------------
+
+function process_sponsor_data() {
+  local INPUT_PATH="${1:-}"
+  local OUTPUT_PATH="${2:-}"
+  local TASK_NAME="${3:-}"
+  local TASK_DATE="${4:-}"
+  local NEST_KEY="${5:-}"
+
+  jq \
+    --arg task_name "$TASK_NAME" \
+    --arg task_date "$TASK_DATE" \
+    --arg nest_key "$NEST_KEY" \
+    --arg task_date "$TASK_DATE" \
+    '
   {
     data: {
       user:
         (
           [ .[]?
             | . as $repo
-            | .sponsorEntity? as $o
+            | .($nest_key)? as $o
             | {
                 user_id:          ($o | .id),
                 user_database_id: ($o | .databaseId),
@@ -23,9 +46,9 @@ jq '
                     task_id:               ($repo | .id),
                     task_database_id:      ($repo | .databaseId),
                     task_full_database_id: ($repo | .fullDatabaseId),
-                    task_name:             "sponsor",
-                    task_date:             ($repo | .createdAt),
-                    reference_task_date:   "createdAt"
+                    task_name:             $task_name,
+                    task_date:             ($repo | .($task_date)),
+                    reference_task_date:   $task_date
                   }
                 ]
               }
@@ -39,5 +62,6 @@ jq '
         )
     }
   }
-  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/sponsor/1-result-sponsor-supporters.json" \
-    > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/sponsor/1-1-processed-sponsor.json"
+    ' "$INPUT_PATH" \
+    >"$OUTPUT_PATH"
+}
