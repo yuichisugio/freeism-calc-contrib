@@ -22,10 +22,10 @@ readonly RESULT_ISSUE_COMMENT_NODE_ID_PATH="${RESULT_GET_ISSUE_DIR}/result-issue
 source "${GET_DIR}/issue/issue-node-id.sh"
 source "${GET_DIR}/issue/issue-now-assigned-actors.sh"
 source "${GET_DIR}/issue/issue-now-label.sh"
-source "${GET_DIR}/issue/issue-timeline-label.sh"
 source "${GET_DIR}/issue/issue-comment.sh"
 source "${GET_DIR}/issue/issue-comment-reaction.sh"
 source "${GET_DIR}/issue/issue-reaction.sh"
+source "${GET_DIR}/issue/issue-timeline.sh"
 
 #--------------------------------------
 # データ取得を統合する関数
@@ -46,9 +46,6 @@ function get_issue() {
   # issueの現在のラベルを取得
   get_issue_now_label
 
-  # issueの担当者のタイムラインを取得
-  get_issue_timeline_label
-
   # issueのコメントを取得
   get_issue_comment
 
@@ -57,6 +54,9 @@ function get_issue() {
 
   # issueのリアクションを取得
   get_issue_reaction
+
+  # issueのタイムラインを取得
+  get_issue_timeline
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

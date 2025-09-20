@@ -26,8 +26,15 @@ function get_pull_request_review() {
         __typename
         ... on PullRequest{
           id
+          fullDatabaseId
           number
           url
+          permalink
+          additions
+          deletions
+          title
+          bodyText
+          publishedAt
           reviews(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }
@@ -62,7 +69,7 @@ function get_pull_request_review() {
     "$RAW_PATH" \
     "$RESULT_PR_REVIEW_NODE_ID_PATH" \
     "reviews" \
-    "$RESULT_PR_REVIEW_NODE_ID_PATH" \
+    "$RESULT_PR_NODE_ID_PATH" \
     "publishedAt" \
     
 

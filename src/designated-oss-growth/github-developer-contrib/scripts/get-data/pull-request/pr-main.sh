@@ -26,17 +26,14 @@ readonly RESULT_PR_REVIEW_COMMENT_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-r
 source "${GET_DIR}/pull-request/pr-node-id.sh"
 source "${GET_DIR}/pull-request/pr-reaction.sh"
 source "${GET_DIR}/pull-request/pr-now-assigned-actors.sh"
-source "${GET_DIR}/pull-request/pr-timeline-assigned.sh"
 source "${GET_DIR}/pull-request/pr-now-label.sh"
-source "${GET_DIR}/pull-request/pr-timeline-label.sh"
 source "${GET_DIR}/pull-request/pr-comment.sh"
 source "${GET_DIR}/pull-request/pr-comment-reaction.sh"
 source "${GET_DIR}/pull-request/pr-review.sh"
 source "${GET_DIR}/pull-request/pr-review-reaction.sh"
 source "${GET_DIR}/pull-request/pr-review-comment.sh"
 source "${GET_DIR}/pull-request/pr-review-comment-reaction.sh"
-source "${GET_DIR}/pull-request/pr-now-reviewer.sh"
-source "${GET_DIR}/pull-request/pr-timeline-reviewer.sh"
+source "${GET_DIR}/pull-request/pr-timeline.sh"
 
 #--------------------------------------
 # プルリクエストのデータを取得する
@@ -57,14 +54,8 @@ function get_pull_request() {
   # プルリクエストの現在の担当者を取得
   get_pull_request_now_assigned_actors
 
-  # プルリクエストの担当者のタイムラインを取得
-  get_pull_request_timeline_assigned
-
   # プルリクエストの現在のラベルを取得
   get_pull_request_now_label
-
-  # プルリクエストのラベルのタイムラインを取得
-  get_pull_request_timeline_label
 
   # プルリクエストのコメントを取得
   get_pull_request_comment
@@ -84,11 +75,8 @@ function get_pull_request() {
   # # プルリクエストのレビューコメントのリアクションを取得
   get_pull_request_review_comment_reaction
 
-  # # プルリクエストの現在のレビュワーを取得
-  get_pull_request_now_reviewer
-
-  # # プルリクエストのレビュワーのタイムラインを取得
-  get_pull_request_timeline_reviewer
+  # プルリクエストのクローズorマージした人のタイムラインを取得
+  get_pull_request_timeline
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

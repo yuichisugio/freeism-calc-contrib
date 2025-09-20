@@ -313,7 +313,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 ##### プルリクエスト
 
-1. プルリクエストの作成（Merged、Approved）
+1. プルリクエストの作成（`Merged`、`Approved`）
    - `approved`は承認済みだけどマージはされていない状態
    - `3`
 2. プルリクエストの作成（`Draft`,`Rejected`,`Open`,`Pending`,`Changes requested`）
@@ -323,7 +323,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - `1`
 4. プルリクエストをマージ
    - `2`
-5. プルリクエストをレビューして、Approved or Rejected
+5. プルリクエストをレビューして、`Approved` or `Rejected`
    - `3`
 6. プルリクエストにラベル付け
    - `1`
@@ -337,21 +337,21 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 ##### Issue
 
-1. Issue 作成（Closed - Completed）
+1. Issue 作成（`CLOSED` - `COMPLETED`）
    - `3`
-1. Issue 作成（Closed - Not planned）
+2. Issue 作成（`CLOSED` - `DUPLICATE`,`NOT_PLANNED`,`REOPENED`）
    - `1`
-1. Issue 作成（Open）
+3. Issue 作成（`OPEN`）
    - `2`
-1. Issue にコメント
+4. Issue にコメント
    - `1`
-1. Issue のステータスを変更（Open・Closed=Completed/Not planned）
+5. Issue のステータスを変更（Open・Closed=Completed/Not planned）
    - `1`
-1. Issue にラベル付けをする
+6. Issue にラベル付けをする
    - `1`
-1. 担当者をアサイン（アサインする側）
+7. 担当者をアサイン（アサインする側）
    - `1`
-1. Issue にリアクションをつける
+8. Issue にリアクションをつける
    - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
    - `1`
 
@@ -382,6 +382,10 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - GitHub API で、`branchProtectionRules` オブジェクトの`Require a pull request before merging` が`true`の場合は不要
    - コミットは、main ブランチに直接プッシュした場合のみカウントしたい
    - `2`
+1. コミットへコメント
+   - `1`
+1. コミットへのコメントへリアクション
+   - `1`
 
 ##### others
 
@@ -543,6 +547,10 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 1. User オブジェクトの`id`フィールドは、`MDQ6SIOlcjg0MzI4Ng==`と`U_kgDOCihAMg`のような形式があるので、以下オプションで統一して取得している
    - `--header X-Github-Next-Global-ID:1`オプションを指定することで、新しい形式を取得できる
 1. 何かしらの ID で突合できるように、得られる ID 系フィールド全てを取得する
+1. Issue のラベル付けの作業で貢献として認める仕様
+   - 各 Issue ごとに、現在ついている全てのラベルをそれぞれラベル付けした最新の日・最新の人のみを貢献として認める
+1. プルリクの`reviewRequests`は、レビュー担当者としてアサインされながらレビューが未完了の人のみを返す。なので、全員が完了済みの人も欲しい場合は`ReviewRequestedEvent`と`ReviewRequestRemovedEvent`を使用する必要がある
+2. `Discussion`でも`labels`はあるが、`timelineItems`が存在しないため、ラベル付けしたひとをしゅとくできないので貢献度としては算出できない
 
 ## 改善点
 
@@ -553,3 +561,6 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 1. ①`Pull Request`の`id`フィールド(node の id)の取得と ②`id`を使用して`node`クエリで情報を取得する場合に、① は期間外だが、② は期間内のデータがあったときに、② のデータを確実に取得できるように、すべての ① のデータを取得しておく設計
    - 今後実装したい
    - 目的は期間を指定して取得することじたいではなく、データの漏れを無くすことなため、`-s`,`-un`で期間の漏れがなく指定できれば、すべてのデータを取得できるので、一旦は簡潔な設計にするため後回し
+1. アサインイベント以外は jq 側で最新のデータのみ抽出するのであれば、`timelineItems`のそれぞれのイベントは`last:1`で良さそう
+1. `timelineItems`で、別イベントも取得してしまっているので、一緒のクエリで取得して、データ加工時に、`__typename`で分けたほうが良さそう
+1. get-data などの処理を並列で実行したい
