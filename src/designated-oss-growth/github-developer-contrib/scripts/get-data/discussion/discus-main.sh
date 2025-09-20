@@ -52,19 +52,19 @@ function get_discussion() {
   get_discussion_answer_node_id
 
   # discussionのリアクションを取得
-  # get_discussion_reaction
+  get_discussion_reaction
 
-  # # discussionのコメントを取得
-  # get_discussion_comment
+  # discussionのコメントを取得
+  get_discussion_comment
 
-  # # discussionのコメントのリアクションを取得
-  # get_discussion_comment_reaction
+  # discussionのコメントのリアクションを取得
+  get_discussion_comment_reaction
 
-  # # discussionのコメントのリプライを取得
-  # get_discussion_comment_reply
+  # discussionのコメントのリプライを取得
+  get_discussion_comment_reply
 
-  # # discussionのコメントのリプライのリアクションを取得
-  # get_discussion_comment_reply_reaction
+  # discussionのコメントのリプライのリアクションを取得
+  get_discussion_comment_reply_reaction
 
   # discussionの回答のリアクションを取得
   get_discussion_answer_reaction

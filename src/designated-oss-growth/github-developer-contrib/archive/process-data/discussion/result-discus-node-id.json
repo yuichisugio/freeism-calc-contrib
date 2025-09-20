@@ -1313,7 +1313,7 @@
       "databaseId": 14017232,
       "id": "DC_kwDOOyw9fc4A1eLQ",
       "url": "https://github.com/ryoppippi/ccusage/discussions/426#discussioncomment-14017232",
-      "upvoteCount": 1,
+      "upvoteCount": 2,
       "author": {
         "__typename": "User",
         "databaseId": 1560508,
@@ -1330,7 +1330,7 @@
         {
           "content": "THUMBS_UP",
           "reactors": {
-            "totalCount": 1
+            "totalCount": 2
           }
         },
         {
@@ -1377,7 +1377,7 @@
         }
       ],
       "reactions": {
-        "totalCount": 1
+        "totalCount": 2
       },
       "replies": {
         "totalCount": 0
