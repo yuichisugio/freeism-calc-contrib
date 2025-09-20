@@ -18,6 +18,8 @@ readonly RESULT_DISCUSSION_COMMENT_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/re
 # discussionのコメントのリプライのnode_idを取得するファイル
 readonly RESULT_DISCUSSION_COMMENT_REPLY_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-comment-reply.json"
 readonly RESULT_DISCUSSION_ANSWER_REPLY_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-answer-reply.json"
+# discussionのanswerのnode_idを取得するファイル
+readonly RESULT_DISCUSSION_ANSWER_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-answer-node-id.json"
 
 #--------------------------------------
 # 使用するファイルを読み込む
@@ -31,6 +33,7 @@ source "${GET_DIR}/discussion/discus-reaction.sh"
 source "${GET_DIR}/discussion/discus-answer-reaction.sh"
 source "${GET_DIR}/discussion/discus-answer-reply.sh"
 source "${GET_DIR}/discussion/discus-answer-reply-reaction.sh"
+source "${GET_DIR}/discussion/discus-answer-node-id.sh"
 
 #--------------------------------------
 # データ取得を統合する関数
@@ -45,28 +48,31 @@ function get_discussion() {
   # discussionのnode_idを取得
   get_discussion_node_id
 
-  # discussionのリアクションを取得
-  get_discussion_reaction
+  # discussionのanswerのnode_idを取得
+  get_discussion_answer_node_id
 
-  # discussionのコメントを取得
-  get_discussion_comment
+  # discussionのリアクションを取得
+  # get_discussion_reaction
+
+  # # discussionのコメントを取得
+  # get_discussion_comment
 
   # # discussionのコメントのリアクションを取得
-  get_discussion_comment_reaction
+  # get_discussion_comment_reaction
 
   # # discussionのコメントのリプライを取得
-  get_discussion_comment_reply
+  # get_discussion_comment_reply
 
   # # discussionのコメントのリプライのリアクションを取得
-  get_discussion_comment_reply_reaction
+  # get_discussion_comment_reply_reaction
 
-  # # discussionの回答のリアクションを取得
+  # discussionの回答のリアクションを取得
   get_discussion_answer_reaction
 
-  # # discussionの回答のリプライを取得
+  # discussionの回答のリプライを取得
   get_discussion_answer_reply
 
-  # # discussionの回答のリプライのリアクションを取得
+  # discussionの回答のリプライのリアクションを取得
   get_discussion_answer_reply_reaction
 
   # データ取得後のRateLimitを出力

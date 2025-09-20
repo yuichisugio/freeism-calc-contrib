@@ -41,8 +41,7 @@ function get_pull_request_timeline() {
               LABELED_EVENT, 
               REVIEW_REQUESTED_EVENT, 
               REVIEW_REQUEST_REMOVED_EVENT, 
-              CLOSED_EVENT, 
-              MERGED_EVENT
+              CLOSED_EVENT
             ]
           ) {
             totalCount
@@ -110,19 +109,6 @@ function get_pull_request_timeline() {
                 url
                 createdAt
                 actor { # クローズした人（実行者）
-                  __typename
-                  ... on User { databaseId id login name url }
-                  ... on Bot { databaseId id login url }
-                  ... on Mannequin { databaseId id login name url }
-                  ... on Organization { databaseId id login name url }
-                  ... on EnterpriseUserAccount { user { databaseId id login name url } }
-                }
-              }
-              ... on MergedEvent {
-                id
-                url
-                createdAt
-                actor { # マージした人（実行者）
                   __typename
                   ... on User { databaseId id login name url }
                   ... on Bot { databaseId id login url }

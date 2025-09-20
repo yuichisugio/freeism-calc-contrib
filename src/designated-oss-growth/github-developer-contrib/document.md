@@ -254,6 +254,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   - 👎 バッド`b`は、一つにつき`0.1`
   - バッド以外`a`は、一つにつき`0.1`
   - `y`が 0 以下でも、マイナスのままにして、ユーザー合算の時に他のタスクにも影響が出るようにしたい
+  - discussionsの`upvoteCount`もグッドとしてカウントしたい
 
 - 計算式
 
@@ -551,6 +552,8 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - 各 Issue ごとに、現在ついている全てのラベルをそれぞれラベル付けした最新の日・最新の人のみを貢献として認める
 1. プルリクの`reviewRequests`は、レビュー担当者としてアサインされながらレビューが未完了の人のみを返す。なので、全員が完了済みの人も欲しい場合は`ReviewRequestedEvent`と`ReviewRequestRemovedEvent`を使用する必要がある
 2. `Discussion`でも`labels`はあるが、`timelineItems`が存在しないため、ラベル付けしたひとを取得できないので貢献度としては算出できない
+3. `Pull Request`オブジェクトの`timelineItems`フィールドの`MERGED_EVENT`の後に必ず`CLOSED_EVENT`が実行されているので、`MERGED_EVENT`は取得しない
+   1. ステータス変更(reject or merged)した人のタスクは、`CLOSED_EVENT`だけですべて拾える
 
 ## 改善点
 

@@ -37,6 +37,7 @@ function get_repo_meta() {
         url
         homepageUrl
         owner {
+          __typename
           ... on Organization { databaseId id login name url }
           ... on User { databaseId id login name url }
         }

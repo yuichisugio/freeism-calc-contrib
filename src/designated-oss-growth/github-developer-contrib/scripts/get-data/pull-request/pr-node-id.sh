@@ -23,7 +23,11 @@ function get_pull_request_node_id() {
   QUERY='
     query($owner: String!, $name: String!, $perPage: Int!, $endCursor: String) {
       repository(owner:$owner, name:$name) {
-        pullRequests(first: $perPage, after:$endCursor, orderBy: {field: CREATED_AT,direction: ASC}){
+        pullRequests(
+          first: $perPage,
+          after:$endCursor,
+          orderBy: {field: CREATED_AT,direction: ASC}
+        ){
           totalCount
           pageInfo { hasNextPage endCursor }
           nodes {
@@ -63,7 +67,16 @@ function get_pull_request_node_id() {
             reviewRequests(first: 1){
               totalCount
             }
-            timelineItems(last: 1, itemTypes: [LABELED_EVENT, ASSIGNED_EVENT, REVIEW_REQUESTED_EVENT]) {
+            timelineItems(
+              first: 1, 
+              itemTypes: [
+                LABELED_EVENT, 
+                ASSIGNED_EVENT, 
+                REVIEW_REQUESTED_EVENT, 
+                REVIEW_REQUEST_REMOVED_EVENT, 
+                CLOSED_EVENT
+              ]
+            ) {
               totalCount
               pageCount
               filteredCount

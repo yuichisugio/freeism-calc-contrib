@@ -60,8 +60,8 @@ function get_discussion_answer_reply() {
     "$QUERY" \
     "$RAW_PATH" \
     "$RESULT_DISCUSSION_ANSWER_REPLY_NODE_ID_PATH" \
-    "answer.replies" \
-    "$RESULT_DISCUSSION_NODE_ID_PATH" \
+    "replies" \
+    "$RESULT_DISCUSSION_ANSWER_NODE_ID_PATH" \
     "publishedAt"
 
   # データ取得後のRateLimitを出力

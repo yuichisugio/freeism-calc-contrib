@@ -10,7 +10,7 @@ set -euo pipefail
 # discussionの回答のリアクションを取得する関数
 #--------------------------------------
 function get_discussion_answer_reaction() {
-  # データ取得前のRateLimit変数 
+  # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
   before_remaining_ratelimit="$(get_ratelimit "before:get-discussion-answer-reaction()")"
@@ -48,8 +48,8 @@ function get_discussion_answer_reaction() {
     "$QUERY" \
     "$RAW_PATH" \
     "$RESULT_PATH" \
-    "answer.reactions" \
-    "$RESULT_DISCUSSION_NODE_ID_PATH" \
+    "reactions" \
+    "$RESULT_DISCUSSION_ANSWER_NODE_ID_PATH" \
     "createdAt"
 
   # データ取得後のRateLimitを出力

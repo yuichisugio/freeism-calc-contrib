@@ -1,1 +1,457 @@
-# 
+# Discussion作成者を評価
+jq '
+  {
+    data: {
+      user: (
+        [ .[]?
+          | select((.state? // "") != "MERGED")
+          | . as $obj
+          | .author as $author
+          | {
+              user_type:                      $author.__typename,
+              user_id:                        $author.id,
+              user_database_id:               $author.databaseId,
+              user_login:                     $author.login,
+              user_name:                      $author.name,
+              user_url:                       $author.url,
+              task: [
+                {
+                  task_id:                    $obj.id,
+                  task_database_id:           $obj.databaseId,
+                  task_full_database_id:      $obj.fullDatabaseId,
+                  task_url:                   $obj.url,
+                  task_name:                  "create-discussion",
+                  task_date:                  $obj.publishedAt,
+                  reference_task_date_field:  "publishedAt",
+                  discus_word_count:
+                    (
+                      ($obj.title? // "" | length) + ($obj.bodyText? // "" | length)
+                    ),
+                  pr_state: $obj.state,
+                  change_record_count:(($obj.additions? // 0) + ($obj.deletions? // 0)),
+
+                  good_reaction:
+                    ((
+                      ( $obj.reactionGroups? // [] )
+                      | map(
+                          if (.content // "") == "THUMBS_DOWN"
+                          then 0
+                          else (.reactors.totalCount // 0)
+                          end
+                        )
+                      | add // 0
+                    )
+                    + ($obj.upvoteCount // 0)),
+
+                  bad_reaction:
+                    (
+                      ( $obj.reactionGroups? // [] )
+                      | map(
+                          if (.content // "") == "THUMBS_DOWN"
+                          then (.reactors.totalCount // 0)
+                          else 0
+                          end
+                        )
+                      | add // 0
+                    )
+                }
+              ]
+            }
+        ]
+
+        # 同一ユーザーの task を結合
+        | sort_by(.user_id)
+        | group_by(.user_id)
+        | map(
+            (.[0] | {user_id, user_database_id, user_login, user_name, user_url} )
+            + { task: (map(.task) | add) }
+          )
+      )
+    }
+  }
+  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/result-discus-node-id.json" \
+    > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/1-1-processed-discussion.json"
+
+
+# Discussionにリアクションした人を評価。
+jq '
+  {
+    data: {
+      user: (
+        [ .[]?
+          | . as $obj
+          | .user as $author
+          | {
+              user_type:                      $author.__typename,
+              user_id:                        $author.id,
+              user_database_id:               $author.databaseId,
+              user_login:                     $author.login,
+              user_name:                      $author.name,
+              user_url:                       $author.url,
+              task: [
+                {
+                  task_id:                    $obj.id,
+                  task_database_id:           $obj.databaseId,
+                  task_full_database_id:      $obj.fullDatabaseId,
+                  task_url:                   $obj.url,
+                  task_name:                  "reaction",
+                  task_date:                  $obj.createdAt,
+                  reference_task_date_field:  "createdAt"
+                }
+              ]
+            }
+        ]
+
+        # 同一ユーザーの task を結合
+        | sort_by(.user_id)
+        | group_by(.user_id)
+        | map(
+            (.[0] | {user_id, user_database_id, user_login, user_name, user_url} )
+            + { task: (map(.task) | add) }
+          )
+      )
+    }
+  }
+  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/result-discus-reaction.json" \
+    > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/1-2-processed-discussion.json"
+
+
+# Discussionのコメントした人を評価
+jq '
+  {
+    data: {
+      user: (
+        [ .[]?
+          | . as $obj
+          | .author as $author
+          | {
+              user_type:        $author.__typename,
+              user_id:          $author.id,
+              user_database_id: $author.databaseId,
+              user_login:       $author.login,
+              user_name:        $author.name,
+              user_url:         $author.url,
+              task: [
+                {
+                  task_id:               $obj.id,
+                  task_database_id:      $obj.databaseId,
+                  task_full_database_id: $obj.fullDatabaseId,
+                  task_url:              $obj.url,
+                  task_name:             "comment",
+                  task_date:             $obj.publishedAt,
+                  reference_task_date_field: "publishedAt",
+                  word_count:     ($obj.bodyText? // "" | length),
+
+                  # 👎だけbad、それ以外はgoodに計上 + Discussionsのupvoteも合算
+                  good_reaction:
+                    ((
+                      ( $obj.reactionGroups? // [] )
+                      | map(
+                          if (.content // "") == "THUMBS_DOWN"
+                          then 0
+                          else (.reactors.totalCount // 0)
+                          end
+                        )
+                      | add // 0
+                    )
+                    + ($obj.upvoteCount // 0)),
+
+                  bad_reaction:
+                    (
+                      ( $obj.reactionGroups? // [] )
+                      | map(
+                          if (.content // "") == "THUMBS_DOWN"
+                          then (.reactors.totalCount // 0)
+                          else 0
+                          end
+                        )
+                      | add // 0
+                    )
+                }
+              ]
+            }
+        ]
+        | sort_by(.user_id)
+        | group_by(.user_id)
+        | map(
+            (.[0] | {user_id, user_database_id, user_login, user_name, user_url} )
+            + { task: (map(.task) | add) }
+          )
+      )
+    }
+  }
+  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/result-discus-comment.json" \
+    > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/1-3-processed-discussion.json"
+
+
+# Discussionへのコメントへリアクションした人を評価
+jq '
+  {
+    data: {
+      user: (
+        [ .[]?
+          | . as $obj
+          | .user as $author
+          | {
+              user_type:        $author.__typename,
+              user_id:                        $author.id,
+              user_database_id:               $author.databaseId,
+              user_login:                     $author.login,
+              user_name:                      $author.name,
+              user_url:                       $author.url,
+              task: [
+                {
+                  task_id:                    $obj.id,
+                  task_database_id:           $obj.databaseId,
+                  task_full_database_id:      $obj.fullDatabaseId,
+                  task_url:                   $obj.url,
+                  task_name:                  "reaction",
+                  task_date:                  $obj.createdAt,
+                  reference_task_date_field:  "createdAt"
+                }
+              ]
+            }
+        ]
+
+        # 同一ユーザーの task を結合
+        | sort_by(.user_id)
+        | group_by(.user_id)
+        | map(
+            (.[0] | {user_id, user_database_id, user_login, user_name, user_url} )
+            + { task: (map(.task) | add) }
+          )
+      )
+    }
+  }
+  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/result-discus-comment-reaction.json" \
+    > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/1-4-processed-discussion.json"
+
+
+# discussionのコメントのリプライ
+jq '
+  {
+    data: {
+      user: (
+        [ .[]?
+          | . as $obj
+          | .author as $author
+          | {
+              user_type:        $author.__typename,
+              user_id:          $author.id,
+              user_database_id: $author.databaseId,
+              user_login:       $author.login,
+              user_name:        $author.name,
+              user_url:         $author.url,
+              task: [
+                {
+                  task_id:               $obj.id,
+                  task_database_id:      $obj.databaseId,
+                  task_full_database_id: $obj.fullDatabaseId,
+                  task_url:              $obj.url,
+                  task_name:             "comment",
+                  task_date:             $obj.publishedAt,
+                  reference_task_date_field: "publishedAt",
+                  word_count:     ($obj.bodyText? // "" | length),
+
+                  # 👎だけbad、それ以外はgoodに計上 + Discussionsのupvoteも合算
+                  good_reaction:
+                    ((
+                      ( $obj.reactionGroups? // [] )
+                      | map(
+                          if (.content // "") == "THUMBS_DOWN"
+                          then 0
+                          else (.reactors.totalCount // 0)
+                          end
+                        )
+                      | add // 0
+                    )
+                    + ($obj.upvoteCount // 0)),
+
+                  bad_reaction:
+                    (
+                      ( $obj.reactionGroups? // [] )
+                      | map(
+                          if (.content // "") == "THUMBS_DOWN"
+                          then (.reactors.totalCount // 0)
+                          else 0
+                          end
+                        )
+                      | add // 0
+                    )
+                }
+              ]
+            }
+        ]
+        | sort_by(.user_id)
+        | group_by(.user_id)
+        | map(
+            (.[0] | {user_id, user_database_id, user_login, user_name, user_url} )
+            + { task: (map(.task) | add) }
+          )
+      )
+    }
+  }
+  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/result-discus-comment-reply.json" \
+    > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/1-5-processed-discussion.json"
+
+
+# discussionのコメントのリプライのリアクション
+jq '
+  {
+    data: {
+      user: (
+        [ .[]?
+          | . as $obj
+          | .user as $author
+          | {
+              user_type:        $author.__typename,
+              user_id:                        $author.id,
+              user_database_id:               $author.databaseId,
+              user_login:                     $author.login,
+              user_name:                      $author.name,
+              user_url:                       $author.url,
+              task: [
+                {
+                  task_id:                    $obj.id,
+                  task_database_id:           $obj.databaseId,
+                  task_full_database_id:      $obj.fullDatabaseId,
+                  task_url:                   $obj.url,
+                  task_name:                  "reaction",
+                  task_date:                  $obj.createdAt,
+                  reference_task_date_field:  "createdAt"
+                }
+              ]
+            }
+        ]
+
+        # 同一ユーザーの task を結合
+        | sort_by(.user_id)
+        | group_by(.user_id)
+        | map(
+            (.[0] | {user_id, user_database_id, user_login, user_name, user_url} )
+            + { task: (map(.task) | add) }
+          )
+      )
+    }
+  }
+  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/result-discus-comment-reply-reaction.json" \
+    > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/1-6-processed-discussion.json"
+
+
+# discussionのアンサーした人を評価。node_idにanswerがある場合のみ取得。
+jq '
+  {
+    data: {
+      user: (
+        [ .[]?
+          | select(.answer != null)
+          | .answer as $obj
+          | $obj.author as $author
+          | {
+              user_type:                      $author.__typename,
+              user_id:                        $author.id,
+              user_database_id:               $author.databaseId,
+              user_login:                     $author.login,
+              user_name:                      $author.name,
+              user_url:                       $author.url,
+              task: [
+                {
+                  task_id:                    $obj.id,
+                  task_database_id:           $obj.databaseId,
+                  task_full_database_id:      $obj.fullDatabaseId,
+                  task_url:                   $obj.url,
+                  task_name:                  "answer-discussion",
+                  task_date:                  $obj.publishedAt,
+                  reference_task_date_field:  "publishedAt",
+                  word_count: ($obj.bodyText? // "" | length),
+
+                  good_reaction:
+                    ((
+                      ( $obj.reactionGroups? // [] )
+                      | map(
+                          if (.content // "") == "THUMBS_DOWN"
+                          then 0
+                          else (.reactors.totalCount // 0)
+                          end
+                        )
+                      | add // 0
+                    )
+                    + ($obj.upvoteCount // 0)),
+
+                  bad_reaction:
+                    (
+                      ( $obj.reactionGroups? // [] )
+                      | map(
+                          if (.content // "") == "THUMBS_DOWN"
+                          then (.reactors.totalCount // 0)
+                          else 0
+                          end
+                        )
+                      | add // 0
+                    )
+                }
+              ]
+            }
+        ]
+
+        # 同一ユーザーの task を結合
+        | sort_by(.user_id)
+        | group_by(.user_id)
+        | map(
+            (.[0] | {user_id, user_database_id, user_login, user_name, user_url} )
+            + { task: (map(.task) | add) }
+          )
+      )
+    }
+  }
+  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/result-discus-node-id.json" \
+    > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/1-7-processed-discussion.json"
+
+
+# discussionのアンサーへリアクションした人を評価
+jq '
+  {
+    data: {
+      user: (
+        [ .[]?
+          | . as $obj
+          | .user as $author
+          | {
+              user_type:        $author.__typename,
+              user_id:                        $author.id,
+              user_database_id:               $author.databaseId,
+              user_login:                     $author.login,
+              user_name:                      $author.name,
+              user_url:                       $author.url,
+              task: [
+                {
+                  task_id:                    $obj.id,
+                  task_database_id:           $obj.databaseId,
+                  task_full_database_id:      $obj.fullDatabaseId,
+                  task_url:                   $obj.url,
+                  task_name:                  "reaction",
+                  task_date:                  $obj.createdAt,
+                  reference_task_date_field:  "createdAt"
+                }
+              ]
+            }
+        ]
+
+        # 同一ユーザーの task を結合
+        | sort_by(.user_id)
+        | group_by(.user_id)
+        | map(
+            (.[0] | {user_id, user_database_id, user_login, user_name, user_url} )
+            + { task: (map(.task) | add) }
+          )
+      )
+    }
+  }
+  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/result-discus-comment-reply-reaction.json" \
+    > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/discussion/1-8-processed-discussion.json"
+
+
+# discussionのアンサーへリプライした人を評価
+
+
+# discussionのアンサーへのリプライにリアクションした人を評価

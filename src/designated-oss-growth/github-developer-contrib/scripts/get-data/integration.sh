@@ -18,9 +18,9 @@ mkdir -p "$OUTPUT_GET_DIR"
 readonly GET_DIR="${SCRIPT_DIR}/scripts/get-data"
 source "${GET_DIR}/get-data-utils.sh"
 # source "${GET_DIR}/issue/issue-main.sh"
-# source "${GET_DIR}/discussion/discus-main.sh"
+source "${GET_DIR}/discussion/discus-main.sh"
 # source "${GET_DIR}/commit/commit-main.sh"
-source "${GET_DIR}/pull-request/pr-main.sh"
+# source "${GET_DIR}/pull-request/pr-main.sh"
 # source "${GET_DIR}/release/release-main.sh"
 # source "${GET_DIR}/star.sh"
 # source "${GET_DIR}/fork.sh"
@@ -44,7 +44,7 @@ function get_data() {
   # get_commit
 
   # ディスカッションのデータを取得
-  # get_discussion
+  get_discussion
 
   # フォークのデータを取得
   # get_fork
@@ -53,7 +53,7 @@ function get_data() {
   # get_issue
 
   # プルリクエストのデータを取得
-  get_pull_request
+  # get_pull_request
 
   # リリースのデータを取得
   # get_release
