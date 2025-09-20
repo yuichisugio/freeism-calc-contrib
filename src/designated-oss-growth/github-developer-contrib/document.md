@@ -550,7 +550,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 1. Issue のラベル付けの作業で貢献として認める仕様
    - 各 Issue ごとに、現在ついている全てのラベルをそれぞれラベル付けした最新の日・最新の人のみを貢献として認める
 1. プルリクの`reviewRequests`は、レビュー担当者としてアサインされながらレビューが未完了の人のみを返す。なので、全員が完了済みの人も欲しい場合は`ReviewRequestedEvent`と`ReviewRequestRemovedEvent`を使用する必要がある
-2. `Discussion`でも`labels`はあるが、`timelineItems`が存在しないため、ラベル付けしたひとをしゅとくできないので貢献度としては算出できない
+2. `Discussion`でも`labels`はあるが、`timelineItems`が存在しないため、ラベル付けしたひとを取得できないので貢献度としては算出できない
 
 ## 改善点
 
