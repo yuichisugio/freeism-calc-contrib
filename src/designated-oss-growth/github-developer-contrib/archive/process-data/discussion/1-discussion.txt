@@ -4,7 +4,6 @@ jq '
     data: {
       user: (
         [ .[]?
-          | select((.state? // "") != "MERGED")
           | . as $obj
           | .author as $author
           | {

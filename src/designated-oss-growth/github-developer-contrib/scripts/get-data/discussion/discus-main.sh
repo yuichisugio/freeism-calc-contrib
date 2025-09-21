@@ -12,14 +12,14 @@ set -euo pipefail
 readonly RESULT_GET_DISCUSSION_DIR="${OUTPUT_GET_DIR}/discussion"
 mkdir -p "$RESULT_GET_DISCUSSION_DIR"
 # discussionのnode_idを取得するファイル
-readonly RESULT_DISCUSSION_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-node-id.json"
+readonly RESULT_GET_DISCUSSION_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-node-id.json"
 # discussionのコメントのnode_idを取得するファイル
-readonly RESULT_DISCUSSION_COMMENT_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-comment.json"
+readonly RESULT_GET_DISCUSSION_COMMENT_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-comment.json"
 # discussionのコメントのリプライのnode_idを取得するファイル
-readonly RESULT_DISCUSSION_COMMENT_REPLY_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-comment-reply.json"
-readonly RESULT_DISCUSSION_ANSWER_REPLY_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-answer-reply.json"
+readonly RESULT_GET_DISCUSSION_COMMENT_REPLY_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-comment-reply.json"
+readonly RESULT_GET_DISCUSSION_ANSWER_REPLY_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-answer-reply.json"
 # discussionのanswerのnode_idを取得するファイル
-readonly RESULT_DISCUSSION_ANSWER_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-answer-node-id.json"
+readonly RESULT_GET_DISCUSSION_ANSWER_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-answer-node-id.json"
 
 #--------------------------------------
 # 使用するファイルを読み込む

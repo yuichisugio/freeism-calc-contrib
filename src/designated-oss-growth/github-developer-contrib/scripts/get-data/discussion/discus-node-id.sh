@@ -59,6 +59,7 @@ function get_discussion_node_id() {
             title
             bodyText
             publishedAt
+            upvoteCount
             reactionGroups { content reactors { totalCount } }
             reactions(first: 1){
               totalCount
@@ -142,7 +143,7 @@ function get_discussion_node_id() {
   get_paginated_repository_data \
     "$QUERY" \
     "$RAW_PATH" \
-    "$RESULT_DISCUSSION_NODE_ID_PATH" \
+    "$RESULT_GET_DISCUSSION_NODE_ID_PATH" \
     "discussions" \
     "publishedAt"
 

@@ -7,6 +7,13 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のディレクトリを作成する
+#--------------------------------------
+readonly RAW_RESULT_GET_DISCUSSION_DIR="${RESULT_GET_DISCUSSION_DIR}/raw-discus-reaction.jsonl"
+readonly RESULT_GET_DISCUSSION_REACTION_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-reaction.json"
+mkdir -p "$(dirname "$RESULT_GET_DISCUSSION_REACTION_PATH")"
+
+#--------------------------------------
 # discussionのリアクションを取得する関数
 #--------------------------------------
 function get_discussion_reaction() {
@@ -17,8 +24,6 @@ function get_discussion_reaction() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-discussion-reaction()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_DISCUSSION_DIR}/raw-discus-reaction.jsonl"
-  local RESULT_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-reaction.json"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -52,10 +57,10 @@ function get_discussion_reaction() {
   # クエリを実行。node_id単位でページネーションしながら取得
   get_paginated_data_by_node_id \
     "$QUERY" \
-    "$RAW_PATH" \
-    "$RESULT_PATH" \
+    "$RAW_RESULT_GET_DISCUSSION_DIR" \
+    "$RESULT_GET_DISCUSSION_REACTION_PATH" \
     "reactions" \
-    "$RESULT_DISCUSSION_NODE_ID_PATH" \
+    "$RESULT_GET_DISCUSSION_NODE_ID_PATH" \
     "createdAt"
 
   # データ取得後のRateLimitを出力

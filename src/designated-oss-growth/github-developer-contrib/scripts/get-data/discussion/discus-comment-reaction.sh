@@ -7,6 +7,14 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のディレクトリを作成する
+#--------------------------------------
+readonly RAW_GET_DISCUSSION_COMMENT_REACTION_PATH="${RESULT_GET_DISCUSSION_DIR}/raw-discus-comment-reaction.jsonl"
+readonly RESULT_GET_DISCUSSION_COMMENT_REACTION_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-comment-reaction.json"
+mkdir -p "$(dirname "$RESULT_GET_DISCUSSION_COMMENT_REACTION_PATH")"
+
+
+#--------------------------------------
 # discussionのコメントのリアクションを取得する関数
 #--------------------------------------
 function get_discussion_comment_reaction() {
@@ -17,8 +25,6 @@ function get_discussion_comment_reaction() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-discussion-comment-reaction()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_DISCUSSION_DIR}/raw-discus-comment-reaction.jsonl"
-  local RESULT_PATH="${RESULT_GET_DISCUSSION_DIR}/result-discus-comment-reaction.json"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -47,10 +53,10 @@ function get_discussion_comment_reaction() {
   # クエリを実行。node_id単位でページネーションしながら取得
   get_paginated_data_by_node_id \
     "$QUERY" \
-    "$RAW_PATH" \
-    "$RESULT_PATH" \
+    "$RAW_GET_DISCUSSION_COMMENT_REACTION_PATH" \
+    "$RESULT_GET_DISCUSSION_COMMENT_REACTION_PATH" \
     "reactions" \
-    "$RESULT_DISCUSSION_COMMENT_NODE_ID_PATH" \
+    "$RESULT_GET_DISCUSSION_COMMENT_NODE_ID_PATH" \
     "createdAt"
 
   # データ取得後のRateLimitを出力

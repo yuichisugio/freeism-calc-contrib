@@ -7,6 +7,12 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のディレクトリを作成する
+#--------------------------------------
+readonly RAW_RESULT_GET_DISCUSSION_COMMENT_DIR="${RESULT_GET_DISCUSSION_DIR}/raw-discus-comment.jsonl"
+mkdir -p "$(dirname "$RAW_RESULT_GET_DISCUSSION_COMMENT_DIR")"
+
+#--------------------------------------
 # discussionのコメントを取得する関数
 #--------------------------------------
 function get_discussion_comment() {
@@ -17,7 +23,6 @@ function get_discussion_comment() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-discussion-comment()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_DISCUSSION_DIR}/raw-discus-comment.jsonl"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -67,10 +72,10 @@ function get_discussion_comment() {
   # クエリを実行。node_id単位でページネーションしながら取得
   get_paginated_data_by_node_id \
     "$QUERY" \
-    "$RAW_PATH" \
-    "$RESULT_DISCUSSION_COMMENT_NODE_ID_PATH" \
+    "$RAW_RESULT_GET_DISCUSSION_COMMENT_DIR" \
+    "$RESULT_GET_DISCUSSION_COMMENT_NODE_ID_PATH" \
     "comments" \
-    "$RESULT_DISCUSSION_NODE_ID_PATH" \
+    "$RESULT_GET_DISCUSSION_NODE_ID_PATH" \
     "publishedAt"
 
   # データ取得後のRateLimitを出力

@@ -17,12 +17,19 @@ function get_discussion_answer_node_id() {
       .[] 
       | select(.answer.id != null) 
       | {
-        id: .answer.id, 
-        reactions: (.answer.reactions // {totalCount: 0}),
-        replies: (.answer.replies // {totalCount: 0})
+          id: .answer.id, 
+          databaseId: .answer.databaseId,
+          url: .answer.url,
+          upvoteCount: .answer.upvoteCount,
+          author: .answer.author,
+          bodyText: .answer.bodyText,
+          publishedAt: .answer.publishedAt,
+          reactionGroups: .answer.reactionGroups,
+          reactions: (.answer.reactions // {totalCount: 0}),
+          replies: (.answer.replies // {totalCount: 0})
         }
     ]' \
-    "$RESULT_DISCUSSION_NODE_ID_PATH" >"$RESULT_DISCUSSION_ANSWER_NODE_ID_PATH"
-  
+    "$RESULT_GET_DISCUSSION_NODE_ID_PATH" >"$RESULT_GET_DISCUSSION_ANSWER_NODE_ID_PATH"
+
   return 0
 }

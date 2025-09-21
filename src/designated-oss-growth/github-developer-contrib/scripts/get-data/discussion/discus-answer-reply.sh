@@ -59,9 +59,9 @@ function get_discussion_answer_reply() {
   get_paginated_data_by_node_id \
     "$QUERY" \
     "$RAW_PATH" \
-    "$RESULT_DISCUSSION_ANSWER_REPLY_NODE_ID_PATH" \
+    "$RESULT_GET_DISCUSSION_ANSWER_REPLY_NODE_ID_PATH" \
     "replies" \
-    "$RESULT_DISCUSSION_ANSWER_NODE_ID_PATH" \
+    "$RESULT_GET_DISCUSSION_ANSWER_NODE_ID_PATH" \
     "publishedAt"
 
   # データ取得後のRateLimitを出力
