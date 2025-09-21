@@ -12,10 +12,13 @@ set -euo pipefail
 function process_data_utils() {
 
   # 引数
-  local INPUT_PATH OUTPUT_PATH TASK_NAME TASK_DATE AUTHOR_FIELD OTHER_QUERY
+  local INPUT_PATH OUTPUT_PATH TASK_NAME TASK_DATE AUTHOR_FIELD 
+  # 未設定参照を防ぐため空で初期化
+  local FIRST_OTHER_QUERY="" SECOND_OTHER_QUERY=""
 
   # 変数
-  local MAIN_QUERY JQ_PROGRAM EXTRA_MERGE
+  local MAIN_QUERY JQ_PROGRAM 
+  local FIRST_EXTRA_MERGE SECOND_EXTRA_MERGE
 
   # 引数を解析
   while [[ $# -gt 0 ]]; do
@@ -40,8 +43,12 @@ function process_data_utils() {
       AUTHOR_FIELD="$2"
       shift 2
       ;;
-    --other-query)
-      OTHER_QUERY="$2"
+    --first-other-query)
+      FIRST_OTHER_QUERY="$2"
+      shift 2
+      ;;
+    --second-other-query)
+      SECOND_OTHER_QUERY="$2"
       shift 2
       ;;
     *)
@@ -59,9 +66,9 @@ function process_data_utils() {
         user: (
           [ .[]?
             | . as $obj
-            | .[$author_field] as $author
+            __FIRST_EXTRA_MERGE__
             | {
-                user_type:        $author.__typename,
+                user_type:        ($author.__typename // $author_field),
                 user_id:          $author.id,
                 user_database_id: $author.databaseId,
                 user_login:       $author.login,
@@ -77,7 +84,7 @@ function process_data_utils() {
                       task_name:             $task_name,
                       task_date:             $obj[$task_date],
                       reference_task_date_field: $task_date
-                    } __EXTRA_MERGE__
+                    } __SECOND_EXTRA_MERGE__
                   )
                 ]
               }
@@ -103,14 +110,26 @@ function process_data_utils() {
   '
 
   # OTHER_QUERY が空でない場合は、EXTRA_MERGE に追加
-  if [[ -n "${OTHER_QUERY//[$'\t\r\n ']/}" ]]; then
-    EXTRA_MERGE="+ ({${OTHER_QUERY}})"
+  # ${変数名//パターン/置換文字}の形式で、変数の中の空白を削除しても変数内にデータがあるか確認
+  if [[ -n "${FIRST_OTHER_QUERY//[$'\t\r\n ']/}" ]]; then
+    # OTHER_QUERY が空でない場合は、EXTRA_MERGE に追加
+    FIRST_EXTRA_MERGE="${FIRST_OTHER_QUERY}"
   else
-    EXTRA_MERGE=''
+    # OTHER_QUERY が空の場合は、デフォのフィルターを追加
+    # shellcheck disable=SC2016
+    FIRST_EXTRA_MERGE='| .[$author_field] as $author'
+  fi
+
+  # 2か所目。オブジェクトをマージしたいので、+ ({}) でマージする
+  if [[ -n "${SECOND_OTHER_QUERY//[$'\t\r\n ']/}" ]]; then
+    SECOND_EXTRA_MERGE="+ ({${SECOND_OTHER_QUERY}})"
+  else
+    SECOND_EXTRA_MERGE=''
   fi
 
   # プレースホルダを差し替えて、JQ_PROGRAM を作成
-  JQ_PROGRAM="${MAIN_QUERY/__EXTRA_MERGE__/$EXTRA_MERGE}"
+  JQ_PROGRAM="${MAIN_QUERY/__FIRST_EXTRA_MERGE__/${FIRST_EXTRA_MERGE}}"
+  JQ_PROGRAM="${JQ_PROGRAM/__SECOND_EXTRA_MERGE__/${SECOND_EXTRA_MERGE}}"
 
   # 実行して、OUTPUT_PATH に出力
   jq \

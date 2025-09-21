@@ -9,7 +9,7 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のディレクトリを作成する
 #--------------------------------------
-readonly RESULT_PROCESSED_RELEASE_REACTION_PATH="${OUTPUT_PROCESSED_DIR}/release/result-release-reaction.json"
+readonly RESULT_PROCESSED_RELEASE_REACTION_PATH="${RESULT_PROCESSED_RELEASE_DIR}/result-release-reaction.json"
 mkdir -p "$(dirname "$RESULT_PROCESSED_RELEASE_REACTION_PATH")"
 
 #--------------------------------------
@@ -20,7 +20,7 @@ function process_release_reaction() {
   printf '%s\n' "begin:process_release_reaction()"
 
   # 追加クエリを渡す
-  local OTHER_QUERY='
+  local SECOND_OTHER_QUERY='
     task_start: .node_publishedAt
   '
 
@@ -30,7 +30,7 @@ function process_release_reaction() {
     --task-name "reaction" \
     --task-date "createdAt" \
     --author-field "user" \
-    --other-query "$OTHER_QUERY"
+    --second-other-query "$SECOND_OTHER_QUERY"
 
   printf '%s\n' "end:process_release_reaction()"
 

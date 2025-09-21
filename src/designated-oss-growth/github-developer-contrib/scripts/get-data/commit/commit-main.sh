@@ -12,9 +12,9 @@ set -euo pipefail
 readonly RESULT_GET_COMMIT_DIR="${OUTPUT_GET_DIR}/commit"
 mkdir -p "$RESULT_GET_COMMIT_DIR"
 # コミットのデータ&node_idを取得するファイル
-readonly RESULT_COMMIT_NODE_ID_WITH_PR_PATH="${RESULT_GET_COMMIT_DIR}/result-commit-node-id-with-pr.json"
+readonly RESULT_GET_COMMIT_NODE_ID_WITH_PR_PATH="${RESULT_GET_COMMIT_DIR}/result-commit-node-id-with-pr.json"
 # コミットのコメントのデータ&node_idを取得するファイル
-readonly RESULT_COMMIT_COMMENT_PATH="${RESULT_GET_COMMIT_DIR}/result-commit-comment.json"
+readonly RESULT_GET_COMMIT_COMMENT_PATH="${RESULT_GET_COMMIT_DIR}/result-commit-comment.json"
 
 #--------------------------------------
 # 使用するファイルを読み込む

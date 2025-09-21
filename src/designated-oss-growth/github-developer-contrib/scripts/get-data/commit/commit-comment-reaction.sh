@@ -7,6 +7,13 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のファイルを定義
+#--------------------------------------
+readonly RAW_GET_COMMIT_COMMENT_REACTION_PATH="${RESULT_GET_COMMIT_DIR}/raw-commit-comment-reaction.jsonl"
+readonly RESULT_GET_COMMIT_COMMENT_REACTION_PATH="${RESULT_GET_COMMIT_DIR}/result-commit-comment-reaction.json"
+mkdir -p "$(dirname "$RESULT_GET_COMMIT_COMMENT_REACTION_PATH")"
+
+#--------------------------------------
 # コミットのコメントのリアクションを取得する関数
 #--------------------------------------
 function get_commit_comment_reaction() {
@@ -17,8 +24,6 @@ function get_commit_comment_reaction() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-commit-comment-reaction()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_COMMIT_DIR}/raw-commit-comment-reaction.jsonl"
-  local RESULT_PATH="${RESULT_GET_COMMIT_DIR}/result-commit-comment-reaction.json"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -37,7 +42,7 @@ function get_commit_comment_reaction() {
               id
               content
               createdAt
-              user { databaseId id login name url }
+              user { __typename databaseId id login name url }
             }
           }
         }
@@ -48,10 +53,10 @@ function get_commit_comment_reaction() {
   # クエリを実行。node_id単位でページネーションしながら取得
   get_paginated_data_by_node_id \
     "$QUERY" \
-    "$RAW_PATH" \
-    "$RESULT_PATH" \
+    "$RAW_GET_COMMIT_COMMENT_REACTION_PATH" \
+    "$RESULT_GET_COMMIT_COMMENT_REACTION_PATH" \
     "reactions" \
-    "$RESULT_COMMIT_COMMENT_PATH" \
+    "$RESULT_GET_COMMIT_COMMENT_PATH" \
     "createdAt"
 
   # データ取得後のRateLimitを出力

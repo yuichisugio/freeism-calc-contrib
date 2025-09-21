@@ -70,7 +70,7 @@ function get_commit_node_id_with_pr() {
 
   # 同じPATHに実行する場合に、前回の内容をファイルを空にする
   : >"$RAW_COMMIT_WITH_PR_PATH"
-  : >"$RESULT_COMMIT_NODE_ID_WITH_PR_PATH"
+  : >"$RESULT_GET_COMMIT_NODE_ID_WITH_PR_PATH"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -112,15 +112,16 @@ function get_commit_node_id_with_pr() {
                   committer {
                     name
                     date
-                    user { databaseId id login name url }
+                    user { __typename databaseId id login name url }
                   }
                   authors(first: 5) {
                     totalCount
                     pageInfo { hasNextPage endCursor }
                     nodes{
+                      __typename
                       name
                       date
-                      user { databaseId id login name url }
+                      user { __typename databaseId id login name url }
                     }
                   }
                   status{
@@ -189,7 +190,7 @@ function get_commit_node_id_with_pr() {
   done
 
   # raw-data を結合
-  jq '[ .[] | .data.repository.ref.target.history.nodes[] ]' "${RAW_COMMIT_WITH_PR_PATH}" >"$RESULT_COMMIT_NODE_ID_WITH_PR_PATH"
+  jq '[ .[] | .data.repository.ref.target.history.nodes[] ]' "${RAW_COMMIT_WITH_PR_PATH}" >"$RESULT_GET_COMMIT_NODE_ID_WITH_PR_PATH"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

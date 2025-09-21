@@ -9,7 +9,7 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のディレクトリを作成する
 #--------------------------------------
-readonly RESULT_PROCESSED_RELEASE_NODE_ID_PATH="${OUTPUT_PROCESSED_DIR}/release/result-release-node-id.json"
+readonly RESULT_PROCESSED_RELEASE_NODE_ID_PATH="${RESULT_PROCESSED_RELEASE_DIR}/result-release-node-id.json"
 mkdir -p "$(dirname "$RESULT_PROCESSED_RELEASE_NODE_ID_PATH")"
 
 #--------------------------------------
@@ -19,7 +19,7 @@ function process_release_node_id() {
 
   printf '%s\n' "begin:process_release_node_id()"
 
-  local OTHER_QUERY='
+  local SECOND_OTHER_QUERY='
     word_count: ((.name // "" | length) + (.description // "" | length)),
     reaction: (.reactions.totalCount // 0)
   '
@@ -30,7 +30,7 @@ function process_release_node_id() {
     --task-name "release" \
     --task-date "publishedAt" \
     --author-field "author" \
-    --other-query "$OTHER_QUERY"
+    --second-other-query "$SECOND_OTHER_QUERY"
 
   printf '%s\n' "end:process_release_node_id()"
 
