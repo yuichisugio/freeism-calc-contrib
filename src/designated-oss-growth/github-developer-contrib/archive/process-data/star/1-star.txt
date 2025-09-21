@@ -1,34 +1,28 @@
 # starデータ加工jq。UserConnectionしかなく、task_idはないためnullを入れる
 jq '
-  # 安全にオブジェクトのキーを取り出し、無ければ null を返す
-  def get_or_null(obj; key):
-    if (obj | type) == "object" and (obj | has(key)) and (obj[key] != null)
-    then obj[key] else null end;
-
   {
     data: {
       user:
         (
           [ .[]?
-            | . as $u
+            | . as $obj
+            | .node as $author
             | {
-                user_id:          get_or_null($u; "id"),
-                user_database_id: get_or_null($u; "databaseId"),
-                user_login:       get_or_null($u; "login"),
-                user_name:        get_or_null($u; "name"),
-                user_url: (
-                    if (($u | has("url")) and ($u.url != null))
-                      then $u.url
-                    elif (($u | has("login")) and ($u.login != null))
-                      then "https://github.com/\($u.login)"
-                    else null end ),
+                user_type:        $author.__typename,
+                user_id:          $author.id,
+                user_database_id: $author.databaseId,
+                user_login:       $author.login,
+                user_name:        $author.name,
+                user_url:         $author.url,
                 task: [
                   {
-                    task_id:             null,
-                    task_database_id:    null,
-                    task_name:           "stargazers",
-                    task_date:           get_or_null($u; "starredAt"),
-                    reference_task_date: "starredAt",
+                    task_id:               $obj.id,
+                    task_database_id:      $obj.databaseId,
+                    task_full_database_id: $obj.fullDatabaseId,
+                    task_url:              $obj.url,
+                    task_name:             "star",
+                    task_date:             $obj.starredAt,
+                    reference_task_date:   "starredAt"
                   }
                 ]
               }
@@ -42,5 +36,5 @@ jq '
         )
     }
   }
-  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/star/1-result-star.json" \
+  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/star/result-star.json" \
     > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/star/1-1-processed-star.json"

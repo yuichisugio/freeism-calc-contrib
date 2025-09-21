@@ -1,39 +1,4 @@
-# テンプレjq
-jq '.' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/watch/result-watch.json" >"./src/designated-oss-growth/github-developer-contrib/archive/process-data/watch/1-1-processed-watch.json"
-
-
-# watchデータ加工jq
-jq '
-  {
-    data: {
-      user: (
-        [ .[]?
-          | .data?.repository?.watchers?.nodes[]?
-          | {
-              user_id: (.id // null),
-              user_database_id: (.databaseId // null),
-              user_login: (.login // null),
-              user_name: (.name // null),
-              user_url: (.url // if .login then "https://github.com/\(.login)" else null end),
-              task: [
-                {
-                  task_id: null,
-                  task_database_id: null,
-                  task_name: "watchers",
-                  task_date: null,
-                  reference_task_date: null
-                }
-              ]
-            }
-        ]
-      )
-    }
-  }
-  ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/watch/1-result-watch.json" \
-  >"./src/designated-oss-growth/github-developer-contrib/archive/process-data/watch/1-1-processed-watch.json"
-
-
-# watchデータ加工jq。同じユーザーのタスクが複数ある場合の処理。UserConnectionしかなく、task_idはないためnullを入れる
+# watchデータ加工jq。UserConnectionしかなく、task_idはないためnullを入れる
 jq '
   # 安全にオブジェクトのキーを取り出し、無ければ null を返す
   def get_or_null(obj; key):

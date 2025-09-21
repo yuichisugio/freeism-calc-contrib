@@ -6,9 +6,19 @@
 
 set -euo pipefail
 
-cd "$(cd "$(dirname -- "$0")" && pwd -P)"
+#--------------------------------------
+# 出力先のディレクトリを作成する
+#--------------------------------------
+readonly RESULT_PROCESSED_REPO_META_PATH="${OUTPUT_PROCESSED_DIR}/repo-meta/result-repo-meta.json"
+mkdir -p "$(dirname "$RESULT_PROCESSED_REPO_META_PATH")"
 
+#--------------------------------------
+# リポジトリのメタデータを加工する関数
+#--------------------------------------
 function process_repo_meta() {
+
+  printf '%s\n' "begin:process_repo_meta()"
+
   jq '{
         host:"github.com",
         ownerUsername:.data.repository.owner.login,
@@ -18,7 +28,9 @@ function process_repo_meta() {
         repositoryUrl:.data.repository.url,
         createdAt:.data.repository.createdAt,
         defaultBranch:.data.repository.defaultBranchRef.name
-      }' "$RAW_REPO_META_DIR" >"$PROCESSED_REPO_META_DIR"
+      }' "$RAW_REPO_META_DIR" >"$RESULT_PROCESSED_REPO_META_PATH"
+
+  printf '%s\n' "end:process_repo_meta()"
 
   return 0
 }

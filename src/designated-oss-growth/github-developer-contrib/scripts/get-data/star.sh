@@ -10,8 +10,8 @@ set -euo pipefail
 # 出力先のファイルを定義
 #--------------------------------------
 readonly RESULT_GET_STAR_DIR="${OUTPUT_GET_DIR}/star"
-readonly RAW_STAR_PATH="${RESULT_GET_STAR_DIR}/raw-star.jsonl"
-readonly RESULT_STAR_PATH="${RESULT_GET_STAR_DIR}/result-star.json"
+readonly RAW_GET_STAR_PATH="${RESULT_GET_STAR_DIR}/raw-star.jsonl"
+readonly RESULT_GET_STAR_PATH="${RESULT_GET_STAR_DIR}/result-star.json"
 
 mkdir -p "$RESULT_GET_STAR_DIR"
 
@@ -53,8 +53,8 @@ function get_star() {
   # クエリを実行。node_id単位でページネーションしながら取得
   get_paginated_star_data \
     "$QUERY" \
-    "$RAW_STAR_PATH" \
-    "$RESULT_STAR_PATH"
+    "$RAW_GET_STAR_PATH" \
+    "$RESULT_GET_STAR_PATH"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

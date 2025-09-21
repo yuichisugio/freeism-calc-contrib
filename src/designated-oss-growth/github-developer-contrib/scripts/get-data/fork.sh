@@ -10,8 +10,8 @@ set -euo pipefail
 # 出力先のファイルを定義
 #--------------------------------------
 readonly RESULT_GET_FORK_DIR="${OUTPUT_GET_DIR}/fork"
-readonly RAW_FORK_PATH="${RESULT_GET_FORK_DIR}/raw-fork.jsonl"
-readonly RESULT_FORK_PATH="${RESULT_GET_FORK_DIR}/result-fork.json"
+readonly RAW_GET_FORK_PATH="${RESULT_GET_FORK_DIR}/raw-fork.jsonl"
+readonly RESULT_GET_FORK_PATH="${RESULT_GET_FORK_DIR}/result-fork.json"
 
 mkdir -p "$RESULT_GET_FORK_DIR"
 
@@ -53,8 +53,8 @@ get_fork() {
   # クエリを実行。node_id単位でページネーションしながら取得
   get_paginated_repository_data \
     "$QUERY" \
-    "$RAW_FORK_PATH" \
-    "$RESULT_FORK_PATH" \
+    "$RAW_GET_FORK_PATH" \
+    "$RESULT_GET_FORK_PATH" \
     "forks" \
     "createdAt"
 

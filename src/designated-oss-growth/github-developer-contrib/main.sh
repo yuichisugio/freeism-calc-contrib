@@ -42,7 +42,7 @@ mkdir -p "$OUTPUT_DIR"
 # データ取得を統合するファイルを取得
 source "${SCRIPT_DIR}/scripts/get-data/integration.sh"
 # データ加工を統合するファイルを取得
-# source "${SCRIPT_DIR}/scripts/process-data/integration.sh"
+source "${SCRIPT_DIR}/scripts/process-data/integration.sh"
 # 重み付けを統合するファイルを取得
 # source "${SCRIPT_DIR}/scripts/calc-weighting/integration.sh"
 # 貢献度の算出を統合するファイルを取得
@@ -65,7 +65,7 @@ function main() {
   get_data
 
   # # データ加工
-  # process_data
+  process_data
 
   # # 重み付け
   # calc_weighting

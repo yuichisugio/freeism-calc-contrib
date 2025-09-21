@@ -18,15 +18,15 @@ mkdir -p "$OUTPUT_GET_DIR"
 readonly GET_DIR="${SCRIPT_DIR}/scripts/get-data"
 source "${GET_DIR}/get-data-utils.sh"
 # source "${GET_DIR}/issue/issue-main.sh"
-source "${GET_DIR}/discussion/discus-main.sh"
+# source "${GET_DIR}/discussion/discus-main.sh"
 # source "${GET_DIR}/commit/commit-main.sh"
 # source "${GET_DIR}/pull-request/pr-main.sh"
 # source "${GET_DIR}/release/release-main.sh"
-# source "${GET_DIR}/star.sh"
-# source "${GET_DIR}/fork.sh"
-# source "${GET_DIR}/watch.sh"
-# source "${GET_DIR}/sponsor.sh"
-# source "${GET_DIR}/repo-meta.sh"
+source "${GET_DIR}/star.sh"
+source "${GET_DIR}/fork.sh"
+source "${GET_DIR}/watch.sh"
+source "${GET_DIR}/sponsor.sh"
+source "${GET_DIR}/repo-meta.sh"
 
 #--------------------------------------
 # データ取得を統合する関数
@@ -44,10 +44,10 @@ function get_data() {
   # get_commit
 
   # ディスカッションのデータを取得
-  get_discussion
+  # get_discussion
 
   # フォークのデータを取得
-  # get_fork
+  get_fork
 
   # イシューのデータを取得
   # get_issue
@@ -59,16 +59,16 @@ function get_data() {
   # get_release
 
   # リポジトリのメタデータを取得
-  # get_repo_meta
+  get_repo_meta
 
   # スポンサーのデータを取得
-  # get_sponsor
+  get_sponsor
 
   # スターのデータを取得
-  # get_star
+  get_star
 
   # ウォッチのデータを取得
-  # get_watch
+  get_watch
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-data()" "$before_remaining_ratelimit" "false"

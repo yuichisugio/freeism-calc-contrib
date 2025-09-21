@@ -13,7 +13,7 @@ readonly RESULT_GET_SPONSOR_DIR="${OUTPUT_GET_DIR}/sponsor"
 readonly RAW_SPONSOR_RECIPIENTS_PATH="${RESULT_GET_SPONSOR_DIR}/raw-sponsor-recipients.json"
 readonly PROCESSED_SPONSOR_RECIPIENTS_PATH="${RESULT_GET_SPONSOR_DIR}/processed-sponsor-recipients.txt"
 readonly RAW_SPONSOR_SUPPORTERS_PATH="${RESULT_GET_SPONSOR_DIR}/raw-sponsor-supporters.jsonl"
-readonly RESULT_SPONSOR_SUPPORTERS_PATH="${RESULT_GET_SPONSOR_DIR}/result-sponsor-supporters.json"
+readonly RESULT_GET_SPONSOR_SUPPORTERS_PATH="${RESULT_GET_SPONSOR_DIR}/result-sponsor-supporters.json"
 
 mkdir -p "$RESULT_GET_SPONSOR_DIR"
 
@@ -61,7 +61,7 @@ function get_github_sponsors_supporters() {
   local QUERY
 
   : >"$RAW_SPONSOR_SUPPORTERS_PATH"
-  : >"$RESULT_SPONSOR_SUPPORTERS_PATH"
+  : >"$RESULT_GET_SPONSOR_SUPPORTERS_PATH"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -121,7 +121,7 @@ function get_github_sponsors_supporters() {
       | jq '.' >>"$RAW_SPONSOR_SUPPORTERS_PATH"
 
       # データを加工して保存する
-      jq '[ .[] | .data.repositoryOwner.sponsorshipsAsMaintainer.nodes[] ]' "$RAW_SPONSOR_SUPPORTERS_PATH" >>"$RESULT_SPONSOR_SUPPORTERS_PATH"
+      jq '[ .[] | .data.repositoryOwner.sponsorshipsAsMaintainer.nodes[] ]' "$RAW_SPONSOR_SUPPORTERS_PATH" >>"$RESULT_GET_SPONSOR_SUPPORTERS_PATH"
 
   done <"$PROCESSED_SPONSOR_RECIPIENTS_PATH"
 }

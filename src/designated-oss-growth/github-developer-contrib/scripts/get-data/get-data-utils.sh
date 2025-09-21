@@ -126,7 +126,6 @@ function get_paginated_star_data() {
       --arg UNTIL "$UNTIL" \
       '.data.repository.stargazers.edges[]
         | select(.starredAt >= $SINCE and .starredAt <= $UNTIL)
-        | {"starredAt": .starredAt} + (.node // {})
       ' <<<"$RESPONSE" >>"$RESULT_PATH"
 
     # 次ページの準備
