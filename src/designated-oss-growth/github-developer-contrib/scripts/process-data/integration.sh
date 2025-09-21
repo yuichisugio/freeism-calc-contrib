@@ -33,15 +33,18 @@ source "${PROCESS_DIR}/repo-meta.sh"
 #--------------------------------------
 function process_data() {
   printf '%s\n' "begin:process_data()"
-  process_star
-  # process_commit
-  # process_discussion
-  process_fork
-  # process_issue
-  # process_pull_request
-  # process_release
-  process_repo_meta
-  process_sponsor
-  process_watch
+
+  # 実行するファイル
+  if should_run "star" "$@"; then process_star; fi
+  if should_run "fork" "$@"; then process_fork; fi
+  if should_run "repo-meta" "$@"; then process_repo_meta; fi
+  if should_run "sponsor" "$@"; then process_sponsor; fi
+  if should_run "watch" "$@"; then process_watch; fi
+  if should_run "issue" "$@"; then process_issue; fi
+  if should_run "pull-request" "$@"; then process_pull_request; fi
+  if should_run "release" "$@"; then process_release; fi
+  if should_run "commit" "$@"; then process_commit; fi
+  if should_run "discussion" "$@"; then process_discussion; fi
+
   printf '%s\n' "end:process_data()"
 }

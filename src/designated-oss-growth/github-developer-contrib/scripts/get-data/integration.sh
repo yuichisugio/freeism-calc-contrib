@@ -41,34 +41,34 @@ function get_data() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-data()")"
 
   # コミットのデータを取得
-  # get_commit
+  if should_run "commit" "$@"; then get_commit; fi
 
   # ディスカッションのデータを取得
-  # get_discussion
+  if should_run "discussion" "$@"; then get_discussion; fi
 
   # フォークのデータを取得
-  get_fork
+  if should_run "fork" "$@"; then get_fork; fi
 
   # イシューのデータを取得
-  # get_issue
+  if should_run "issue" "$@"; then get_issue; fi
 
   # プルリクエストのデータを取得
-  # get_pull_request
+  if should_run "pull-request" "$@"; then get_pull_request; fi
 
   # リリースのデータを取得
-  # get_release
+  if should_run "release" "$@"; then get_release; fi
 
   # リポジトリのメタデータを取得
-  get_repo_meta
+  if should_run "repo-meta" "$@"; then get_repo_meta; fi
 
   # スポンサーのデータを取得
-  get_sponsor
+  if should_run "sponsor" "$@"; then get_sponsor; fi
 
   # スターのデータを取得
-  get_star
+  if should_run "star" "$@"; then get_star; fi
 
   # ウォッチのデータを取得
-  get_watch
+  if should_run "watch" "$@"; then get_watch; fi
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-data()" "$before_remaining_ratelimit" "false"

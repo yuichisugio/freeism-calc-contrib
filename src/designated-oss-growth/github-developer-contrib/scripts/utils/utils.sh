@@ -41,6 +41,7 @@ function parse_args() {
   local REPO="ccusage"
   local SINCE="1970-01-01T00:00:00Z" # ドキュメント上の最小値
   local UNTIL="2099-12-13T23:59:59Z" # ドキュメント上の最大値
+  local -a TASKS=()                  # タスクの配列
 
   # --- 引数パース。引数がある場合はデフォルト値を上書きする ---
   while [[ $# -gt 0 ]]; do
@@ -55,6 +56,12 @@ function parse_args() {
       ;;
     -un | --until)
       UNTIL="$2"
+      shift 2
+      ;;
+    -t | --tasks)
+      # タスクはスペース/カンマ混在可。ここではそのまま保持し、出力時に結合する。
+      # 何度も-t/--tasks が指定された場合に対応するために配列で保持する
+      TASKS+=("$2")
       shift 2
       ;;
     -r | --ratelimit)
@@ -100,9 +107,32 @@ function parse_args() {
     return 1
     ;;
   esac
+
+  # TASKS をカンマ結合する（スペースはカンマに変換）
+  local TASKS_JOINED=""
+  if ((${#TASKS[@]} > 0)); then
+    local t
+    for t in "${TASKS[@]}"; do
+      # 文字列内のすべての空白文字をカンマに置換。${変数名//パターン/置換文字}の形式
+      t="${t// /,}"
+      # 初回のみ代入、以降はカンマで結合
+      if [[ -z "$TASKS_JOINED" ]]; then
+        TASKS_JOINED="$t"
+      else
+        TASKS_JOINED+=",$t"
+      fi
+    done
+  fi
+
   # リポジトリのオーナー名とリポジトリ名を返す
-  printf '%s %s %s %sの貢献度を算出します。\n' "$OWNER" "$REPO" "$SINCE" "$UNTIL" >&2
-  printf '%s %s %s %s\n' "$OWNER" "$REPO" "$SINCE" "$UNTIL"
+  printf '%s %s %s %s %s の貢献度を算出します。\n' \
+    "$OWNER" "$REPO" "$SINCE" "$UNTIL" "$TASKS_JOINED" >&2
+
+  # 値を関数呼び出し元に返す（タスクは1フィールドにまとめて返す）
+  printf '%s %s %s %s %s\n' \
+    "$OWNER" "$REPO" "$SINCE" "$UNTIL" "$TASKS_JOINED"
+
+  # 正常終了
   return 0
 }
 
@@ -114,6 +144,8 @@ function show_usage() {
     Usage: 
       $0 -u [GITHUB_URL]
       $0 -u [GITHUB_URL] -s [YYYY-MM-DD] -un [YYYY-MM-DD]
+      $0 -u [GITHUB_URL] -t "star,fork"
+      $0 -u [GITHUB_URL] -t star -t fork
       $0 -r
       $0 -h
 
@@ -124,6 +156,7 @@ function show_usage() {
       -u, --url         リポジトリのURL (デフォルト: https://github.com/ryoppippi/ccusage)
       -s, --since       開始日 (デフォルト: 1970-01-01)
       -un, --until      終了日 (デフォルト: 今日)
+      -t, --tasks       実行するタスク（CSV/スペース混在可、複数指定可）
       -r, --ratelimit   リミットを表示
       -h, --help        ヘルプを表示
 
@@ -136,6 +169,8 @@ function show_usage() {
       $0 -u https://github.com/microsoft/vscode
       $0 -u https://github.com/ryoppippi/ccusage -s 2024-01-01 -un 2024-01-01
       $0 --url https://github.com/microsoft/vscode --since 2024-01-01 --until 2024-01-01
+      $0 -u https://github.com/microsoft/vscode -t star,fork
+      $0 -u https://github.com/microsoft/vscode -t star -t fork
       $0 -r
 EOF
 
@@ -165,4 +200,53 @@ function get_ratelimit() {
   if [[ "$is_output" == "true" ]]; then
     printf '%s\n' "$remaining"
   fi
+}
+
+#--------------------------------------
+# タスクの実行が必要か判定
+# 選択なし=全実行、"all"含む=全実行
+#--------------------------------------
+function should_run() {
+  # 第一引数: 判定したいタスク名
+  local name="$1"
+  # 第一引数を削除して、第2引数以降を第一引数として$@で使用できるようにする
+  shift
+
+  # 第二引数以降: 選択されたタスク（スペース/カンマ混在可）
+  local -a selected_tasks=()
+  # 第二引数以降がある場合は、それをカンマ区切りの配列に変換する
+  if [[ $# -gt 0 ]]; then
+    local arg part
+    for arg in "$@"; do
+      # スペースも許容するためにカンマに寄せる
+      arg="${arg// /,}"
+      IFS=, read -r -a parts <<<"$arg"
+      for part in "${parts[@]}"; do
+        if [[ -n "$part" ]]; then
+          selected_tasks+=("$(printf '%s' "$part" | tr '[:upper:]' '[:lower:]')")
+        fi
+      done
+    done
+  fi
+
+  # タスク名を正規化
+  local normalized_name="${name//_/-}"
+
+  # 選択が空 → すべて実行
+  if ((${#selected_tasks[@]} == 0)); then
+    return 0
+  fi
+
+  # タスク実行判定
+  local sel
+  for sel in "${selected_tasks[@]}"; do
+    sel="${sel//_/-}"
+    if [[ "$sel" == "all" || "$sel" == "$normalized_name" ]]; then
+      # タスク実行
+      return 0
+    fi
+  done
+
+  # タスク実行しない
+  return 1
 }

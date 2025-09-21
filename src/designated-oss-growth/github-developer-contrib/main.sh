@@ -27,7 +27,7 @@ if ! parsed="$(parse_args "$@")"; then
   # 関数内では>&2にしないとターミナル出力ができないが、そのままだとエラー表示になるので、ここでexit 0にすることで、エラー表示にせずにヘルプを出力できる。エラー表示は親プロセスで決まる。
   exit 0
 fi
-read -r OWNER REPO SINCE UNTIL <<<"$parsed"
+read -r OWNER REPO SINCE UNTIL TASKS <<<"$parsed"
 
 #--------------------------------------
 # 出力先のディレクトリを作成する
@@ -56,16 +56,18 @@ function main() {
   # 依存コマンドの確認
   require_tools
 
+  printf '%s\n' "selected-tasks:${TASKS:-"all"}" >&2
+
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
   before_remaining_ratelimit="$(get_ratelimit "before:main()")"
 
-  # データ取得
-  get_data
+  # データ取得（-t/--tasks 指定があれば、そのタスクのみ実行）
+  get_data "${TASKS:-}"
 
-  # # データ加工
-  process_data
+  # データ加工（-t/--tasks 指定があれば、そのタスクのみ実行）
+  process_data "${TASKS:-}"
 
   # # 重み付け
   # calc_weighting
