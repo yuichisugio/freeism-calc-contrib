@@ -7,6 +7,14 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のディレクトリを作成する
+#--------------------------------------
+readonly RAW_GET_ISSUE_NOW_LABEL_PATH="${RESULT_GET_ISSUE_DIR}/raw-issue-now-label.jsonl"
+readonly RESULT_GET_ISSUE_NOW_LABEL_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-now-label.json"
+mkdir -p "$(dirname "$RESULT_GET_ISSUE_NOW_LABEL_PATH")"
+
+
+#--------------------------------------
 # issueの現在のラベルを取得する関数
 #--------------------------------------
 function get_issue_now_label() {
@@ -17,8 +25,6 @@ function get_issue_now_label() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-issue-now-label()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_ISSUE_DIR}/raw-issue-now-label.jsonl"
-  local RESULT_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-now-label.json"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -52,10 +58,10 @@ function get_issue_now_label() {
   # クエリを実行。node_id単位でページネーションしながら取得
   get_paginated_data_by_node_id \
     "$QUERY" \
-    "$RAW_PATH" \
-    "$RESULT_PATH" \
+    "$RAW_GET_ISSUE_NOW_LABEL_PATH" \
+    "$RESULT_GET_ISSUE_NOW_LABEL_PATH" \
     "labels" \
-    "$RESULT_ISSUE_NODE_ID_PATH"
+    "$RESULT_GET_ISSUE_NODE_ID_PATH"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

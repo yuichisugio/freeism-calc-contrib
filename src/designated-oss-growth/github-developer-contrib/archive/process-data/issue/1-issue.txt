@@ -21,7 +21,7 @@ jq '
                   task_name:                  "create-issue",
                   task_date:                  $obj.publishedAt,
                   reference_task_date_field:  "publishedAt",
-                  issue_word_count:
+                  word_count:
                     (
                       ($obj.title? // "" | length) + ($obj.bodyText? // "" | length)
                     ),

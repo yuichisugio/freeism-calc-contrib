@@ -63,6 +63,7 @@ function get_issue_node_id() {
             bodyText
             title
             state
+            stateReason
             publishedAt # draftからOpenになった日 or 直接Openになった日
             createdAt
             closedAt
@@ -84,7 +85,14 @@ function get_issue_node_id() {
             labels(first: 1){
               totalCount
             }
-            timelineItems(last: 1, itemTypes: [LABELED_EVENT, ASSIGNED_EVENT]) {
+            timelineItems(
+              first: 1, 
+              itemTypes: [
+                LABELED_EVENT, 
+                ASSIGNED_EVENT, 
+                CLOSED_EVENT
+              ]
+            ) {
               totalCount
               pageCount
               filteredCount
@@ -102,7 +110,7 @@ function get_issue_node_id() {
   get_paginated_repository_data \
     "$QUERY" \
     "$RAW_PATH" \
-    "$RESULT_ISSUE_NODE_ID_PATH" \
+    "$RESULT_GET_ISSUE_NODE_ID_PATH" \
     "issues" \
     "publishedAt"
 

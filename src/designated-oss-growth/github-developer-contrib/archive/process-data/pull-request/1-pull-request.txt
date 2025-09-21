@@ -113,7 +113,7 @@ jq '
     > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/pull-request/1-2-processed-pr.json"
 
 
-# pull-requestヘアサインした人を評価。①現在のアサイン一覧 & ②timelineからアサインした人を取得
+# pull-requestのレビュー担当者をアサインした人を評価。timelineのみからアサインした人を取得
 jq '
   {
     data: {
@@ -655,3 +655,6 @@ jq '
   }
   ' "./src/designated-oss-growth/github-developer-contrib/archive/process-data/pull-request/result-pr-timeline.json" \
     > "./src/designated-oss-growth/github-developer-contrib/archive/process-data/pull-request/1-11-processed-pr.json"
+
+
+# pull-requestのプルリク担当者をアサインした人を評価。①現在のアサイン一覧 & ②timelineからアサインした人を取得

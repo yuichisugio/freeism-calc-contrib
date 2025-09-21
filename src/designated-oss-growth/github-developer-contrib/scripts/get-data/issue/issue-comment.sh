@@ -66,9 +66,9 @@ function get_issue_comment() {
   get_paginated_data_by_node_id \
     "$QUERY" \
     "$RAW_PATH" \
-    "$RESULT_ISSUE_COMMENT_NODE_ID_PATH" \
+    "$RESULT_GET_ISSUE_COMMENT_NODE_ID_PATH" \
     "comments" \
-    "$RESULT_ISSUE_NODE_ID_PATH" \
+    "$RESULT_GET_ISSUE_NODE_ID_PATH" \
     "publishedAt"
 
   # データ取得後のRateLimitを出力

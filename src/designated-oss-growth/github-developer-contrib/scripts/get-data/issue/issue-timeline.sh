@@ -7,6 +7,13 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のファイルを定義
+#--------------------------------------
+readonly RAW_GET_ISSUE_TIMELINE_PATH="${RESULT_GET_ISSUE_DIR}/raw-issue-timeline.jsonl"
+readonly RESULT_GET_ISSUE_TIMELINE_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-timeline.json"
+mkdir -p "$(dirname "$RESULT_GET_ISSUE_TIMELINE_PATH")"
+
+#--------------------------------------
 # issueのタイムラインを取得する関数
 #--------------------------------------
 function get_issue_timeline() {
@@ -17,8 +24,6 @@ function get_issue_timeline() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-issue-timeline()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_ISSUE_DIR}/raw-issue-timeline.jsonl"
-  local RESULT_PATH="${RESULT_GET_ISSUE_DIR}/result-issue-timeline.json"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -37,7 +42,11 @@ function get_issue_timeline() {
           timelineItems(
             first: $perPage, 
             after: $endCursor, 
-            itemTypes: [LABELED_EVENT, ASSIGNED_EVENT, CLOSED_EVENT], 
+            itemTypes: [
+              LABELED_EVENT, 
+              ASSIGNED_EVENT, 
+              CLOSED_EVENT
+            ], 
             since: $since
           ) {
             totalCount
@@ -105,10 +114,10 @@ function get_issue_timeline() {
   # クエリを実行。node_id単位でページネーションしながら取得
   get_paginated_data_by_node_id \
     "$QUERY" \
-    "$RAW_PATH" \
-    "$RESULT_PATH" \
+    "$RAW_GET_ISSUE_TIMELINE_PATH" \
+    "$RESULT_GET_ISSUE_TIMELINE_PATH" \
     "timelineItems" \
-    "$RESULT_ISSUE_NODE_ID_PATH" \
+    "$RESULT_GET_ISSUE_NODE_ID_PATH" \
     "createdAt"
 
   # データ取得後のRateLimitを出力
