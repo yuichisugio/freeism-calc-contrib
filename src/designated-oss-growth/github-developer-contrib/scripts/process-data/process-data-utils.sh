@@ -294,3 +294,70 @@ function process_data_utils_by_two_files() {
     "$INPUT_TIMELINE_PATH" \
     >"$OUTPUT_PATH"
 }
+
+#--------------------------------------
+# データ加工した、それぞれのファイルを一つのファイルに統合する
+#--------------------------------------
+function integrate_processed_files() {
+
+  # 出力先のファイルを定義
+  local OUTPUT_PATH=${OUTPUT_PROCESSED_DIR}/integrated-processed-data.json
+
+  # 統合したいファイルが入ったフォルダのPATH
+  local FIND_DIR="${OUTPUT_PROCESSED_DIR}"
+
+  # 再帰的に *.json / *.jsonl を収集（名前は不問）
+  mapfile -d '' -t FILES < <(
+    find "$FIND_DIR" -type f \( -name '*.json' -o -name '*.jsonl' \) -print0
+  )
+
+  # 対象ファイルがなければ空の雛形を出力して終了
+  if ((${#FILES[@]} == 0)); then
+    printf '%s\n' '{"meta":{"createdAt":"'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"},"data":{"user":[]}}' >"$OUTPUT_PATH"
+    exit 0
+  fi
+
+  # すべてのファイルを slurp (-s) で一括読み込みし、user_id で group_by → task を結合
+  # - ファイルにより schema が微妙に違っても .data.user がなければ無視
+  # - task は task_id（なければ name+date 等）で重複排除
+  # - ISO8601 文字列前提で task_date 昇順に整列
+  jq \
+    -s \
+    '
+      # 全入力（ファイル/行）から user 配列だけを集約
+      [ .[]? | (.data.user? // [])[] ] as $all_users
+
+      # user_id ごとにグループ化
+      | $all_users
+      | group_by(.user_id)
+      | map(
+          . as $g
+          | ($g[0] | del(.task)) as $base                # 代表のユーザ情報（task 以外）
+          | ($g | map(.task // []) | add)    as $tasks   # すべての task を結合
+
+          # task の重複排除キーを柔軟に（task_id があれば最優先）
+          | $base + {
+              task:
+                ( $tasks
+                  | unique_by(
+                      ( .task_id // (
+                          ( .task_name // "" )
+                          + "|" + ( .task_date // "" )
+                          + "|" + ( .task_database_id // "" )
+                        )
+                      )
+                    )
+                  | sort_by(.task_date // "")
+                )
+            }
+        )
+
+      # 出力のトップレベルを組み立て
+      | {
+          meta: { createdAt: (now | strftime("%Y-%m-%dT%H:%M:%SZ")) },
+          data: { user: . }
+        }
+    ' \
+    "${FILES[@]}" \
+    >"$OUTPUT_PATH"
+}

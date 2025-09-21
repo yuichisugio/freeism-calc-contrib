@@ -46,5 +46,8 @@ function process_data() {
   if should_run "commit" "$@"; then process_commit; fi
   if should_run "discussion" "$@"; then process_discussion; fi
 
+  # データ加工した、それぞれのファイルを一つのファイルに統合する
+  integrate_processed_files
+
   printf '%s\n' "end:process_data()"
 }
