@@ -11,7 +11,7 @@ set -euo pipefail
 #--------------------------------------
 readonly RESULT_GET_RELEASE_DIR="${OUTPUT_GET_DIR}/release"
 mkdir -p "$RESULT_GET_RELEASE_DIR"
-readonly RESULT_RELEASE_NODE_ID_PATH="${RESULT_GET_RELEASE_DIR}/result-release-node-id.json"
+readonly RESULT_GET_RELEASE_NODE_ID_PATH="${RESULT_GET_RELEASE_DIR}/result-release-node-id.json"
 
 #--------------------------------------
 # 使用するファイルを読み込む

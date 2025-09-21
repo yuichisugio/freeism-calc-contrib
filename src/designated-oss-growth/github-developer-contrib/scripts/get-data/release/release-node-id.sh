@@ -61,7 +61,7 @@ function get_release_node_id() {
   get_paginated_repository_data \
     "$QUERY" \
     "$RAW_PATH" \
-    "$RESULT_RELEASE_NODE_ID_PATH" \
+    "$RESULT_GET_RELEASE_NODE_ID_PATH" \
     "releases" \
     "publishedAt"
 

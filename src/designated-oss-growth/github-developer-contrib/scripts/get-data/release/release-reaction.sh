@@ -7,6 +7,12 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のディレクトリを作成する
+#--------------------------------------
+readonly RESULT_GET_RELEASE_REACTION_PATH="${RESULT_GET_RELEASE_DIR}/result-release-reaction.json"
+mkdir -p "$(dirname "$RESULT_GET_RELEASE_REACTION_PATH")"
+
+#--------------------------------------
 # リリースのリアクションを取得する関数
 #--------------------------------------
 function get_release_reaction() {
@@ -18,7 +24,6 @@ function get_release_reaction() {
 
   local QUERY
   local RAW_PATH="${RESULT_GET_RELEASE_DIR}/raw-release-reaction.jsonl"
-  local RESULT_PATH="${RESULT_GET_RELEASE_DIR}/result-release-reaction.json"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -52,9 +57,9 @@ function get_release_reaction() {
   get_paginated_data_by_node_id \
     "$QUERY" \
     "$RAW_PATH" \
-    "$RESULT_PATH" \
+    "$RESULT_GET_RELEASE_REACTION_PATH" \
     "reactions" \
-    "$RESULT_RELEASE_NODE_ID_PATH" \
+    "$RESULT_GET_RELEASE_NODE_ID_PATH" \
     "createdAt"
 
   # データ取得後のRateLimitを出力
