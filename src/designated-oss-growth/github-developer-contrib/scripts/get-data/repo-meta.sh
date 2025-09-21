@@ -9,8 +9,8 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のファイルを作成する
 #--------------------------------------
-readonly RAW_REPO_META_DIR="${OUTPUT_GET_DIR}/repo-meta/result-repo-meta.json"
-mkdir -p "$(dirname "$RAW_REPO_META_DIR")"
+readonly RESULT_GET_REPO_META_PATH="${OUTPUT_GET_DIR}/repo-meta/result-repo-meta.json"
+mkdir -p "$(dirname "$RESULT_GET_REPO_META_PATH")"
 
 #--------------------------------------
 # リポジトリのメタデータを取得する
@@ -54,7 +54,7 @@ function get_repo_meta() {
     -f owner="$OWNER" \
     -f repo="$REPO" \
     -f query="$QUERY" \
-    | jq '.' >"$RAW_REPO_META_DIR"
+    | jq '.' >"$RESULT_GET_REPO_META_PATH"
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-repo-meta()" "$before_remaining_ratelimit" "false"

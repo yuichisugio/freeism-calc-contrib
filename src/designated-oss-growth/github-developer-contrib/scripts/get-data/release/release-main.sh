@@ -16,8 +16,9 @@ readonly RESULT_GET_RELEASE_NODE_ID_PATH="${RESULT_GET_RELEASE_DIR}/result-relea
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "${GET_DIR}/release/release-node-id.sh"
-source "${GET_DIR}/release/release-reaction.sh"
+readonly GET_RELEASE_DIR="${GET_DIR}/release"
+source "${GET_RELEASE_DIR}/release-node-id.sh"
+source "${GET_RELEASE_DIR}/release-reaction.sh"
 
 #--------------------------------------
 # リリースのデータを取得する関数

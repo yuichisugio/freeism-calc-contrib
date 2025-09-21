@@ -15,9 +15,10 @@ mkdir -p "$RESULT_PROCESSED_COMMIT_DIR"
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "${PROCESS_DIR}/commit/commit-node-id-with-pr.sh"
-source "${PROCESS_DIR}/commit/commit-comment.sh"
-source "${PROCESS_DIR}/commit/commit-comment-reaction.sh"
+readonly PROCESS_COMMIT_DIR="${PROCESS_DIR}/commit"
+source "${PROCESS_COMMIT_DIR}/commit-node-id-with-pr.sh"
+source "${PROCESS_COMMIT_DIR}/commit-comment.sh"
+source "${PROCESS_COMMIT_DIR}/commit-comment-reaction.sh"
 
 #--------------------------------------
 # コミットのデータを加工する関数

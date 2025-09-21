@@ -15,6 +15,9 @@ readonly RESULT_GET_WATCH_PATH="${RESULT_GET_WATCH_DIR}/result-watch.json"
 
 mkdir -p "$RESULT_GET_WATCH_DIR"
 
+#--------------------------------------
+# watch関連のデータ取得を行う関数
+#--------------------------------------
 function get_watch() {
 
   # データ取得前のRateLimit変数

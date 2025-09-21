@@ -28,7 +28,7 @@ function process_repo_meta() {
         repositoryUrl:.data.repository.url,
         createdAt:.data.repository.createdAt,
         defaultBranch:.data.repository.defaultBranchRef.name
-      }' "$RAW_REPO_META_DIR" >"$RESULT_PROCESSED_REPO_META_PATH"
+      }' "$RESULT_GET_REPO_META_PATH" >"$RESULT_PROCESSED_REPO_META_PATH"
 
   printf '%s\n' "end:process_repo_meta()"
 

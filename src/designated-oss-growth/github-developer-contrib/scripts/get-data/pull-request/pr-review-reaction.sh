@@ -7,6 +7,13 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のファイルを定義
+#--------------------------------------
+readonly RAW_GET_PR_REVIEW_REACTION_PATH="${RESULT_GET_PR_DIR}/raw-pr-review-reaction.jsonl"
+readonly RESULT_GET_PR_REVIEW_REACTION_PATH="${RESULT_GET_PR_DIR}/result-pr-review-reaction.json"
+mkdir -p "$(dirname "$RESULT_GET_PR_REVIEW_REACTION_PATH")"
+
+#--------------------------------------
 # プルリクエストのレビューのリアクションを取得する関数
 #--------------------------------------
 function get_pull_request_review_reaction() {
@@ -17,8 +24,6 @@ function get_pull_request_review_reaction() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-review-reaction()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-review-reaction.jsonl"
-  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-review-reaction.json"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -47,10 +52,10 @@ function get_pull_request_review_reaction() {
   # クエリを実行。node_id単位でページネーションしながら取得
   get_paginated_data_by_node_id \
     "$QUERY" \
-    "$RAW_PATH" \
-    "$RESULT_PATH" \
+    "$RAW_GET_PR_REVIEW_REACTION_PATH" \
+    "$RESULT_GET_PR_REVIEW_REACTION_PATH" \
     "reactions" \
-    "$RESULT_PR_REVIEW_NODE_ID_PATH" \
+    "$RESULT_GET_PR_REVIEW_NODE_ID_PATH" \
     "createdAt"
 
   # データ取得後のRateLimitを出力

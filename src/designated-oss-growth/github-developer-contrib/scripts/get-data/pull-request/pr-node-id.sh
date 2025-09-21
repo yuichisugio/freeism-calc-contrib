@@ -97,7 +97,7 @@ function get_pull_request_node_id() {
   get_paginated_repository_data \
     "$QUERY" \
     "$RAW_PATH" \
-    "$RESULT_PR_NODE_ID_PATH" \
+    "$RESULT_GET_PR_NODE_ID_PATH" \
     "pullRequests" \
     "publishedAt"
 

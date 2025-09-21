@@ -67,11 +67,10 @@ function get_pull_request_review() {
   get_paginated_data_by_node_id \
     "$QUERY" \
     "$RAW_PATH" \
-    "$RESULT_PR_REVIEW_NODE_ID_PATH" \
+    "$RESULT_GET_PR_REVIEW_NODE_ID_PATH" \
     "reviews" \
-    "$RESULT_PR_NODE_ID_PATH" \
-    "publishedAt" \
-    
+    "$RESULT_GET_PR_NODE_ID_PATH" \
+    "publishedAt"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

@@ -59,7 +59,7 @@ function get_pull_request_review_comment() {
     "$RAW_PATH" \
     "$RESULT_PATH" \
     "comments" \
-    "$RESULT_PR_REVIEW_NODE_ID_PATH" \
+    "$RESULT_GET_PR_REVIEW_NODE_ID_PATH" \
     "createdAt"
 
   # データ取得後のRateLimitを出力

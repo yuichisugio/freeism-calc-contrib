@@ -19,13 +19,14 @@ readonly RESULT_GET_ISSUE_COMMENT_NODE_ID_PATH="${RESULT_GET_ISSUE_DIR}/result-i
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "${GET_DIR}/issue/issue-node-id.sh"
-source "${GET_DIR}/issue/issue-now-assigned-actors.sh"
-source "${GET_DIR}/issue/issue-now-label.sh"
-source "${GET_DIR}/issue/issue-comment.sh"
-source "${GET_DIR}/issue/issue-comment-reaction.sh"
-source "${GET_DIR}/issue/issue-reaction.sh"
-source "${GET_DIR}/issue/issue-timeline.sh"
+readonly GET_ISSUE_DIR="${GET_DIR}/issue"
+source "${GET_ISSUE_DIR}/issue-node-id.sh"
+source "${GET_ISSUE_DIR}/issue-now-assigned-actors.sh"
+source "${GET_ISSUE_DIR}/issue-now-label.sh"
+source "${GET_ISSUE_DIR}/issue-comment.sh"
+source "${GET_ISSUE_DIR}/issue-comment-reaction.sh"
+source "${GET_ISSUE_DIR}/issue-reaction.sh"
+source "${GET_ISSUE_DIR}/issue-timeline.sh"
 
 #--------------------------------------
 # データ取得を統合する関数

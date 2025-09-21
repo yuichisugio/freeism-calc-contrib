@@ -15,13 +15,14 @@ mkdir -p "$RESULT_PROCESSED_ISSUE_DIR"
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "${PROCESS_DIR}/issue/issue-node-id.sh"
-source "${PROCESS_DIR}/issue/issue-assigned.sh"
-source "${PROCESS_DIR}/issue/issue-label.sh"
-source "${PROCESS_DIR}/issue/issue-comment.sh"
-source "${PROCESS_DIR}/issue/issue-comment-reaction.sh"
-source "${PROCESS_DIR}/issue/issue-reaction.sh"
-source "${PROCESS_DIR}/issue/issue-change-status.sh"
+readonly PROCESS_ISSUE_DIR="${PROCESS_DIR}/issue"
+source "${PROCESS_ISSUE_DIR}/issue-node-id.sh"
+source "${PROCESS_ISSUE_DIR}/issue-assigned.sh"
+source "${PROCESS_ISSUE_DIR}/issue-label.sh"
+source "${PROCESS_ISSUE_DIR}/issue-comment.sh"
+source "${PROCESS_ISSUE_DIR}/issue-comment-reaction.sh"
+source "${PROCESS_ISSUE_DIR}/issue-reaction.sh"
+source "${PROCESS_ISSUE_DIR}/issue-change-status.sh"
 
 #--------------------------------------
 # issueのデータを加工する関数

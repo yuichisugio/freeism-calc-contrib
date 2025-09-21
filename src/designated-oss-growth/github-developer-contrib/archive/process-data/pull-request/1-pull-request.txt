@@ -607,12 +607,7 @@ jq '
         [
           (
             # ClosedEventのみ残す
-            [ .[]? 
-              | select(
-                (.__typename? // "") == "ClosedEvent" or
-                (.__typename? // "") == "MergedEvent"
-                )
-            ]
+            [ .[]? | select((.__typename? // "") == "ClosedEvent") ]
             # group_by の前にキーでソート
             | sort_by(.node_id)
             # node_id ごとにグルーピング
@@ -658,3 +653,4 @@ jq '
 
 
 # pull-requestのプルリク担当者をアサインした人を評価。①現在のアサイン一覧 & ②timelineからアサインした人を取得
+.shに実装してみた！

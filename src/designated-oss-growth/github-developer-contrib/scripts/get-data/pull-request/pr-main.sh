@@ -12,28 +12,29 @@ set -euo pipefail
 readonly RESULT_GET_PR_DIR="${OUTPUT_GET_DIR}/pull-request"
 mkdir -p "$RESULT_GET_PR_DIR"
 # プルリクエストのnode_idを取得するファイル
-readonly RESULT_PR_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-node-id.json"
+readonly RESULT_GET_PR_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-node-id.json"
 # プルリクエストのコメントのnode_idを取得するファイル
-readonly RESULT_PR_COMMENT_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-comment.json"
+readonly RESULT_GET_PR_COMMENT_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-comment.json"
 # プルリクエストのレビューのnode_idを取得するファイル
-readonly RESULT_PR_REVIEW_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-review.json"
+readonly RESULT_GET_PR_REVIEW_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-review.json"
 # プルリクエストのレビューのコメントのnode_idを取得するファイル
-readonly RESULT_PR_REVIEW_COMMENT_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-review-comment.json"
+readonly RESULT_GET_PR_REVIEW_COMMENT_NODE_ID_PATH="${RESULT_GET_PR_DIR}/result-pr-review-comment.json"
 
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "${GET_DIR}/pull-request/pr-node-id.sh"
-source "${GET_DIR}/pull-request/pr-reaction.sh"
-source "${GET_DIR}/pull-request/pr-now-assigned-actors.sh"
-source "${GET_DIR}/pull-request/pr-now-label.sh"
-source "${GET_DIR}/pull-request/pr-comment.sh"
-source "${GET_DIR}/pull-request/pr-comment-reaction.sh"
-source "${GET_DIR}/pull-request/pr-review.sh"
-source "${GET_DIR}/pull-request/pr-review-reaction.sh"
-source "${GET_DIR}/pull-request/pr-review-comment.sh"
-source "${GET_DIR}/pull-request/pr-review-comment-reaction.sh"
-source "${GET_DIR}/pull-request/pr-timeline.sh"
+readonly GET_PR_DIR="${GET_DIR}/pull-request"
+source "${GET_PR_DIR}/pr-node-id.sh"
+source "${GET_PR_DIR}/pr-reaction.sh"
+source "${GET_PR_DIR}/pr-now-assigned-actors.sh"
+source "${GET_PR_DIR}/pr-now-label.sh"
+source "${GET_PR_DIR}/pr-comment.sh"
+source "${GET_PR_DIR}/pr-comment-reaction.sh"
+source "${GET_PR_DIR}/pr-review.sh"
+source "${GET_PR_DIR}/pr-review-reaction.sh"
+source "${GET_PR_DIR}/pr-review-comment.sh"
+source "${GET_PR_DIR}/pr-review-comment-reaction.sh"
+source "${GET_PR_DIR}/pr-timeline.sh"
 
 #--------------------------------------
 # プルリクエストのデータを取得する

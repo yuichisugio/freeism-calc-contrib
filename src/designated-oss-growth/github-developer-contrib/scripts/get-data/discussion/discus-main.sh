@@ -24,16 +24,17 @@ readonly RESULT_DISCUSSION_ANSWER_NODE_ID_PATH="${RESULT_GET_DISCUSSION_DIR}/res
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "${GET_DIR}/discussion/discus-node-id.sh"
-source "${GET_DIR}/discussion/discus-comment.sh"
-source "${GET_DIR}/discussion/discus-comment-reaction.sh"
-source "${GET_DIR}/discussion/discus-comment-reply.sh"
-source "${GET_DIR}/discussion/discus-comment-reply-reaction.sh"
-source "${GET_DIR}/discussion/discus-reaction.sh"
-source "${GET_DIR}/discussion/discus-answer-reaction.sh"
-source "${GET_DIR}/discussion/discus-answer-reply.sh"
-source "${GET_DIR}/discussion/discus-answer-reply-reaction.sh"
-source "${GET_DIR}/discussion/discus-answer-node-id.sh"
+readonly GET_DISCUSSION_DIR="${GET_DIR}/discussion"
+source "${GET_DISCUSSION_DIR}/discus-node-id.sh"
+source "${GET_DISCUSSION_DIR}/discus-comment.sh"
+source "${GET_DISCUSSION_DIR}/discus-comment-reaction.sh"
+source "${GET_DISCUSSION_DIR}/discus-comment-reply.sh"
+source "${GET_DISCUSSION_DIR}/discus-comment-reply-reaction.sh"
+source "${GET_DISCUSSION_DIR}/discus-reaction.sh"
+source "${GET_DISCUSSION_DIR}/discus-answer-reaction.sh"
+source "${GET_DISCUSSION_DIR}/discus-answer-reply.sh"
+source "${GET_DISCUSSION_DIR}/discus-answer-reply-reaction.sh"
+source "${GET_DISCUSSION_DIR}/discus-answer-node-id.sh"
 
 #--------------------------------------
 # データ取得を統合する関数

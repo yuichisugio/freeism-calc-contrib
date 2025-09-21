@@ -69,12 +69,12 @@ function get_paginated_repository_data() {
     )"
 
     # 続きがない、もしくは期間外の場合は終了
-    if [[
+    if [[ 
       "$HAS_NEXT_PAGE" != "true" ||
       "$END_CURSOR" == "null" ||
       -z "$END_CURSOR" ||
-      (-n "$LAST_DATE" && "$LAST_DATE" > "$UNTIL")
-    ]]; then
+      (-n "$LAST_DATE" && "$LAST_DATE" > "$UNTIL") ]] \
+      ; then
       break
     fi
 
@@ -134,12 +134,12 @@ function get_paginated_star_data() {
     LAST_DATE="$(jq -r 'try .data.repository.stargazers.edges[-1].starredAt // empty' <<<"$RESPONSE")"
 
     # 続きがない、もしくは期間外の場合は終了
-    if [[
+    if [[ 
       "$HAS_NEXT_PAGE" != "true" ||
       "$END_CURSOR" == "null" ||
       -z "$END_CURSOR" ||
-      (-n "$LAST_DATE" && "$LAST_DATE" > "$UNTIL")
-    ]]; then
+      (-n "$LAST_DATE" && "$LAST_DATE" > "$UNTIL") ]] \
+      ; then
       break
     fi
 
@@ -180,7 +180,7 @@ function get_paginated_data_by_node_id() {
     return 0
   fi
 
-  # RESULT_PR_NODE_ID_PATHのすべてのnode_idに対して実行するよう繰り返す
+  # RESULT_GET_PR_NODE_ID_PATHのすべてのnode_idに対して実行するよう繰り返す
   for NODE_ID in $(jq -r '.[].id' "$NODE_ID_PATH"); do
 
     # フィールドのtotalCountを取得。.[$FIRST_CHECK_FIELD_NAME].totalCountで、FIRST自身がnullの可能性もあるため、// 0で0を返すようにする。

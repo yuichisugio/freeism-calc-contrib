@@ -7,6 +7,13 @@
 set -euo pipefail
 
 #--------------------------------------
+# 出力先のファイルを定義
+#--------------------------------------
+readonly RAW_GET_PR_TIMELINE_PATH="${RESULT_GET_PR_DIR}/raw-pr-timeline.jsonl"
+readonly RESULT_GET_PR_TIMELINE_PATH="${RESULT_GET_PR_DIR}/result-pr-timeline.json"
+mkdir -p "$(dirname "$RESULT_GET_PR_TIMELINE_PATH")"
+
+#--------------------------------------
 # pull requestのタイムラインを取得する関数
 #--------------------------------------
 function get_pull_request_timeline() {
@@ -17,8 +24,6 @@ function get_pull_request_timeline() {
   before_remaining_ratelimit="$(get_ratelimit "before:get-pull-request-timeline()")"
 
   local QUERY
-  local RAW_PATH="${RESULT_GET_PR_DIR}/raw-pr-timeline.jsonl"
-  local RESULT_PATH="${RESULT_GET_PR_DIR}/result-pr-timeline.json"
 
   # shellcheck disable=SC2016
   QUERY='
@@ -118,6 +123,7 @@ function get_pull_request_timeline() {
                 }
               }
               ... on AssignedEvent {
+                id
                 createdAt
                 actor { # アサインした人（実行者）
                   __typename
@@ -144,12 +150,12 @@ function get_pull_request_timeline() {
 
   get_paginated_data_by_node_id \
     "$QUERY" \
-    "$RAW_PATH" \
-    "$RESULT_PATH" \
+    "$RAW_GET_PR_TIMELINE_PATH" \
+    "$RESULT_GET_PR_TIMELINE_PATH" \
     "timelineItems" \
-    "$RESULT_PR_NODE_ID_PATH" \
+    "$RESULT_GET_PR_NODE_ID_PATH" \
     "createdAt"
-    
+
   # データ取得後のRateLimitを出力
   get_ratelimit \
     "after:get-pull-request-timeline()" \

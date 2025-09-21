@@ -18,7 +18,7 @@ mkdir -p "$RESULT_GET_FORK_DIR"
 #--------------------------------------
 # fork関連のデータ取得を行う関数
 #--------------------------------------
-get_fork() {
+function get_fork() {
 
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit

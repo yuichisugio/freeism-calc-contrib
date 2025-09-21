@@ -61,9 +61,9 @@ function get_pull_request_comment() {
   get_paginated_data_by_node_id \
     "$QUERY" \
     "$RAW_PATH" \
-    "$RESULT_PR_COMMENT_NODE_ID_PATH" \
+    "$RESULT_GET_PR_COMMENT_NODE_ID_PATH" \
     "comments" \
-    "$RESULT_PR_NODE_ID_PATH" \
+    "$RESULT_GET_PR_NODE_ID_PATH" \
     "publishedAt"
 
   # データ取得後のRateLimitを出力

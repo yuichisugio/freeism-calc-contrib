@@ -15,8 +15,9 @@ mkdir -p "$RESULT_PROCESSED_RELEASE_DIR"
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "${PROCESS_DIR}/release/release-node-id.sh"
-source "${PROCESS_DIR}/release/release-reaction.sh"
+readonly PROCESS_RELEASE_DIR="${PROCESS_DIR}/release"
+source "${PROCESS_RELEASE_DIR}/release-node-id.sh"
+source "${PROCESS_RELEASE_DIR}/release-reaction.sh"
 
 #--------------------------------------
 # リリースのデータを取得する関数

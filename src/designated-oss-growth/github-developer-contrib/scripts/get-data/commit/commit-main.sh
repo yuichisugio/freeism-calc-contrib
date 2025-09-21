@@ -19,9 +19,10 @@ readonly RESULT_GET_COMMIT_COMMENT_PATH="${RESULT_GET_COMMIT_DIR}/result-commit-
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
-source "${GET_DIR}/commit/commit-node-id-with-pr.sh"
-source "${GET_DIR}/commit/commit-comment.sh"
-source "${GET_DIR}/commit/commit-comment-reaction.sh"
+readonly GET_COMMIT_DIR="${GET_DIR}/commit"
+source "${GET_COMMIT_DIR}/commit-node-id-with-pr.sh"
+source "${GET_COMMIT_DIR}/commit-comment.sh"
+source "${GET_COMMIT_DIR}/commit-comment-reaction.sh"
 
 #--------------------------------------
 # コミットのデータを取得する

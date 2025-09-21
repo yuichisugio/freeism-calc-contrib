@@ -25,7 +25,7 @@ FIRST_CHECK_FIELD_NAME="reactions"
 
 SECOND_CHECK_FIELD_NAME="createdAt"
 
-RESULT_PR_NODE_ID_PATH="./src/designated-oss-growth/github-developer-contrib/archive/pull-request/pr-reaction/result-pr-node-id.json"
+RESULT_GET_PR_NODE_ID_PATH="./src/designated-oss-growth/github-developer-contrib/archive/pull-request/pr-reaction/result-pr-node-id.json"
 
 HAS_NEXT_PAGE=""
 END_CURSOR=""
@@ -41,19 +41,19 @@ UNTIL="2025-09-15T23:59:59Z"
 : >"$RESULT_PATH"
 
 # node_idが0の場合は終了
-if [[ "$(jq -r 'length' "$RESULT_PR_NODE_ID_PATH")" == "0" ]]; then
+if [[ "$(jq -r 'length' "$RESULT_GET_PR_NODE_ID_PATH")" == "0" ]]; then
   exit 0
 fi
 
-# RESULT_PR_NODE_ID_PATHのすべてのnode_idに対して実行するよう繰り返す
-for NODE_ID in $(jq -r '.[].id' "$RESULT_PR_NODE_ID_PATH"); do
+# RESULT_GET_PR_NODE_ID_PATHのすべてのnode_idに対して実行するよう繰り返す
+for NODE_ID in $(jq -r '.[].id' "$RESULT_GET_PR_NODE_ID_PATH"); do
 
   FIELD_TOTAL_COUNT="$(
     jq -r \
       --arg NODE_ID "$NODE_ID" \
       --arg FIRST_CHECK_FIELD_NAME "$FIRST_CHECK_FIELD_NAME" \
       '(.[] | select(.id==$NODE_ID) | .[$FIRST_CHECK_FIELD_NAME].totalCount // 0) | tonumber' \
-      "$RESULT_PR_NODE_ID_PATH"
+      "$RESULT_GET_PR_NODE_ID_PATH"
   )"
 
   # フィールドのtotalCountが0の場合は次のnode_idに進む
