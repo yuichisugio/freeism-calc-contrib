@@ -234,7 +234,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
       - プルリクの作成者による作成時のコメントの文字数
     - レビュー時
       - プルリクのレビュー時のコード行数
-      - プルリクのレビュー時のコメント数
+      - プルリクのレビュー時のコメントの文字数
     - コメント
       - プルリクの作成者以外によるコメントの文字数
       - プルリクの作成者以外によるコード行数
@@ -254,7 +254,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   - 👎 バッド`b`は、一つにつき`0.1`
   - バッド以外`a`は、一つにつき`0.1`
   - `y`が 0 以下でも、マイナスのままにして、ユーザー合算の時に他のタスクにも影響が出るようにしたい
-  - discussionsの`upvoteCount`もグッドとしてカウントしたい
+  - discussions の`upvoteCount`もグッドとしてカウントしたい
 
 - 計算式
 
@@ -302,9 +302,6 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   1.  Discussions
       - Discussions 作成から、コメントまでの日数
       - Discussions 作成から、リアクションするまでの日数
-      - Discussions 作成から、ラベル付けするまでの日数
-      - Discussions 作成から、カテゴリー分けまでの日数
-      - Discussions 作成から、Voting までの日数
       - ※「Discussions 作成からステータス変更」は、議論を十分する時間がなくなり望まない結果になるので算出しない。
 
 #### タスクの種類
@@ -551,9 +548,17 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 1. Issue のラベル付けの作業で貢献として認める仕様
    - 各 Issue ごとに、現在ついている全てのラベルをそれぞれラベル付けした最新の日・最新の人のみを貢献として認める
 1. プルリクの`reviewRequests`は、レビュー担当者としてアサインされながらレビューが未完了の人のみを返す。なので、全員が完了済みの人も欲しい場合は`ReviewRequestedEvent`と`ReviewRequestRemovedEvent`を使用する必要がある
-2. `Discussion`でも`labels`はあるが、`timelineItems`が存在しないため、ラベル付けしたひとを取得できないので貢献度としては算出できない
-3. `Pull Request`オブジェクトの`timelineItems`フィールドの`MERGED_EVENT`の後に必ず`CLOSED_EVENT`が実行されているので、`MERGED_EVENT`は取得しない
+1. `Discussion`でも`labels`はあるが、`timelineItems`が存在しないため、ラベル付けしたひとを取得できないので貢献度としては算出できない
+1. `Pull Request`オブジェクトの`timelineItems`フィールドの`MERGED_EVENT`の後に必ず`CLOSED_EVENT`が実行されているので、`MERGED_EVENT`は取得しない
    1. ステータス変更(reject or merged)した人のタスクは、`CLOSED_EVENT`だけですべて拾える
+1. discussion の`answer`と`comment`は同じ扱いっぽい。
+   - なので同じ人内で同じデータが`answer`と`comment`の両方で取得できてしまう。
+   - また、`answer`に対して行った`reaction`や`reply`も、コメントに対してのタスクとしても出力されるので重複する
+   - answer は comment の方を削除したい。answer は comment よりも重み付けしているため。
+   - reaction や reply はどちらでも問題ないので、どちらかを削除したい。
+   - `integrate_processed_files`関数に処理を実装した
+1. `watch`は`createdAt`が存在しない。期間で区切っても毎回全て出力される。
+   - 貢献と認めたくない場合は、`weighting.jsonc`で`0`にすれば OK
 
 ## 改善点
 

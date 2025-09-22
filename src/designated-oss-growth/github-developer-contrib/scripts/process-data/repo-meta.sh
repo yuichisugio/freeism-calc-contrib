@@ -20,14 +20,14 @@ function process_repo_meta() {
   printf '%s\n' "begin:process_repo_meta()"
 
   jq '{
-        host:"github.com",
-        ownerUsername:.data.repository.owner.login,
-        ownerUserId:(.data.repository.owner.id|tostring),
-        repositoryName:.data.repository.name,
-        repositoryId:(.data.repository.id|tostring),
-        repositoryUrl:.data.repository.url,
-        createdAt:.data.repository.createdAt,
-        defaultBranch:.data.repository.defaultBranchRef.name
+        host:                 "github.com",
+        ownerUsername:        .data.repository.owner.login,
+        ownerUserId:          (.data.repository.owner.id|tostring),
+        repositoryName:       .data.repository.name,
+        repositoryId:         (.data.repository.id|tostring),
+        repositoryUrl:        .data.repository.url,
+        createdAt:            .data.repository.createdAt,
+        defaultBranch:        .data.repository.defaultBranchRef.name
       }' "$RESULT_GET_REPO_META_PATH" >"$RESULT_PROCESSED_REPO_META_PATH"
 
   printf '%s\n' "end:process_repo_meta()"

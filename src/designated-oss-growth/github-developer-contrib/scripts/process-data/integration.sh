@@ -7,10 +7,13 @@
 set -euo pipefail
 
 # --------------------------------------
-# 出力先のディレクトリを作成する
+# 出力先のディレクトリ/ファイルを作成する
 # --------------------------------------
+# 加工したデータを入れるディレクトリ
 readonly OUTPUT_PROCESSED_DIR="${OUTPUT_DIR}/processed-data"
 mkdir -p "$OUTPUT_PROCESSED_DIR"
+# 統合したデータのパス
+readonly RESULT_PROCESSED_INTEGRATED_DATA_PATH="${OUTPUT_PROCESSED_DIR}/integrated-processed-data.json"
 
 #--------------------------------------
 # 使用するファイルを読み込む
@@ -34,10 +37,12 @@ source "${PROCESS_DIR}/repo-meta.sh"
 function process_data() {
   printf '%s\n' "begin:process_data()"
 
-  # 実行するファイル
+  # どんなタスクが選ばれても必須で、リポジトリのメタデータを加工する。
+  process_repo_meta
+
+  # 実行するファイルを選択
   if should_run "star" "$@"; then process_star; fi
   if should_run "fork" "$@"; then process_fork; fi
-  if should_run "repo-meta" "$@"; then process_repo_meta; fi
   if should_run "sponsor" "$@"; then process_sponsor; fi
   if should_run "watch" "$@"; then process_watch; fi
   if should_run "issue" "$@"; then process_issue; fi
@@ -47,7 +52,7 @@ function process_data() {
   if should_run "discussion" "$@"; then process_discussion; fi
 
   # データ加工した、それぞれのファイルを一つのファイルに統合する
-  integrate_processed_files
+  integrate_processed_files "$RESULT_PROCESSED_INTEGRATED_DATA_PATH"
 
   printf '%s\n' "end:process_data()"
 }

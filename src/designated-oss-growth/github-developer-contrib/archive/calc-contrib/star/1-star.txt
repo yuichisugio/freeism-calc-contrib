@@ -1,0 +1,247 @@
+# starによる貢献度を算出する。ver1
+jq \
+  --arg task_name "star" \
+  --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
+  '
+    # weighting.json の 値を取得（無ければ 0）
+    $weighting[0] as $w
+    | $w.task_type[$task_name] // 0 as $task_type_w
+    | $w.repo_creation_to_task_period.max_period as $cre_max_period
+    | $w.repo_creation_to_task_period.minus_unit as $cre_minus_unit
+    | $w.response_speed.max_period as $res_max_period
+    | $w.response_speed.minus_unit as $res_minus_unit
+
+    # allを保存しておく
+    | . as $all
+
+    # metaからrepository作成日を取得
+    | $all.meta.repository.created_at as $repo_createdAt
+
+    # 対象 task に2項目を追記
+    | (
+        $all.data.user[]?.task[]?
+        | select(.task_name == $task_name) as $task_array
+        | $task_array.task_date as $task_date
+      )
+    | $task_array +=
+      {
+        "task_type_criterion_weight": $we,
+        "repo_creation_to_task_period_criterion_weight": (($cre_max_period-$cre_minus_unit*($repo_createdAt-$task_date)) as $r | if 0>=$r then 1 else . end) as $cre_p
+        "response_speed_criterion_weight":(($res_max_period-$res_minus_unit*($repo_createdAt-$task_date))as $r | if 0>=$r then 1 else . end)as $res_p
+        "contribution_point": ($we+$cre_p+$res_p)
+      }
+  ' \
+  "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" \
+  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/star/1-1-result-star.json"
+
+
+# starによる貢献度を算出する。ver2
+jq \
+  --arg task_name "star" \
+  --slurpfile weighting "/Users/yuichi.sugio/Documents/VSCode/freeism-contribution-calculate/src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
+  '
+    # クリテリア重みの共通関数（0以下は1に補正）
+    def crit_weight($max; $unit; $days):
+      ($max - ($unit * $days)) as $w
+      | if $w <= 0 then 1 else $w end;
+
+    # ISO8601 → epoch秒（fromdate失敗時は strptime|mktime でフォールバック）
+    def to_ts($s):
+      if $s == null then null
+      else
+        try ($s | fromdate)
+        catch (try ($s | strptime("%Y-%m-%dT%H:%M:%SZ") | mktime) catch null)
+      end;
+
+    # weighting.json の値を取得（無ければ 0）
+    $weighting[0] as $w
+    | $w.task_type[$task_name] // 0 as $task_type_w
+    | $w.repo_creation_to_task_period.max_period as $cre_max_period
+    | $w.repo_creation_to_task_period.minus_unit as $cre_minus_unit
+    | $w.response_speed.max_period as $res_max_period
+    | $w.response_speed.minus_unit as $res_minus_unit
+
+    # allを保存しておく
+    | . as $all
+
+    # metaからrepository作成日を取得
+    | $all.meta.repository.created_at as $repo_createdAt
+
+    # star タスクのみ追記（入力JSON全体を保持）
+    | (to_ts($repo_createdAt)) as $repo_ts
+    | .data.user = ((.data.user // []) | map(
+        . as $u
+        | ($u.task // []) as $tasks
+        | $u + { task: ($tasks | map(
+            if .task_name == $task_name then
+              (to_ts(.createdAt // .task_date)) as $task_ts
+              | ( if ($repo_ts==null or $task_ts==null)
+                  then 0
+                  else (( $task_ts - $repo_ts ) / 86400 | floor)
+                end ) as $diff_days
+              | (crit_weight($cre_max_period; $cre_minus_unit; $diff_days)) as $cre_p
+              | (crit_weight($res_max_period; $res_minus_unit; $diff_days)) as $res_p
+              | . + {
+                  "task_type_criterion_weight": $task_type_w,
+                  "repo_creation_to_task_period_criterion_weight": $cre_p,
+                  "response_speed_criterion_weight": $res_p,
+                  "contribution_point": ($task_type_w + $cre_p + $res_p)
+                }
+            else .
+            end
+          )) }
+      ))
+  ' \
+  "/Users/yuichi.sugio/Documents/VSCode/freeism-contribution-calculate/src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" \
+  > "/Users/yuichi.sugio/Documents/VSCode/freeism-contribution-calculate/src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/star/1-1-result-star.json"
+
+
+# starによる貢献度を算出する。ver3
+jq \
+  --arg task_name "star" \
+  --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
+  '
+    # 0以下なら1に補正
+    def crit_weight($max; $unit; $days):
+      ($max - ($unit * $days)) as $w
+      | if $w <= 0 then 1 else $w end;
+
+    # ISO8601 → epoch秒（fromdate失敗時は strptime|mktime にフォールバック）
+    def to_ts($s):
+      if $s == null then null
+      else
+        try ($s | fromdate)
+        catch (try ($s | strptime("%Y-%m-%dT%H:%M:%SZ") | mktime) catch null)
+      end;
+
+    # weighting.json の値（task_type は - を _ に正規化して参照）
+    $weighting[0] as $w
+    | ($task_name | gsub("-"; "_")) as $task_key
+    | $w.task_type[$task_key] // 0 as $task_type_w
+    | $w.repo_creation_to_task_period.max_period as $cre_max_period
+    | $w.repo_creation_to_task_period.minus_unit as $cre_minus_unit
+    | $w.response_speed.max_period as $res_max_period
+    | $w.response_speed.minus_unit as $res_minus_unit
+
+    # リポジトリ作成日時
+    | . as $all
+    | $all.meta.repository.created_at as $repo_createdAt
+    | (to_ts($repo_createdAt)) as $repo_ts
+
+    # 各 user の task を更新（該当しなければそのまま返す）
+    | .data.user = ((.data.user // []) | map(
+        . as $u
+        | ($u.task // []) as $tasks
+        | $u + { task: ($tasks | map(
+            if .task_name == $task_name then
+              (to_ts(.createdAt // .task_date)) as $task_ts
+              | (if ($repo_ts==null or $task_ts==null)
+                   then 0
+                   else (( $task_ts - $repo_ts ) / 86400 | floor)
+                 end) as $diff_days
+              | (crit_weight($cre_max_period; $cre_minus_unit; $diff_days)) as $cre_p
+              | (crit_weight($res_max_period; $res_minus_unit; $diff_days)) as $res_p
+              | . + {
+                  "task_type_criterion_weight": $task_type_w,
+                  "repo_creation_to_task_period_criterion_weight": $cre_p,
+                  "response_speed_criterion_weight": $res_p,
+                  "contribution_point": ($task_type_w + $cre_p + $res_p)
+                }
+            else .
+            end
+          )) }
+      ))
+  ' \
+  "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" \
+  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/star/1-1-result-star.json"
+
+
+# starによる貢献度を算出する。ver4
+jq -r \
+  --arg task_name "star" \
+  --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" '
+  def to_ts:
+    if . == null then null
+    else
+      try (fromdateiso8601)
+      catch (try (sub("\\.[0-9]+";"") | strptime("%Y-%m-%dT%H:%M:%SZ") | mktime) catch null)
+    end;
+
+  def crit_weight($max; $unit; $days):
+    ($max - ($unit * $days)) as $w
+    | if $w <= 0 then 1 else $w end;
+
+  $weighting[0] as $w
+  | $w.task_type[$task_name] // 0 as $task_type_w
+  | $w.repo_creation_to_task_period.max_period as $cre_max
+  | $w.repo_creation_to_task_period.minus_unit as $cre_unit
+  | $w.response_speed.max_period as $res_max
+  | $w.response_speed.minus_unit as $res_unit
+
+  | . as $all
+  | ($all.meta.repository.created_at | to_ts) as $repo_ts
+  | .data.user[]?.task[]?
+  | select(.task_name == $task_name)
+  | ((.createdAt // .task_date) | to_ts) as $task_ts
+  | ( (((($task_ts // 0) - ($repo_ts // 0)) / 86400) | floor) as $d
+      | if $d < 0 then 0 else $d end
+    ) as $diff_days
+  | (crit_weight($cre_max; $cre_unit; $diff_days)) as $cre_p
+  | (crit_weight($res_max; $res_unit; $diff_days)) as $res_p
+  | {
+      task_name,
+      diff_days: $diff_days,
+      task_type_criterion_weight: $task_type_w,
+      repo_creation_to_task_period_criterion_weight: $cre_p,
+      response_speed_criterion_weight: $res_p,
+      contribution_point: ($task_type_w + $cre_p + $res_p)
+    }
+  ' "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" | head -n 5
+
+
+# starによる貢献度を算出する。ver5
+jq \
+  --arg task_name "star" \
+  --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
+  '
+    def to_ts:
+      if . == null then null
+      else
+        try (fromdateiso8601)
+        catch (try (sub("\\.[0-9]+";"") | strptime("%Y-%m-%dT%H:%M:%SZ") | mktime) catch null)
+      end;
+
+    def clamp($max; $unit; $days):
+      ($max - ($unit * $days)) as $v | if $v <= 0 then 1 else $v end;
+
+    def build_row_fields($repo_ts; $w):
+      (.createdAt // .task_date | to_ts) as $task_ts
+      | ( (((($task_ts // 0) - ($repo_ts // 0)) / 86400) | floor) | if . < 0 then 0 else . end ) as $days
+      | ($w.task_type[$task_name] // 0) as $tw
+      | (clamp($w.repo_creation_to_task_period.max_period; $w.repo_creation_to_task_period.minus_unit; $days)) as $cre_p
+      | (clamp($w.response_speed.max_period; $w.response_speed.minus_unit; $days)) as $res_p
+      | {
+          "task_type_criterion_weight": $tw,
+          "repo_creation_to_task_period_criterion_weight": $cre_p,
+          "response_speed_criterion_weight": $res_p,
+          "contribution_point": ($tw + $cre_p + $res_p)
+        };
+
+    $weighting[0] as $w
+    | . as $root
+    | ($root.meta.repository.created_at | to_ts) as $repo_ts
+
+    # ユーザー配列を安全に更新（常に全体を返す）
+    | .data.user = ((.data.user // []) | map(
+        . as $u
+        | ($u.task // []) as $tasks
+        | $u + { task: ($tasks | map(
+            if .task_name == $task_name then
+              . + build_row_fields($repo_ts; $w)
+            else .
+            end
+          )) }
+      ))
+  ' \
+  "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" \
+  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/star/1-1-result-star.json"

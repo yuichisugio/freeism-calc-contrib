@@ -27,7 +27,7 @@ if ! parsed="$(parse_args "$@")"; then
   # 関数内では>&2にしないとターミナル出力ができないが、そのままだとエラー表示になるので、ここでexit 0にすることで、エラー表示にせずにヘルプを出力できる。エラー表示は親プロセスで決まる。
   exit 0
 fi
-read -r OWNER REPO SINCE UNTIL TASKS <<<"$parsed"
+read -r OWNER REPO SINCE UNTIL TASKS VERBOSE <<<"$parsed"
 
 #--------------------------------------
 # 出力先のディレクトリを作成する
@@ -43,8 +43,6 @@ mkdir -p "$OUTPUT_DIR"
 source "${SCRIPT_DIR}/scripts/get-data/integration.sh"
 # データ加工を統合するファイルを取得
 source "${SCRIPT_DIR}/scripts/process-data/integration.sh"
-# 重み付けを統合するファイルを取得
-# source "${SCRIPT_DIR}/scripts/calc-weighting/integration.sh"
 # 貢献度の算出を統合するファイルを取得
 # source "${SCRIPT_DIR}/scripts/calc-contrib/integration.sh"
 
@@ -56,8 +54,6 @@ function main() {
   # 依存コマンドの確認
   require_tools
 
-  printf '%s\n' "selected-tasks:${TASKS:-"all"}" >&2
-
   # データ取得前のRateLimit変数
   local before_remaining_ratelimit
   # データ取得前のRateLimitを取得
@@ -68,9 +64,6 @@ function main() {
 
   # データ加工（-t/--tasks 指定があれば、そのタスクのみ実行）
   process_data "${TASKS:-}"
-
-  # # 重み付け
-  # calc_weighting
 
   # # 貢献度の算出
   # calc_contrib

@@ -87,13 +87,13 @@ function process_data_utils() {
           | group_by(.user_id)
           | map(
               (
-                .[0] 
+                .[0]
                 | {
-                    user_id, 
-                    user_database_id, 
-                    user_login, 
-                    user_name, 
-                    user_url, 
+                    user_id,
+                    user_database_id,
+                    user_login,
+                    user_name,
+                    user_url,
                     user_type
                   }
               )
@@ -300,64 +300,117 @@ function process_data_utils_by_two_files() {
 #--------------------------------------
 function integrate_processed_files() {
 
-  # 出力先のファイルを定義
-  local OUTPUT_PATH=${OUTPUT_PROCESSED_DIR}/integrated-processed-data.json
+  # 引数
+  local OUTPUT_PATH="${1}"
 
   # 統合したいファイルが入ったフォルダのPATH
   local FIND_DIR="${OUTPUT_PROCESSED_DIR}"
 
   # 再帰的に *.json / *.jsonl を収集（名前は不問）
-  mapfile -d '' -t FILES < <(
-    find "$FIND_DIR" -type f \( -name '*.json' -o -name '*.jsonl' \) -print0
-  )
+  local -a FILES=()
+  while IFS= read -r -d '' f; do
+    FILES+=("$f")
+  done < <(find "$FIND_DIR" -type f \( -name '*.json' -o -name '*.jsonl' \) -print0)
 
-  # 対象ファイルがなければ空の雛形を出力して終了
+  # 対象ファイルがなければ空の雛形を出力して return
   if ((${#FILES[@]} == 0)); then
-    printf '%s\n' '{"meta":{"createdAt":"'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"},"data":{"user":[]}}' >"$OUTPUT_PATH"
-    exit 0
+    printf '{"meta":{"createdAt":"%s"},"data":{"user":[]}}\n' \
+      "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >"$OUTPUT_PATH"
+    return 0
   fi
 
   # すべてのファイルを slurp (-s) で一括読み込みし、user_id で group_by → task を結合
-  # - ファイルにより schema が微妙に違っても .data.user がなければ無視
-  # - task は task_id（なければ name+date 等）で重複排除
   # - ISO8601 文字列前提で task_date 昇順に整列
-  jq \
-    -s \
+  # argv 上限回避のため cat で連結 → jq にパイプで渡す
+  {
+    for f in "${FILES[@]}"; do
+      cat "$f"
+      printf '\n'
+    done
+  } | jq \
+    --slurpfile repo_meta "$RESULT_PROCESSED_REPO_META_PATH" \
+    --slurp \
     '
+      # リポジトリのメタデータを取得
+      $repo_meta[0] as $repo_meta
+
+      |
+
       # 全入力（ファイル/行）から user 配列だけを集約
       [ .[]? | (.data.user? // [])[] ] as $all_users
 
       # user_id ごとにグループ化
-      | $all_users
+      | ( $all_users
       | group_by(.user_id)
       | map(
           . as $g
-          | ($g[0] | del(.task)) as $base                # 代表のユーザ情報（task 以外）
-          | ($g | map(.task // []) | add)    as $tasks   # すべての task を結合
+          | ($g[0] | del(.task)) as $base                  # 代表のユーザ情報（task 以外）
+          | ($g | map(.task // []) | add) as $tasks        # すべての task を結合
 
-          # task の重複排除キーを柔軟に（task_id があれば最優先）
-          | $base + {
-              task:
-                ( $tasks
-                  | unique_by(
-                      ( .task_id // (
-                          ( .task_name // "" )
-                          + "|" + ( .task_date // "" )
-                          + "|" + ( .task_database_id // "" )
-                        )
-                      )
+          # task_date 昇順に整列してから、baseとタスクを結合
+          | (
+                # 重複判定キーと優先度を関数化。
+                # discussion-answer と comment は全く同じタスクが重複するため、answerを残す処理が必要。
+                def dedup_key:
+                  ( .task_id // (
+                      ( .task_name // "" )
+                      + "|" + ( .task_date // "" )
+                      + "|" + ( .task_database_id // "" )
+                      + "|" + ( .task_full_database_id // "" )
                     )
-                  | sort_by(.task_date // "")
-                )
-            }
-        )
+                  );
+
+                # 同一 task_id の重複では discussion-answer を最優先、comment を次点、
+                # それ以外は現行どおり（優先度=2で無影響）
+                # unique_by は「最初に現れた要素」を残すため、task_name が discussion-answer と comment の両方ある場合は discussion-answer を優先的に残す。
+                def pref:
+                  if (.task_id != null) and ((.task_name // "") == "discussion-answer") then 0
+                  elif (.task_id != null) and ((.task_name // "") == "comment") then 1
+                  else 2
+                  end;
+
+                $tasks
+
+                # 重複キー（=dedup_key）→優先度(pref) の順で整列
+                # こうしておくと unique_by は「discussion-answer を先頭に見る」ため残る
+                # この場合は discussion-answer が 0、comment が 1、それ以外が 2 となる
+                | group_by(dedup_key)
+                | map( sort_by(pref) | .[0] )
+
+                # 出力整形は従来どおり task_date 昇順
+                | sort_by(.task_date // "")
+                ) as $tasks_dedup
+
+              # 出力オブジェクト（各ユーザー）
+              | $base + {
+                  task_total_count: ($tasks_dedup | length),
+                  task: $tasks_dedup
+                }
+            )
+        ) as $users
 
       # 出力のトップレベルを組み立て
       | {
-          meta: { createdAt: (now | strftime("%Y-%m-%dT%H:%M:%SZ")) },
-          data: { user: . }
+          meta: {
+            analytics:{
+              createdAt: (now | strftime("%Y-%m-%dT%H:%M:%SZ"))
+            },
+            repository:{
+              host:              $repo_meta.host,
+              owner_username:    $repo_meta.ownerUsername,
+              owner_user_id:     $repo_meta.ownerUserId,
+              repository_name:   $repo_meta.repositoryName,
+              repository_id:     $repo_meta.repositoryId,
+              repository_url:    $repo_meta.repositoryUrl,
+              created_at:        $repo_meta.createdAt,
+              default_branch:    $repo_meta.defaultBranch
+            }
+          },
+          data: {
+            user_total_count: ($users | length),
+            user: $users
+          }
         }
     ' \
-    "${FILES[@]}" \
     >"$OUTPUT_PATH"
 }

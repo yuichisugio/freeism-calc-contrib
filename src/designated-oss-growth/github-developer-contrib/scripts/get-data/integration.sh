@@ -40,14 +40,16 @@ function get_data() {
   # データ取得前のRateLimitを取得
   before_remaining_ratelimit="$(get_ratelimit "before:get-data()")"
 
-  # ファイルを実行
+  # どんなタスクが選ばれても必須で、リポジトリのメタデータを取得する。
+  get_repo_meta
+
+  # 実行するファイルを選択
   if should_run "commit" "$@"; then get_commit; fi
   if should_run "discussion" "$@"; then get_discussion; fi
   if should_run "fork" "$@"; then get_fork; fi
   if should_run "issue" "$@"; then get_issue; fi
   if should_run "pull-request" "$@"; then get_pull_request; fi
   if should_run "release" "$@"; then get_release; fi
-  if should_run "repo-meta" "$@"; then get_repo_meta; fi
   if should_run "sponsor" "$@"; then get_sponsor; fi
   if should_run "star" "$@"; then get_star; fi
   if should_run "watch" "$@"; then get_watch; fi

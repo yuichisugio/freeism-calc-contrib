@@ -1,0 +1,44 @@
+{
+	"task_type": {
+		"create_open_pr": 5,
+		"create_draft_pr": 2,
+		"create_approved_pr": 10,
+		"create_closed_pr": 5,
+		"create_merged_pr": 5,
+		"pr_merge": 5,
+		"pr_review": 5,
+		"create_open_issue": 1,
+		"create_other_closed_issue": 2,
+		"create_completed_closed_issue": 5,
+		"commit_with_pr": 6,
+		"change_pr_status": 5,
+		"change_issue_status": 5,
+		"sponsor": 100,
+		"star": 1,
+		"fork": 1,
+		"watch": 1,
+		"install": 1,
+		"reaction": 1,
+		"comment": 1,
+		"labeling": 1,
+		"assigning": 1,
+		"answer_discussion": 3,
+		"create_discussion": 1
+	},
+	"repo_creation_to_task_period": {
+		"max_period": 3650,
+		"minus_unit": 1
+	},
+	"amount_of_work": {
+		"word_count": 0.05,
+		"lines_of_code": 0.1
+	},
+	"amount_of_reaction": {
+		"good_reaction_count": 0.1,
+		"bad_reaction_count": -0.1
+	},
+	"response_speed": {
+		"max_period": 30,
+		"minus_unit": 1
+	}
+}

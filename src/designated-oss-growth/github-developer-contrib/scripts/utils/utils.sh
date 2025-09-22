@@ -42,6 +42,7 @@ function parse_args() {
   local SINCE="1970-01-01T00:00:00Z" # ドキュメント上の最小値
   local UNTIL="2099-12-13T23:59:59Z" # ドキュメント上の最大値
   local -a TASKS=()                  # タスクの配列
+  local VERBOSE="false"
 
   # --- 引数パース。引数がある場合はデフォルト値を上書きする ---
   while [[ $# -gt 0 ]]; do
@@ -70,6 +71,14 @@ function parse_args() {
       ;;
     -h | --help)
       show_usage
+      exit 1
+      ;;
+    -ve | --verbose)
+      VERBOSE="true"
+      shift 1
+      ;;
+    -v | --version)
+      show_version
       exit 1
       ;;
     *)
@@ -124,16 +133,26 @@ function parse_args() {
     done
   fi
 
-  # リポジトリのオーナー名とリポジトリ名を返す
+  # リポジトリのオーナー名とリポジトリ名を返す（情報ログ）
   printf '%s %s %s %s %s の貢献度を算出します。\n' \
-    "$OWNER" "$REPO" "$SINCE" "$UNTIL" "$TASKS_JOINED" >&2
+    "$OWNER" "$REPO" "$SINCE" "$UNTIL" "${TASKS_JOINED:-"all"}" >&2
 
-  # 値を関数呼び出し元に返す（タスクは1フィールドにまとめて返す）
-  printf '%s %s %s %s %s\n' \
-    "$OWNER" "$REPO" "$SINCE" "$UNTIL" "$TASKS_JOINED"
+  printf '%s\n' "selected-tasks:${TASKS_JOINED:-"all"}" >&2
+
+  # 値を関数呼び出し元に返す
+  # -tオプションがない場合は、左詰になって渡るデータがずれるので、常に引数がない場合は"all"を渡す
+  printf '%s %s %s %s %s %s\n' \
+    "$OWNER" "$REPO" "$SINCE" "$UNTIL" "${TASKS_JOINED:-"all"}" "$VERBOSE"
 
   # 正常終了
   return 0
+}
+
+#--------------------------------------
+# バージョンの表示
+#--------------------------------------
+function show_version() {
+  printf '%s\n' "0.0.1" >&2
 }
 
 #--------------------------------------
@@ -141,7 +160,7 @@ function parse_args() {
 #--------------------------------------
 function show_usage() {
   cat <<EOF >&2
-    Usage: 
+    Usage:
       $0 -u [GITHUB_URL]
       $0 -u [GITHUB_URL] -s [YYYY-MM-DD] -un [YYYY-MM-DD]
       $0 -u [GITHUB_URL] -t "star,fork"
@@ -159,6 +178,8 @@ function show_usage() {
       -t, --tasks       実行するタスク（CSV/スペース混在可、複数指定可）
       -r, --ratelimit   リミットを表示
       -h, --help        ヘルプを表示
+      -ve, --verbose    詳細なログを表示
+      -v, --version     バージョンを表示
 
     Output:
       userId,username,pullrequest回数
@@ -209,23 +230,27 @@ function get_ratelimit() {
 function should_run() {
   # 第一引数: 判定したいタスク名
   local name="$1"
-  # 第一引数を削除して、第2引数以降を第一引数として$@で使用できるようにする
   shift
 
   # 第二引数以降: 選択されたタスク（スペース/カンマ混在可）
   local -a selected_tasks=()
-  # 第二引数以降がある場合は、それをカンマ区切りの配列に変換する
   if [[ $# -gt 0 ]]; then
     local arg part
     for arg in "$@"; do
-      # スペースも許容するためにカンマに寄せる
-      arg="${arg// /,}"
-      IFS=, read -r -a parts <<<"$arg"
-      for part in "${parts[@]}"; do
-        if [[ -n "$part" ]]; then
-          selected_tasks+=("$(printf '%s' "$part" | tr '[:upper:]' '[:lower:]')")
-        fi
-      done
+      arg="${arg// /,}" # スペースもカンマに寄せる
+
+      # 配列を必ず初期化してから read -a する（nounset対策）
+      local -a parts=()
+      IFS=, read -r -a parts <<<"$arg" || true # set -e 環境でも安全に（失敗しても空配列のまま）
+
+      # parts が空でも unbound にならない
+      if ((${#parts[@]} > 0)); then
+        for part in "${parts[@]}"; do
+          if [[ -n "$part" ]]; then
+            selected_tasks+=("$(printf '%s' "$part" | tr '[:upper:]' '[:lower:]')")
+          fi
+        done
+      fi
     done
   fi
 
@@ -242,11 +267,9 @@ function should_run() {
   for sel in "${selected_tasks[@]}"; do
     sel="${sel//_/-}"
     if [[ "$sel" == "all" || "$sel" == "$normalized_name" ]]; then
-      # タスク実行
       return 0
     fi
   done
 
-  # タスク実行しない
   return 1
 }
