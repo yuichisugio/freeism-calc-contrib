@@ -1,6 +1,6 @@
-# starによる貢献度を算出する
+# forkによる貢献度を算出する
 jq \
-  --arg task_name "star" \
+  --arg task_name "fork" \
   --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
   '
     def clamp($max; $unit; $days):
