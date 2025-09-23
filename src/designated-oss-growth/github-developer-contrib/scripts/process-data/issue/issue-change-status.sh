@@ -48,7 +48,7 @@ function process_issue_change_status() {
   process_data_utils \
     --input-path "$RESULT_GET_ISSUE_TIMELINE_PATH" \
     --output-path "$RESULT_PROCESSED_ISSUE_CHANGE_STATUS_PATH" \
-    --task-name "issue-change-status" \
+    --task-name "change-status" \
     --task-date "createdAt" \
     --author-field "actor" \
     --first-other-query "$FIRST_OTHER_QUERY" \

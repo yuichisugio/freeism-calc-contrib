@@ -21,6 +21,7 @@ function process_pr_review_comment() {
 
   local SECOND_OTHER_QUERY='
     word_count:   (.bodyText? // "" | length),
+    task_start: .node_publishedAt,
     good_reaction:
       (
         (.reactionGroups? // [] )

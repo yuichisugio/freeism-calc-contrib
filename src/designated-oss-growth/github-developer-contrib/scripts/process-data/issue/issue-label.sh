@@ -25,7 +25,7 @@ function process_issue_label() {
     --output-path "$RESULT_PROCESSED_ISSUE_LABEL_PATH" \
     --event-type "LabeledEvent" \
     --nest-event-field "label" \
-    --task-name "issue-label" \
+    --task-name "labeling" \
     --task-date "createdAt"
 
   printf '%s\n' "end:process_issue_label()"

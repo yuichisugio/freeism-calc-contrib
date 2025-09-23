@@ -22,7 +22,7 @@ function process_pr_review() {
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
     review_word_count:   (.bodyText? // "" | length),
-    pr_start_date: $obj.node_publishedAt,
+    task_start: $obj.node_publishedAt,
     pr_word_count:(($obj.node_title? // "" | length)+($obj.node_bodyText? // "" | length)),
     pr_change_record_count:(($obj.node_additions? // 0)+($obj.node_deletions? // 0)),
     good_reaction:

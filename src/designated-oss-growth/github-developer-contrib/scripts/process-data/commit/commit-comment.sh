@@ -21,6 +21,7 @@ function process_commit_comment() {
 
   local SECOND_OTHER_QUERY='
     word_count:   (.bodyText? // "" | length),
+    task_start: .node_authoredDate,
     good_reaction:
       (
         (.reactionGroups? // [] )

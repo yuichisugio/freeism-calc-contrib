@@ -25,7 +25,7 @@ function process_issue_assigned() {
     --output-path "$RESULT_PROCESSED_ISSUE_ASSIGNED_PATH" \
     --event-type "AssignedEvent" \
     --nest-event-field "assignee" \
-    --task-name "issue-assigned" \
+    --task-name "assigning" \
     --task-date "createdAt"
 
   printf '%s\n' "end:process_issue_assigned()"

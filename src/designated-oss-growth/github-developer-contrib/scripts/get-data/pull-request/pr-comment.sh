@@ -28,6 +28,7 @@ function get_pull_request_comment() {
           id
           number
           url
+          publishedAt
           comments(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }

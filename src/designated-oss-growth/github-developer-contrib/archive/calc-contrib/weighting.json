@@ -6,11 +6,6 @@
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
 		"amount_of_work": {
 			"word_count": 0.05
 		},
@@ -23,11 +18,6 @@
 		"task_type": 2,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -46,11 +36,6 @@
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
 		"amount_of_work": {
 			"word_count": 0.05
 		},
@@ -66,11 +51,6 @@
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
 		"amount_of_work": {
 			"word_count": 0.05
 		},
@@ -83,11 +63,6 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -107,7 +82,7 @@
 			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
+			"max_period": 3,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -127,7 +102,7 @@
 			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
+			"max_period": 3,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -146,11 +121,6 @@
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
 		"amount_of_work": {
 			"word_count": 0.05
 		},
@@ -166,11 +136,6 @@
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
 		"amount_of_work": {
 			"word_count": 0.05
 		},
@@ -183,11 +148,6 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -220,11 +180,6 @@
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
 		"amount_of_work": {
 			"word_count": 0.05,
 			"lines_of_code": 0.1
@@ -234,7 +189,7 @@
 			"bad_reaction_count": -0.1
 		}
 	},
-	"change_pr_status": {
+	"change_status": {
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
@@ -242,20 +197,7 @@
 			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1,
-			"lower_limit": 1
-		}
-	},
-	"change_issue_status": {
-		"task_type": 5,
-		"repo_creation_to_task_period": {
-			"max_period": 3650,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
+			"max_period": 3,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -316,14 +258,16 @@
 			"lower_limit": 1
 		},
 		"amount_of_work": {
-			"word_count": 0.05
+			"word_count": 0.05,
+			"word_count_lower_limit": 1
 		},
 		"amount_of_reaction": {
 			"good_reaction_count": 0.1,
-			"bad_reaction_count": -0.1
+			"bad_reaction_count": -0.1,
+			"good_reaction_count_lower_limit": 0.1
 		},
 		"response_speed": {
-			"max_period": 30,
+			"max_period": 3,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -336,7 +280,7 @@
 			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
+			"max_period": 3,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -353,7 +297,7 @@
 			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
+			"max_period": 3,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -373,7 +317,7 @@
 			"bad_reaction_count": -0.1
 		},
 		"response_speed": {
-			"max_period": 30,
+			"max_period": 3,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -386,7 +330,7 @@
 			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
+			"max_period": 3,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},

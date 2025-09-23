@@ -31,6 +31,7 @@ function get_commit_comment() {
           abbreviatedOid
           url
           commitUrl
+          authoredDate
           comments(first: $perPage, after:$endCursor) {
             totalCount
             pageInfo { hasNextPage endCursor }

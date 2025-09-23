@@ -3,11 +3,8 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -21,11 +18,8 @@
 		"task_type": 2,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -39,11 +33,8 @@
 		"task_type": 10,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -57,11 +48,8 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -75,11 +63,8 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -93,11 +78,13 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"max_period": 3,
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -111,11 +98,13 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"max_period": 3,
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -129,11 +118,8 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -147,11 +133,8 @@
 		"task_type": 2,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -165,11 +148,8 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -179,15 +159,26 @@
 			"bad_reaction_count": -0.1
 		}
 	},
+	"create_release": {
+		"task_type": 5,
+		"repo_creation_to_task_period": {
+			"max_period": 3650,
+			"minus_unit": 1,
+			"lower_limit": 1
+		},
+		"amount_of_work": {
+			"word_count": 0.05
+		},
+		"amount_of_reaction": {
+			"good_reaction_count": 0.1
+		}
+	},
 	"commit_with_pr": {
 		"task_type": 6,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05,
@@ -198,43 +189,41 @@
 			"bad_reaction_count": -0.1
 		}
 	},
-	"change_pr_status": {
+	"change_status": {
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
-		}
-	},
-	"change_issue_status": {
-		"task_type": 5,
-		"repo_creation_to_task_period": {
-			"max_period": 3650,
-			"minus_unit": 1
-		},
-		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"max_period": 3,
+			"minus_unit": 1,
+			"lower_limit": 1
 		}
 	},
 	"sponsor": {
-		"task_type": 100
+		"task_type": 100,
+		"repo_creation_to_task_period": {
+			"max_period": 3650,
+			"minus_unit": 1,
+			"lower_limit": 1
+		}
 	},
 	"star": {
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		}
 	},
 	"fork": {
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		}
 	},
 	"watch": {
@@ -244,47 +233,56 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		}
 	},
 	"reaction": {
-		"task_type": 1,
+		"task_type": 0.1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"max_period": 5,
+			"minus_unit": 1,
+			"lower_limit": 1
 		}
 	},
 	"comment": {
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
-			"word_count": 0.05
+			"word_count": 0.05,
+			"word_count_lower_limit": 1
 		},
 		"amount_of_reaction": {
 			"good_reaction_count": 0.1,
-			"bad_reaction_count": -0.1
+			"bad_reaction_count": -0.1,
+			"good_reaction_count_lower_limit": 0.1
 		},
 		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"max_period": 3,
+			"minus_unit": 1,
+			"lower_limit": 1
 		}
 	},
 	"labeling": {
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"max_period": 3,
+			"minus_unit": 1,
+			"lower_limit": 1
 		}
 	},
 	"response_speed": {
@@ -295,18 +293,21 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"max_period": 3,
+			"minus_unit": 1,
+			"lower_limit": 1
 		}
 	},
 	"answer_discussion": {
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05
@@ -316,19 +317,22 @@
 			"bad_reaction_count": -0.1
 		},
 		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"max_period": 3,
+			"minus_unit": 1,
+			"lower_limit": 1
 		}
 	},
 	"create_discussion": {
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
-			"minus_unit": 1
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"response_speed": {
-			"max_period": 30,
-			"minus_unit": 1
+			"max_period": 3,
+			"minus_unit": 1,
+			"lower_limit": 1
 		},
 		"amount_of_work": {
 			"word_count": 0.05

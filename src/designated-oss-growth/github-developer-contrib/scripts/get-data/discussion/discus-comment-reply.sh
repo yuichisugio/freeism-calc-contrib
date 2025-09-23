@@ -26,6 +26,7 @@ function get_discussion_comment_reply() {
         ... on DiscussionComment {
           id
           url
+          publishedAt
           replies(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }
