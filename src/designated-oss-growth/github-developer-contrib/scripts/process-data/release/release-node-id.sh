@@ -21,13 +21,13 @@ function process_release_node_id() {
 
   local SECOND_OTHER_QUERY='
     word_count: ((.name // "" | length) + (.description // "" | length)),
-    reaction: (.reactions.totalCount // 0)
+    good_reaction: (.reactions.totalCount // 0)
   '
 
   process_data_utils \
     --input-path "$RESULT_GET_RELEASE_NODE_ID_PATH" \
     --output-path "$RESULT_PROCESSED_RELEASE_NODE_ID_PATH" \
-    --task-name "release" \
+    --task-name "create_release" \
     --task-date "publishedAt" \
     --author-field "author" \
     --second-other-query "$SECOND_OTHER_QUERY"

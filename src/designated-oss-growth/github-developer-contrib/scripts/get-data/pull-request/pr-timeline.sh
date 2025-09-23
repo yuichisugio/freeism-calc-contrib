@@ -37,6 +37,7 @@ function get_pull_request_timeline() {
           url
           title
           state
+          publishedAt
           timelineItems(
             first: $perPage, 
             after: $endCursor, 

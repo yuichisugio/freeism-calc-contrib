@@ -33,6 +33,7 @@ function get_issue_comment_reaction() {
         ... on IssueComment{
           id
           url
+          publishedAt
           reactions(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }

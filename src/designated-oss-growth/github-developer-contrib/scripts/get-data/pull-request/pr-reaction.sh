@@ -32,6 +32,7 @@ function get_pull_request_reaction() {
         __typename
         ... on PullRequest{
           id
+          publishedAt
           reactions(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }

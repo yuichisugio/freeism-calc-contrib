@@ -19,12 +19,17 @@ function process_commit_comment_reaction() {
 
   printf '%s\n' "begin:process_commit_comment_reaction()"
 
+  local SECOND_OTHER_QUERY='
+    task_start: .node_publishedAt
+  '
+
   process_data_utils \
     --input-path "$RESULT_GET_COMMIT_COMMENT_REACTION_PATH" \
     --output-path "$RESULT_PROCESSED_COMMIT_COMMENT_REACTION_PATH" \
     --task-name "reaction" \
     --task-date "createdAt" \
-    --author-field "user"
+    --author-field "user" \
+    --second-other-query "$SECOND_OTHER_QUERY"
 
   printf '%s\n' "end:process_commit_comment_reaction()"
 

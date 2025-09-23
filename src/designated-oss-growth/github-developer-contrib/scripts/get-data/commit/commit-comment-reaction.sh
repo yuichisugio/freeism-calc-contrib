@@ -34,6 +34,7 @@ function get_commit_comment_reaction() {
           databaseId
           url
           body
+          publishedAt
           reactions(first: $perPage, after:$endCursor) {
             totalCount
             pageInfo { hasNextPage endCursor }

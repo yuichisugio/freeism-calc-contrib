@@ -33,6 +33,7 @@ function get_pull_request_review_reaction() {
         ... on PullRequestReview {
           id
           url
+          publishedAt
           reactions(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }

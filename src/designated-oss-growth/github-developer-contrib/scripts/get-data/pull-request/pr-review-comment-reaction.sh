@@ -35,6 +35,7 @@ function get_pull_request_review_comment_reaction() {
           fullDatabaseId
           bodyText
           url
+          publishedAt
           reactions(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }

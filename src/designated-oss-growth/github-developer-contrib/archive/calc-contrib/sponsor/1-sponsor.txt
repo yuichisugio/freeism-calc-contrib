@@ -1,17 +1,18 @@
-# forkによる貢献度を算出する
+# sponsorによる貢献度を算出する
 jq \
-  --arg task_name "fork" \
+  --arg task_name "sponsor" \
   --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
   '
+    # repository作成前のsponsorはmaxより評価するために、 $daysはマイナスでも0に直さない
     def clamp($max; $unit; $days):
       ($max - ($unit * $days)) as $v | if $v <= 0 then 1 else $v end;
 
     def build_row_fields($repo_ts; $w):
       (.task_date | fromdateiso8601) as $task_ts
-      | ( (((($task_ts // 0) - ($repo_ts // 0)) / 86400) | floor) | if . < 0 then 0 else . end ) as $days
+      | (((($task_ts // 0) - ($repo_ts // 0)) / 86400) | floor) as $days
       | ($w[$task_name].task_type // 0) as $tw
       | (clamp(
-          $w[$task_name].repo_creation_to_task_period.max_period;    
+          $w[$task_name].repo_creation_to_task_period.max_period;
           $w[$task_name].repo_creation_to_task_period.minus_unit;
           $days
         )) as $cre_p
@@ -38,4 +39,4 @@ jq \
       ))
   ' \
   "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" \
-  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/fork/1-1-result.json"
+  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/sponsor/1-1-result.json"

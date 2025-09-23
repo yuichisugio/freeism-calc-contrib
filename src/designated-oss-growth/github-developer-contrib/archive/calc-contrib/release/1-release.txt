@@ -1,24 +1,43 @@
-# forkによる貢献度を算出する
+# release作成者の評価。releaseは
 jq \
-  --arg task_name "fork" \
+  --arg task_name "create_release" \
   --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
   '
+    # repository作成前のsponsorはmaxより評価するために、 $daysはマイナスでも0に直さない
     def clamp($max; $unit; $days):
       ($max - ($unit * $days)) as $v | if $v <= 0 then 1 else $v end;
 
+    # 値×重み → 下限補正
+    def metric_weight($src; $weight; $min):
+      (($src // 0) * ($weight // 0)) as $raw
+      | (if $raw < $min then $min else $raw end);
+
     def build_row_fields($repo_ts; $w):
-      (.task_date | fromdateiso8601) as $task_ts
-      | ( (((($task_ts // 0) - ($repo_ts // 0)) / 86400) | floor) | if . < 0 then 0 else . end ) as $days
+      . as $t
+      | ($t.task_date | fromdateiso8601) as $task_ts
+      | (((($task_ts // 0) - ($repo_ts // 0)) / 86400) | floor) as $days
       | ($w[$task_name].task_type // 0) as $tw
       | (clamp(
-          $w[$task_name].repo_creation_to_task_period.max_period;    
+          $w[$task_name].repo_creation_to_task_period.max_period;
           $w[$task_name].repo_creation_to_task_period.minus_unit;
           $days
         )) as $cre_p
+      | metric_weight(
+          $t.word_count;
+          $w[$task_name].amount_of_work.word_count;
+          1
+        ) as $wc
+      | metric_weight(
+          $t.good_reaction;
+          $w[$task_name].amount_of_reaction.good_reaction_count;
+          0.1
+        ) as $wr
       | {
           "criterion_weight_for_task_type": $tw,
           "criterion_weight_for_repo_creation_to_task_period": $cre_p,
-          "contribution_point": ($tw * $cre_p)
+          "criterion_weight_for_amount_of_work": $wc,
+          "criterion_weight_for_amount_of_reaction": $wr,
+          "contribution_point": ($tw * $cre_p * $wc * $wr) | round
         };
 
     $weighting[0] as $w
@@ -38,4 +57,4 @@ jq \
       ))
   ' \
   "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" \
-  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/fork/1-1-result.json"
+  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/release/1-1-result.json"

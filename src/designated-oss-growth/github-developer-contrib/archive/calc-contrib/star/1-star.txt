@@ -34,4 +34,4 @@ jq \
       ))
   ' \
   "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" \
-  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/star/1-1-result-star.json"
+  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/star/1-1-result.json"

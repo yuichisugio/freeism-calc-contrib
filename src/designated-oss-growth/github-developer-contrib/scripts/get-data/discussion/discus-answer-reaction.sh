@@ -32,6 +32,7 @@ function get_discussion_answer_reaction() {
         ... on DiscussionComment {
           id
           url
+          publishedAt
           reactions(first: $perPage, after: $endCursor){
             totalCount
             pageInfo { hasNextPage endCursor }

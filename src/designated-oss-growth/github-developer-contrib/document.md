@@ -251,8 +251,8 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 - 説明
 
   - リアクション数
-  - 👎 バッド`b`は、一つにつき`0.1`
-  - バッド以外`a`は、一つにつき`0.1`
+  - 👎 バッド`b`は、一つにつき`0.1`(初期値・自由に変更可能)
+  - バッド以外`a`は、一つにつき`0.1`(初期値・自由に変更可能)
   - `y`が 0 以下でも、マイナスのままにして、ユーザー合算の時に他のタスクにも影響が出るようにしたい
   - discussions の`upvoteCount`もグッドとしてカウントしたい
 
@@ -260,7 +260,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
   - いきなり、$f(a, b) =0.1a - 0.1b$で計算すると$a$が`0`(リアクションなし)の場合にすべての評価軸の結果を掛け算する際の貢献度が`0`になる。<br>なので、$a$が`0.1`以下の場合は、`0.1`にしてから、$a$と$b$を計算する。<br>小数を掛け算して貢献度の桁が少なくなるのは許容。リアクションの重み付けは少なくしたい。
     $$f(a) =\begin{cases} 0.1a & (y \geq 0.1) \\0.1 & (y \lt 0.1 )\end{cases}$$
-    $$f(a) =-0.1b$$
+    $$f(b) =-0.1b$$
     $$f(a,b) =f(a)+f(b)$$
 
 - 対応タスク
@@ -559,6 +559,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
    - `integrate_processed_files`関数に処理を実装した
 1. `watch`は`createdAt`が存在しない。期間で区切っても毎回全て出力される。
    - 貢献と認めたくない場合は、`weighting.jsonc`で`0`にすれば OK
+1. `Release`は、バッドリアクションが無く、グッドリアクションしか押せない・選べない
 
 ## 改善点
 
