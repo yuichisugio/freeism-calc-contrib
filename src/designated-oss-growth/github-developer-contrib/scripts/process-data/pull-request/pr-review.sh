@@ -53,7 +53,7 @@ function process_pr_review() {
   process_data_utils \
     --input-path "$RESULT_GET_PR_REVIEW_NODE_ID_PATH" \
     --output-path "$RESULT_PROCESSED_PR_REVIEW_PATH" \
-    --task-name "pr-review" \
+    --task-name "pr_review" \
     --task-date "publishedAt" \
     --author-field "author" \
     --second-other-query "$SECOND_OTHER_QUERY"

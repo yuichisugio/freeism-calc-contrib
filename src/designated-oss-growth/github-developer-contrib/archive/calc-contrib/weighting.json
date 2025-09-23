@@ -1,5 +1,5 @@
 {
-	"create_open_pr": {
+	"create_not_merged_pull_request": {
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
@@ -12,66 +12,14 @@
 		"amount_of_reaction": {
 			"good_reaction_count": 0.1,
 			"bad_reaction_count": -0.1
-		}
-	},
-	"create_draft_pr": {
-		"task_type": 2,
-		"repo_creation_to_task_period": {
-			"max_period": 3650,
-			"minus_unit": 1,
-			"lower_limit": 1
 		},
-		"amount_of_work": {
-			"word_count": 0.05
-		},
-		"amount_of_reaction": {
-			"good_reaction_count": 0.1,
-			"bad_reaction_count": -0.1
-		}
-	},
-	"create_approved_pr": {
-		"task_type": 10,
-		"repo_creation_to_task_period": {
-			"max_period": 3650,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
-		"amount_of_work": {
-			"word_count": 0.05
-		},
-		"amount_of_reaction": {
-			"good_reaction_count": 0.1,
-			"bad_reaction_count": -0.1
-		}
-	},
-	"create_closed_pr": {
-		"task_type": 5,
-		"repo_creation_to_task_period": {
-			"max_period": 3650,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
-		"amount_of_work": {
-			"word_count": 0.05
-		},
-		"amount_of_reaction": {
-			"good_reaction_count": 0.1,
-			"bad_reaction_count": -0.1
-		}
-	},
-	"create_merged_pr": {
-		"task_type": 5,
-		"repo_creation_to_task_period": {
-			"max_period": 3650,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
-		"amount_of_work": {
-			"word_count": 0.05
-		},
-		"amount_of_reaction": {
-			"good_reaction_count": 0.1,
-			"bad_reaction_count": -0.1
+		"status": {
+			"approved": 3,
+			"draft": 1,
+			"rejected": 1,
+			"open": 1,
+			"pending": 1,
+			"changes_requested": 1
 		}
 	},
 	"pr_merge": {
@@ -114,7 +62,7 @@
 			"bad_reaction_count": -0.1
 		}
 	},
-	"create_open_issue": {
+	"create_issue": {
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
@@ -127,36 +75,13 @@
 		"amount_of_reaction": {
 			"good_reaction_count": 0.1,
 			"bad_reaction_count": -0.1
-		}
-	},
-	"create_other_closed_issue": {
-		"task_type": 2,
-		"repo_creation_to_task_period": {
-			"max_period": 3650,
-			"minus_unit": 1,
-			"lower_limit": 1
 		},
-		"amount_of_work": {
-			"word_count": 0.05
-		},
-		"amount_of_reaction": {
-			"good_reaction_count": 0.1,
-			"bad_reaction_count": -0.1
-		}
-	},
-	"create_completed_closed_issue": {
-		"task_type": 5,
-		"repo_creation_to_task_period": {
-			"max_period": 3650,
-			"minus_unit": 1,
-			"lower_limit": 1
-		},
-		"amount_of_work": {
-			"word_count": 0.05
-		},
-		"amount_of_reaction": {
-			"good_reaction_count": 0.1,
-			"bad_reaction_count": -0.1
+		"status": {
+			"completed": 3,
+			"duplicate": 1,
+			"not_planned": 1,
+			"reopened": 1,
+			"open": 1
 		}
 	},
 	"create_release": {
@@ -173,7 +98,7 @@
 			"good_reaction_count": 0.1
 		}
 	},
-	"commit_with_pr": {
+	"create_commit_with_pr": {
 		"task_type": 6,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,

@@ -63,13 +63,14 @@ function process_pr_reviewer_assigned() {
     reviewer_id:           $obj.requestedReviewer.id,
     reviewer_login:        ($obj.requestedReviewer.login // null),
     reviewer_name:         ($obj.requestedReviewer.name  // null),
-    reviewer_url:          ($obj.requestedReviewer.url   // null)
+    reviewer_url:          ($obj.requestedReviewer.url   // null),
+    task_start: .node_publishedAt
   '
 
   process_data_utils \
     --input-path "$RESULT_GET_PR_TIMELINE_PATH" \
     --output-path "$RESULT_PROCESSED_PR_REVIEWER_ASSIGNED_PATH" \
-    --task-name "pr-reviewer-assigned" \
+    --task-name "assigning" \
     --task-date "createdAt" \
     --author-field "actor" \
     --first-other-query "$FIRST_OTHER_QUERY" \

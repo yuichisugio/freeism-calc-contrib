@@ -42,7 +42,8 @@ function process_issue_change_status() {
 
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
-    stateReason: $obj.stateReason
+    stateReason: $obj.stateReason,
+    task_start: .node_publishedAt
   '
 
   process_data_utils \

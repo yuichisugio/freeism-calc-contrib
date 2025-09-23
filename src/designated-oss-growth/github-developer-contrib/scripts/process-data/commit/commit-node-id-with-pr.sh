@@ -40,7 +40,7 @@ function process_commit_node_id_with_pr() {
   process_data_utils \
     --input-path "$RESULT_GET_COMMIT_NODE_ID_WITH_PR_PATH" \
     --output-path "$RESULT_PROCESSED_COMMIT_NODE_ID_WITH_PR_PATH" \
-    --task-name "create-commit-with-pr" \
+    --task-name "create_commit_with_pr" \
     --task-date "authoredDate" \
     --author-field "authors" \
     --first-other-query "$FIRST_OTHER_QUERY" \

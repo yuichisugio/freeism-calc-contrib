@@ -68,7 +68,7 @@ function process_pr_node_id() {
   process_data_utils \
     --input-path "$RESULT_GET_PR_NODE_ID_PATH" \
     --output-path "$RESULT_PROCESSED_PR_NODE_ID_PATH" \
-    --task-name "create-not-merged-pull-request" \
+    --task-name "create_not_merged_pull_request" \
     --task-date "publishedAt" \
     --author-field "author" \
     --first-other-query "$FIRST_OTHER_QUERY" \

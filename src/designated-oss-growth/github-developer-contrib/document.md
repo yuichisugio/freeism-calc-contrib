@@ -21,6 +21,7 @@
       - [作業量](#作業量)
       - [参加者からの評価](#参加者からの評価)
       - [対応速度](#対応速度)
+      - [ステータスの種類](#ステータスの種類)
       - [タスクの種類](#タスクの種類)
         - [プルリクエスト](#プルリクエスト)
         - [Issue](#issue)
@@ -193,6 +194,7 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
   1.  参加者からの評価
   1.  対応速度
   1.  タスクの種類
+  1.  ステータス
 
 ### 各指標ごとの計算式
 
@@ -304,6 +306,30 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
       - Discussions 作成から、リアクションするまでの日数
       - ※「Discussions 作成からステータス変更」は、議論を十分する時間がなくなり望まない結果になるので算出しない。
 
+#### ステータスの種類
+
+- 説明
+
+  - プルリクでは`MERGED`されたプルリクに重み付けする。などの評価軸
+
+- 計算式
+  $$f(a, b) =\begin{cases} y=-x + 3650 & (y \geq 1) \\1 & (y \lt 1)\end{cases}$$
+
+- 対応タスク
+  1. プルリクエスト
+     1. `Merged`,`Approved`
+        1. `approved`は承認済みだけどマージはされていない状態
+        2. `3`
+     2. `Draft`,`Rejected`,`Open`,`Pending`,`Changes requested`
+        1. `1`
+  2. イシュー
+     1. `CLOSED` - `COMPLETED`
+        1. `3`
+     2. `CLOSED` - `DUPLICATE`,`NOT_PLANNED`,`REOPENED`
+        1. `1`
+     3. `OPEN`
+        1. `1`
+
 #### タスクの種類
 
 - 説明
@@ -311,45 +337,37 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 ##### プルリクエスト
 
-1. プルリクエストの作成（`Merged`、`Approved`）
-   - `approved`は承認済みだけどマージはされていない状態
-   - `3`
-2. プルリクエストの作成（`Draft`,`Rejected`,`Open`,`Pending`,`Changes requested`）
-   - `0`
-   - 不要な AI コードばかりを送り付けるハックを防ぐため
-3. プルリクエストにコメント投稿
+1. プルリクエストの作成
    - `1`
-4. プルリクエストをマージ
+2. プルリクエストにコメント投稿
+   - `1`
+3. プルリクエストをマージ
    - `2`
-5. プルリクエストをレビューして、`Approved` or `Rejected`
+4. プルリクエストをレビュー
    - `3`
-6. プルリクエストにラベル付け
+5. プルリクエストにラベル付け
    - `1`
-7. プルリクエストの作成担当者のアサイン
+6. プルリクエストの作成担当者のアサイン
    - `1`
-8. プルリクエストのレビュー担当者のアサイン
+7. プルリクエストのレビュー担当者のアサイン
    - `1`
-9. プルリクエストにリアクションをつける
+8. プルリクエストにリアクションをつける
    - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
    - `1`
 
 ##### Issue
 
-1. Issue 作成（`CLOSED` - `COMPLETED`）
-   - `3`
-2. Issue 作成（`CLOSED` - `DUPLICATE`,`NOT_PLANNED`,`REOPENED`）
+1. Issue 作成
    - `1`
-3. Issue 作成（`OPEN`）
-   - `2`
-4. Issue にコメント
+2. Issue にコメント
    - `1`
-5. Issue のステータスを変更（Open・Closed=Completed/Not planned）
+3. Issue のステータスを変更
    - `1`
-6. Issue にラベル付けをする
+4. Issue にラベル付けをする
    - `1`
-7. 担当者をアサイン（アサインする側）
+5. 担当者をアサイン（アサインする側）
    - `1`
-8. Issue にリアクションをつける
+6. Issue にリアクションをつける
    - どんな絵文字でも 1 つ以上つけたら貢献。2 つ以上つけても合算しない。
    - `1`
 

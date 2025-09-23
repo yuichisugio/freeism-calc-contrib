@@ -25,7 +25,7 @@ function process_pr_coder_assigned() {
     --output-path "$RESULT_PROCESSED_PR_CODER_ASSIGNED_PATH" \
     --event-type "AssignedEvent" \
     --nest-event-field "assignee" \
-    --task-name "pr-coder-assigned" \
+    --task-name "assigning" \
     --task-date "createdAt"
 
   printf '%s\n' "end:process_pr_coder_assigned()"

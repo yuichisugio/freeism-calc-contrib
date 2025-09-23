@@ -23,7 +23,7 @@ function process_discussion_answer() {
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
     word_count: ($obj.bodyText? // "" | length),
-
+    task_start: .node_publishedAt,
     # 👎だけbad、それ以外はgoodに計上 + Discussionsのupvoteも合算
     good_reaction:
       ((
@@ -54,7 +54,7 @@ function process_discussion_answer() {
   process_data_utils \
     --input-path "$RESULT_GET_DISCUSSION_ANSWER_NODE_ID_PATH" \
     --output-path "$RESULT_PROCESSED_DISCUSSION_ANSWER_PATH" \
-    --task-name "discussion-answer" \
+    --task-name "answer_discussion" \
     --task-date "publishedAt" \
     --author-field "author" \
     --second-other-query "$SECOND_OTHER_QUERY"

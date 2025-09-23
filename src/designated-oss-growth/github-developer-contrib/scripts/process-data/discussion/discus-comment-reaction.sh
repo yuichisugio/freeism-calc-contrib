@@ -19,12 +19,17 @@ function process_discussion_comment_reaction() {
 
   printf '%s\n' "begin:process_discussion_comment_reaction()"
 
+  local SECOND_OTHER_QUERY='
+    task_start: .node_publishedAt
+  '
+
   process_data_utils \
     --input-path "$RESULT_GET_DISCUSSION_COMMENT_REACTION_PATH" \
     --output-path "$RESULT_PROCESSED_DISCUSSION_COMMENT_REACTION_PATH" \
     --task-name "reaction" \
     --task-date "createdAt" \
     --author-field "user" \
+    --second-other-query "$SECOND_OTHER_QUERY"
 
   printf '%s\n' "end:process_discussion_comment_reaction()"
 

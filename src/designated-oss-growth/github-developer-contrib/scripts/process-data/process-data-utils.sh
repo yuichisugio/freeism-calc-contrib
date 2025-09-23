@@ -235,28 +235,29 @@ function process_data_utils_by_two_files() {
             | . as $obj
             | .actor as $author
             | {
-                user_type:                      $author.__typename,
-                user_id:                        $author.id,
-                user_database_id:               $author.databaseId,
-                user_login:                     $author.login,
-                user_name:                      $author.name,
-                user_url:                       $author.url,
+                user_type:                                $author.__typename,
+                user_id:                                  $author.id,
+                user_database_id:                         $author.databaseId,
+                user_login:                               $author.login,
+                user_name:                                $author.name,
+                user_url:                                 $author.url,
                 task: [
                   {
-                    task_id:                    $obj.id,
-                    task_database_id:           ($obj.databaseId // null),
-                    task_full_database_id:      ($obj.fullDatabaseId // null),
-                    task_url:                   ($obj.url // null),
-                    task_name:                  $task_name,
-                    task_date:                  $obj[$task_date],
-                    reference_task_date_field:  $task_date,
-                    node_url:                   $obj.node_url,
-                    ($nest_event_field + "_id"):$obj[$nest_event_field].id,
-                    ($nest_event_field + "_database_id"):$obj[$nest_event_field].databaseId,
-                    ($nest_event_field + "___typename"):$obj[$nest_event_field].__typename,
-                    ($nest_event_field + "_name"): $obj[$nest_event_field].name,
-                    ($nest_event_field + "_login"): $obj[$nest_event_field].login,
-                    ($nest_event_field + "_url"):  ($obj[$nest_event_field].url // null)
+                    task_id:                              $obj.id,
+                    task_database_id:                     ($obj.databaseId // null),
+                    task_full_database_id:                ($obj.fullDatabaseId // null),
+                    task_url:                             ($obj.url // null),
+                    task_name:                            $task_name,
+                    task_date:                            $obj[$task_date],
+                    reference_task_date_field:            $task_date,
+                    node_url:                             $obj.node_url,
+                    ($nest_event_field + "_id"):          $obj[$nest_event_field].id,
+                    ($nest_event_field + "_database_id"): $obj[$nest_event_field].databaseId,
+                    ($nest_event_field + "___typename"):  $obj[$nest_event_field].__typename,
+                    ($nest_event_field + "_name"):        $obj[$nest_event_field].name,
+                    ($nest_event_field + "_login"):       $obj[$nest_event_field].login,
+                    ($nest_event_field + "_url"):         ($obj[$nest_event_field].url // null),
+                    task_start:                           $obj.node_publishedAt
                   }
                 ]
               }

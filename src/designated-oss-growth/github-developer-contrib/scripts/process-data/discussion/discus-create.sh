@@ -56,7 +56,7 @@ function process_discussion_create() {
   process_data_utils \
     --input-path "$RESULT_GET_DISCUSSION_NODE_ID_PATH" \
     --output-path "$RESULT_PROCESSED_DISCUSSION_CREATE_PATH" \
-    --task-name "create-discussion" \
+    --task-name "create_discussion" \
     --task-date "publishedAt" \
     --author-field "author" \
     --second-other-query "$SECOND_OTHER_QUERY"

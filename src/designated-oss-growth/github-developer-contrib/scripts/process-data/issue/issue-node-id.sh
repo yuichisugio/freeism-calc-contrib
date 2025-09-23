@@ -57,7 +57,7 @@ function process_issue_node_id() {
   process_data_utils \
     --input-path "$RESULT_GET_ISSUE_NODE_ID_PATH" \
     --output-path "$RESULT_PROCESSED_ISSUE_NODE_ID_PATH" \
-    --task-name "create-issue" \
+    --task-name "create_issue" \
     --task-date "publishedAt" \
     --author-field "author" \
     --second-other-query "$SECOND_OTHER_QUERY"

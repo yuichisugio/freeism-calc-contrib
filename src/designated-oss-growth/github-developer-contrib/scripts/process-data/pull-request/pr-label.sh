@@ -25,8 +25,8 @@ function process_pr_label() {
     --output-path "$RESULT_PROCESSED_PR_LABEL_PATH" \
     --event-type "LabeledEvent" \
     --nest-event-field "label" \
-    --task-name "pr-label" \
-    --task-date "createdAt"
+    --task-name "labeling" \
+    --task-date "createdAt" \
 
   printf '%s\n' "end:process_pr_label()"
 

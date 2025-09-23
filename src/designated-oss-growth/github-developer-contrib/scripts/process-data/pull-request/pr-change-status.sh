@@ -40,13 +40,18 @@ function process_pr_change_status() {
             | .actor as $author
   '
 
+  local SECOND_OTHER_QUERY='
+    task_start: .node_publishedAt
+  '
+
   process_data_utils \
     --input-path "$RESULT_GET_PR_TIMELINE_PATH" \
     --output-path "$RESULT_PROCESSED_PR_CHANGE_STATUS_PATH" \
     --task-name "change-status" \
     --task-date "createdAt" \
     --author-field "actor" \
-    --first-other-query "$FIRST_OTHER_QUERY"
+    --first-other-query "$FIRST_OTHER_QUERY" \
+    --second-other-query "$SECOND_OTHER_QUERY"
 
   printf '%s\n' "end:process_pr_change_status()"
 
