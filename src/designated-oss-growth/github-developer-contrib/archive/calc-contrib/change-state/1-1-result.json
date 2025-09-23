@@ -12295,7 +12295,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-28T02:43:48Z",
-            "word_count": 126
+            "word_count": 126,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 362.20000000000005,
+            "criterion_weight_for_amount_of_work": 6.300000000000001,
+            "criterion_weight_for_response_speed": 15,
+            "contribution_point": 171140
           },
           {
             "task_id": "IC_kwDOPDzQl866Rj7E",
@@ -16343,7 +16348,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-01T03:20:30Z",
-            "word_count": 1609
+            "word_count": 1609,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 364.90000000000003,
+            "criterion_weight_for_amount_of_work": 80.45,
+            "criterion_weight_for_response_speed": 15,
+            "contribution_point": 2201715
           },
           {
             "task_id": "IC_kwDOPDzQl860Gzn-",
@@ -16702,7 +16712,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-01T05:37:18Z",
-            "word_count": 1106
+            "word_count": 1106,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 364.8,
+            "criterion_weight_for_amount_of_work": 55.300000000000004,
+            "criterion_weight_for_response_speed": 15,
+            "contribution_point": 1513008
           },
           {
             "task_id": "IC_kwDOPDzQl860Wnkc",
@@ -16805,7 +16820,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-06-30T15:06:18Z",
-            "word_count": 406
+            "word_count": 406,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 364.8,
+            "criterion_weight_for_amount_of_work": 20.3,
+            "criterion_weight_for_response_speed": 14.5,
+            "contribution_point": 536894
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDU5YmRiYzJkMDlhYzlhOGQ4MzRhM2M5YmY4YjU4NGU1YTgyMTFmZTI",
@@ -17308,7 +17328,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-02T03:22:47Z",
-            "word_count": 3246
+            "word_count": 3246,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 364.70000000000005,
+            "criterion_weight_for_amount_of_work": 162.3,
+            "criterion_weight_for_response_speed": 15,
+            "contribution_point": 4439311
           },
           {
             "task_id": "IC_kwDOPDzQl860lShI",
@@ -17395,7 +17420,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-02T23:38:01Z",
-            "word_count": 162
+            "word_count": 162,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 364.70000000000005,
+            "criterion_weight_for_amount_of_work": 8.1,
+            "criterion_weight_for_response_speed": 15,
+            "contribution_point": 221555
           },
           {
             "task_id": "IC_kwDOPDzQl860mQRW",
@@ -18398,7 +18428,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-09T15:02:13Z",
-            "word_count": 406
+            "word_count": 406,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 363.70000000000005,
+            "criterion_weight_for_amount_of_work": 20.3,
+            "criterion_weight_for_response_speed": 13.5,
+            "contribution_point": 498360
           },
           {
             "task_id": "PRR_kwDOPDzQl86zsoDK",
@@ -19068,7 +19103,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-21T05:37:37Z",
-            "word_count": 11
+            "word_count": 11,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 362.90000000000003,
+            "criterion_weight_for_amount_of_work": 1,
+            "criterion_weight_for_response_speed": 15,
+            "contribution_point": 27218
           },
           {
             "task_id": "IC_kwDOPDzQl864kBfy",
@@ -19429,7 +19469,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-25T04:35:39Z",
-            "word_count": 22
+            "word_count": 22,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 362.20000000000005,
+            "criterion_weight_for_amount_of_work": 1.1,
+            "criterion_weight_for_response_speed": 14,
+            "contribution_point": 27889
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDBmZWUwMzYwNjllNTFjNzljZmM5ZjI5NTllM2Q1NzY2M2EyZGY1NDk",
@@ -19554,7 +19599,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-06-30T17:48:55Z",
-            "word_count": 194
+            "word_count": 194,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 362.20000000000005,
+            "criterion_weight_for_amount_of_work": 9.700000000000001,
+            "criterion_weight_for_response_speed": 2,
+            "contribution_point": 35133
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGM4Mjk3YWIzOGY2MGQ4MjVlZWE2ZjE0ZWNjNWNhZTNlMmFiNTlkYWI",
@@ -19959,7 +20009,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-02T03:31:45Z",
-            "word_count": 2510
+            "word_count": 2510,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 362,
+            "criterion_weight_for_amount_of_work": 125.5,
+            "criterion_weight_for_response_speed": 1,
+            "contribution_point": 227155
           },
           {
             "task_id": "IC_kwDOPDzQl867LxYP",
@@ -19984,7 +20039,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-28T04:32:00Z",
-            "word_count": 1758
+            "word_count": 1758,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 361.8,
+            "criterion_weight_for_amount_of_work": 87.9,
+            "criterion_weight_for_response_speed": 13.5,
+            "contribution_point": 2146650
           },
           {
             "task_id": "IC_kwDOPDzQl867iT3D",
@@ -20105,7 +20165,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-02T03:16:56Z",
-            "word_count": 199
+            "word_count": 199,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 361.5,
+            "criterion_weight_for_amount_of_work": 9.950000000000001,
+            "criterion_weight_for_response_speed": 1,
+            "contribution_point": 17985
           },
           {
             "task_id": "IC_kwDOPDzQl867r82Y",
@@ -20168,7 +20233,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-08-06T16:10:41Z",
-            "word_count": 47
+            "word_count": 47,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 361.20000000000005,
+            "criterion_weight_for_amount_of_work": 2.35,
+            "criterion_weight_for_response_speed": 15,
+            "contribution_point": 63662
           },
           {
             "task_id": "IC_kwDOPDzQl868gtmC",
@@ -20243,7 +20313,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-08-15T21:39:20Z",
-            "word_count": 136
+            "word_count": 136,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 359.90000000000003,
+            "criterion_weight_for_amount_of_work": 6.800000000000001,
+            "criterion_weight_for_response_speed": 13,
+            "contribution_point": 159076
           },
           {
             "task_id": "IC_kwDOPDzQl86_0IP4",
@@ -20334,7 +20409,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-08-07T02:44:50Z",
-            "word_count": 2183
+            "word_count": 2183,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 359.40000000000003,
+            "criterion_weight_for_amount_of_work": 109.15,
+            "criterion_weight_for_response_speed": 6.5,
+            "contribution_point": 1274927
           },
           {
             "task_id": "REA_lAHOPDzQl87FJpnCzgzG20k",
@@ -20474,7 +20554,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-09-02T13:52:51Z",
-            "word_count": 235
+            "word_count": 235,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 357.1,
+            "criterion_weight_for_amount_of_work": 11.75,
+            "criterion_weight_for_response_speed": 8,
+            "contribution_point": 167837
           },
           {
             "task_id": "REA_lAHOPDzQl87IGbtzzg0TLMM",
@@ -20596,7 +20681,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-08-26T16:59:38Z",
-            "word_count": 1086
+            "word_count": 1086,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 357,
+            "criterion_weight_for_amount_of_work": 54.300000000000004,
+            "criterion_weight_for_response_speed": 4.5,
+            "contribution_point": 436165
           },
           {
             "task_id": "IC_kwDOPDzQl87E4gK_",
@@ -20684,7 +20774,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-08-12T22:37:44Z",
-            "word_count": 232
+            "word_count": 232,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 357,
+            "criterion_weight_for_amount_of_work": 11.600000000000001,
+            "criterion_weight_for_response_speed": 1,
+            "contribution_point": 20706
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGQ1ZTg4ODQzMTI1ZGQxZjZjZTkyMGJlNzg5OWI2NWMxMDVmZTFkMzU",
@@ -32193,7 +32288,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-04T01:18:57Z",
-            "word_count": 350
+            "word_count": 350,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 364.5,
+            "criterion_weight_for_amount_of_work": 17.5,
+            "criterion_weight_for_response_speed": 14.5,
+            "contribution_point": 462459
           }
         ]
       },
@@ -39869,7 +39969,12 @@
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
             "task_start": "2025-07-11T19:03:11Z",
-            "word_count": 428
+            "word_count": 428,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 363.8,
+            "criterion_weight_for_amount_of_work": 21.400000000000002,
+            "criterion_weight_for_response_speed": 15,
+            "contribution_point": 583899
           },
           {
             "task_id": "IC_kwDOPDzQl862rmTP",

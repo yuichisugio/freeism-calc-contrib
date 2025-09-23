@@ -330,6 +330,7 @@ function integrate_processed_files() {
     done
   } | jq \
     --slurpfile repo_meta "$RESULT_PROCESSED_REPO_META_PATH" \
+    --arg answer_task_name "$ANSWER_TASK_NAME" \
     --slurp \
     '
       # リポジトリのメタデータを取得
@@ -351,7 +352,7 @@ function integrate_processed_files() {
           # task_date 昇順に整列してから、baseとタスクを結合
           | (
                 # 重複判定キーと優先度を関数化。
-                # discussion-answer と comment は全く同じタスクが重複するため、answerを残す処理が必要。
+                # $answer_task_name と comment は全く同じタスクが重複するため、answerを残す処理が必要。
                 def dedup_key:
                   ( .task_id // (
                       ( .task_name // "" )
@@ -361,11 +362,11 @@ function integrate_processed_files() {
                     )
                   );
 
-                # 同一 task_id の重複では discussion-answer を最優先、comment を次点、
+                # 同一 task_id の重複では $answer_task_name を最優先、comment を次点、
                 # それ以外は現行どおり（優先度=2で無影響）
-                # unique_by は「最初に現れた要素」を残すため、task_name が discussion-answer と comment の両方ある場合は discussion-answer を優先的に残す。
+                # unique_by は「最初に現れた要素」を残すため、task_name が $answer_task_name と comment の両方ある場合は $answer_task_name を優先的に残す。
                 def pref:
-                  if (.task_id != null) and ((.task_name // "") == "discussion-answer") then 0
+                  if (.task_id != null) and ((.task_name // "") == $answer_task_name) then 0
                   elif (.task_id != null) and ((.task_name // "") == "comment") then 1
                   else 2
                   end;
@@ -373,8 +374,8 @@ function integrate_processed_files() {
                 $tasks
 
                 # 重複キー（=dedup_key）→優先度(pref) の順で整列
-                # こうしておくと unique_by は「discussion-answer を先頭に見る」ため残る
-                # この場合は discussion-answer が 0、comment が 1、それ以外が 2 となる
+                # こうしておくと unique_by は「$answer_task_name を先頭に見る」ため残る
+                # この場合は $answer_task_name が 0、comment が 1、それ以外が 2 となる
                 | group_by(dedup_key)
                 | map( sort_by(pref) | .[0] )
 

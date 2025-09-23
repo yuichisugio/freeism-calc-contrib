@@ -22,7 +22,7 @@ source "${PROCESS_ISSUE_DIR}/issue-label.sh"
 source "${PROCESS_ISSUE_DIR}/issue-comment.sh"
 source "${PROCESS_ISSUE_DIR}/issue-comment-reaction.sh"
 source "${PROCESS_ISSUE_DIR}/issue-reaction.sh"
-source "${PROCESS_ISSUE_DIR}/issue-change-status.sh"
+source "${PROCESS_ISSUE_DIR}/issue-change-state.sh"
 
 #--------------------------------------
 # issueのデータを加工する関数
@@ -50,7 +50,7 @@ function process_issue() {
   process_issue_label
 
   # issueのステータスを変更した人を評価
-  process_issue_change_status
+  process_issue_change_state
 
   printf '%s\n' "end:process-issue()"
 

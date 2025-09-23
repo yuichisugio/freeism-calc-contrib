@@ -6,7 +6,7 @@ jq \
     # 最大値から、期間が過ぎた機関だけ引き算した重み付け値を返す
     # repository作成前のsponsorはmaxより評価するために、 $daysはマイナスでも0に直さない
     def clamp($max; $max_weight ;$unit; $days; $lower_limit):
-        (($max * $max_weight) - ($unit * $days)) as $v
+        (($max - $unit * $days) * $max_weight) as $v
         | if $v < $lower_limit then $lower_limit else $v end;
 
     def build_row_fields($repo_ts; $w):

@@ -36,9 +36,10 @@ function get_issue_timeline() {
           databaseId
           number
           url
-          title
           state
           publishedAt
+          title
+          bodyText
           timelineItems(
             first: $perPage, 
             after: $endCursor, 

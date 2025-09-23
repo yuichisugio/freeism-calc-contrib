@@ -1,7 +1,7 @@
 {
   "meta": {
     "analytics": {
-      "createdAt": "2025-09-23T15:42:42Z"
+      "createdAt": "2025-09-23T10:18:37Z"
     },
     "repository": {
       "host": "github.com",
@@ -574,6 +574,7 @@
             "reference_task_date_field": "publishedAt",
             "word_count": 453,
             "state": "OPEN",
+            "stateReason": null,
             "node_url": null,
             "good_reaction": 2,
             "bad_reaction": 0
@@ -5853,7 +5854,13 @@
             "state": "CLOSED",
             "node_url": null,
             "good_reaction": 0,
-            "bad_reaction": 0
+            "bad_reaction": 0,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 364,
+            "criterion_weight_for_amount_of_work": 69.15,
+            "criterion_weight_for_amount_of_reaction": 0.1,
+            "criterion_weight_for_status": 1,
+            "contribution_point": 12585
           },
           {
             "task_id": "PRR_kwDOPDzQl86xH7ob",
@@ -6722,7 +6729,8 @@
             "task_date": "2025-08-07T02:44:50Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 2183,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -6746,7 +6754,8 @@
             "task_date": "2025-08-12T22:37:44Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 232,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 1,
             "bad_reaction": 0
@@ -6770,7 +6779,8 @@
             "task_date": "2025-08-26T16:59:38Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 1086,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -6810,7 +6820,8 @@
             "task_date": "2025-09-02T13:52:51Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 235,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -7648,7 +7659,8 @@
             "task_date": "2025-07-02T03:22:47Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 3246,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -8698,6 +8710,7 @@
             "reference_task_date_field": "publishedAt",
             "word_count": 159,
             "state": "OPEN",
+            "stateReason": null,
             "node_url": null,
             "good_reaction": 1,
             "bad_reaction": 0
@@ -9196,6 +9209,7 @@
             "reference_task_date_field": "publishedAt",
             "word_count": 181,
             "state": "OPEN",
+            "stateReason": null,
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -12280,7 +12294,8 @@
             "task_date": "2025-07-28T02:43:48Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 126,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -12290,12 +12305,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/70#event-18844172548",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-28T03:03:10Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-28T02:43:48Z",
-            "word_count": 126
+            "task_start": "2025-07-28T02:43:48Z"
           },
           {
             "task_id": "IC_kwDOPDzQl866Rj7E",
@@ -12319,7 +12333,8 @@
             "task_date": "2025-07-28T04:32:00Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 1758,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -13001,7 +13016,8 @@
             "task_date": "2025-07-09T15:02:13Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 406,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 1,
             "bad_reaction": 0
@@ -13446,7 +13462,8 @@
             "task_date": "2025-06-30T15:06:18Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 406,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 1,
             "bad_reaction": 0
@@ -13593,7 +13610,8 @@
             "task_date": "2025-07-01T03:20:30Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 1609,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -13611,7 +13629,13 @@
             "state": "CLOSED",
             "node_url": null,
             "good_reaction": 0,
-            "bad_reaction": 0
+            "bad_reaction": 0,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 364,
+            "criterion_weight_for_amount_of_work": 3.5500000000000003,
+            "criterion_weight_for_amount_of_reaction": 0.1,
+            "criterion_weight_for_status": 1,
+            "contribution_point": 646
           },
           {
             "task_id": "REA_lALOPDzQl860GzUyzhGJXtc",
@@ -15623,12 +15647,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/1#event-18383324448",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-06-30T09:55:16Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-06-30T09:26:59Z",
-            "word_count": 438,
-            "lines_of_code": 3
+            "task_start": "2025-06-30T09:26:59Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDM5YmVhMmM1YmVhY2ZhOTkzNjcwYTcxNzMzNjNiMGU4YTM5OWM3ZDM",
@@ -15714,12 +15736,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/2#event-18384975543",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-06-30T11:37:39Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-06-30T11:15:14Z",
-            "word_count": 169,
-            "lines_of_code": 1204
+            "task_start": "2025-06-30T11:15:14Z"
           },
           {
             "task_id": "IC_kwDOPDzQl86z76PQ",
@@ -15832,12 +15852,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/3#event-18390176093",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-06-30T16:00:35Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-06-30T13:10:49Z",
-            "word_count": 458,
-            "lines_of_code": 8
+            "task_start": "2025-06-30T13:10:49Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGFjY2I2MzZjNDk5NjdkOWNkMGU4Nzc5M2YwNmNkZWU3OWI4Zjg0MzQ",
@@ -15892,12 +15910,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/7#event-18391606054",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-06-30T17:20:30Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-06-30T16:44:46Z",
-            "word_count": 180,
-            "lines_of_code": 4
+            "task_start": "2025-06-30T16:44:46Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDBhNjc1YTRjMGVhZTI0NWI1MWRmYmYyZmQzZGFjZDQ0Nzk1ZWVjZTI",
@@ -15940,7 +15956,8 @@
             "task_date": "2025-06-30T17:48:55Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 194,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -16189,12 +16206,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/9#event-18397370388",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-01T00:29:36Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-06-30T23:53:21Z",
-            "word_count": 510,
-            "lines_of_code": 93
+            "task_start": "2025-06-30T23:53:21Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDc0OGNjNmI3YmI2MjJlNzhjYWJmYjg0ZTAxOTg3MTM0MjA1OWU1ZmM",
@@ -16326,24 +16341,21 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/11#event-18399540070",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-01T04:10:12Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-01T03:44:23Z",
-            "word_count": 51,
-            "lines_of_code": 6
+            "task_start": "2025-07-01T03:44:23Z"
           },
           {
             "task_id": "CE_lADOPDzQl86-K8MBzwAAAARIsrtX",
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/10#event-18399542103",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-01T04:10:28Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-01T03:20:30Z",
-            "word_count": 1609
+            "task_start": "2025-07-01T03:20:30Z"
           },
           {
             "task_id": "IC_kwDOPDzQl860Gzn-",
@@ -16592,12 +16604,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/14#event-18414658270",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-01T16:02:26Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-01T15:32:03Z",
-            "word_count": 37,
-            "lines_of_code": 7
+            "task_start": "2025-07-01T15:32:03Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDIwNjBkMDEzMzZhM2YwMTY4YjIwMGY5NmMwNjRiZmQ3Mzg0M2NiMjk",
@@ -16660,12 +16670,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/5#event-18415162739",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-01T16:33:26Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-06-30T15:10:51Z",
-            "word_count": 1363,
-            "lines_of_code": 191
+            "task_start": "2025-06-30T15:10:51Z"
           },
           {
             "task_id": "IC_kwDOPDzQl860WnO7",
@@ -16685,24 +16693,21 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/15#event-18420845586",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-01T23:19:39Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-01T17:25:56Z",
-            "word_count": 901,
-            "lines_of_code": 37
+            "task_start": "2025-07-01T17:25:56Z"
           },
           {
             "task_id": "CE_lADOPDzQl86-L3YSzwAAAARJ9-s9",
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/12#event-18420853565",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-01T23:20:38Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-01T05:37:18Z",
-            "word_count": 1106
+            "task_start": "2025-07-01T05:37:18Z"
           },
           {
             "task_id": "IC_kwDOPDzQl860Wnkc",
@@ -16788,24 +16793,21 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/16#event-18421530633",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-02T00:43:29Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-02T00:42:19Z",
-            "word_count": 1109,
-            "lines_of_code": 558
+            "task_start": "2025-07-02T00:42:19Z"
           },
           {
             "task_id": "CE_lADOPDzQl86-EeKdzwAAAARKAkCE",
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/4#event-18421530756",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-02T00:43:30Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-06-30T15:06:18Z",
-            "word_count": 406
+            "task_start": "2025-06-30T15:06:18Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDU5YmRiYzJkMDlhYzlhOGQ4MzRhM2M5YmY4YjU4NGU1YTgyMTFmZTI",
@@ -16966,6 +16968,7 @@
             "reference_task_date_field": "publishedAt",
             "word_count": 339,
             "state": "OPEN",
+            "stateReason": null,
             "node_url": null,
             "good_reaction": 6,
             "bad_reaction": 0
@@ -16996,7 +16999,8 @@
             "task_date": "2025-07-02T03:16:56Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 199,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -17036,7 +17040,8 @@
             "task_date": "2025-07-02T03:31:45Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 2510,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -17085,12 +17090,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/22#event-18424295061",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-02T05:10:54Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-02T04:57:06Z",
-            "word_count": 158,
-            "lines_of_code": 2
+            "task_start": "2025-07-02T04:57:06Z"
           },
           {
             "task_id": "IC_kwDOPDzQl860ZGJG",
@@ -17123,12 +17126,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/13#event-18429056707",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-02T10:20:49Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-01T07:37:42Z",
-            "word_count": 1514,
-            "lines_of_code": 17
+            "task_start": "2025-07-01T07:37:42Z"
           },
           {
             "task_id": "IC_kwDOPDzQl860eZgr",
@@ -17148,12 +17149,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/6#event-18432141589",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-02T13:21:11Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-06-30T15:14:25Z",
-            "word_count": 887,
-            "lines_of_code": 109
+            "task_start": "2025-06-30T15:14:25Z"
           },
           {
             "task_id": "PRR_kwDOPDzQl86xkkf4",
@@ -17213,12 +17212,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/25#event-18441097470",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-02T23:12:57Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-02T17:48:28Z",
-            "word_count": 469,
-            "lines_of_code": 10
+            "task_start": "2025-07-02T17:48:28Z"
           },
           {
             "task_id": "IC_kwDOPDzQl860lDGT",
@@ -17238,12 +17235,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/24#event-18441111638",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-02T23:14:36Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-02T14:34:18Z",
-            "word_count": 959,
-            "lines_of_code": 4
+            "task_start": "2025-07-02T14:34:18Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDUzN2Y0Mjc2NDUyN2VkOTFiMzE0YTYyMTk1ZDkxOWMzNDc4ZWZjNjM",
@@ -17276,7 +17271,8 @@
             "task_date": "2025-07-02T23:38:01Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 162,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -17303,12 +17299,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/19#event-18441329171",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-02T23:38:34Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-02T03:22:47Z",
-            "word_count": 3246
+            "task_start": "2025-07-02T03:22:47Z"
           },
           {
             "task_id": "IC_kwDOPDzQl860lShI",
@@ -17345,12 +17340,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/27#event-18441773800",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-03T00:27:16Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-03T00:23:03Z",
-            "word_count": 166,
-            "lines_of_code": 1529
+            "task_start": "2025-07-03T00:23:03Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDFiYjYyOTBkYmIwOTNkNzQ5YjgxYWQ1Zjc2MzNhZWY1ODVjYjdlNDA",
@@ -17390,12 +17383,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/26#event-18442055072",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-03T00:54:39Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-02T23:38:01Z",
-            "word_count": 162
+            "task_start": "2025-07-02T23:38:01Z"
           },
           {
             "task_id": "IC_kwDOPDzQl860mQRW",
@@ -17505,12 +17497,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/29#event-18491028665",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-06T11:00:17Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-04T07:59:05Z",
-            "word_count": 1000,
-            "lines_of_code": 2
+            "task_start": "2025-07-04T07:59:05Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDliNDlmNmE4NDgxNmU4NDA1MDYwZWM2NGI3ZmYxZjQzMGQ2YWYxN2Q",
@@ -17539,12 +17529,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/30#event-18492256831",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-06T15:19:30Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-06T12:32:17Z",
-            "word_count": 2325,
-            "lines_of_code": 2129
+            "task_start": "2025-07-06T12:32:17Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDRkYmJkNGFmZDBhYzlmNTBkYWRmMGM4NTAwYzA0YjRjYTRkMWE2MzQ",
@@ -17600,12 +17588,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/31#event-18501322770",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-07T09:53:20Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-07T05:34:38Z",
-            "word_count": 75,
-            "lines_of_code": 4
+            "task_start": "2025-07-07T05:34:38Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGExYzkzN2U1N2UzM2I4MjcyYTg5Y2ZjYWQ2MTFhNzhiZTRjOTFjZjg",
@@ -17674,12 +17660,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/33#event-18537323347",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-09T03:11:07Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-09T03:10:16Z",
-            "word_count": 62,
-            "lines_of_code": 207
+            "task_start": "2025-07-09T03:10:16Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDFmNWQwMTAyNzY3YTEyNjNhNTRhZTQwY2E4NmFjNjI0N2YwOGU5MjM",
@@ -17732,12 +17716,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/32#event-18537373510",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-09T03:18:19Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-08T01:50:45Z",
-            "word_count": 40,
-            "lines_of_code": 4
+            "task_start": "2025-07-08T01:50:45Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDc0ZTUxOWE5NzQ1OTBjZDZhMTRhOTE3NTE3NDk1ZWU1MjA4YzFjMWU",
@@ -17812,12 +17794,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/34#event-18546252251",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-09T13:13:33Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-09T12:30:42Z",
-            "word_count": 1475,
-            "lines_of_code": 283
+            "task_start": "2025-07-09T12:30:42Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDM0YTQ1ODdkZmY1NGEwMTc2NTJhYWIwNDI1OTMyMjgwOTAzNjJjNmM",
@@ -17974,12 +17954,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/36#event-18555490022",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-10T00:26:37Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-10T00:24:57Z",
-            "word_count": 104,
-            "lines_of_code": 267
+            "task_start": "2025-07-10T00:24:57Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGVhNzBkZjM3ZDE3NmU4ZWNhYzEyM2VmN2QwMWQ5YWM0YzJmNWRlYTk",
@@ -18056,12 +18034,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/37#event-18563860600",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-10T11:23:43Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-10T00:40:45Z",
-            "word_count": 32,
-            "lines_of_code": 140
+            "task_start": "2025-07-10T00:40:45Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDg1ODIzY2Y1MTRiN2ExOTJmYThjZTU4MTg3YWRiM2Q5MzY2MTlhYTY",
@@ -18092,12 +18068,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/38#event-18564913323",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-10T12:25:24Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-10T12:20:31Z",
-            "word_count": 134,
-            "lines_of_code": 10
+            "task_start": "2025-07-10T12:20:31Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDNmMjQ1NWU1OTY1YzJjODY5ZDRiNzhmNDA1MjkzMmJjOWQyNGQ3ZDg",
@@ -18150,12 +18124,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/39#event-18575746121",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-11T00:10:05Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-10T12:51:15Z",
-            "word_count": 115,
-            "lines_of_code": 4
+            "task_start": "2025-07-10T12:51:15Z"
           },
           {
             "task_id": "IC_kwDOPDzQl862Xm3s",
@@ -18175,12 +18147,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/40#event-18575760319",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-11T00:11:27Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-10T13:48:15Z",
-            "word_count": 189,
-            "lines_of_code": 5
+            "task_start": "2025-07-10T13:48:15Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDFkMWY2ZGFkOGRlYjFiMzdkNmRhNWYyY2I4MWRhMjU1MjEyODJkZmQ",
@@ -18222,12 +18192,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/41#event-18579450655",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-11T06:18:49Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-11T03:57:34Z",
-            "word_count": 75,
-            "lines_of_code": 9
+            "task_start": "2025-07-11T03:57:34Z"
           },
           {
             "task_id": "IC_kwDOPDzQl862jbvh",
@@ -18247,12 +18215,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/42#event-18588799289",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-11T15:27:30Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-11T14:52:48Z",
-            "word_count": 525,
-            "lines_of_code": 12
+            "task_start": "2025-07-11T14:52:48Z"
           },
           {
             "task_id": "IC_kwDOPDzQl862rQLx",
@@ -18272,12 +18238,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/44#event-18597747146",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-12T06:55:41Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-12T03:25:29Z",
-            "word_count": 70,
-            "lines_of_code": 3
+            "task_start": "2025-07-12T03:25:29Z"
           },
           {
             "task_id": "IC_kwDOPDzQl862rQqV",
@@ -18343,12 +18307,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/46#event-18604344364",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-13T08:57:32Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-13T03:11:21Z",
-            "word_count": 58,
-            "lines_of_code": 14
+            "task_start": "2025-07-13T03:11:21Z"
           },
           {
             "task_id": "IC_kwDOPDzQl862yrKu",
@@ -18368,12 +18330,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/45#event-18604356592",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-13T09:00:46Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-13T02:26:10Z",
-            "word_count": 115,
-            "lines_of_code": 10
+            "task_start": "2025-07-13T02:26:10Z"
           },
           {
             "task_id": "IC_kwDOPDzQl862yrpH",
@@ -18393,12 +18353,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/35#event-18604366515",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-13T09:03:26Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-09T15:02:13Z",
-            "word_count": 406
+            "task_start": "2025-07-09T15:02:13Z"
           },
           {
             "task_id": "PRR_kwDOPDzQl86zsoDK",
@@ -18465,12 +18424,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/47#event-18621402244",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-14T16:18:54Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-13T15:32:06Z",
-            "word_count": 174,
-            "lines_of_code": 38
+            "task_start": "2025-07-13T15:32:06Z"
           },
           {
             "task_id": "IC_kwDOPDzQl863EJU8",
@@ -18490,12 +18447,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/48#event-18627119465",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-14T23:21:57Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-14T21:52:59Z",
-            "word_count": 116,
-            "lines_of_code": 25
+            "task_start": "2025-07-14T21:52:59Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDNkNTI4NmY0YmJkZmJhNmQ3MjJjYjQ4NWY2YjU0NGJhMGViMjMwNDU",
@@ -18700,12 +18655,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/23#event-18707813676",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-18T21:54:48Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-02T08:07:45Z",
-            "word_count": 468,
-            "lines_of_code": 11953
+            "task_start": "2025-07-02T08:07:45Z"
           },
           {
             "task_id": "PRR_kwDOPDzQl8607_hg",
@@ -18726,12 +18679,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/49#event-18713951951",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-20T00:24:17Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-19T13:59:06Z",
-            "word_count": 193,
-            "lines_of_code": 19
+            "task_start": "2025-07-19T13:59:06Z"
           },
           {
             "task_id": "IC_kwDOPDzQl864XkQQ",
@@ -18790,12 +18741,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/51#event-18716428069",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-20T13:01:29Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-20T11:14:41Z",
-            "word_count": 1483,
-            "lines_of_code": 717
+            "task_start": "2025-07-20T11:14:41Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDVjYzA2Mjc5YWYyMzgzYTFkOGU0NTU2MTk4NmUxNDFiYWU5OTg5MWE",
@@ -18826,12 +18775,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/52#event-18716619155",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-20T13:52:28Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-20T13:13:35Z",
-            "word_count": 803,
-            "lines_of_code": 4
+            "task_start": "2025-07-20T13:13:35Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDQ4OWYzZDMzYmM4MDUzZjkwMWUyYWRkYTRjOGM2ZWVlMWNiYWU3ODA",
@@ -18919,12 +18866,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/53#event-18717075111",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-20T15:32:31Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-20T15:13:23Z",
-            "word_count": 55,
-            "lines_of_code": 314
+            "task_start": "2025-07-20T15:13:23Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGI5Mjc2ZDAzZmQwNzA5N2I3MDQyNDIzNTUzYWFkMzFiODhkZDI4Yjg",
@@ -19000,7 +18945,8 @@
             "task_date": "2025-07-21T05:37:37Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 11,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -19027,12 +18973,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/56#event-18723713765",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-21T08:42:56Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-21T08:23:06Z",
-            "word_count": 233,
-            "lines_of_code": 620
+            "task_start": "2025-07-21T08:23:06Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGZiNTRiNDNhMTU3OTkxY2E4ZTRkNTdkNjVlNmRiZGIyOGJiYzZlYzA",
@@ -19063,12 +19007,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/55#event-18727118157",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-21T11:51:14Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-21T05:37:37Z",
-            "word_count": 11
+            "task_start": "2025-07-21T05:37:37Z"
           },
           {
             "task_id": "IC_kwDOPDzQl864kBfy",
@@ -19088,12 +19031,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/54#event-18727285155",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-21T12:01:09Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-21T05:29:10Z",
-            "word_count": 2253,
-            "lines_of_code": 2734
+            "task_start": "2025-07-21T05:29:10Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDE2YjU4ZGFmYTM0NGQyMjU4ZDAyNzdjZmQ5NGVlZWMxOWFhODk2ZTc",
@@ -19148,12 +19089,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/57#event-18739242736",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-21T23:59:14Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-21T12:59:03Z",
-            "word_count": 1080,
-            "lines_of_code": 17
+            "task_start": "2025-07-21T12:59:03Z"
           },
           {
             "task_id": "IC_kwDOPDzQl864xjaG",
@@ -19173,12 +19112,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/59#event-18739250850",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-22T00:00:07Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-21T14:06:16Z",
-            "word_count": 69,
-            "lines_of_code": 4
+            "task_start": "2025-07-21T14:06:16Z"
           },
           {
             "task_id": "IC_kwDOPDzQl864xj9y",
@@ -19202,7 +19139,8 @@
             "task_date": "2025-07-25T04:35:39Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 22,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -19225,12 +19163,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/61#event-18839517116",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-27T10:28:52Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-22T02:32:51Z",
-            "word_count": 4516,
-            "lines_of_code": 2044
+            "task_start": "2025-07-22T02:32:51Z"
           },
           {
             "task_id": "IC_kwDOPDzQl866OO-U",
@@ -19250,12 +19186,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/60#event-18839522425",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-27T10:29:45Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-22T01:11:06Z",
-            "word_count": 1173,
-            "lines_of_code": 290
+            "task_start": "2025-07-22T01:11:06Z"
           },
           {
             "task_id": "IC_kwDOPDzQl866OPcz",
@@ -19275,12 +19209,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/65#event-18839536906",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-27T10:33:50Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-24T15:48:50Z",
-            "word_count": 488,
-            "lines_of_code": 15
+            "task_start": "2025-07-24T15:48:50Z"
           },
           {
             "task_id": "IC_kwDOPDzQl866OPzv",
@@ -19313,12 +19245,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/58#event-18840205341",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-27T13:40:23Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-21T13:57:48Z",
-            "word_count": 1686,
-            "lines_of_code": 401
+            "task_start": "2025-07-21T13:57:48Z"
           },
           {
             "task_id": "IC_kwDOPDzQl866OuW1",
@@ -19338,12 +19268,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/62#event-18840211952",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-27T13:41:23Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-22T03:59:31Z",
-            "word_count": 1117,
-            "lines_of_code": 1270
+            "task_start": "2025-07-22T03:59:31Z"
           },
           {
             "task_id": "IC_kwDOPDzQl866Oudy",
@@ -19363,12 +19291,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/63#event-18840214629",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-27T13:41:57Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-22T06:19:22Z",
-            "word_count": 4138,
-            "lines_of_code": 32
+            "task_start": "2025-07-22T06:19:22Z"
           },
           {
             "task_id": "IC_kwDOPDzQl866OvqE",
@@ -19388,12 +19314,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/67#event-18840238989",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-27T13:46:57Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-27T12:06:19Z",
-            "word_count": 161,
-            "lines_of_code": 34
+            "task_start": "2025-07-27T12:06:19Z"
           },
           {
             "task_id": "IC_kwDOPDzQl866OwHn",
@@ -19424,12 +19348,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/66#event-18840278102",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-27T13:54:44Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-25T04:35:39Z",
-            "word_count": 22
+            "task_start": "2025-07-25T04:35:39Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDBmZWUwMzYwNjllNTFjNzljZmM5ZjI5NTllM2Q1NzY2M2EyZGY1NDk",
@@ -19460,12 +19383,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/64#event-18840467157",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-27T14:48:41Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-24T15:39:01Z",
-            "word_count": 1662,
-            "lines_of_code": 3319
+            "task_start": "2025-07-24T15:39:01Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGQxOWY4YWI4ZDFlNTlmMTU5Y2I2ZTRkYTY0ZTg4YTE1ZWM2MzIwNTM",
@@ -19549,12 +19470,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/8#event-18840826157",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-27T16:44:40Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-06-30T17:48:55Z",
-            "word_count": 194
+            "task_start": "2025-06-30T17:48:55Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGM4Mjk3YWIzOGY2MGQ4MjVlZWE2ZjE0ZWNjNWNhZTNlMmFiNTlkYWI",
@@ -19632,6 +19552,7 @@
             "reference_task_date_field": "publishedAt",
             "word_count": 143,
             "state": "OPEN",
+            "stateReason": null,
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -19646,6 +19567,7 @@
             "reference_task_date_field": "publishedAt",
             "word_count": 189,
             "state": "OPEN",
+            "stateReason": null,
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -19717,12 +19639,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/73#event-18866363605",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-29T00:45:43Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-28T14:08:58Z",
-            "word_count": 638,
-            "lines_of_code": 58
+            "task_start": "2025-07-28T14:08:58Z"
           },
           {
             "task_id": "IC_kwDOPDzQl866k5gM",
@@ -19742,12 +19662,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/72#event-18866448073",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-29T00:58:07Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-28T06:02:06Z",
-            "word_count": 1336,
-            "lines_of_code": 2473
+            "task_start": "2025-07-28T06:02:06Z"
           },
           {
             "task_id": "IC_kwDOPDzQl8662CdA",
@@ -19767,12 +19685,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/74#event-18890430342",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-07-30T03:16:45Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-07-29T01:36:16Z",
-            "word_count": 1495,
-            "lines_of_code": 29
+            "task_start": "2025-07-29T01:36:16Z"
           },
           {
             "task_id": "I_kwDOPDzQl87DPNH4",
@@ -19784,6 +19700,7 @@
             "reference_task_date_field": "publishedAt",
             "word_count": 44,
             "state": "OPEN",
+            "stateReason": null,
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -19798,6 +19715,7 @@
             "reference_task_date_field": "publishedAt",
             "word_count": 68,
             "state": "OPEN",
+            "stateReason": null,
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -19954,12 +19872,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/20#event-18892083135",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-30T06:22:38Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-02T03:31:45Z",
-            "word_count": 2510
+            "task_start": "2025-07-02T03:31:45Z"
           },
           {
             "task_id": "IC_kwDOPDzQl867LxYP",
@@ -19979,12 +19896,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/71#event-18922180978",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-31T15:33:32Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-28T04:32:00Z",
-            "word_count": 1758
+            "task_start": "2025-07-28T04:32:00Z"
           },
           {
             "task_id": "IC_kwDOPDzQl867iT3D",
@@ -20004,12 +19920,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/77#event-18949968171",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-08-02T08:23:18Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-08-02T06:18:21Z",
-            "word_count": 132,
-            "lines_of_code": 7
+            "task_start": "2025-08-02T06:18:21Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGEwYTFmZTRlOGRkYzliODRlMDFjZWM5NTVkYWIyZDNlOGYzMDlmNGY",
@@ -20055,12 +19969,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/78#event-18957230923",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-08-03T12:17:51Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-08-02T13:18:54Z",
-            "word_count": 237,
-            "lines_of_code": 1906
+            "task_start": "2025-08-02T13:18:54Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGExZTk2NzkzZWY1ZTkyNTJmZGQ5ZjdlMjU1ODlhZDNhNTAwYWUyMzk",
@@ -20100,12 +20012,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/18#event-18960369165",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-08-04T01:17:10Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-02T03:16:56Z",
-            "word_count": 199
+            "task_start": "2025-07-02T03:16:56Z"
           },
           {
             "task_id": "IC_kwDOPDzQl867r82Y",
@@ -20153,7 +20064,8 @@
             "task_date": "2025-08-06T16:10:41Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 47,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -20163,12 +20075,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/79#event-19016854102",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-08-06T16:11:18Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-08-06T16:10:41Z",
-            "word_count": 47
+            "task_start": "2025-08-06T16:10:41Z"
           },
           {
             "task_id": "IC_kwDOPDzQl868gtmC",
@@ -20201,12 +20112,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/82#event-19237185635",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-08-20T04:23:01Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-08-12T03:49:07Z",
-            "word_count": 208,
-            "lines_of_code": 24
+            "task_start": "2025-08-12T03:49:07Z"
           },
           {
             "task_id": "IC_kwDOPDzQl86--6cn",
@@ -20226,24 +20135,21 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/85#event-19237319407",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-08-20T04:39:22Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-08-15T21:45:13Z",
-            "word_count": 46,
-            "lines_of_code": 1
+            "task_start": "2025-08-15T21:45:13Z"
           },
           {
             "task_id": "CE_lADOPDzQl87GRVDRzwAAAAR6ojNz",
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/84#event-19237319539",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-08-20T04:39:23Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-08-15T21:39:20Z",
-            "word_count": 136
+            "task_start": "2025-08-15T21:39:20Z"
           },
           {
             "task_id": "IC_kwDOPDzQl86_0IP4",
@@ -20263,12 +20169,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/86#event-19310165114",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-08-24T13:43:37Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-08-23T05:02:41Z",
-            "word_count": 417,
-            "lines_of_code": 19
+            "task_start": "2025-08-23T05:02:41Z"
           },
           {
             "task_id": "AE_lADOPDzQl87HqCjlzwAAAAR_AwFX",
@@ -20306,12 +20210,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/87#event-19310794469",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-08-24T16:43:29Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-08-24T16:36:46Z",
-            "word_count": 144,
-            "lines_of_code": 485
+            "task_start": "2025-08-24T16:36:46Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGRmNzZhNjRhYTRkZGI1MGI1YjZhMzg4YWU4ZDY2ZDYwYzZlZDgyM2E",
@@ -20329,12 +20231,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/80#event-19310794516",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-08-24T16:43:30Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-08-07T02:44:50Z",
-            "word_count": 2183
+            "task_start": "2025-08-07T02:44:50Z"
           },
           {
             "task_id": "REA_lAHOPDzQl87FJpnCzgzG20k",
@@ -20407,12 +20308,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/90#event-19743155022",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-09-17T07:25:28Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-08-29T15:45:09Z",
-            "word_count": 106,
-            "lines_of_code": 4
+            "task_start": "2025-08-29T15:45:09Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDcwMjZlNjFkNDFhMjZlMTQxZmViYWNkMGE0ZmQwMDYzOWRiNWQwZTE",
@@ -20457,24 +20356,21 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/92#event-19744196934",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-09-17T08:17:22Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-09-11T02:43:28Z",
-            "word_count": 347,
-            "lines_of_code": 42
+            "task_start": "2025-09-11T02:43:28Z"
           },
           {
             "task_id": "CE_lADOPDzQl87JO-TnzwAAAASY2Itz",
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/91#event-19744197491",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-09-17T08:17:23Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-09-02T13:52:51Z",
-            "word_count": 235
+            "task_start": "2025-09-02T13:52:51Z"
           },
           {
             "task_id": "REA_lAHOPDzQl87IGbtzzg0TLMM",
@@ -20521,19 +20417,23 @@
             "state": "CLOSED",
             "node_url": null,
             "good_reaction": 0,
-            "bad_reaction": 0
+            "bad_reaction": 0,
+            "criterion_weight_for_task_type": 5,
+            "criterion_weight_for_repo_creation_to_task_period": 286,
+            "criterion_weight_for_amount_of_work": 50.5,
+            "criterion_weight_for_amount_of_reaction": 0.1,
+            "criterion_weight_for_status": 1,
+            "contribution_point": 7222
           },
           {
             "task_id": "CE_lADOPDzQl87MLEqhzwAAAASY-qOL",
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/93#event-19746431883",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-09-17T09:59:34Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-09-17T09:27:04Z",
-            "word_count": 1044,
-            "lines_of_code": 177
+            "task_start": "2025-09-17T09:27:04Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDIxNDA1Njc5ZWMyODllMTY2YmEwOGNlNWExOTdiMjhkZDQ0MGJkMDQ",
@@ -20568,12 +20468,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/95#event-19751399807",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-09-17T14:00:12Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-09-17T13:58:25Z",
-            "word_count": 46,
-            "lines_of_code": 12
+            "task_start": "2025-09-17T13:58:25Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGUzNWIzNzE0MjE1YzNlM2MzZWJlOTY4MmZiNGYzMzhlMDNlYzEzODY",
@@ -20591,12 +20489,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/88#event-19751400202",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-09-17T14:00:13Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-08-26T16:59:38Z",
-            "word_count": 1086
+            "task_start": "2025-08-26T16:59:38Z"
           },
           {
             "task_id": "IC_kwDOPDzQl87E4gK_",
@@ -20627,12 +20524,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/94#event-19753460014",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-09-17T15:25:41Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-09-17T09:48:43Z",
-            "word_count": 990,
-            "lines_of_code": 131
+            "task_start": "2025-09-17T09:48:43Z"
           },
           {
             "task_id": "AE_lADOPDzQl87MQLbjzwAAAASZZnVZ",
@@ -20656,12 +20551,10 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/pull/96#event-19753637723",
-            "task_name": "change_pull_request_state",
+            "task_name": "change-status",
             "task_date": "2025-09-17T15:33:17Z",
             "reference_task_date_field": "createdAt",
-            "task_start": "2025-09-17T15:27:21Z",
-            "word_count": 492,
-            "lines_of_code": 544
+            "task_start": "2025-09-17T15:27:21Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKDFkYmM3NDYyNjA1MjEyYzJmYjEyZDU0ZDdlZDM5NGJlYTI3NTE5OGY",
@@ -20679,12 +20572,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/83#event-19753638065",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-09-17T15:33:18Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-08-12T22:37:44Z",
-            "word_count": 232
+            "task_start": "2025-08-12T22:37:44Z"
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGQ1ZTg4ODQzMTI1ZGQxZjZjZTkyMGJlNzg5OWI2NWMxMDVmZTFkMzU",
@@ -25977,7 +25869,8 @@
             "task_date": "2025-08-15T21:39:20Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 136,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -29807,7 +29700,8 @@
             "task_date": "2025-07-01T05:37:18Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 1106,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -32165,7 +32059,8 @@
             "task_date": "2025-07-04T01:18:57Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 350,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -32188,12 +32083,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/28#event-18483010163",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-05T09:35:22Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-04T01:18:57Z",
-            "word_count": 350
+            "task_start": "2025-07-04T01:18:57Z"
           }
         ]
       },
@@ -32445,6 +32339,7 @@
             "reference_task_date_field": "publishedAt",
             "word_count": 257,
             "state": "OPEN",
+            "stateReason": null,
             "node_url": null,
             "good_reaction": 1,
             "bad_reaction": 0
@@ -32459,6 +32354,7 @@
             "reference_task_date_field": "publishedAt",
             "word_count": 369,
             "state": "OPEN",
+            "stateReason": null,
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -39854,7 +39750,8 @@
             "task_date": "2025-07-11T19:03:11Z",
             "reference_task_date_field": "publishedAt",
             "word_count": 428,
-            "state": "CLOSED_COMPLETED",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "node_url": null,
             "good_reaction": 0,
             "bad_reaction": 0
@@ -39864,12 +39761,11 @@
             "task_database_id": null,
             "task_full_database_id": null,
             "task_url": "https://github.com/yoshiko-pg/difit/issues/43#event-18597950371",
-            "task_name": "change_issue_state",
+            "task_name": "change-status",
             "task_date": "2025-07-12T07:39:47Z",
             "reference_task_date_field": "createdAt",
             "stateReason": "COMPLETED",
-            "task_start": "2025-07-11T19:03:11Z",
-            "word_count": 428
+            "task_start": "2025-07-11T19:03:11Z"
           },
           {
             "task_id": "IC_kwDOPDzQl862rmTP",

@@ -1,6 +1,6 @@
-# Pull Requestを作成した人を評価
+# issueで、ステータスを変更した人を評価する
 jq \
-  --arg task_name "create_pull_request" \
+  --arg task_name "change_issue_state" \
   --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
   '
     # 最大値から、期間が過ぎた機関だけ引き算した重み付け値を返す
@@ -15,52 +15,46 @@ jq \
 
     def build_row_fields($repo_ts; $w):
       . as $t
-      | ($t.task_date | fromdateiso8601) as $epoch_task_date
-      | (((($epoch_task_date // 0) - ($repo_ts // 0)) / 86400) | floor) as $rcttp_days
-      | ($w[$task_name].task_type // 0) as $tt
-      | clamp(
-          $w[$task_name].repo_creation_to_task_period.max_period;
-          $w[$task_name].repo_creation_to_task_period.max_weight;
-          $w[$task_name].repo_creation_to_task_period.minus_unit;
-          $rcttp_days;
-          $w[$task_name].repo_creation_to_task_period.lower_limit
+      | (
+          $t.task_date | fromdateiso8601
+        ) as $epoch_task_date
+      | (
+          $w[$task_name].task_type // 0
+        ) as $tt
+      | (
+          (((($epoch_task_date // 0) - ($repo_ts // 0)) / 86400) | floor) as $rcttp_days
+          | clamp(
+              $w[$task_name].repo_creation_to_task_period.max_period;
+              $w[$task_name].repo_creation_to_task_period.max_weight;
+              $w[$task_name].repo_creation_to_task_period.minus_unit;
+              $rcttp_days;
+              $w[$task_name].repo_creation_to_task_period.lower_limit
+            )
         ) as $rcttp
-      | metric_weight(
-          $t.word_count;
-          $w[$task_name].amount_of_work.word_count;
-          $w[$task_name].amount_of_work.word_count_lower_limit
-        ) as $aow_word
-      | metric_weight(
-          $t.lines_of_code;
-          $w[$task_name].amount_of_work.lines_of_code;
-          $w[$task_name].amount_of_work.lines_of_code_lower_limit
-        ) as $aow_code
-      | metric_weight(
-          $t.lines_of_code;
-          $w[$task_name].amount_of_work.word_count;
-          $w[$task_name].amount_of_work.word_count_lower_limit
-        ) as $aow_code
-      | ( $aow_word + $aow_code ) as $aow
-      | metric_weight(
-          $t.good_reaction;
-          $w[$task_name].amount_of_reaction.good_reaction_count;
-          $w[$task_name].amount_of_reaction.good_reaction_count_lower_limit
-        ) as $good_reaction_weigting
       | (
-          $t.bad_reaction 
-          * $w[$task_name].amount_of_reaction.bad_reaction_count
-        ) as $bad_reaction_weigting
-      | ($good_reaction_weigting + $bad_reaction_weigting) as $aor
+          metric_weight(
+            $t.word_count;
+            $w[$task_name].amount_of_work.word_count;
+            $w[$task_name].amount_of_work.word_count_lower_limit
+          )
+        ) as $aow
       | (
-          $w[$task_name].state[$t.state]
-        ) as $state
+          ($t.task_start | fromdateiso8601) as $epoch_task_start
+          | (((($epoch_task_date // 0) - ($epoch_task_start // 0)) / 86400) | floor) as $rs_days
+          | clamp(
+              $w[$task_name].response_speed.max_period;
+              $w[$task_name].response_speed.max_weight;
+              $w[$task_name].response_speed.minus_unit;
+              $rs_days;
+              $w[$task_name].response_speed.lower_limit
+            )
+        ) as $rs
       | {
           "criterion_weight_for_task_type": $tt,
           "criterion_weight_for_repo_creation_to_task_period": $rcttp,
           "criterion_weight_for_amount_of_work": $aow,
-          "criterion_weight_for_amount_of_reaction": $aor,
-          "criterion_weight_for_status": $state,
-          "contribution_point": (($tt * $rcttp * $aow * $aor * $state) | round)
+          "criterion_weight_for_response_speed": $rs,
+          "contribution_point": (($tt * $rcttp * $aow * $rs) | round)
         };
 
     $weighting[0] as $w
@@ -80,12 +74,12 @@ jq \
       ))
   ' \
   "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" \
-  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/pull-req/1-1-result.json"
+  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/change-state/1-1-result.json"
 
 
-# Pull Requestをレビューした人を評価
+# pull-requestで、ステータスを変更した人を評価する
 jq \
-  --arg task_name "pr_review" \
+  --arg task_name "change_pull_request_state" \
   --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
   '
     # 最大値から、期間が過ぎた機関だけ引き算した重み付け値を返す
@@ -100,8 +94,12 @@ jq \
 
     def build_row_fields($repo_ts; $w):
       . as $t
-      | ($t.task_date | fromdateiso8601) as $epoch_task_date
-      | ($w[$task_name].task_type // 0) as $tt
+      | (
+          $t.task_date | fromdateiso8601
+        ) as $epoch_task_date
+      | (
+          $w[$task_name].task_type // 0
+        ) as $tt
       | (
           (((($epoch_task_date // 0) - ($repo_ts // 0)) / 86400) | floor) as $rcttp_days
           | clamp(
@@ -126,18 +124,6 @@ jq \
         | ( $aow_word + $aow_code )
         ) as $aow
       | (
-          metric_weight(
-            $t.good_reaction;
-            $w[$task_name].amount_of_reaction.good_reaction_count;
-            $w[$task_name].amount_of_reaction.good_reaction_count_lower_limit
-          ) as $good_reaction_weigting
-          | (
-              $t.bad_reaction 
-              * $w[$task_name].amount_of_reaction.bad_reaction_count
-            ) as $bad_reaction_weigting
-          | ($good_reaction_weigting + $bad_reaction_weigting)
-        ) as $aor
-      | (
           ($t.task_start | fromdateiso8601) as $epoch_task_start
           | (((($epoch_task_date // 0) - ($epoch_task_start // 0)) / 86400) | floor) as $rs_days
           | clamp(
@@ -152,9 +138,8 @@ jq \
           "criterion_weight_for_task_type": $tt,
           "criterion_weight_for_repo_creation_to_task_period": $rcttp,
           "criterion_weight_for_amount_of_work": $aow,
-          "criterion_weight_for_amount_of_reaction": $aor,
           "criterion_weight_for_response_speed": $rs,
-          "contribution_point": (($tt * $rcttp * $aow * $aor * $rs) | round)
+          "contribution_point": (($tt * $rcttp * $aow * $rs) | round)
         };
 
     $weighting[0] as $w
@@ -174,4 +159,4 @@ jq \
       ))
   ' \
   "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" \
-  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/pull-request/1-2-result.json"
+  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/change-state/1-2-result.json"

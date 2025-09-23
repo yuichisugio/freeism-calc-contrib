@@ -54,7 +54,7 @@ function process_discussion_answer() {
   process_data_utils \
     --input-path "$RESULT_GET_DISCUSSION_ANSWER_NODE_ID_PATH" \
     --output-path "$RESULT_PROCESSED_DISCUSSION_ANSWER_PATH" \
-    --task-name "answer_discussion" \
+    --task-name "$ANSWER_TASK_NAME" \
     --task-date "publishedAt" \
     --author-field "author" \
     --second-other-query "$SECOND_OTHER_QUERY"

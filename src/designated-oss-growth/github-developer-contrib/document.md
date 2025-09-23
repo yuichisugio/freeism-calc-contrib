@@ -317,10 +317,10 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 - 対応タスク
   1. プルリクエスト
-     1. `Merged`,`Approved`
-        1. `approved`は承認済みだけどマージはされていない状態
-        2. `3`
-     2. `Draft`,`Rejected`,`Open`,`Pending`,`Changes requested`
+     1. `MERGED`
+        1. `3`
+        2. `APPROVED`などはレビューのステータスなので含めない
+     2. `CLOSED`,`OPEN`(`Pending`,`Changes requested`)
         1. `1`
   2. イシュー
      1. `CLOSED` - `COMPLETED`
@@ -578,6 +578,8 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 1. `watch`は`createdAt`が存在しない。期間で区切っても毎回全て出力される。
    - 貢献と認めたくない場合は、`weighting.jsonc`で`0`にすれば OK
 1. `Release`は、バッドリアクションが無く、グッドリアクションしか押せない・選べない
+2. `Discussion`,`Issue`,`Pull Request`など文言を統一できるところは統一している
+   1. `state`に`state`,`stateReason`や`closed`を合体させて`state`にしている
 
 ## 改善点
 

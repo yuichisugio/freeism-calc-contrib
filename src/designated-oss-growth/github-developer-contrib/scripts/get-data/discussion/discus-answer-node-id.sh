@@ -23,7 +23,8 @@ function get_discussion_answer_node_id() {
           upvoteCount: .answer.upvoteCount,
           author: .answer.author,
           bodyText: .answer.bodyText,
-          publishedAt: .answer.publishedAt,
+          publishedAt: .answer.publishedAt, # answerの作成日。task_dateで使用
+          node_publishedAt: .publishedAt, # discussion自体の作成日。task_startで使用
           reactionGroups: .answer.reactionGroups,
           reactions: (.answer.reactions // {totalCount: 0}),
           replies: (.answer.replies // {totalCount: 0})

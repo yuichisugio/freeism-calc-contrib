@@ -37,7 +37,7 @@ function process_pr_node_id() {
         ($obj.title? // "" | length) + ($obj.bodyText? // "" | length)
       ),
     record_count: (($obj.additions? // 0) + ($obj.deletions? // 0)),
-    pr_state: $obj.state,
+    state: $obj.state,
     node_url: $obj.node_url,
 
     good_reaction:
@@ -68,7 +68,7 @@ function process_pr_node_id() {
   process_data_utils \
     --input-path "$RESULT_GET_PR_NODE_ID_PATH" \
     --output-path "$RESULT_PROCESSED_PR_NODE_ID_PATH" \
-    --task-name "create_not_merged_pull_request" \
+    --task-name "create_pull_request" \
     --task-date "publishedAt" \
     --author-field "author" \
     --first-other-query "$FIRST_OTHER_QUERY" \

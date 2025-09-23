@@ -21,6 +21,14 @@ function process_discussion_create() {
 
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
+    state:
+      (
+        if ($obj.closed // false)
+          then "CLOSED_" + ($obj.stateReason? // "")
+          else "OPEN"
+        end
+      ),
+
     word_count:
       (
         ($obj.title? // "" | length) + ($obj.bodyText? // "" | length)

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #--------------------------------------
-# issueのステータスを変更した人のデータを加工するファイル
+# pull-requestのステータスを変更した人のデータを加工するファイル
 #--------------------------------------
 
 set -euo pipefail
@@ -9,15 +9,15 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のディレクトリを作成する
 #--------------------------------------
-readonly RESULT_PROCESSED_ISSUE_CHANGE_STATUS_PATH="${RESULT_PROCESSED_ISSUE_DIR}/result-issue-change-status.json"
-mkdir -p "$(dirname "$RESULT_PROCESSED_ISSUE_CHANGE_STATUS_PATH")"
+readonly RESULT_PROCESSED_PR_CHANGE_STATE_PATH="${RESULT_PROCESSED_PR_DIR}/result-pr-change-state.json"
+mkdir -p "$(dirname "$RESULT_PROCESSED_PR_CHANGE_STATE_PATH")"
 
 #--------------------------------------
-# issueのステータスを変更した人のデータを加工する関数
+# pull-requestのステータスを変更した人のデータを加工する関数
 #--------------------------------------
-function process_issue_change_status() {
-  
-  printf '%s\n' "begin:process_issue_change_status()"
+function process_pr_change_state() {
+
+  printf '%s\n' "begin:process_pr_change_state()"
 
   # shellcheck disable=SC2016
   local FIRST_OTHER_QUERY='
@@ -42,20 +42,26 @@ function process_issue_change_status() {
 
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
-    stateReason: $obj.stateReason,
-    task_start: $obj.node_publishedAt
+    task_start: $obj.node_publishedAt,
+    word_count:(
+      ( $obj.node_title? // "" | length )
+      + ( $obj.node_bodyText? // "" | length )
+    ),
+    lines_of_code:(
+      ( $obj.node_additions? // 0 ) + ( $obj.node_deletions? // 0 )
+    )
   '
 
   process_data_utils \
-    --input-path "$RESULT_GET_ISSUE_TIMELINE_PATH" \
-    --output-path "$RESULT_PROCESSED_ISSUE_CHANGE_STATUS_PATH" \
-    --task-name "change-status" \
+    --input-path "$RESULT_GET_PR_TIMELINE_PATH" \
+    --output-path "$RESULT_PROCESSED_PR_CHANGE_STATE_PATH" \
+    --task-name "change_pull_request_state" \
     --task-date "createdAt" \
     --author-field "actor" \
     --first-other-query "$FIRST_OTHER_QUERY" \
     --second-other-query "$SECOND_OTHER_QUERY"
 
-  printf '%s\n' "end:process_issue_change_status()"
+  printf '%s\n' "end:process_pr_change_state()"
 
   return 0
 }

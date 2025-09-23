@@ -25,8 +25,18 @@ function process_issue_node_id() {
       (
         ($obj.title? // "" | length) + ($obj.bodyText? // "" | length)
       ),
-    issue_state: $obj.state,
-    issue_stateReason: $obj.stateReason,
+
+    # OPEN, CLOSED_RESOLVED, CLOSED_DUPLICATE, CLOSED_NOT_PLANNED, CLOSED_REOPENED
+    state:
+      (
+        ($obj.state // "") as $s
+        | ($obj.stateReason // "") as $r
+        | if $s == "OPEN"
+            then $s
+            else "CLOSED_" + $r
+          end
+      ),
+
     node_url: $obj.node_url,
 
     good_reaction:

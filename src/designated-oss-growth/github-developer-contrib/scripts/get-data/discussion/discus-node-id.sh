@@ -60,6 +60,8 @@ function get_discussion_node_id() {
             bodyText
             publishedAt
             upvoteCount
+            closed
+            stateReason
             reactionGroups { content reactors { totalCount } }
             reactions(first: 1){
               totalCount
@@ -89,7 +91,7 @@ function get_discussion_node_id() {
               id
               question
               totalVoteCount
-              options(first: 20){
+              options(first: 5){
                 totalCount
                 pageInfo { hasNextPage endCursor }
                 nodes {

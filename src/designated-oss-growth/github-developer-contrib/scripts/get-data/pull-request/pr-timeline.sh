@@ -35,9 +35,12 @@ function get_pull_request_timeline() {
           fullDatabaseId
           number
           url
-          title
           state
           publishedAt
+          title
+          additions
+          deletions
+          bodyText
           timelineItems(
             first: $perPage, 
             after: $endCursor, 

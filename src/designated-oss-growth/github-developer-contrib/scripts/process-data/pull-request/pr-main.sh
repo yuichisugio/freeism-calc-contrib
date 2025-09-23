@@ -20,7 +20,7 @@ source "${PROCESS_PR_DIR}/pr-node-id.sh"
 source "${PROCESS_PR_DIR}/pr-comment.sh"
 source "${PROCESS_PR_DIR}/pr-comment-reaction.sh"
 source "${PROCESS_PR_DIR}/pr-reaction.sh"
-source "${PROCESS_PR_DIR}/pr-change-status.sh"
+source "${PROCESS_PR_DIR}/pr-change-state.sh"
 source "${PROCESS_PR_DIR}/pr-reviewer-assigned.sh"
 source "${PROCESS_PR_DIR}/pr-label.sh"
 source "${PROCESS_PR_DIR}/pr-coder-assigned.sh"
@@ -67,7 +67,7 @@ function process_pull_request() {
   process_pr_review_comment_reaction
 
   # プルリクエストのステータスを変更した人を評価
-  process_pr_change_status
+  process_pr_change_state
 
   # プルリクエストの担当者をアサインした人を評価
   process_pr_coder_assigned

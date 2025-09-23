@@ -28,6 +28,12 @@ source "${PROCESS_DISCUSSION_DIR}/discus-answer-reply-reaction.sh"
 source "${PROCESS_DISCUSSION_DIR}/discus-answer.sh"
 
 #--------------------------------------
+# answer_discussionのタスク名
+# 別ファイルで使用するので、変更の際忘れないように記載
+#--------------------------------------
+readonly ANSWER_TASK_NAME="answer_discussion"
+
+#--------------------------------------
 # discussionのデータを加工する関数
 #--------------------------------------
 function process_discussion() {
