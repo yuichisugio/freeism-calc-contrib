@@ -125,7 +125,7 @@ function process_data_utils() {
 
   # 2か所目。オブジェクトをマージしたいので、+ ({}) でマージする
   if [[ -n "${SECOND_OTHER_QUERY//[$'\t\r\n ']/}" ]]; then
-    SECOND_EXTRA_MERGE="+ ({${SECOND_OTHER_QUERY}})"
+    SECOND_EXTRA_MERGE="| . + { ${SECOND_OTHER_QUERY} }"
   else
     SECOND_EXTRA_MERGE=''
   fi

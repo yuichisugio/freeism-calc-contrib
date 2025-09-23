@@ -19,8 +19,9 @@ function process_issue_reaction() {
 
   printf '%s\n' "begin:process_issue_reaction()"
 
+  # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
-    task_start: .node_publishedAt
+    task_start: $obj.node_publishedAt
   '
 
   process_data_utils \

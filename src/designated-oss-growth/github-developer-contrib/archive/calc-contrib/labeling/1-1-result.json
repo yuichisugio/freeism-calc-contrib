@@ -17285,7 +17285,11 @@
             "label_name": "good first issue",
             "label_login": null,
             "label_url": "https://github.com/yoshiko-pg/difit/labels/good%20first%20issue",
-            "task_start": "2025-07-02T23:38:01Z"
+            "task_start": "2025-07-02T23:38:01Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 362,
+            "criterion_weight_for_response_speed": 1,
+            "contribution_point": 362
           },
           {
             "task_id": "CE_lADOPDzQl86-Zm3uzwAAAARLMFoT",

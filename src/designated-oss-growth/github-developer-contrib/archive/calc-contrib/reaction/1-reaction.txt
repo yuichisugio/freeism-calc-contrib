@@ -4,8 +4,8 @@ jq \
   --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
   '
     # repository作成前のsponsorはmaxより評価するために、 $daysはマイナスでも0に直さない
-    def clamp($max; $unit; $days; $lower_limit):
-      ($max - ($unit * $days)) as $v
+    def clamp($max; $max_weight ;$unit; $days; $lower_limit):
+      (($max * $max_weight) - ($unit * $days)) as $v
       | if $v < $lower_limit then $lower_limit else $v end;
 
     # 値×重み → 下限補正
@@ -22,12 +22,14 @@ jq \
       | ($w[$task_name].task_type // 0) as $tw
       | clamp(
           $w[$task_name].repo_creation_to_task_period.max_period;
+          $w[$task_name].repo_creation_to_task_period.max_weight;
           $w[$task_name].repo_creation_to_task_period.minus_unit;
           $rcttp_days;
           $w[$task_name].repo_creation_to_task_period.lower_limit
         ) as $rcttp
       | clamp(
           $w[$task_name].response_speed.max_period;
+          $w[$task_name].response_speed.max_weight;
           $w[$task_name].response_speed.minus_unit;
           $rs_days;
           $w[$task_name].response_speed.lower_limit

@@ -21,8 +21,8 @@ function process_discussion_comment_reply() {
 
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
-    word_count:   (.bodyText? // "" | length),
-    task_start: .node_publishedAt,
+    word_count:   ($obj.bodyText? // "" | length),
+    task_start: $obj.node_publishedAt,
     # 👎だけbad、それ以外はgoodに計上 + Discussionsのupvoteも合算
     good_reaction:
       ((

@@ -16147,7 +16147,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-06-30T23:53:21Z"
+            "task_start": "2025-06-30T23:53:21Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3649,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10947
           },
           {
             "task_id": "C_kwDOPDzQl9oAKGE0ZDJhODk2ODFlZmEzM2ZlYmM4ODE2NzYwN2I3OWI3ZGUxOTI4NmY",
@@ -16948,7 +16952,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-07-02T02:50:44Z"
+            "task_start": "2025-07-02T02:50:44Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3648,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10944
           },
           {
             "task_id": "I_kwDOPDzQl86-ZbAT",
@@ -16980,7 +16988,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-06-30T17:48:55Z"
+            "task_start": "2025-06-30T17:48:55Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3648,
+            "criterion_weight_for_response_speed": 2,
+            "contribution_point": 7296
           },
           {
             "task_id": "I_kwDOPDzQl86-ZkpC",
@@ -17012,7 +17024,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-07-02T03:16:56Z"
+            "task_start": "2025-07-02T03:16:56Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3648,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10944
           },
           {
             "task_id": null,
@@ -17326,7 +17342,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-07-03T00:23:03Z"
+            "task_start": "2025-07-03T00:23:03Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3647,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10941
           },
           {
             "task_id": "CE_lADOPDzQl86-lnznzwAAAARLNyLo",
@@ -17647,7 +17667,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-07-09T03:10:16Z"
+            "task_start": "2025-07-09T03:10:16Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3641,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10923
           },
           {
             "task_id": "CE_lADOPDzQl86_lu0tzwAAAARQ6RtT",
@@ -17941,7 +17965,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-07-10T00:24:57Z"
+            "task_start": "2025-07-10T00:24:57Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3640,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10920
           },
           {
             "task_id": "CE_lADOPDzQl86_xwQqzwAAAARR_k7m",
@@ -18931,7 +18959,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-07-21T05:37:37Z"
+            "task_start": "2025-07-21T05:37:37Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3629,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10887
           },
           {
             "task_id": "I_kwDOPDzQl87BjYVh",
@@ -18963,7 +18995,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-07-21T08:23:06Z"
+            "task_start": "2025-07-21T08:23:06Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3629,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10887
           },
           {
             "task_id": "CE_lADOPDzQl87Bk6oOzwAAAARcBTLl",
@@ -19959,7 +19995,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-08-02T13:18:54Z"
+            "task_start": "2025-08-02T13:18:54Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3616,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10848
           },
           {
             "task_id": "CE_lADOPDzQl87D20GSzwAAAARp8GNL",
@@ -20186,7 +20226,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-08-24T16:36:46Z"
+            "task_start": "2025-08-24T16:36:46Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3594,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10782
           },
           {
             "task_id": "PRR_kwDOPDzQl867uJj_",
@@ -20454,7 +20498,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-09-17T13:58:25Z"
+            "task_start": "2025-09-17T13:58:25Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3570,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10710
           },
           {
             "task_id": "CE_lADOPDzQl87MO0ntzwAAAASZRnF_",
@@ -20537,7 +20585,11 @@
             "assignee_name": "yoshiko",
             "assignee_login": "yoshiko-pg",
             "assignee_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-09-17T15:27:21Z"
+            "task_start": "2025-09-17T15:27:21Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3570,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10710
           },
           {
             "task_id": "CE_lADOPDzQl87MQLbjzwAAAASZaJdb",
@@ -37579,7 +37631,11 @@
             "reviewer_login": "copilot-pull-request-reviewer",
             "reviewer_name": null,
             "reviewer_url": "https://github.com/apps/copilot-pull-request-reviewer",
-            "task_start": "2025-07-10T00:40:45Z"
+            "task_start": "2025-07-10T00:40:45Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3640,
+            "criterion_weight_for_response_speed": 3,
+            "contribution_point": 10920
           },
           {
             "task_id": "IC_kwDOPDzQl862E070",
@@ -38816,7 +38872,11 @@
             "reviewer_login": "yoshiko-pg",
             "reviewer_name": "yoshiko",
             "reviewer_url": "https://github.com/yoshiko-pg",
-            "task_start": "2025-07-02T08:07:45Z"
+            "task_start": "2025-07-02T08:07:45Z",
+            "criterion_weight_for_task_type": 1,
+            "criterion_weight_for_repo_creation_to_task_period": 3631,
+            "criterion_weight_for_response_speed": 1,
+            "contribution_point": 3631
           },
           {
             "task_id": "IC_kwDOPDzQl864JoO9",

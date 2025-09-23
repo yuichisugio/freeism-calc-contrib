@@ -3,6 +3,7 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -26,11 +27,13 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
 		"response_speed": {
 			"max_period": 3,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -46,11 +49,13 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
 		"response_speed": {
 			"max_period": 3,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -66,6 +71,7 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -88,6 +94,7 @@
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -102,27 +109,28 @@
 		"task_type": 6,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
 		"amount_of_work": {
-			"word_count": 0.05,
-			"lines_of_code": 0.1
-		},
-		"amount_of_reaction": {
-			"good_reaction_count": 0.1,
-			"bad_reaction_count": -0.1
+			"word_count": 0.01,
+			"lines_of_code": 0.1,
+			"word_count_lower_limit": 1,
+			"lines_of_code_lower_limit": 1
 		}
 	},
 	"change_status": {
 		"task_type": 5,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
 		"response_speed": {
 			"max_period": 3,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -131,6 +139,7 @@
 		"task_type": 100,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -139,6 +148,7 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -147,6 +157,7 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -158,6 +169,7 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -166,11 +178,13 @@
 		"task_type": 0.1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
 		"response_speed": {
 			"max_period": 5,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -179,6 +193,7 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -193,6 +208,7 @@
 		},
 		"response_speed": {
 			"max_period": 3,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -201,28 +217,28 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
 		"response_speed": {
 			"max_period": 3,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
-	},
-	"response_speed": {
-		"max_period": 30,
-		"minus_unit": 1
 	},
 	"assigning": {
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
 		"response_speed": {
 			"max_period": 3,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -231,6 +247,7 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
@@ -243,6 +260,7 @@
 		},
 		"response_speed": {
 			"max_period": 3,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		}
@@ -251,11 +269,13 @@
 		"task_type": 1,
 		"repo_creation_to_task_period": {
 			"max_period": 3650,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},
 		"response_speed": {
 			"max_period": 3,
+			"max_weight": 0.1,
 			"minus_unit": 1,
 			"lower_limit": 1
 		},

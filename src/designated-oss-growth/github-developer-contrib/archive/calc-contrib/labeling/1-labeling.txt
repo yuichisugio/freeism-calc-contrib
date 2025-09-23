@@ -1,6 +1,6 @@
-# commet作成者を評価
+# ラベル付け作業を行った人を評価
 jq \
-  --arg task_name "comment" \
+  --arg task_name "labeling" \
   --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
   '
     # 最大値から、期間が過ぎた機関だけ引き算した重み付け値を返す
@@ -8,11 +8,6 @@ jq \
     def clamp($max; $max_weight ;$unit; $days; $lower_limit):
       (($max * $max_weight) - ($unit * $days)) as $v
       | if $v < $lower_limit then $lower_limit else $v end;
-
-    # 値×重み → 下限補正
-    def metric_weight($src; $weight; $min):
-      (($src // 0) * ($weight // 0)) as $raw
-      | (if $raw < ($min // 0) then ($min // 0) else $raw end);
 
     def build_row_fields($repo_ts; $w):
       . as $t
@@ -28,11 +23,6 @@ jq \
           $rcttp_days;
           $w[$task_name].repo_creation_to_task_period.lower_limit
         ) as $rcttp
-      | metric_weight(
-          $t.word_count;
-          $w[$task_name].amount_of_work.word_count;
-          $w[$task_name].amount_of_work.word_count_lower_limit
-        ) as $aow
       | clamp(
           $w[$task_name].response_speed.max_period;
           $w[$task_name].response_speed.max_weight;
@@ -40,23 +30,11 @@ jq \
           $rs_days;
           $w[$task_name].response_speed.lower_limit
         ) as $rs
-      | metric_weight(
-          $t.good_reaction;
-          $w[$task_name].amount_of_reaction.good_reaction_count;
-          $w[$task_name].amount_of_reaction.good_reaction_count_lower_limit
-        ) as $good_reaction_weigting
-      | (
-          $t.bad_reaction 
-          * $w[$task_name].amount_of_reaction.bad_reaction_count
-        ) as $bad_reaction_weigting
-      | ($good_reaction_weigting + $bad_reaction_weigting) as $aor
       | {
           "criterion_weight_for_task_type": $tt,
           "criterion_weight_for_repo_creation_to_task_period": $rcttp,
-          "criterion_weight_for_amount_of_work": $aow,
           "criterion_weight_for_response_speed": $rs,
-          "criterion_weight_for_amount_of_reaction": $aor,
-          "contribution_point": ($tt * $rcttp * $aow * $rs * $aor) | round
+          "contribution_point": (($tt * $rcttp * $rs) | round)
         };
 
     $weighting[0] as $w
@@ -76,4 +54,4 @@ jq \
       ))
   ' \
   "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/integrated-processed-data.json" \
-  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/comment/1-1-result.json"
+  > "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/labeling/1-1-result.json"

@@ -64,7 +64,7 @@ function process_pr_reviewer_assigned() {
     reviewer_login:        ($obj.requestedReviewer.login // null),
     reviewer_name:         ($obj.requestedReviewer.name  // null),
     reviewer_url:          ($obj.requestedReviewer.url   // null),
-    task_start: .node_publishedAt
+    task_start: $obj.node_publishedAt
   '
 
   process_data_utils \

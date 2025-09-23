@@ -19,12 +19,13 @@ function process_pr_comment() {
 
   printf '%s\n' "begin:process_pr_comment()"
 
+  # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
-    word_count:   (.bodyText? // "" | length),
-    task_start: .node_publishedAt,
+    word_count:   ($obj.bodyText? // "" | length),
+    task_start: $obj.node_publishedAt,
     good_reaction:
       (
-        (.reactionGroups? // [] )
+        ($obj.reactionGroups? // [] )
         | map(
           if (.content // "") == "THUMBS_DOWN"
             then 0
@@ -36,7 +37,7 @@ function process_pr_comment() {
 
     bad_reaction:
       (
-        (.reactionGroups? // [] )
+        ($obj.reactionGroups? // [] )
         | map(
             if (.content // "") == "THUMBS_DOWN"
             then (.reactors.totalCount // 0)

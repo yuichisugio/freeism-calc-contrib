@@ -4,8 +4,9 @@ jq \
   --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
   '
     # repository作成前のsponsorはmaxより評価するために、 $daysはマイナスでも0に直さない
-    def clamp($max; $unit; $days):
-      ($max - ($unit * $days)) as $v | if $v <= 0 then 1 else $v end;
+    def clamp($max; $max_weight ;$unit; $days; $lower_limit):
+      (($max * $max_weight) - ($unit * $days)) as $v
+      | if $v < $lower_limit then $lower_limit else $v end;
 
     def build_row_fields($repo_ts; $w):
       (.task_date | fromdateiso8601) as $task_ts
@@ -13,6 +14,7 @@ jq \
       | ($w[$task_name].task_type // 0) as $tw
       | (clamp(
           $w[$task_name].repo_creation_to_task_period.max_period;
+          $w[$task_name].repo_creation_to_task_period.max_weight;
           $w[$task_name].repo_creation_to_task_period.minus_unit;
           $days
         )) as $cre_p

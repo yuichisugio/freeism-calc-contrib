@@ -3,14 +3,20 @@ jq \
   --arg task_name "star" \
   --slurpfile weighting "./src/designated-oss-growth/github-developer-contrib/archive/calc-contrib/weighting.json" \
   '
-    def clamp($max; $unit; $days):
-      ($max - ($unit * $days)) as $v | if $v <= 0 then 1 else $v end;
+    def clamp($max; $max_weight ;$unit; $days; $lower_limit):
+      (($max * $max_weight) - ($unit * $days)) as $v
+      | if $v < $lower_limit then $lower_limit else $v end;
 
     def build_row_fields($repo_ts; $w):
       (.task_date | fromdateiso8601) as $task_ts
       | ( (((($task_ts // 0) - ($repo_ts // 0)) / 86400) | floor) | if . < 0 then 0 else . end ) as $days
       | ($w[$task_name].task_type // 0) as $tw
-      | (clamp($w[$task_name].repo_creation_to_task_period.max_period; $w[$task_name].repo_creation_to_task_period.minus_unit; $days)) as $cre_p
+      | clamp(
+          $w[$task_name].repo_creation_to_task_period.max_period;
+          $w[$task_name].repo_creation_to_task_period.max_weight;
+          $w[$task_name].repo_creation_to_task_period.minus_unit;
+          $days
+        ) as $cre_p
       | {
           "criterion_weight_for_task_type": $tw,
           "criterion_weight_for_repo_creation_to_task_period": $cre_p,

@@ -33,8 +33,16 @@ function process_commit_node_id_with_pr() {
 
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
-    word_count:(($obj.name? // "" | length) + ($obj.description? // "" | length)),
-    reaction:  ($obj.reactions.totalCount // 0)
+    word_count: (
+      ($obj.message? // "" | length)+
+      ($obj.associatedPullRequests?.nodes[0]?.bodyText? // "" | length)+
+      ($obj.associatedPullRequests?.nodes[0]?.title? // "" | length)+
+      ($obj.associatedPullRequests?.nodes[1]?.bodyText? // "" | length)+
+      ($obj.associatedPullRequests?.nodes[1]?.title? // "" | length)+
+      ($obj.associatedPullRequests?.nodes[2]?.bodyText? // "" | length)+
+      ($obj.associatedPullRequests?.nodes[2]?.title? // "" | length)
+    ),
+    lines_of_code:   (($obj.additions? // 0) + ($obj.deletions? // 0))
   '
 
   process_data_utils \

@@ -23,7 +23,7 @@ function process_discussion_answer() {
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
     word_count: ($obj.bodyText? // "" | length),
-    task_start: .node_publishedAt,
+    task_start: $obj.node_publishedAt,
     # 👎だけbad、それ以外はgoodに計上 + Discussionsのupvoteも合算
     good_reaction:
       ((
