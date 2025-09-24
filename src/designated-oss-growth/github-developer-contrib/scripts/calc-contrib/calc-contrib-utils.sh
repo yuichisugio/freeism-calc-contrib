@@ -326,19 +326,20 @@ function calc_contrib_utils() {
   # 実行して、OUTPUT_PATH に出力
   #--------------------------------------
   # 一時ファイルを作成。同じファイルをinputとoutputに使うため、tmpファイルを作成する。
+  # EXITではなくRETURNを使うことで、処理全体ではなく関数が完了したら削除されるようにする。
   local tmp
-  tmp="$(mktemp "${RESULT_PROCESSED_INTEGRATED_DATA_TMP_PATH}.zzzzz")"
-  trap 'rm -f "$tmp"' EXIT
+  tmp="$(mktemp "${OUTPUT_CALC_CONTRIB_VERBOSE_JSON_PATH}.XXXX")"
+  trap 'rm -f "${tmp:-}"' RETURN
 
   jq \
     --arg task_name "$TASK_NAME" \
     --slurpfile weighting "$WEIGHTING_JSON_PATH" \
     "$JQ_PROGRAM" \
-    "$RESULT_PROCESSED_INTEGRATED_DATA_TMP_PATH" \
+    "$OUTPUT_CALC_CONTRIB_VERBOSE_JSON_PATH" \
     >"$tmp"
 
   # 一時ファイルを元のファイルに移動
-  mv -f "$tmp" "$RESULT_PROCESSED_INTEGRATED_DATA_TMP_PATH"
+  mv -f "$tmp" "$OUTPUT_CALC_CONTRIB_VERBOSE_JSON_PATH"
 }
 
 #--------------------------------------
@@ -367,12 +368,14 @@ function exclude_task() {
     esac
   done
 
+  # 実行して、OUTPUT_PATH に出力
   jq \
     '
       .data.user |= map(del(.task))
     ' \
     "$INPUT_PATH" \
     >"$OUTPUT_PATH"
+
 }
 
 #--------------------------------------
@@ -401,6 +404,13 @@ function sum_contributions_by_user() {
     esac
   done
 
+  # 一時ファイルを作成。同じファイルをinputとoutputに使うため、tmpファイルを作成する。
+  # EXITではなくRETURNを使うことで、処理全体ではなく関数が完了したら削除されるようにする。
+  local tmp
+  tmp="$(mktemp "${OUTPUT_PATH}.XXXX")"
+  trap 'rm -f "${tmp:-}"' RETURN
+
+  # 実行して、OUTPUT_PATH に出力
   jq \
     '
       .data.user |= map(
@@ -410,7 +420,10 @@ function sum_contributions_by_user() {
     )
     ' \
     "$INPUT_PATH" \
-    >"$OUTPUT_PATH"
+    >"$tmp"
+
+  # 一時ファイルを元のファイルに移動
+  mv -f "$tmp" "$OUTPUT_PATH"
 }
 
 #--------------------------------------
@@ -441,11 +454,7 @@ function convert_to_csv() {
 
   jq \
     '
-      .data.user |= map(
-      . as $u
-      | ($u.task // [] | map(.contribution_point // 0) | add // 0) as $sum
-      | { contribution_point: $sum } + $u
-    )
+      .
     ' \
     "$INPUT_PATH" \
     >"$OUTPUT_PATH"

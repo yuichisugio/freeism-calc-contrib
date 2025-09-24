@@ -59,10 +59,10 @@ function main() {
   # データ取得前のRateLimitを取得
   before_remaining_ratelimit="$(get_ratelimit "before:main()")"
 
-  # データ取得（-t/--tasks 指定があれば、そのタスクのみ実行）
+  # データ取得
   get_data "${TASKS:-}"
 
-  # データ加工（-t/--tasks 指定があれば、そのタスクのみ実行）
+  # データ加工
   process_data "${TASKS:-}"
 
   # # 貢献度の算出
