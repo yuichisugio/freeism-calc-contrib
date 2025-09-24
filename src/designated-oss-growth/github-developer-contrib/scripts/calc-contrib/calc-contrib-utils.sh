@@ -163,7 +163,10 @@ function calc_contrib_utils() {
   # shellcheck disable=SC2016
   local RESPONSE_SPEED_FIRST_QUERY='
     | (
-        ($t.task_start | fromdateiso8601) as $epoch_task_start
+        (
+          $t.task_start
+          | if type == "string" then (try fromdateiso8601 catch 0) else 0 end
+        ) as $epoch_task_start
         | (((($epoch_task_date // 0) - ($epoch_task_start // 0)) / 86400) | floor) as $rs_days
         | clamp(
             $w[$task_name].response_speed.max_period;
@@ -212,7 +215,7 @@ function calc_contrib_utils() {
         ) as $good_reaction_weigting
         | (
             ($t.bad_reaction // 0)
-            * $w[$task_name].amount_of_reaction.bad_reaction_count
+            * ($w[$task_name].amount_of_reaction.bad_reaction_count // 0)
           ) as $bad_reaction_weigting
         | ($good_reaction_weigting + $bad_reaction_weigting)
       ) as $aor
@@ -226,7 +229,7 @@ function calc_contrib_utils() {
   # shellcheck disable=SC2016
   local STATE_FIRST_QUERY='
     | (
-        $w[$task_name].state[$t.state]
+        $w[$task_name].state[$t.state] // 1
       ) as $state
   '
   # shellcheck disable=SC2016
