@@ -44,7 +44,7 @@ source "${SCRIPT_DIR}/scripts/get-data/integration.sh"
 # データ加工を統合するファイルを取得
 source "${SCRIPT_DIR}/scripts/process-data/integration.sh"
 # 貢献度の算出を統合するファイルを取得
-# source "${SCRIPT_DIR}/scripts/calc-contrib/integration.sh"
+source "${SCRIPT_DIR}/scripts/calc-contrib/integration.sh"
 
 #--------------------------------------
 # メイン関数
@@ -66,10 +66,7 @@ function main() {
   process_data "${TASKS:-}"
 
   # # 貢献度の算出
-  # calc_contrib
-
-  # # 結果の出力
-  # output_result
+  calc_contrib
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 #--------------------------------------
 # 貢献度の算出の共通関数を定義するファイル
@@ -11,53 +11,66 @@ set -euo pipefail
 #--------------------------------------
 function calc_contrib_utils() {
 
+  # -------------------------------------
   # 引数
-  local INPUT_PATH OUTPUT_PATH TASK_NAME RESPONSE_SPEED AMOUNT_OF_WORK AMOUNT_OF_REACTION STATUS REPO_CREATION_TO_TASK_PERIOD FIRST_OTHER_QUERY SECOND_OTHER_QUERY
+  # -------------------------------------
+  # タスク名
+  local TASK_NAME
+  # 評価軸のoption
+  local IS_RESPONSE_SPEED="false" \
+    IS_AMOUNT_OF_WORK="false" \
+    IS_AMOUNT_OF_REACTION="false" \
+    IS_STATE="false" \
+    IS_REPO_CREATION_TO_TASK_PERIOD="false"
 
+  # -------------------------------------
   # 変数
-  local MAIN_QUERY JQ_PROGRAM
+  # -------------------------------------
+  # 基礎となるjqクエリ
+  local MAIN_QUERY
+  # 置き換え後の実行するjqクエリ
+  local JQ_PROGRAM
+  # 重み付け値を記載した設定jsonのpath
+  local WEIGHTING_JSON_PATH="${SCRIPT_DIR}/weighting.json"
+  # 置き換え後の実行するjqクエリ
+  local RESPONSE_SPEED_FIRST_MERGE \
+    RESPONSE_SPEED_SECOND_MERGE \
+    AMOUNT_OF_WORK_FIRST_MERGE \
+    AMOUNT_OF_WORK_SECOND_MERGE \
+    AMOUNT_OF_REACTION_FIRST_MERGE \
+    AMOUNT_OF_REACTION_SECOND_MERGE \
+    STATE_FIRST_MERGE \
+    STATE_SECOND_MERGE \
+    REPO_CREATION_TO_TASK_PERIOD_FIRST_MERGE \
+    REPO_CREATION_TO_TASK_PERIOD_SECOND_MERGE
 
+  # -------------------------------------
   # 引数を解析
+  # -------------------------------------
   while [[ $# -gt 0 ]]; do
     case "$1" in
-    --input-path)
-      INPUT_PATH="$2"
-      shift 2
-      ;;
-    --output-path)
-      OUTPUT_PATH="$2"
-      shift 2
-      ;;
     --task-name)
       TASK_NAME="$2"
       shift 2
       ;;
     --response-speed)
-      RESPONSE_SPEED="$2"
+      IS_RESPONSE_SPEED="$2"
       shift 2
       ;;
     --amount-of-work)
-      AMOUNT_OF_WORK="$2"
+      IS_AMOUNT_OF_WORK="$2"
       shift 2
       ;;
     --amount-of-reaction)
-      AMOUNT_OF_REACTION="$2"
+      IS_AMOUNT_OF_REACTION="$2"
       shift 2
       ;;
-    --status)
-      STATUS="$2"
+    --state)
+      IS_STATE="$2"
       shift 2
       ;;
-    --repo_creation_to_task_period)
-      REPO_CREATION_TO_TASK_PERIOD="$2"
-      shift 2
-      ;;
-    --first-other-query)
-      FIRST_OTHER_QUERY="$2"
-      shift 2
-      ;;
-    --second-other-query)
-      SECOND_OTHER_QUERY="$2"
+    --repo-creation-to-task-period)
+      IS_REPO_CREATION_TO_TASK_PERIOD="$2"
       shift 2
       ;;
     *)
@@ -70,107 +83,262 @@ function calc_contrib_utils() {
   # メインの jq フィルタ（__EXTRA_MERGE__ を後で置換する）
   # shellcheck disable=SC2016
   MAIN_QUERY='
-    __RESPONSE_SPEED__
-    __AMOUNT_OF_WORK__
-    __AMOUNT_OF_REACTION__
-    __STATUS__
-    __REPO_CREATION_TO_TASK_PERIOD__
-    __FIRST_OTHER_QUERY__
-    __SECOND_OTHER_QUERY__
+
+    # 最大値から、期間が過ぎた機関だけ引き算した重み付け値を返す
+    def clamp($max; $max_weight ;$unit; $days; $lower_limit):
+        (($max - $unit * $days) * $max_weight) as $v
+        | if $v < $lower_limit then $lower_limit else $v end;
+
+    # 値×重み → 下限補正
+    def metric_weight($src; $weight; $min):
+      (($src // 0) * ($weight // 0)) as $raw
+      | (if $raw < ($min // 0) then ($min // 0) else $raw end);
+
+    # 重み付け値をオブジェクトとして構築して返す
+    def build_row_fields($repo_ts; $w):
+      . as $t
+
+      # タスク日時を取得。watchの場合はnullなので0にする
+      | (
+          $t.task_date
+          | if type == "string" then (try fromdateiso8601 catch 0) else 0 end
+        ) as $epoch_task_date
+
+      # タスクタイプの重み付け値を取得
+      | (
+          $w[$task_name].task_type // 0
+        ) as $tt
+
+      # リポジトリ作成からタスクまでの期間の重み付け値を取得
+      __REPO_CREATION_TO_TASK_PERIOD_FIRST_QUERY__
+
+      # 作業量の重み付け値を取得
+      __AMOUNT_OF_WORK_FIRST_QUERY__
+
+      # リアクションの重み付け値を取得
+      __AMOUNT_OF_REACTION_FIRST_QUERY__
+
+      # レスポンススピードの重み付け値を取得
+      __RESPONSE_SPEED_FIRST_QUERY__
+
+      # ステータスの重み付け値を取得
+      __STATE_FIRST_QUERY__
+
+      # 重み付け値をオブジェクトとして構築して返す
+      | {
+          "criterion_weight_for_task_type": $tt,
+          __REPO_CREATION_TO_TASK_PERIOD_SECOND_QUERY__
+          __AMOUNT_OF_WORK_SECOND_QUERY__
+          __AMOUNT_OF_REACTION_SECOND_QUERY__
+          __STATE_SECOND_QUERY__
+          __RESPONSE_SPEED_SECOND_QUERY__
+          "contribution_point": (($tt * $rcttp * $aow * $aor * $state * $rs) | round)
+        };
+
+
+    # 重み付け値を記載したjsonを読み込む
+    $weighting[0] as $w
+    | . as $root
+    | ($root.meta.repository.created_at | fromdateiso8601) as $repo_ts
+
+    # ユーザー配列を安全に更新（常に全体を返す）
+    | .data.user = ((.data.user // []) | map(
+        . as $u
+        | ($u.task // []) as $tasks
+        | $u + {
+            task: ($tasks | map(
+              if .task_name == $task_name then
+                . + build_row_fields($repo_ts; $w)
+              else .
+              end
+            ))
+          }
+      ))
   '
 
+  #--------------------------------------
+  # 各評価軸ごとのjqクエリ
+  #--------------------------------------
+  # RESPONSE_SPEED
   # shellcheck disable=SC2016
-  RESPONSE_SPEED_QUERY='{
-    "criterion_weight_for_response_speed": $rs
-  }'
+  local RESPONSE_SPEED_FIRST_QUERY='
+    | (
+        ($t.task_start | fromdateiso8601) as $epoch_task_start
+        | (((($epoch_task_date // 0) - ($epoch_task_start // 0)) / 86400) | floor) as $rs_days
+        | clamp(
+            $w[$task_name].response_speed.max_period;
+            $w[$task_name].response_speed.max_weight;
+            $w[$task_name].response_speed.minus_unit;
+            $rs_days;
+            $w[$task_name].response_speed.lower_limit
+          )
+      ) as $rs
+  '
   # shellcheck disable=SC2016
-  AMOUNT_OF_WORK_QUERY='{
-    "criterion_weight_for_amount_of_work": $aow
-  }'
+  local RESPONSE_SPEED_SECOND_QUERY='
+    "criterion_weight_for_response_speed": $rs,
+  '
+
+  # AMOUNT_OF_WORK
   # shellcheck disable=SC2016
-  AMOUNT_OF_REACTION_QUERY='{
-    "criterion_weight_for_amount_of_reaction": $aor
-  }'
+  local AMOUNT_OF_WORK_FIRST_QUERY='
+    | (
+        metric_weight(
+          $t.word_count;
+          $w[$task_name].amount_of_work.word_count;
+          $w[$task_name].amount_of_work.word_count_lower_limit
+        ) as $aow_word
+        | metric_weight(
+            $t.lines_of_code;
+            $w[$task_name].amount_of_work.lines_of_code;
+            $w[$task_name].amount_of_work.lines_of_code_lower_limit
+          ) as $aow_code
+        | ( $aow_word + $aow_code )
+      ) as $aow
+  '
   # shellcheck disable=SC2016
-  STATUS_QUERY='{
-    "criterion_weight_for_status": $status
-  }'
+  local AMOUNT_OF_WORK_SECOND_QUERY='
+    "criterion_weight_for_amount_of_work": $aow,
+  '
+
+  # AMOUNT_OF_REACTION
   # shellcheck disable=SC2016
-  REPO_CREATION_TO_TASK_PERIOD_QUERY='{
-    "criterion_weight_for_repo_creation_to_task_period": $rcttp
-  }'
+  local AMOUNT_OF_REACTION_FIRST_QUERY='
+    | (
+        metric_weight(
+          $t.good_reaction;
+          $w[$task_name].amount_of_reaction.good_reaction_count;
+          $w[$task_name].amount_of_reaction.good_reaction_count_lower_limit
+        ) as $good_reaction_weigting
+        | (
+            ($t.bad_reaction // 0)
+            * $w[$task_name].amount_of_reaction.bad_reaction_count
+          ) as $bad_reaction_weigting
+        | ($good_reaction_weigting + $bad_reaction_weigting)
+      ) as $aor
+  '
   # shellcheck disable=SC2016
-  FIRST_OTHER_QUERY='{
-    "criterion_weight_for_first_other_query": $first_other_query
-  }'
+  local AMOUNT_OF_REACTION_SECOND_QUERY='
+    "criterion_weight_for_amount_of_reaction": $aor,
+  '
+
+  # STATE
   # shellcheck disable=SC2016
-  SECOND_OTHER_QUERY='{
-    "criterion_weight_for_second_other_query": $second_other_query
-  }'
+  local STATE_FIRST_QUERY='
+    | (
+        $w[$task_name].state[$t.state]
+      ) as $state
+  '
+  # shellcheck disable=SC2016
+  local STATE_SECOND_QUERY='
+    "criterion_weight_for_state": $state,
+  '
+
+  # REPO_CREATION_TO_TASK_PERIOD
+  # shellcheck disable=SC2016
+  local REPO_CREATION_TO_TASK_PERIOD_FIRST_QUERY='
+    | (
+        (((($epoch_task_date // 0) - ($repo_ts // 0)) / 86400) | floor) as $rcttp_days
+        | clamp(
+            $w[$task_name].repo_creation_to_task_period.max_period;
+            $w[$task_name].repo_creation_to_task_period.max_weight;
+            $w[$task_name].repo_creation_to_task_period.minus_unit;
+            $rcttp_days;
+            $w[$task_name].repo_creation_to_task_period.lower_limit
+          )
+      ) as $rcttp
+  '
+  # shellcheck disable=SC2016
+  local REPO_CREATION_TO_TASK_PERIOD_SECOND_QUERY='
+    "criterion_weight_for_repo_creation_to_task_period":  $rcttp,
+  '
+
+  #--------------------------------------
+  # オプションに応じて、jqクエリを実行
+  #--------------------------------------
   # RESPONSE_SPEEDがtrueの場合
-  if [[ "${RESPONSE_SPEED}" == "true" ]]; then
-    __RESPONSE_SPEED__="${RESPONSE_SPEED_QUERY}"
+  if [[ "${IS_RESPONSE_SPEED}" == "true" ]]; then
+    RESPONSE_SPEED_FIRST_MERGE="${RESPONSE_SPEED_FIRST_QUERY}"
+    RESPONSE_SPEED_SECOND_MERGE="${RESPONSE_SPEED_SECOND_QUERY}"
   else
-    __RESPONSE_SPEED__=''
+    # shellcheck disable=SC2016
+    RESPONSE_SPEED_FIRST_MERGE='| (1) as $rs'
+    RESPONSE_SPEED_SECOND_MERGE=''
   fi
 
   # AMOUNT_OF_WORKがtrueの場合
-  if [[ "${AMOUNT_OF_WORK}" == "true" ]]; then
-    __AMOUNT_OF_WORK__="${AMOUNT_OF_WORK_QUERY}"
+  if [[ "${IS_AMOUNT_OF_WORK}" == "true" ]]; then
+    AMOUNT_OF_WORK_FIRST_MERGE="${AMOUNT_OF_WORK_FIRST_QUERY}"
+    AMOUNT_OF_WORK_SECOND_MERGE="${AMOUNT_OF_WORK_SECOND_QUERY}"
   else
-    __AMOUNT_OF_WORK__=''
+    # shellcheck disable=SC2016
+    AMOUNT_OF_WORK_FIRST_MERGE='| (1) as $aow'
+    AMOUNT_OF_WORK_SECOND_MERGE=''
   fi
 
   # AMOUNT_OF_REACTIONがtrueの場合
-  if [[ "${AMOUNT_OF_REACTION}" == "true" ]]; then
-    __AMOUNT_OF_REACTION__="${AMOUNT_OF_REACTION_QUERY}"
+  if [[ "${IS_AMOUNT_OF_REACTION}" == "true" ]]; then
+    AMOUNT_OF_REACTION_FIRST_MERGE="${AMOUNT_OF_REACTION_FIRST_QUERY}"
+    AMOUNT_OF_REACTION_SECOND_MERGE="${AMOUNT_OF_REACTION_SECOND_QUERY}"
   else
-    __AMOUNT_OF_REACTION__=''
+    # shellcheck disable=SC2016
+    AMOUNT_OF_REACTION_FIRST_MERGE='| (1) as $aor'
+    AMOUNT_OF_REACTION_SECOND_MERGE=''
   fi
 
-  if [[ "${STATUS}" == "true" ]]; then
-    __STATUS__="${STATUS_QUERY}"
+  # STATEがtrueの場合
+  if [[ "${IS_STATE}" == "true" ]]; then
+    STATE_FIRST_MERGE="${STATE_FIRST_QUERY}"
+    STATE_SECOND_MERGE="${STATE_SECOND_QUERY}"
   else
-    __STATUS__=''
+    # shellcheck disable=SC2016
+    STATE_FIRST_MERGE='| (1) as $state'
+    STATE_SECOND_MERGE=''
   fi
 
-  if [[ "${REPO_CREATION_TO_TASK_PERIOD}" == "true" ]]; then
-    __REPO_CREATION_TO_TASK_PERIOD__="${REPO_CREATION_TO_TASK_PERIOD_QUERY}"
+  # REPO_CREATION_TO_TASK_PERIODがtrueの場合
+  if [[ "${IS_REPO_CREATION_TO_TASK_PERIOD}" == "true" ]]; then
+    REPO_CREATION_TO_TASK_PERIOD_FIRST_MERGE="${REPO_CREATION_TO_TASK_PERIOD_FIRST_QUERY}"
+    REPO_CREATION_TO_TASK_PERIOD_SECOND_MERGE="${REPO_CREATION_TO_TASK_PERIOD_SECOND_QUERY}"
   else
-    __REPO_CREATION_TO_TASK_PERIOD__=''
+    # shellcheck disable=SC2016
+    REPO_CREATION_TO_TASK_PERIOD_FIRST_MERGE='| (1) as $rcttp'
+    REPO_CREATION_TO_TASK_PERIOD_SECOND_MERGE=''
   fi
 
-  if [[ "${FIRST_OTHER_QUERY}" == "true" ]]; then
-    __FIRST_OTHER_QUERY__="${FIRST_OTHER_QUERY}"
-  else
-    __FIRST_OTHER_QUERY__=''
-  fi
-
-  if [[ "${SECOND_OTHER_QUERY}" == "true" ]]; then
-    __SECOND_OTHER_QUERY__="${SECOND_OTHER_QUERY}"
-  else
-    __SECOND_OTHER_QUERY__=''
-  fi
-
+  #--------------------------------------
   # プレースホルダを差し替えて、JQ_PROGRAM を作成
-  JQ_PROGRAM="${MAIN_QUERY/__RESPONSE_SPEED__/${RESPONSE_SPEED_QUERY}}"
-  JQ_PROGRAM="${JQ_PROGRAM/__AMOUNT_OF_WORK__/${AMOUNT_OF_WORK_QUERY}}"
-  JQ_PROGRAM="${JQ_PROGRAM/__AMOUNT_OF_REACTION__/${AMOUNT_OF_REACTION_QUERY}}"
-  JQ_PROGRAM="${JQ_PROGRAM/__STATUS__/${STATUS_QUERY}}"
-  JQ_PROGRAM="${JQ_PROGRAM/__REPO_CREATION_TO_TASK_PERIOD__/${REPO_CREATION_TO_TASK_PERIOD_QUERY}}"
+  #--------------------------------------
+  # first query
+  JQ_PROGRAM="${MAIN_QUERY/__RESPONSE_SPEED_FIRST_QUERY__/${RESPONSE_SPEED_FIRST_MERGE}}"
+  JQ_PROGRAM="${JQ_PROGRAM/__AMOUNT_OF_WORK_FIRST_QUERY__/${AMOUNT_OF_WORK_FIRST_MERGE}}"
+  JQ_PROGRAM="${JQ_PROGRAM/__AMOUNT_OF_REACTION_FIRST_QUERY__/${AMOUNT_OF_REACTION_FIRST_MERGE}}"
+  JQ_PROGRAM="${JQ_PROGRAM/__STATE_FIRST_QUERY__/${STATE_FIRST_MERGE}}"
+  JQ_PROGRAM="${JQ_PROGRAM/__REPO_CREATION_TO_TASK_PERIOD_FIRST_QUERY__/${REPO_CREATION_TO_TASK_PERIOD_FIRST_MERGE}}"
+  # second query
+  JQ_PROGRAM="${JQ_PROGRAM/__RESPONSE_SPEED_SECOND_QUERY__/${RESPONSE_SPEED_SECOND_MERGE}}"
+  JQ_PROGRAM="${JQ_PROGRAM/__AMOUNT_OF_WORK_SECOND_QUERY__/${AMOUNT_OF_WORK_SECOND_MERGE}}"
+  JQ_PROGRAM="${JQ_PROGRAM/__AMOUNT_OF_REACTION_SECOND_QUERY__/${AMOUNT_OF_REACTION_SECOND_MERGE}}"
+  JQ_PROGRAM="${JQ_PROGRAM/__STATE_SECOND_QUERY__/${STATE_SECOND_MERGE}}"
+  JQ_PROGRAM="${JQ_PROGRAM/__REPO_CREATION_TO_TASK_PERIOD_SECOND_QUERY__/${REPO_CREATION_TO_TASK_PERIOD_SECOND_MERGE}}"
 
+  #--------------------------------------
   # 実行して、OUTPUT_PATH に出力
+  #--------------------------------------
+  # 一時ファイルを作成。同じファイルをinputとoutputに使うため、tmpファイルを作成する。
+  local tmp
+  tmp="$(mktemp "${RESULT_PROCESSED_INTEGRATED_DATA_TMP_PATH}.zzzzz")"
+  trap 'rm -f "$tmp"' EXIT
+
   jq \
     --arg task_name "$TASK_NAME" \
-    --arg response_speed "$RESPONSE_SPEED" \
-    --arg amount_of_work "$AMOUNT_OF_WORK" \
-    --arg amount_of_reaction "$AMOUNT_OF_REACTION" \
-    --arg status "$STATUS" \
-    --arg repo_creation_to_task_period "$REPO_CREATION_TO_TASK_PERIOD" \
-    --arg first_other_query "$FIRST_OTHER_QUERY" \
-    --arg second_other_query "$SECOND_OTHER_QUERY" \
+    --slurpfile weighting "$WEIGHTING_JSON_PATH" \
     "$JQ_PROGRAM" \
-    "$INPUT_PATH" >"$OUTPUT_PATH"
+    "$RESULT_PROCESSED_INTEGRATED_DATA_TMP_PATH" \
+    >"$tmp"
+
+  # 一時ファイルを元のファイルに移動
+  mv -f "$tmp" "$RESULT_PROCESSED_INTEGRATED_DATA_TMP_PATH"
 }
 
 #--------------------------------------
@@ -201,7 +369,83 @@ function exclude_task() {
 
   jq \
     '
-      .data.user[]?.task = []
+      .data.user |= map(del(.task))
+    ' \
+    "$INPUT_PATH" \
+    >"$OUTPUT_PATH"
+}
+
+#--------------------------------------
+# 各ユーザーごとの貢献度を合算する
+#--------------------------------------
+function sum_contributions_by_user() {
+
+  # 引数
+  local OUTPUT_PATH INPUT_PATH
+
+  # 引数を解析
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --input-path)
+      INPUT_PATH="$2"
+      shift 2
+      ;;
+    --output-path)
+      OUTPUT_PATH="$2"
+      shift 2
+      ;;
+    *)
+      printf '%s\n' "Unknown option: $1" >&2
+      exit 1
+      ;;
+    esac
+  done
+
+  jq \
+    '
+      .data.user |= map(
+      . as $u
+      | ($u.task // [] | map(.contribution_point // 0) | add // 0) as $sum
+      | { contribution_point: $sum } + $u
+    )
+    ' \
+    "$INPUT_PATH" \
+    >"$OUTPUT_PATH"
+}
+
+#--------------------------------------
+# 各ユーザーごとの貢献度のJSON形式をCSV形式に変換する
+#--------------------------------------
+function convert_to_csv() {
+
+  # 引数
+  local OUTPUT_PATH INPUT_PATH
+
+  # 引数を解析
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --input-path)
+      INPUT_PATH="$2"
+      shift 2
+      ;;
+    --output-path)
+      OUTPUT_PATH="$2"
+      shift 2
+      ;;
+    *)
+      printf '%s\n' "Unknown option: $1" >&2
+      exit 1
+      ;;
+    esac
+  done
+
+  jq \
+    '
+      .data.user |= map(
+      . as $u
+      | ($u.task // [] | map(.contribution_point // 0) | add // 0) as $sum
+      | { contribution_point: $sum } + $u
+    )
     ' \
     "$INPUT_PATH" \
     >"$OUTPUT_PATH"

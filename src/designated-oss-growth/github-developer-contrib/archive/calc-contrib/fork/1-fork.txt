@@ -13,7 +13,7 @@ jq \
       | ($w[$task_name].task_type // 0) as $tw
       | (clamp(
           $w[$task_name].repo_creation_to_task_period.max_period;
-          $w[$task_name].repo_creation_to_task_period.max_weight;    
+          $w[$task_name].repo_creation_to_task_period.max_weight;
           $w[$task_name].repo_creation_to_task_period.minus_unit;
           $days
         )) as $cre_p

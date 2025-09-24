@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #--------------------------------------
-# 各種の評価軸で重み付けの値を受け取った後に貢献度を算出する処理を統合する
+# 貢献度を算出する処理を統合するファイル
 #--------------------------------------
 
 set -euo pipefail
@@ -10,38 +10,100 @@ set -euo pipefail
 # 出力先のディレクトリを作成する
 #--------------------------------------
 readonly OUTPUT_CALC_CONTRIB_DIR="${OUTPUT_DIR}/calc-contrib"
-mkdir -p "$OUTPUT_CALC_CONTRIB_DIR"
+readonly OUTPUT_CALC_CONTRIB_SIMPLE_JSON_PATH="${OUTPUT_CALC_CONTRIB_DIR}/result-simple.json"
+readonly OUTPUT_CALC_CONTRIB_VERBOSE_JSON_PATH="${OUTPUT_CALC_CONTRIB_DIR}/result-verbose.json"
+readonly OUTPUT_CALC_CONTRIB_SIMPLE_CSV_PATH="${OUTPUT_CALC_CONTRIB_DIR}/result-simple.csv"
+readonly OUTPUT_CALC_CONTRIB_VERBOSE_CSV_PATH="${OUTPUT_CALC_CONTRIB_DIR}/result-verbose.csv"
+
+mkdir -p "$(dirname "$OUTPUT_CALC_CONTRIB_SIMPLE_JSON_PATH")"
+
+# --------------------------------------
+# タスクごとに貢献度を追記していくため、元のjsonをコピーして処理する一時ファイルを作成する。
+# 中間ファイルは残したくないので、tmpファイルを作成する。
+# --------------------------------------
+# shellcheck disable=SC2155
+readonly RESULT_PROCESSED_INTEGRATED_DATA_TMP_PATH="$(mktemp "${RESULT_PROCESSED_INTEGRATED_DATA_PATH}.XXXX")"
+trap 'rm -f "$RESULT_PROCESSED_INTEGRATED_DATA_TMP_PATH"' EXIT
 
 #--------------------------------------
 # 使用するファイルを読み込む
 #--------------------------------------
 readonly CALC_CONTRIB_DIR="${SCRIPT_DIR}/scripts/calc-contrib"
-source "${CALC_CONTRIB_DIR}/calc-task-type-weighting.sh"
-source "${CALC_CONTRIB_DIR}/calc-period-weighting.sh"
-source "${CALC_CONTRIB_DIR}/calc-lines-of-code-weighting.sh"
-source "${CALC_CONTRIB_DIR}/calc-reaction-count-weighting.sh"
-source "${CALC_CONTRIB_DIR}/calc-reaction-speed-weighting.sh"
-source "${CALC_CONTRIB_DIR}/calc-amount-contrib.sh"
+source "${CALC_CONTRIB_DIR}/calc-contrib-utils.sh"
+source "${CALC_CONTRIB_DIR}/star.sh"
+source "${CALC_CONTRIB_DIR}/fork.sh"
+source "${CALC_CONTRIB_DIR}/sponsor.sh"
+source "${CALC_CONTRIB_DIR}/watch.sh"
+# source "${CALC_CONTRIB_DIR}/pr-review.sh"
+# source "${CALC_CONTRIB_DIR}/create-pull-request.sh"
+# source "${CALC_CONTRIB_DIR}/create-issue.sh"
+# source "${CALC_CONTRIB_DIR}/create-release.sh"
+# source "${CALC_CONTRIB_DIR}/create-commit-with-pr.sh"
+# source "${CALC_CONTRIB_DIR}/create-discussion.sh"
+# source "${CALC_CONTRIB_DIR}/change-issue-state.sh"
+# source "${CALC_CONTRIB_DIR}/change-pull-request-state.sh"
+# source "${CALC_CONTRIB_DIR}/answer-discussion.sh"
+# source "${CALC_CONTRIB_DIR}/assigning.sh"
+# source "${CALC_CONTRIB_DIR}/labeling.sh"
+# source "${CALC_CONTRIB_DIR}/comment.sh"
 
 #--------------------------------------
 # 貢献度の算出の処理を統合する関数
 #--------------------------------------
 function calc_contrib() {
-  # if should_run "star" "$@"; then calc_star; fi
-  # if should_run "fork" "$@"; then calc_fork; fi
-  # if should_run "repo-meta" "$@"; then calc_repo_meta; fi
-  # if should_run "sponsor" "$@"; then calc_sponsor; fi
-  # if should_run "watch" "$@"; then calc_watch; fi
-  # if should_run "issue" "$@"; then calc_issue; fi
-  # if should_run "pull-request" "$@"; then calc_pull_request; fi
-  # if should_run "release" "$@"; then calc_release; fi
-  # if should_run "commit" "$@"; then calc_commit; fi
-  # if should_run "discussion" "$@"; then calc_discussion; fi
 
-  calc_task_type_weighting
-  calc_period_weighting
-  calc_lines_of_code_weighting
-  calc_reaction_count_weighting
-  calc_reaction_speed_weighting
-  calc_amount_contrib
+  printf '%s\n' "begin:calc_contrib()"
+
+  # 元のjsonをコピーして処理する一時ファイルを作成する。
+  cp "$RESULT_PROCESSED_INTEGRATED_DATA_PATH" "$RESULT_PROCESSED_INTEGRATED_DATA_TMP_PATH"
+
+  # 確認するタスクの名前を配列に格納
+  local task_name_array=(
+    "watch"
+    "star"
+    "fork"
+    "sponsor"
+    # "pr_review" \
+    # "create_pull_request" \
+    # "create_issue" \
+    # "create_release" \
+    # "create_commit_with_pr" \
+    # "create_discussion" \
+    # "change_issue_state" \
+    # "change_pull_request_state" \
+    # "answer_discussion" \
+    # "comment" \
+    # "reaction" \
+    # "labeling" \
+    # "assigning"
+  )
+
+  # 各タスクの貢献度を算出。毎回同じjsonにタスクごとに繰り返して追記していく。なので、inputとoutputは同じPATH
+  for task_name in "${task_name_array[@]}"; do
+    calc_"$task_name"
+  done
+
+  # 各ユーザーの貢献度を合算
+  sum_contributions_by_user \
+    --input-path "$RESULT_PROCESSED_INTEGRATED_DATA_TMP_PATH" \
+    --output-path "$OUTPUT_CALC_CONTRIB_VERBOSE_JSON_PATH"
+
+  # タスクを削除したバージョンも作成
+  exclude_task \
+    --input-path "$OUTPUT_CALC_CONTRIB_VERBOSE_JSON_PATH" \
+    --output-path "$OUTPUT_CALC_CONTRIB_SIMPLE_JSON_PATH"
+
+  # CSV形式に変換。verbose
+  convert_to_csv \
+    --input-path "$OUTPUT_CALC_CONTRIB_VERBOSE_JSON_PATH" \
+    --output-path "$OUTPUT_CALC_CONTRIB_VERBOSE_CSV_PATH"
+
+  # CSV形式に変換。simple
+  convert_to_csv \
+    --input-path "$OUTPUT_CALC_CONTRIB_SIMPLE_JSON_PATH" \
+    --output-path "$OUTPUT_CALC_CONTRIB_SIMPLE_CSV_PATH"
+
+  printf '%s\n' "end:calc_contrib()"
+
+  return 0
 }

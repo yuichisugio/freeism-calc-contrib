@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 #--------------------------------------
 # sponsor関連のデータ取得を行うファイル
@@ -39,8 +39,8 @@ function get_github_sponsors_recipients() {
     --header X-Github-Next-Global-ID:1 \
     -f owner="$OWNER" \
     -f name="$REPO" \
-    -f query="$QUERY" \
-    | jq '.' >"$RAW_SPONSOR_RECIPIENTS_PATH"
+    -f query="$QUERY" |
+    jq '.' >"$RAW_SPONSOR_RECIPIENTS_PATH"
 
   jq -r '
     .data.repository as $r
@@ -117,11 +117,11 @@ function get_github_sponsors_supporters() {
       --slurp \
       -f login="$LOGIN" \
       -F perPage=50 \
-      -f query="$QUERY" \
-      | jq '.' >>"$RAW_SPONSOR_SUPPORTERS_PATH"
+      -f query="$QUERY" |
+      jq '.' >>"$RAW_SPONSOR_SUPPORTERS_PATH"
 
-      # データを加工して保存する
-      jq '[ .[] | .data.repositoryOwner.sponsorshipsAsMaintainer.nodes[] ]' "$RAW_SPONSOR_SUPPORTERS_PATH" >>"$RESULT_GET_SPONSOR_SUPPORTERS_PATH"
+    # データを加工して保存する
+    jq '[ .[] | .data.repositoryOwner.sponsorshipsAsMaintainer.nodes[] ]' "$RAW_SPONSOR_SUPPORTERS_PATH" >>"$RESULT_GET_SPONSOR_SUPPORTERS_PATH"
 
   done <"$PROCESSED_SPONSOR_RECIPIENTS_PATH"
 }

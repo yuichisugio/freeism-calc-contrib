@@ -35,11 +35,6 @@ jq \
           $w[$task_name].amount_of_work.lines_of_code;
           $w[$task_name].amount_of_work.lines_of_code_lower_limit
         ) as $aow_code
-      | metric_weight(
-          $t.lines_of_code;
-          $w[$task_name].amount_of_work.word_count;
-          $w[$task_name].amount_of_work.word_count_lower_limit
-        ) as $aow_code
       | ( $aow_word + $aow_code ) as $aow
       | metric_weight(
           $t.good_reaction;
@@ -47,7 +42,7 @@ jq \
           $w[$task_name].amount_of_reaction.good_reaction_count_lower_limit
         ) as $good_reaction_weigting
       | (
-          $t.bad_reaction 
+          $t.bad_reaction
           * $w[$task_name].amount_of_reaction.bad_reaction_count
         ) as $bad_reaction_weigting
       | ($good_reaction_weigting + $bad_reaction_weigting) as $aor
@@ -132,7 +127,7 @@ jq \
             $w[$task_name].amount_of_reaction.good_reaction_count_lower_limit
           ) as $good_reaction_weigting
           | (
-              $t.bad_reaction 
+              $t.bad_reaction
               * $w[$task_name].amount_of_reaction.bad_reaction_count
             ) as $bad_reaction_weigting
           | ($good_reaction_weigting + $bad_reaction_weigting)

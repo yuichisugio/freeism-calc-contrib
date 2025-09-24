@@ -175,15 +175,6 @@
 	"watch": {
 		"task_type": 1
 	},
-	"install": {
-		"task_type": 1,
-		"repo_creation_to_task_period": {
-			"max_period": 3650,
-			"max_weight": 0.1,
-			"minus_unit": 1,
-			"lower_limit": 1
-		}
-	},
 	"reaction": {
 		"task_type": 0.1,
 		"repo_creation_to_task_period": {

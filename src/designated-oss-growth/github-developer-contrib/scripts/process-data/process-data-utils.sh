@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 #--------------------------------------
 # データ加工の共通関数を定義するファイル
@@ -220,7 +220,7 @@ function process_data_utils_by_two_files() {
                   | select(
                       ($e.node_id? and $e[$nest_event_field]?.id?)
                       and (
-                        ($by_object[$e.node_id] // []) 
+                        ($by_object[$e.node_id] // [])
                         | index($e[$nest_event_field].id) != null
                       )
                   )
@@ -267,13 +267,13 @@ function process_data_utils_by_two_files() {
           | group_by(.user_id)
           | map(
               (
-                .[0] 
+                .[0]
                 | {
-                    user_id, 
-                    user_database_id, 
-                    user_login, 
-                    user_name, 
-                    user_url, 
+                    user_id,
+                    user_database_id,
+                    user_login,
+                    user_name,
+                    user_url,
                     user_type
                   }
               )
