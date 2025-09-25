@@ -42,7 +42,6 @@ function parse_args() {
   local SINCE="1970-01-01T00:00:00Z" # ドキュメント上の最小値
   local UNTIL="2099-12-13T23:59:59Z" # ドキュメント上の最大値
   local -a TASKS=()                  # タスクの配列
-  local VERBOSE="false"
 
   # --- 引数パース。引数がある場合はデフォルト値を上書きする ---
   while [[ $# -gt 0 ]]; do
@@ -72,10 +71,6 @@ function parse_args() {
     -h | --help)
       show_usage
       exit 1
-      ;;
-    -ve | --verbose)
-      VERBOSE="true"
-      shift 1
       ;;
     -v | --version)
       show_version
@@ -141,8 +136,8 @@ function parse_args() {
 
   # 値を関数呼び出し元に返す
   # -tオプションがない場合は、左詰になって渡るデータがずれるので、常に引数がない場合は"all"を渡す
-  printf '%s %s %s %s %s %s\n' \
-    "$OWNER" "$REPO" "$SINCE" "$UNTIL" "${TASKS_JOINED:-"all"}" "$VERBOSE"
+  printf '%s %s %s %s %s\n' \
+    "$OWNER" "$REPO" "$SINCE" "$UNTIL" "${TASKS_JOINED:-"all"}"
 
   # 正常終了
   return 0
@@ -152,7 +147,7 @@ function parse_args() {
 # バージョンの表示
 #--------------------------------------
 function show_version() {
-  printf '%s\n' "0.0.1" >&2
+  printf '%s\n' "1.0.3" >&2
 }
 
 #--------------------------------------
@@ -178,7 +173,6 @@ function show_usage() {
       -t, --tasks       実行するタスク（CSV/スペース混在可、複数指定可）
       -r, --ratelimit   リミットを表示
       -h, --help        ヘルプを表示
-      -ve, --verbose    詳細なログを表示
       -v, --version     バージョンを表示
 
     Output:

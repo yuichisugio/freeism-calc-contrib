@@ -13,7 +13,6 @@ readonly OUTPUT_CALC_CONTRIB_DIR="${OUTPUT_DIR}/calc-contrib"
 readonly OUTPUT_CALC_CONTRIB_SIMPLE_JSON_PATH="${OUTPUT_CALC_CONTRIB_DIR}/result-simple.json"
 readonly OUTPUT_CALC_CONTRIB_VERBOSE_JSON_PATH="${OUTPUT_CALC_CONTRIB_DIR}/result-verbose.json"
 readonly OUTPUT_CALC_CONTRIB_SIMPLE_CSV_PATH="${OUTPUT_CALC_CONTRIB_DIR}/result-simple.csv"
-readonly OUTPUT_CALC_CONTRIB_VERBOSE_CSV_PATH="${OUTPUT_CALC_CONTRIB_DIR}/result-verbose.csv"
 
 mkdir -p "$(dirname "$OUTPUT_CALC_CONTRIB_SIMPLE_JSON_PATH")"
 
@@ -86,11 +85,6 @@ function calc_contrib() {
   exclude_task \
     --input-path "$OUTPUT_CALC_CONTRIB_VERBOSE_JSON_PATH" \
     --output-path "$OUTPUT_CALC_CONTRIB_SIMPLE_JSON_PATH"
-
-  # CSV形式に変換。verbose
-  convert_to_csv \
-    --input-path "$OUTPUT_CALC_CONTRIB_VERBOSE_JSON_PATH" \
-    --output-path "$OUTPUT_CALC_CONTRIB_VERBOSE_CSV_PATH"
 
   # CSV形式に変換。simple
   convert_to_csv \

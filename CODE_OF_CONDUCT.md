@@ -1,74 +1,51 @@
-# Code of Conduct
+# コード・オブ・コンダクト
 
-## Our Pledge
+## 私たちの誓約
 
-In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to making participation in our project and
-our community a harassment-free experience for everyone, regardless of age, body
-size, disability, ethnicity, gender identity and expression, level of experience,
-nationality, personal appearance, race, religion, or sexual identity and
-orientation.
+オープンで歓迎的な環境を育むために、私たち貢献者およびメンテナーは、年齢、体型、障害の有無、民族性、性自認や表現、経験の程度、国籍、見た目、宗教、性的指向に関わらず、すべての人に対してハラスメントのない体験を提供することを誓います。
 
-## Our Standards
+## 私たちの基準
 
-Examples of behavior that contributes to creating a positive environment
-include:
+前向きな環境づくりに寄与する行動の例:
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
+- 誰もが参加しやすい、歓迎的でインクルーシブな言葉遣い
+- 異なる視点や経験への敬意
+- 建設的な批評を寛容に受け入れる姿勢
+- コミュニティ全体の利益を最優先に考える姿勢
+- 他のコミュニティメンバーへの思いやり
 
-Examples of unacceptable behavior by participants include:
+不適切な行動の例:
 
-* The use of sexualized language or imagery and unwelcome sexual attention or
-advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic
-  address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
-  professional setting
+- 性的な言語表現や不快な性的関心や誘い
+- 荒らし、侮辱/中傷的なコメント、個人攻撃または政治攻撃
+- 公的または私的なハラスメント
+- 明示的な許可なく他者の個人情報（物理的または電子的な住所など）を公開すること
+- 職業的な場において合理的に不適切と見なされるその他の行為
 
-## Our Responsibilities
+## メンテナーの責務
 
-Project maintainers are responsible for clarifying the standards of acceptable
-behavior and are expected to take appropriate and fair corrective action in
-response to any instances of unacceptable behavior.
+メンテナーは、許容可能な行動の基準を明確にし、不適切な行動があった場合には適切かつ公平な是正措置を講じます。メンテナーは、この行動規範に沿わないコメント、コミット、コード、Wiki の編集、Issue、その他の貢献を削除・編集・拒否する権利と責任を有し、また不適切・脅迫的・攻撃的・有害と判断した行動に対して、貢献者を一時的または恒久的にアクセス禁止とする場合があります。
 
-Project maintainers have the right and responsibility to remove, edit, or
-reject comments, commits, code, wiki edits, issues, and other contributions
-that are not aligned to this Code of Conduct, or to ban temporarily or
-permanently any contributor for other behaviors that they deem inappropriate,
-threatening, offensive, or harmful.
+## 適用範囲
 
-## Scope
+本行動規範は、このリポジトリおよびそのコミュニティ活動（Issues、Pull Requests、Discussions、関連するオンライン/オフラインの場）に適用されます。プロジェクトやコミュニティを代表して行動する場合（公式メールアドレスの使用、公式 SNS アカウントでの投稿、イベントでの代表など）にも適用されます。
 
-This Code of Conduct applies both within project spaces and in public spaces
-when an individual is representing the project or its community. Examples of
-representing a project or community include using an official project e-mail
-address, posting via an official social media account, or acting as an appointed
-representative at an online or offline event. Representation of a project may be
-further defined and clarified by project maintainers.
+## 連絡・通報（Enforcement）
 
-## Enforcement
+ハラスメントや不適切な行為を目撃・経験した場合は、以下のいずれかの方法で報告してください。
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at Grp-opensourceoffice@adobe.com. All
-complaints will be reviewed and investigated and will result in a response that
-is deemed necessary and appropriate to the circumstances. The project team is
-obligated to maintain confidentiality with regard to the reporter of an incident.
-Further details of specific enforcement policies may be posted separately.
+- このリポジトリの Issues に「code-of-conduct」ラベルを付けて報告（個人情報は記載しないでください）
+- GitHub の非公開通報フォームから報告: [Report abuse](https://github.com/contact/report-abuse)
+- メンテナー（リポジトリオーナー）への直接連絡（GitHub プロフィールに記載の連絡手段をご利用ください）
 
-Project maintainers who do not follow or enforce the Code of Conduct in good
-faith may face temporary or permanent repercussions as determined by other
-members of the project's leadership.
+すべての報告は、状況に応じて必要かつ適切な対応が行われ、報告者のプライバシーは可能な限り尊重されます。詳細な運用方針がある場合は、別途告知します。
 
-## Attribution
+本行動規範を誠実に遵守・運用しないメンテナーは、プロジェクトの他のリーダーシップメンバーの判断により、一時的または恒久的な措置の対象となる場合があります。
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
-available at [https://contributor-covenant.org/version/1/4][version]
+## 帰属表示
+
+このコード・オブ・コンダクトは [Contributor Covenant][homepage] バージョン 1.4 を元に改変しています。
+詳細は [https://contributor-covenant.org/version/1/4][version] を参照してください。
 
 [homepage]: https://contributor-covenant.org
 [version]: https://contributor-covenant.org/version/1/4/

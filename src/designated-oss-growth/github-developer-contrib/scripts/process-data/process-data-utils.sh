@@ -331,6 +331,8 @@ function integrate_processed_files() {
   } | jq \
     --slurpfile repo_meta "$RESULT_PROCESSED_REPO_META_PATH" \
     --arg answer_task_name "$ANSWER_TASK_NAME" \
+    --arg since "$SINCE" \
+    --arg until "$UNTIL" \
     --slurp \
     '
       # リポジトリのメタデータを取得
@@ -395,7 +397,11 @@ function integrate_processed_files() {
       | {
           meta: {
             analytics:{
-              createdAt: (now | strftime("%Y-%m-%dT%H:%M:%SZ"))
+              createdAt: (now | strftime("%Y-%m-%dT%H:%M:%SZ")),
+              "analysisPeriod": {
+                "since": $since,
+                "until": $until
+              },
             },
             repository:{
               host:              $repo_meta.host,

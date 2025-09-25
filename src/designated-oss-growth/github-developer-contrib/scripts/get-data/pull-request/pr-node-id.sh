@@ -36,7 +36,6 @@ function get_pull_request_node_id() {
             number
             permalink # プルリクのURL
             url # プルリクのURL
-            checksUrl # チェックのURL
             additions # コード追加の行数
             deletions # コード削除の行数
             title # pull-requestもレビューする対象なのでコード行数に加算するために取得
@@ -44,8 +43,6 @@ function get_pull_request_node_id() {
             state # OPEN, CLOSED, MERGED
             publishedAt # draftからOpenになった日 or 直接Openになった日
             closedAt # REJECTEDかCLOSEDになった日
-            mergedAt # マージ日
-            mergedBy { login url } # マージ担当者
             author {
               __typename
               ... on Bot { databaseId id login url }
@@ -68,12 +65,12 @@ function get_pull_request_node_id() {
               totalCount
             }
             timelineItems(
-              first: 1, 
+              first: 1,
               itemTypes: [
-                LABELED_EVENT, 
-                ASSIGNED_EVENT, 
-                REVIEW_REQUESTED_EVENT, 
-                REVIEW_REQUEST_REMOVED_EVENT, 
+                LABELED_EVENT,
+                ASSIGNED_EVENT,
+                REVIEW_REQUESTED_EVENT,
+                REVIEW_REQUEST_REMOVED_EVENT,
                 CLOSED_EVENT
               ]
             ) {

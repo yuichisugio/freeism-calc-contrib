@@ -5,10 +5,10 @@
   - [使い方](#使い方)
     - [リポジトリ全体で初回のみ](#リポジトリ全体で初回のみ)
     - [処理を実行](#処理を実行)
-    - [分析結果を削除したい場合](#分析結果を削除したい場合)
+    - [オプション](#オプション)
   - [出力形式](#出力形式)
     - [出力される形式は以下](#出力される形式は以下)
-    - [表示するカラムは以下](#表示するカラムは以下)
+    - [CSV のカラム](#csv-のカラム)
     - [JSON 形式](#json-形式)
     - [CSV 形式](#csv-形式)
   - [今後追加したい内容](#今後追加したい内容)
@@ -56,27 +56,48 @@
    ```
 5. シェルで、以下を実行
    ```shell
-   git clone https://github.com/yuichisugio/freeism-calc-contrib.git
+   git clone https://github.com/yuichisugio/freeism-contribution-calculate.git
+   cd freeism-contribution-calculate/src/designated-oss-growth/github-developer-contrib
    ```
 
 ### 処理を実行
 
-1. 分析する場合
-   - `[path]`は、GitHub のリポジトリ URL をそのまま渡せば OK
+1. 代表的な実行例
+
    ```shell
-   ./main.sh [path] [option]
+   # ヘルプ
+   ./main.sh -h
+
+   # 対象リポジトリを指定（URL/SSH/owner/repo いずれも可）
+   ./main.sh -u https://github.com/microsoft/vscode
+
+   # 期間指定（開始・終了日は日単位。時刻は自動補完: 00:00:00Z / 23:59:59Z）
+   ./main.sh -u owner/repo -s 2025-01-01 -un 2025-01-31
+
+   # タスク選択（カンマ区切り or 複数 -t 指定）
+   ./main.sh -u owner/repo -t "star,fork"
+   ./main.sh -u owner/repo -t star -t fork
+
+   # 現在の RateLimit を表示して終了
+   ./main.sh -r
    ```
 
-### 分析結果を削除したい場合
+### オプション
 
-1. シェルで、以下を実行
-   ```shell
-   ./reset.sh [オプション]
-   ```
-   - オプションなしで、`results`フォルダのデータをすべて削除
-   - `-p`or`-pull-request`で`pull-request`フォルダのみ削除
-   - `-p`or`-issue`で`issue`フォルダのみ削除
-   - `-m`or`-main`で`main`フォルダのみ削除
+- `-u, --url`: 対象リポジトリ。サポート形式は以下。
+  - `https://github.com/OWNER/REPO` / `http://...`
+  - `git@github.com:OWNER/REPO(.git)`
+  - `OWNER/REPO`
+- `-s, --since`: 取得・集計の開始日（例: `2025-01-01`）。時刻は `T00:00:00Z` に自動補完。
+- `-un, --until`: 終了日（例: `2025-01-31`）。時刻は `T23:59:59Z` に自動補完。
+- `-t, --tasks`: 実行するデータ取得/加工タスクを選択（デフォルトは全件）。
+  - 指定可能値: `commit, discussion, fork, issue, pull-request, release, sponsor, star, watch`
+  - 複数指定可（カンマ区切り、または `-t` を複数回）。
+  - 注意: この指定は「データ取得/加工」にのみ影響します。貢献度の算出は、取得できたデータに対して全タスク種別で実行されます。
+- `-ve, --verbose`: 詳細ログを追加（標準エラー出力）。出力スキーマは変わりません。
+- `-r, --ratelimit`: 現在の GitHub GraphQL RateLimit 残量を表示して終了。
+- `-h, --help`: ヘルプを表示して終了。
+- `-v, --version`: バージョンを表示して終了。
 
 ## 出力形式
 
@@ -87,76 +108,76 @@
     - また、無料主義アプリにそのままアップロードできるようにしたい
 2.  JSON 形式
 
-### 表示するカラムは以下
+### CSV のカラム
 
-1.  データ取得元サービス名
-1.  データ取得元ユーザー名
-1.  データ取得元ユーザー ID
-    - 名前は変わる可能性があるため
-1.  ユーザーごとの貢献度
-1.  ファイル作成日
-1.  タスク名
-    - オプション付きの場合に表示する
-1.  データ取得元タスク ID
-    - オプション付きの場合に表示する
-1.  各重み付けの値
-    - オプション付きの場合に表示する
-1.  タスクごとの貢献度
-    - オプション付きの場合に表示する
-1.  タスクの実施日
-    - オプション付きの場合に表示する
+CSV はユーザー集計（タスク配列を除外した simple バージョン）を `result-simple.csv` に出力します。ヘッダーは以下です。
+
+```csv
+contribution_point,user_id,user_database_id,user_login,user_name,user_url,user_type,task_total_count
+```
 
 ### JSON 形式
 
 ```json
 {
 	"meta": {
-		"createdAt": "2025-08-20",
-		"analysisPeriod": {
-			"start": "2025-08-20",
-			"end": "2025-08-20"
-		},
-		"specified-oss": {
+		"analytics": { "createdAt": "2025-09-25T10:09:44Z" },
+		"repository": {
 			"host": "github.com",
 			"owner": "ryoppippi",
 			"Repository": "ccusage",
 			"url": "https://github.com/ryoppippi/ccusage"
 		}
 	},
-	"data": [
-		{
-			"host": "github.com",
-			"hostUsername": "aaa",
-			"hostUserId": "1234567",
-			"contribution": 15
-		},
-		{
-			"host": "github.com",
-			"hostUsername": "bbb",
-			"hostUserId": "1234567",
-			"contribution": 99995500
-		}
-	]
+	"data": {
+		"user_total_count": 2,
+		"user": [
+			{
+				"contribution_point": 123,
+				"user_id": "MDQ6VXNlcj...",
+				"user_database_id": 123456,
+				"user_login": "alice",
+				"user_name": "Alice",
+				"user_url": "https://github.com/alice",
+				"user_type": "User",
+				"task_total_count": 3,
+				"task": [
+					{
+						"task_id": "PR_kw...",
+						"task_database_id": 111,
+						"task_full_database_id": "PR_kw...:review123",
+						"task_url": "https://github.com/OWNER/REPO/pull/1",
+						"task_name": "create_pull_request",
+						"task_date": "2025-01-10T12:34:56Z",
+						"reference_task_date_field": "createdAt",
+						"criterion_weight_for_task_type": 1,
+						"criterion_weight_for_repo_creation_to_task_period": 123,
+						"criterion_weight_for_amount_of_work": 45,
+						"criterion_weight_for_amount_of_reaction": 6,
+						"criterion_weight_for_state": 5,
+						"criterion_weight_for_response_speed": 10,
+						"contribution_point": 276
+					}
+				]
+			}
+		]
+	}
 }
 ```
 
-- `-vervose`, `-v` or `-detail`,`-d`のオプションをつけた場合は、各ユーザー内のタスクごとに以下が追加
-  - 後々の開発
-  ```json
-  "task": {
-  	"taskName":"abc",
-  	"taskId":"abc",
-  	"executedDate":"2025-08-20",
-  	"weighting":1
-  }
-  ```
+- 生成物は以下に配置されます（例: `results/OWNER-REPO-1970-01-01T00:00:00Z-2099-12-13T23:59:59Z-20250925T100944/`）。
+  - `get-data/` 取得した生データ
+  - `processed-data/` 加工済みデータ（統合ファイル: `integrated-processed-data.json`）
+  - `calc-contrib/`
+    - `result-verbose.json`（タスク配列・各評価軸の重み・各タスクの貢献度入り）
+    - `result-simple.json`（ユーザー集計のみ。`task` を除外）
+    - `result-simple.csv`（上記 simple JSON を CSV 化）
 
 ### CSV 形式
 
 ```csv
-createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specifiedOssRepository,specifiedOssUrl,host,hostUsername,contribution,hostUserId
-2025-08-20,2025-08-20,2025-08-20,github.com,ryoppippi,ccusage,https://github.com/ryoppippi/ccusage,github.com,aaa,15,gerhtsymdgh
-2025-08-20,2025-08-20,2025-08-20,github.com,ryoppippi,ccusage,https://github.com/ryoppippi/ccusage,github.com,bbb,99995500,wqewghare
+contribution_point,user_id,user_database_id,user_login,user_name,user_url,user_type,task_total_count
+276,MDQ6VXNlcj...,123456,alice,Alice,https://github.com/alice,User,3
 ```
 
 ## 今後追加したい内容
@@ -560,26 +581,59 @@ createdAt,analysisStart,analysisEnd,specifiedOssHost,specifiedOssOwner,specified
 
 ## 工夫したポイント
 
-1. User オブジェクトの`id`フィールドは、`MDQ6SIOlcjg0MzI4Ng==`と`U_kgDOCihAMg`のような形式があるので、以下オプションで統一して取得している
+1. 依存関係
+   1. できる限り依存関係がないように工夫した
+2. ページネーション
+   - `--since`,`--until`オブションで期間指定してデータを分析するために、GitHub API で期間指定のデータ取得に対応していない場合があるため、`gh api graphql --paginate`を使用せず手動でページネーションを行っている
+3. id の形式
+   - User オブジェクトの`id`フィールドは、`MDQ6SIOlcjg0MzI4Ng==`と`U_kgDOCihAMg`のような形式があるので、以下オプションで新しい形式に統一して取得している
    - `--header X-Github-Next-Global-ID:1`オプションを指定することで、新しい形式を取得できる
-1. 何かしらの ID で突合できるように、得られる ID 系フィールド全てを取得する
-1. Issue のラベル付けの作業で貢献として認める仕様
-   - 各 Issue ごとに、現在ついている全てのラベルをそれぞれラベル付けした最新の日・最新の人のみを貢献として認める
-1. プルリクの`reviewRequests`は、レビュー担当者としてアサインされながらレビューが未完了の人のみを返す。なので、全員が完了済みの人も欲しい場合は`ReviewRequestedEvent`と`ReviewRequestRemovedEvent`を使用する必要がある
-1. `Discussion`でも`labels`はあるが、`timelineItems`が存在しないため、ラベル付けしたひとを取得できないので貢献度としては算出できない
-1. `Pull Request`オブジェクトの`timelineItems`フィールドの`MERGED_EVENT`の後に必ず`CLOSED_EVENT`が実行されているので、`MERGED_EVENT`は取得しない
-   1. ステータス変更(reject or merged)した人のタスクは、`CLOSED_EVENT`だけですべて拾える
-1. discussion の`answer`と`comment`は同じ扱いっぽい。
-   - なので同じ人内で同じデータが`answer`と`comment`の両方で取得できてしまう。
-   - また、`answer`に対して行った`reaction`や`reply`も、コメントに対してのタスクとしても出力されるので重複する
-   - answer は comment の方を削除したい。answer は comment よりも重み付けしているため。
-   - reaction や reply はどちらでも問題ないので、どちらかを削除したい。
-   - `integrate_processed_files`関数に処理を実装した
-1. `watch`は`createdAt`が存在しない。期間で区切っても毎回全て出力される。
-   - 貢献と認めたくない場合は、`weighting.jsonc`で`0`にすれば OK
-1. `Release`は、バッドリアクションが無く、グッドリアクションしか押せない・選べない
-2. `Discussion`,`Issue`,`Pull Request`など文言を統一できるところは統一している
-   1. `state`に`state`,`stateReason`や`closed`を合体させて`state`にしている
+4. データの取得の流れ
+   - データの取得は、GitHub GraphQL API 内の node の`id`とそのオブジェクトのデータを取得してから、`node`クエリの`id`指定で関連するオブジェクト(コメントなど)を取得している
+5. 全ての ID 系のフィールドを取得
+   - 何かしらの ID で突合できるように、得られる ID 系フィールド全てを取得する
+6. 「アサイン」、「ラベル付け」の作業で貢献として認める仕様
+   - 各 Issue などのオブジェクトごとに、現在ついている全てのラベル,アサインをそれぞれ行った最新の日・最新の人のみを貢献として認める
+7. プルリクエストとコミットのデータ取得方法
+   - プルリクエストとコミットの両方を貢献として評価するために、以下の流れにしている
+     1. merge 済みのコミット一覧と紐づく pull request を取得
+     2. 別クエリで、state が`MERGED`以外のプルリクエストを取得＆データ加工する
+   - データ取得の流れと重み付けの流れ的に ↑ の方法にした
+     1. github でコミット一覧から場合に merge_squash 後のコミットが出てくるのが `repository.ref.target.commit.history` オブジェクトから取る方法
+     2. pull-request から紐づくコミットを取る方法だと、merge_squash 前のデータが出るため、デバッグしにくいし、github から見た場合との違いが出て混乱する
+     3. データ取得の流れを issue 作成など他と統一するために node_id 取得して、それを取得して関連するデータを取得したいので、コミットのコメントなどを取得するために node_id が初めに欲しくてコミット一覧を取得する
+8. プルリクの`reviewRequests`の仕様
+   - プルリクの`reviewRequests`は、レビュー担当者としてアサインされながらレビューが未完了の人のみを返す。
+   - なので、全員が完了済みの人も欲しい場合は`ReviewRequestedEvent`と`ReviewRequestRemovedEvent`を使用して残っている人がレビュー担当者としてアサインされている人だと見なす
+9. `Discussion`には、`timelineItems`が存在しない。
+   1. `Discussion`でも`labels`はあるが、`timelineItems`が存在しないため、ラベル付けしたひとを取得できないので貢献度としては算出できない
+10. `MERGED_EVENT`の後に必ず`CLOSED_EVENT`が実行されている
+    1. `Pull Request`オブジェクトの`timelineItems`フィールドの`MERGED_EVENT`の後に必ず`CLOSED_EVENT`が実行されているので、`MERGED_EVENT`は取得しない
+    2. ステータス変更(reject or merged)した人のタスクは、`CLOSED_EVENT`だけですべて拾える
+11. discussion の`answer`と`comment`は同じ扱いっぽい。
+    - なので同じ人内で同じデータが`answer`と`comment`の両方で取得できてしまう。
+    - また、`answer`に対して行った`reaction`や`reply`も、コメントに対してのタスクとしても出力されるので重複する
+    - answer は comment の方を削除したい。answer は comment よりも重み付けしているため。
+    - reaction や reply はどちらでも問題ないので、どちらかを削除したい。
+    - `integrate_processed_files`関数に、node_id も answer と comment が同じため、group_by で id でグループ化して、answer を上位に配置するソート後に、.[0]は上位のみ採用する処理で対応した
+12. `watch`は`createdAt`が存在しない。
+    - 期間で区切っても毎回全て出力される。
+    - 貢献と認めたくない場合は、`weighting.jsonc`で`0`にすれば OK
+13. `Release`は、バッドリアクションが無く、グッドリアクションしか押せない・選べない
+14. `Discussion`,`Issue`,`Pull Request`など文言を統一できるところは統一している
+15. `state`に`state`,`stateReason`や`closed`を合体させて`state`にしている
+16. CSV 形式は、simple 出力バージョンにのみ対応
+17. committedDate と authoredDate の違い
+    - **`uthoredDate`**: その変更が**最初に作られた時刻**（作者が `git commit` したときの日時）。
+    - **`committedDate`**: その変更が**最終的にリポジトリへ適用された時刻**（例: リベース／アメンド／他者が当てたパッチで更新された時刻）
+18. `first`の件数を基本は`50`にする
+    1. 502 エラー、stream エラーになって止まる場合が多いので上限の 100 件は避ける
+19. `release`は、good 系のリアクションしかできない。`THUMB_DOWN`リアクションがない
+20. commit は、`author`,`committer`ではなく、`authors`を使用する
+    1. co-author のデータも評価したいし、merge-rebase などのコミットを適応した人(`committer`)ではなく、`git commit`したコード実装者(`authors`)を評価したいため
+21. データ加工(`process-data`)と貢献度の算出(`calc-contrib`)では、task_name が異なる
+    1. 例）データ加工では issue のコメントと pull-request のコメントのデータで分けていたが、貢献度の算出では同じにしている
+    2. `weighting.json`,`process-data`で`task_name`を分ければ分けて評価も可能
 
 ## 改善点
 

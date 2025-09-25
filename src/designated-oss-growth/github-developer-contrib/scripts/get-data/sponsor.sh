@@ -88,14 +88,14 @@ function get_github_sponsors_supporters() {
           createdAt
           tierSelectedAt
           tier { # ティア金額（見える場合）
-            name 
-            monthlyPriceInCents 
-            monthlyPriceInDollars 
-            updatedAt 
-            createdAt 
-            description 
-            isCustomAmount 
-            isOneTime 
+            name
+            monthlyPriceInCents
+            monthlyPriceInDollars
+            updatedAt
+            createdAt
+            description
+            isCustomAmount
+            isOneTime
           }
           sponsorEntity {
             __typename

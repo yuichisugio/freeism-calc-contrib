@@ -47,7 +47,7 @@ function get_paginated_repository_data() {
       --arg FIRST_FIELD "$FIRST_FIELD" \
       --arg SECOND_FIELD "$SECOND_FIELD" \
       '.data.repository[$FIRST_FIELD].nodes[]
-        | select(.[$SECOND_FIELD] >= $SINCE and .[$SECOND_FIELD] <= $UNTIL) // select(.[$SECOND_FIELD] >= $SINCE and .[$SECOND_FIELD] <= $UNTIL)
+        | select(.[$SECOND_FIELD] >= $SINCE and .[$SECOND_FIELD] <= $UNTIL)
       ' <<<"$RESPONSE" >>"$RESULT_PATH"
 
     # 次ページの準備

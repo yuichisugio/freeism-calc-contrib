@@ -27,7 +27,7 @@ if ! parsed="$(parse_args "$@")"; then
   # 関数内では>&2にしないとターミナル出力ができないが、そのままだとエラー表示になるので、ここでexit 0にすることで、エラー表示にせずにヘルプを出力できる。エラー表示は親プロセスで決まる。
   exit 0
 fi
-read -r OWNER REPO SINCE UNTIL TASKS VERBOSE <<<"$parsed"
+read -r OWNER REPO SINCE UNTIL TASKS <<<"$parsed"
 
 #--------------------------------------
 # 出力先のディレクトリを作成する

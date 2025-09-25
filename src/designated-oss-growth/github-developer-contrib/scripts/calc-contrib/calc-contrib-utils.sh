@@ -456,9 +456,31 @@ function convert_to_csv() {
   done
 
   jq \
+    -r \
     '
-      .
-    ' \
+      def nn: if . == null then "" else tostring end;
+
+      .data.user as $users
+      | ([
+            "contribution_point",
+            "user_id",
+            "user_database_id",
+            "user_login","user_name",
+            "user_url",
+            "user_type",
+            "task_total_count"
+          ] | @csv),
+        ($users[]? | [
+          (.contribution_point | nn),
+          (.user_id            | nn),
+          (.user_database_id   | nn),
+          (.user_login         | nn),
+          (.user_name          | nn),
+          (.user_url           | nn),
+          (.user_type          | nn),
+          (.task_total_count   | nn)
+        ] | @csv)
+  ' \
     "$INPUT_PATH" \
     >"$OUTPUT_PATH"
 }

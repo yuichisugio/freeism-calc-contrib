@@ -1,8 +1,4 @@
-# env files
-.env*
-!.env.example
-
-# results
+# result ディレクトリ
 results/
 */results/*
 */results/

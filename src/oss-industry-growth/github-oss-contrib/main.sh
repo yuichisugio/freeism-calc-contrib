@@ -1,64 +1,74 @@
 #!/bin/bash
 
+# --------------------------------------
 # 評価軸「OSS業界全体の発展」で分析するシェルスクリプトのメインファイル
+# --------------------------------------
 
+#--------------------------------------
+# 準備（エラー対応、相対PATH安定）
+#--------------------------------------
 set -euo pipefail
 
-cd "$(dirname "$0")"
+# カレントディレクトリをスクリプトのディレクトリに固定
+# shellcheck disable=SC2155
+readonly SCRIPT_DIR="$(cd "$(dirname -- "$0")" && pwd -P)"
+cd "$SCRIPT_DIR"
 
-# デフォルト設定
-# readonly OWNER=${1:-"yoshiko-pg"}
-# readonly REPO=${2:-"difit"}
-# readonly GITHUB_AUTH_TOKEN=${3}
-readonly RESULTS_DIR="./results"
-readonly PULL_REQUEST_DIR="${RESULTS_DIR}/pull-request"
-readonly ISSUE_DIR="${RESULTS_DIR}/issue"
-
+#--------------------------------------
 # 共通関数を読み込む
-source "$(dirname "$0")/scripts/utils/utils.sh"
+#--------------------------------------
+source "${SCRIPT_DIR}/scripts/utils/utils.sh"
+readonly INPUT_CONFIG_PATH="${SCRIPT_DIR}/input-config.json"
 
-# ヘルプオプションの処理。引数がある場合のみヘルプをチェック。
-# 引数がない場合はヘルプを表示しない。
-if [[ $# -gt 0 && ("$1" == "-h" || "$1" == "--help") ]]; then
-  show_usage
+#--------------------------------------
+# 引数のパース＆取得。読み込に使用する必要がある
+#--------------------------------------
+if ! parsed="$(parse_args "$@")"; then
+  # 関数内では>&2にしないとターミナル出力ができないが、そのままだとエラー表示になるので、ここでexit 0にすることで、エラー表示にせずにヘルプを出力できる。エラー表示は親プロセスで決まる。
   exit 0
 fi
+read -r GITHUB_OWNER GITHUB_REPO NPM_NAME <<<"$parsed"
 
-# データを加工するファイルを読み込む
-source "$(dirname "$0")/scripts/data-process/github-processor.sh"
+#--------------------------------------
+# 出力先のディレクトリを作成する
+#--------------------------------------
+# shellcheck disable=SC2155
+readonly OUTPUT_DIR="${SCRIPT_DIR}/results/$(date +%Y%m%dT%H%M%S)"
+mkdir -p "$OUTPUT_DIR"
 
-# データを加工するファイルを読み込む
-source "$(dirname "$0")/scripts/data-process/scorecard-processor.sh"
+#--------------------------------------
+# 使用するファイルを読み込む
+#--------------------------------------
+# データ取得を統合するファイルを取得
+source "${SCRIPT_DIR}/scripts/get-data/integration.sh"
+# データ加工を統合するファイルを取得
+# source "${SCRIPT_DIR}/scripts/process-data/integration.sh"
+# 貢献度の算出を統合するファイルを取得
+# source "${SCRIPT_DIR}/scripts/calc-contrib/integration.sh"
 
-# プルリクエスト貢献者を分析。
-source "$(dirname "$0")/scripts/get-data/from-github/github-oss-meta-data.sh"
-
-# イシュー貢献者を分析。
-# source "$(dirname "$0")/scripts/get-data/from-open-ssf-scorecard/scorecard.sh"
-
-# 貢献度の重み付け
-# source "$(dirname "$0")/calc-contrib/contrib-weighting.sh"
-
-# 貢献度の合計を計算する
-# source "$(dirname "$0")/calc-contrib/calc-amount-contrib.sh"
-
+#--------------------------------------
 # メイン関数
+#--------------------------------------
 function main() {
-  # 出力ディレクトリの準備
-  setup_output_directory
 
-  # プルリクエスト貢献者を分析。
-  raw_pr_data=$(get_github_pull_request_contributors)
-  processed_pr_data=$(process_pr_data "$raw_pr_data")
-  echo "$processed_pr_data"
+  printf '%s\n' "begin:main()"
 
-  # イシュー貢献者を分析。
-  raw_issue_data=$(get_github_issue_contributors)
-  processed_issue_data=$(process_issue_data "$raw_issue_data")
-  echo "$processed_issue_data"
+  # 依存コマンドの確認
+  require_tools
+
+  # データ取得
+  get_data
+
+  # データ加工
+  # process_data
+
+  # # 貢献度の算出
+  # calc_contrib
+
+  printf '%s\n' "end:main()"
 
   return 0
 }
 
 # スクリプトを実行。
-main
+main "$@"
