@@ -20,7 +20,7 @@ function process_star() {
   printf '%s\n' "begin:process_star()"
 
   process_data_utils \
-    --input-path "$RESULT_GET_STAR_PATH" \
+    --input-path "$RESULT_GET_GITHUB_STAR_PATH" \
     --output-path "$RESULT_PROCESSED_STAR_PATH" \
     --task-name "star" \
     --task-date "starredAt" \

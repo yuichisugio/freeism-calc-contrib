@@ -11,7 +11,7 @@ set -euo pipefail
 #--------------------------------------
 readonly RESULT_GET_STAR_DIR="${OUTPUT_GET_DIR}/star"
 readonly RAW_GET_STAR_PATH="${RESULT_GET_STAR_DIR}/raw-star.jsonl"
-readonly RESULT_GET_STAR_PATH="${RESULT_GET_STAR_DIR}/result-star.json"
+readonly RESULT_GET_GITHUB_STAR_PATH="${RESULT_GET_STAR_DIR}/result-star.json"
 
 mkdir -p "$RESULT_GET_STAR_DIR"
 
@@ -54,7 +54,7 @@ function get_star() {
   get_paginated_star_data \
     "$QUERY" \
     "$RAW_GET_STAR_PATH" \
-    "$RESULT_GET_STAR_PATH"
+    "$RESULT_GET_GITHUB_STAR_PATH"
 
   # データ取得後のRateLimitを出力
   get_ratelimit \

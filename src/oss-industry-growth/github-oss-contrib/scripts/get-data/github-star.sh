@@ -9,9 +9,9 @@ set -euo pipefail
 #--------------------------------------
 # 出力先のファイルを定義
 #--------------------------------------
-readonly RESULT_GET_STAR_PATH="${OUTPUT_GET_DIR}/github-star.json"
+readonly OUTPUT_GET_GITHUB_STAR_PATH="${OUTPUT_GET_DIR}/github-star.json"
 
-mkdir -p "$(dirname "$RESULT_GET_STAR_PATH")"
+mkdir -p "$(dirname "$OUTPUT_GET_GITHUB_STAR_PATH")"
 
 #--------------------------------------
 # GitHubのOSSのstar数を取得する関数
@@ -31,7 +31,7 @@ function get_github_star() {
           stargazerCount
         }
       }
-    ' | jq '.' >"$RESULT_GET_STAR_PATH"
+    ' | jq '.' >"$OUTPUT_GET_GITHUB_STAR_PATH"
 
   printf '%s\n' "end:get_github_star()"
 }

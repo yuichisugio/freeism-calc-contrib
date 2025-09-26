@@ -4,4 +4,4 @@ gh api graphql -F owner="ryoppippi" -F name="ccusage" -f query='
       stargazerCount
     }
   }
-' | jq '.' >".src/oss-industry-growth/github-oss-contrib/archive/1-github-star-result.json"
+' | jq '.' >"src/oss-industry-growth/github-oss-contrib/archive/1-github-star.json"

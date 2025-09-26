@@ -33,7 +33,7 @@ read -r GITHUB_OWNER GITHUB_REPO NPM_NAME <<<"$parsed"
 # 出力先のディレクトリを作成する
 #--------------------------------------
 # shellcheck disable=SC2155
-readonly OUTPUT_DIR="${SCRIPT_DIR}/results/$(date +%Y%m%dT%H%M%S)"
+readonly OUTPUT_DIR="${SCRIPT_DIR}/results/$(date +%Y-%m-%d-%H:%M:%S)"
 mkdir -p "$OUTPUT_DIR"
 
 #--------------------------------------
@@ -42,9 +42,9 @@ mkdir -p "$OUTPUT_DIR"
 # データ取得を統合するファイルを取得
 source "${SCRIPT_DIR}/scripts/get-data/integration.sh"
 # データ加工を統合するファイルを取得
-# source "${SCRIPT_DIR}/scripts/process-data/integration.sh"
+source "${SCRIPT_DIR}/scripts/process-data/integration.sh"
 # 貢献度の算出を統合するファイルを取得
-# source "${SCRIPT_DIR}/scripts/calc-contrib/integration.sh"
+source "${SCRIPT_DIR}/scripts/calc-contrib/integration.sh"
 
 #--------------------------------------
 # メイン関数
@@ -60,10 +60,10 @@ function main() {
   get_data
 
   # データ加工
-  # process_data
+  process_data
 
   # # 貢献度の算出
-  # calc_contrib
+  calc_contrib
 
   printf '%s\n' "end:main()"
 
