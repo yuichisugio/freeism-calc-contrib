@@ -1,0 +1,33 @@
+{
+	"search_names": ["ccusage"],
+	"weighting": {
+		"zenn": {
+			"article_count": 1,
+			"like_count": 2,
+			"bookmark_count": 3,
+			"letter_count": 0.01,
+			"task_date": 1
+		},
+		"qiita": {
+			"article_count": 1,
+			"like_count": 2,
+			"bookmark_count": 3,
+			"letter_count": 0.01,
+			"task_date": 1
+		},
+		"note": {
+			"article_count": 1,
+			"like_count": 2,
+			"bookmark_count": 3,
+			"letter_count": 0.01,
+			"task_date": 1
+		},
+		"hatena": {
+			"article_count": 1,
+			"like_count": 2,
+			"bookmark_count": 3,
+			"letter_count": 0.01,
+			"task_date": 1
+		}
+	}
+}
