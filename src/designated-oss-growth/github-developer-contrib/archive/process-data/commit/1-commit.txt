@@ -33,7 +33,7 @@ jq '
                       elif ($commit|has("authoredDate")) then "authoredDate"
                       else null end ),
                   # 無い場合は空文字にして length を安全に計算
-                  word_count:            ( ($commit.name? // "" | length) + ($commit.description? // "" | length) ),
+                  letter_count:            ( ($commit.name? // "" | length) + ($commit.description? // "" | length) ),
                   reaction:              ($commit.reactions.totalCount // 0)
                 }
               ]

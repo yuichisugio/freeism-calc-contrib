@@ -29,7 +29,7 @@ function process_discussion_create() {
         end
       ),
 
-    word_count:
+    letter_count:
       (
         ($obj.title? // "" | length) + ($obj.bodyText? // "" | length)
       ),

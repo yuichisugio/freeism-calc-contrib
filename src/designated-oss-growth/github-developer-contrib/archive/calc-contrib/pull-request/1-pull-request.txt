@@ -26,9 +26,9 @@ jq \
           $w[$task_name].repo_creation_to_task_period.lower_limit
         ) as $rcttp
       | metric_weight(
-          $t.word_count;
-          $w[$task_name].amount_of_work.word_count;
-          $w[$task_name].amount_of_work.word_count_lower_limit
+          $t.letter_count;
+          $w[$task_name].amount_of_work.letter_count;
+          $w[$task_name].amount_of_work.letter_count_lower_limit
         ) as $aow_word
       | metric_weight(
           $t.lines_of_code;
@@ -109,9 +109,9 @@ jq \
         ) as $rcttp
       | (
           metric_weight(
-            $t.word_count;
-            $w[$task_name].amount_of_work.word_count;
-            $w[$task_name].amount_of_work.word_count_lower_limit
+            $t.letter_count;
+            $w[$task_name].amount_of_work.letter_count;
+            $w[$task_name].amount_of_work.letter_count_lower_limit
           ) as $aow_word
         | metric_weight(
             $t.lines_of_code;

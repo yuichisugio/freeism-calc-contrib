@@ -34,7 +34,7 @@
 						"task_name": "comment",
 						"task_date": "2025-07-21T14:01:29Z",
 						"reference_task_date_field": "publishedAt",
-						"word_count": 233,
+						"letter_count": 233,
 						"good_reaction": 0,
 						"bad_reaction": 0
 					}
@@ -57,9 +57,9 @@
 						"task_name": "pr-review",
 						"task_date": "2025-08-24T16:43:17Z",
 						"reference_task_date_field": "publishedAt",
-						"review_word_count": 0,
+						"review_letter_count": 0,
 						"pr_start_date": "2025-08-24T16:36:46Z",
-						"pr_word_count": 144,
+						"pr_letter_count": 144,
 						"pr_change_record_count": 485,
 						"good_reaction": 0,
 						"bad_reaction": 0

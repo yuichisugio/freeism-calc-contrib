@@ -32,7 +32,7 @@ function process_pr_node_id() {
 
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
-    word_count:
+    letter_count:
       (
         ($obj.title? // "" | length) + ($obj.bodyText? // "" | length)
       ),

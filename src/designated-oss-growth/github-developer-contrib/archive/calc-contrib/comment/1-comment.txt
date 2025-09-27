@@ -29,9 +29,9 @@ jq \
           $w[$task_name].repo_creation_to_task_period.lower_limit
         ) as $rcttp
       | metric_weight(
-          $t.word_count;
-          $w[$task_name].amount_of_work.word_count;
-          $w[$task_name].amount_of_work.word_count_lower_limit
+          $t.letter_count;
+          $w[$task_name].amount_of_work.letter_count;
+          $w[$task_name].amount_of_work.letter_count_lower_limit
         ) as $aow
       | clamp(
           $w[$task_name].response_speed.max_period;

@@ -22,7 +22,7 @@ jq '
                   task_name:                  "create-discussion",
                   task_date:                  $obj.publishedAt,
                   reference_task_date_field:  "publishedAt",
-                  discus_word_count:
+                  discus_letter_count:
                     (
                       ($obj.title? // "" | length) + ($obj.bodyText? // "" | length)
                     ),
@@ -139,7 +139,7 @@ jq '
                   task_name:             "comment",
                   task_date:             $obj.publishedAt,
                   reference_task_date_field: "publishedAt",
-                  word_count:     ($obj.bodyText? // "" | length),
+                  letter_count:     ($obj.bodyText? // "" | length),
 
                   # 👎だけbad、それ以外はgoodに計上 + Discussionsのupvoteも合算
                   good_reaction:
@@ -250,7 +250,7 @@ jq '
                   task_name:             "comment",
                   task_date:             $obj.publishedAt,
                   reference_task_date_field: "publishedAt",
-                  word_count:     ($obj.bodyText? // "" | length),
+                  letter_count:     ($obj.bodyText? // "" | length),
 
                   # 👎だけbad、それ以外はgoodに計上 + Discussionsのupvoteも合算
                   good_reaction:
@@ -362,7 +362,7 @@ jq '
                   task_name:                  "answer-discussion",
                   task_date:                  $obj.publishedAt,
                   reference_task_date_field:  "publishedAt",
-                  word_count: ($obj.bodyText? // "" | length),
+                  letter_count: ($obj.bodyText? // "" | length),
 
                   good_reaction:
                     ((
@@ -474,7 +474,7 @@ jq '
                   task_name:             "comment",
                   task_date:             $obj.publishedAt,
                   reference_task_date_field: "publishedAt",
-                  word_count:     ($obj.bodyText? // "" | length),
+                  letter_count:     ($obj.bodyText? // "" | length),
 
                   # 👎だけbad、それ以外はgoodに計上 + Discussionsのupvoteも合算
                   good_reaction:

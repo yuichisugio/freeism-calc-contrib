@@ -187,9 +187,9 @@ function calc_contrib_utils() {
   local AMOUNT_OF_WORK_FIRST_QUERY='
     | (
         metric_weight(
-          $t.word_count;
-          $w[$task_name].amount_of_work.word_count;
-          $w[$task_name].amount_of_work.word_count_lower_limit
+          $t.letter_count;
+          $w[$task_name].amount_of_work.letter_count;
+          $w[$task_name].amount_of_work.letter_count_lower_limit
         ) as $aow_word
         | metric_weight(
             $t.lines_of_code;

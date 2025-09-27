@@ -6,7 +6,7 @@ jq \
 
     .data.user as $users
     | (["user_id","user_login","task_id","task_name","task_date","reference_task_date_field",
-        "word_count","lines_of_code","review_word_count","pr_word_count","pr_change_record_count",
+        "letter_count","lines_of_code","review_letter_count","pr_letter_count","pr_change_record_count",
         "good_reaction","bad_reaction","task_url"] | @csv),
       (
         $users[]? as $u
@@ -18,10 +18,10 @@ jq \
             (.task_name    | nn),
             (.task_date    | nn),
             (.reference_task_date_field | nn),
-            (.word_count            // 0),
+            (.letter_count            // 0),
             (.lines_of_code         // 0),
-            (.review_word_count     // 0),
-            (.pr_word_count         // 0),
+            (.review_letter_count     // 0),
+            (.pr_letter_count         // 0),
             (.pr_change_record_count// 0),
             (.good_reaction         // 0),
             (.bad_reaction          // 0),

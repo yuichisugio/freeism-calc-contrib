@@ -26,7 +26,7 @@ jq '
                     task_name: "release",
                     task_date: ($release | .publishedAt),
                     reference_task_date_field: "publishedAt",
-                    word_count: ($release | (.name | length) + (.description| length)),
+                    letter_count: ($release | (.name | length) + (.description| length)),
                     reaction: ($release | .reactions.totalCount)
                   }
                 ]

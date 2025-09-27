@@ -20,7 +20,7 @@ function process_release_node_id() {
   printf '%s\n' "begin:process_release_node_id()"
 
   local SECOND_OTHER_QUERY='
-    word_count: ((.name // "" | length) + (.description // "" | length)),
+    letter_count: ((.name // "" | length) + (.description // "" | length)),
     good_reaction: (.reactions.totalCount // 0)
   '
 

@@ -16,7 +16,7 @@ mkdir -p "$(dirname "$RESULT_PROCESSED_ISSUE_CHANGE_STATE_PATH")"
 # issueのステータスを変更した人のデータを加工する関数
 #--------------------------------------
 function process_issue_change_state() {
-  
+
   printf '%s\n' "begin:process_issue_change_state()"
 
   # shellcheck disable=SC2016
@@ -44,7 +44,7 @@ function process_issue_change_state() {
   local SECOND_OTHER_QUERY='
     stateReason: $obj.stateReason,
     task_start: $obj.node_publishedAt,
-    word_count:(
+    letter_count:(
       ( $obj.node_title? // "" | length )
       + ( $obj.node_bodyText? // "" | length )
     )

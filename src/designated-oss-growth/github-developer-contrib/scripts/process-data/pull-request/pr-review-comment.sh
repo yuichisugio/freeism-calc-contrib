@@ -21,7 +21,7 @@ function process_pr_review_comment() {
 
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
-    word_count:   ($obj.bodyText? // "" | length),
+    letter_count:   ($obj.bodyText? // "" | length),
     task_start: $obj.node_publishedAt,
     good_reaction:
       (

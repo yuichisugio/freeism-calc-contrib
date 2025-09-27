@@ -33,7 +33,7 @@ function process_commit_node_id_with_pr() {
 
   # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
-    word_count: (
+    letter_count: (
       ($obj.message? // "" | length)+
       ($obj.associatedPullRequests?.nodes[0]?.bodyText? // "" | length)+
       ($obj.associatedPullRequests?.nodes[0]?.title? // "" | length)+

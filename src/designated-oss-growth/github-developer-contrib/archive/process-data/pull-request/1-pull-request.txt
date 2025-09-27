@@ -22,7 +22,7 @@ jq '
                   task_name:                  "create-not-merged-pull-request",
                   task_date:                  $obj.publishedAt,
                   reference_task_date_field:  "publishedAt",
-                  pr_word_count:
+                  pr_letter_count:
                     (
                       ($obj.title? // "" | length) + ($obj.bodyText? // "" | length)
                     ),
@@ -292,7 +292,7 @@ jq '
                   task_name:             "comment",
                   task_date:             $obj.publishedAt,
                   reference_task_date_field: "publishedAt",
-                  commit_word_count:     ($obj.bodyText? // "" | length),
+                  commit_letter_count:     ($obj.bodyText? // "" | length),
 
                   # content == "THUMBS_DOWN" だけを bad、それ以外は good
                   good_reaction:
@@ -402,9 +402,9 @@ jq '
                   task_name:             "pr-review",
                   task_date:             $obj.publishedAt,
                   reference_task_date_field: "publishedAt",
-                  review_word_count:     ($obj.bodyText? // "" | length),
+                  review_letter_count:     ($obj.bodyText? // "" | length),
                   pr_start_date: $obj.node_publishedAt,
-                  pr_word_count:(($obj.node_title? // "" | length)+($obj.node_bodyText? // "" | length)),
+                  pr_letter_count:(($obj.node_title? // "" | length)+($obj.node_bodyText? // "" | length)),
                   pr_change_record_count:(($obj.node_additions? // 0)+($obj.node_deletions? // 0)),
 
                   # content == "THUMBS_DOWN" だけを bad、それ以外は good
@@ -514,7 +514,7 @@ jq '
                   task_name:             "comment",
                   task_date:             $obj.publishedAt,
                   reference_task_date_field: "publishedAt",
-                  commit_word_count:     ($obj.bodyText? // "" | length),
+                  commit_letter_count:     ($obj.bodyText? // "" | length),
 
                   # content == "THUMBS_DOWN" だけを bad、それ以外は good
                   good_reaction:
