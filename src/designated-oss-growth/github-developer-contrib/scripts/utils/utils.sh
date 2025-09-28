@@ -222,44 +222,53 @@ function get_ratelimit() {
 # 選択なし=全実行、"all"含む=全実行
 #--------------------------------------
 function should_run() {
-  local -a args=("$@")
-  local delimiter_index=-1
-  local i
+  local -a task_words=()
+  local -a arg_words=()
+  local mode="keywords"
 
-  for i in "${!args[@]}"; do
-    if [[ "${args[$i]}" == "--" ]]; then
-      delimiter_index=$i
-      break
-    fi
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --task_word)
+      if [[ $# -lt 2 ]]; then
+        printf '%s\n' "should_run: missing value for --task_word" >&2
+        return 1
+      fi
+      task_words+=("$2")
+      shift 2
+      ;;
+    --arg_word)
+      if [[ $# -lt 2 ]]; then
+        printf '%s\n' "should_run: missing value for --arg_word" >&2
+        return 1
+      fi
+      arg_words+=("$2")
+      shift 2
+      ;;
+    --)
+      mode="args"
+      shift
+      continue
+      ;;
+    *)
+      if [[ "$mode" == "keywords" ]]; then
+        task_words+=("$1")
+        mode="args"
+      else
+        arg_words+=("$1")
+      fi
+      shift
+      ;;
+    esac
   done
 
-  local -a raw_keywords=()
-  local -a raw_selected=()
-
-  if ((delimiter_index >= 0)); then
-    if ((delimiter_index > 0)); then
-      raw_keywords=("${args[@]:0:delimiter_index}")
-    fi
-    if ((delimiter_index + 1 <= ${#args[@]})); then
-      raw_selected=("${args[@]:delimiter_index+1}")
-    fi
-  else
-    if ((${#args[@]} > 0)); then
-      raw_keywords=("${args[0]}")
-    fi
-    if ((${#args[@]} > 1)); then
-      raw_selected=("${args[@]:1}")
-    fi
-  fi
-
   local -a normalized_names=()
-  local raw_keyword
-  for raw_keyword in "${raw_keywords[@]}"; do
-    if [[ -z "$raw_keyword" ]]; then
+  local task_entry
+  for task_entry in "${task_words[@]}"; do
+    if [[ -z "$task_entry" ]]; then
       continue
     fi
 
-    local normalized_input="$raw_keyword"
+    local normalized_input="$task_entry"
     normalized_input="${normalized_input//,/ }"
     normalized_input="${normalized_input//|/ }"
 
@@ -278,9 +287,9 @@ function should_run() {
   done
 
   local -a selected_tasks=()
-  if ((${#raw_selected[@]} > 0)); then
+  if ((${#arg_words[@]} > 0)); then
     local arg part
-    for arg in "${raw_selected[@]}"; do
+    for arg in "${arg_words[@]}"; do
       arg="${arg// /,}"
 
       local -a parts=()

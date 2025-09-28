@@ -45,62 +45,62 @@ function get_data() {
 
   # 実行するファイルを選択
   if should_run \
-    "commit" \
-    "create_commit_with_pr" \
-    "comment" \
-    "reaction" \
-    -- "$@"; then
+    --task_word "commit" \
+    --task_word "create_commit_with_pr" \
+    --task_word "comment" \
+    --task_word "reaction" \
+    --arg_word "$@"; then
     get_commit
   fi
 
   if should_run \
-    "discussion" \
-    "create_discussion" \
-    "answer_discussion" \
-    "comment" \
-    "reaction" \
-    -- "$@"; then
+    --task_word "discussion" \
+    --task_word "create_discussion" \
+    --task_word "answer_discussion" \
+    --task_word "comment" \
+    --task_word "reaction" \
+    --arg_word "$@"; then
     get_discussion
   fi
 
-  if should_run "fork" -- "$@"; then get_fork; fi
+  if should_run --task_word "fork" --arg_word "$@"; then get_fork; fi
 
   if should_run \
-    "issue" \
-    "create_issue" \
-    "change_issue_state" \
-    "assigning" \
-    "labeling" \
-    "comment" \
-    "reaction" \
-    -- "$@"; then
+    --task_word "issue" \
+    --task_word "create_issue" \
+    --task_word "change_issue_state" \
+    --task_word "assigning" \
+    --task_word "labeling" \
+    --task_word "comment" \
+    --task_word "reaction" \
+    --arg_word "$@"; then
     get_issue
   fi
 
   if should_run \
-    "pull-request" \
-    "create_pull_request" \
-    "change_pull_request_state" \
-    "assigning" \
-    "labeling" \
-    "pr_review" \
-    "comment" \
-    "reaction" \
-    -- "$@"; then
+    --task_word "pull-request" \
+    --task_word "create_pull_request" \
+    --task_word "change_pull_request_state" \
+    --task_word "assigning" \
+    --task_word "labeling" \
+    --task_word "pr_review" \
+    --task_word "comment" \
+    --task_word "reaction" \
+    --arg_word "$@"; then
     get_pull_request
   fi
 
   if should_run \
-    "release" \
-    "create_release" \
-    "reaction" \
-    -- "$@"; then
+    --task_word "release" \
+    --task_word "create_release" \
+    --task_word "reaction" \
+    --arg_word "$@"; then
     get_release
   fi
 
-  if should_run "sponsor" -- "$@"; then get_sponsor; fi
-  if should_run "star" -- "$@"; then get_star; fi
-  if should_run "watch" -- "$@"; then get_watch; fi
+  if should_run --task_word "sponsor" --arg_word "$@"; then get_sponsor; fi
+  if should_run --task_word "star" --arg_word "$@"; then get_star; fi
+  if should_run --task_word "watch" --arg_word "$@"; then get_watch; fi
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-data()" "$before_remaining_ratelimit" "false"
