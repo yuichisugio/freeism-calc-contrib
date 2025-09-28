@@ -68,13 +68,16 @@
   ```bash
   ./main.sh -i ./input-config.json
   # または
-  ./main.sh --input-config ./input-config.json --qiita-token "$QIITA_TOKEN"
+  ./main.sh --input-config ./input-config.json"
   ```
+
+  - `--input-config`オプションで指定しない場合は、`main.sh`にある`input-config.json`を読み込む
 
 - 出力先
   - `results/<timestamp>/zenn/raw-zenn.json`
   - `results/<timestamp>/zenn/processed-zenn.json`
   - `results/<timestamp>/zenn/result-zenn.json`
+    - これが貢献度の算出した結果を記載したファイル
 
 ## ロジック（重み付け・集計仕様）
 

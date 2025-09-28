@@ -11,9 +11,10 @@ set -euo pipefail
 #--------------------------------------
 readonly RESULT_ZENN_DIR="${OUTPUT_DIR}/zenn"
 mkdir -p "$RESULT_ZENN_DIR"
-readonly RESULT_ZENN="${RESULT_ZENN_DIR}/result-zenn.json"
+readonly RESULT_JSON_ZENN="${RESULT_ZENN_DIR}/result-zenn.json"
 readonly RAW_ZENN="${RESULT_ZENN_DIR}/raw-zenn.json"
 readonly PROCESSED_ZENN="${RESULT_ZENN_DIR}/processed-zenn.json"
+readonly RESULT_CSV_ZENN="${RESULT_ZENN_DIR}/result-zenn.csv"
 
 #--------------------------------------
 # データ取得
@@ -241,7 +242,35 @@ function get_zenn() {
         }
     ' \
     "$PROCESSED_ZENN" \
-    >"$RESULT_ZENN"
+    >"$RESULT_JSON_ZENN"
+
+
+  # -------------------------------------
+  # CSVデータも出力
+  # -------------------------------------
+  # userごとの集計結果をCSV化（task配列は除外）
+  jq -r '
+    def unique_preserve:
+      reduce .[] as $x ([]; if index($x) then . else . + [$x] end);
+
+    .data.user as $users
+    | if ($users | length) == 0 then
+        (["contribution_point", "id", "username", "name", "task_total_count"] | @csv)
+      else
+        ($users
+          | reduce .[] as $u (
+              [];
+              . + ($u | del(.task) | to_entries | map(.key))
+            )
+          | unique_preserve) as $keys
+        | ($keys | @csv),
+          ($users[]
+            | del(.task)
+            | [ $keys[] as $k | (.[$k] // "") ]
+            | @csv)
+      end
+  ' "$RESULT_JSON_ZENN" >"$RESULT_CSV_ZENN"
+
 
   printf '%s\n' "end:get_zenn()"
 

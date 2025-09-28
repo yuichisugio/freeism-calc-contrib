@@ -8,7 +8,8 @@
 set -euo pipefail
 
 # 相対PATHを安定させる
-cd "$(cd "$(dirname -- "$0")" && pwd -P)"
+PROJECT_DIR=$(cd "$(dirname -- "$0")" && pwd -P)
+cd "$PROJECT_DIR"
 
 # 依存コマンドの確認
 if ! command -v jq >/dev/null; then
@@ -16,117 +17,136 @@ if ! command -v jq >/dev/null; then
   exit 1
 fi
 
+# デフォルト値
+dependencies_json=${1:-$PROJECT_DIR/dependencies.json}
+config_json=${2:-$PROJECT_DIR/config.json}
+
 #--------------------------------------
 # 使い方の表示
 #--------------------------------------
-if [[ ("${1:-}" == "-h" || "${1:-}" == "--help") ]]; then
-  cat <<EOF
+function show_usage() {
+  cat <<EOF >&2
 Usage:
-  $0 dependencies.json config.json
+  $0 -d dependencies.json -c config.json
+  $0 --dependencies dependencies.json --config config.json
 
 Description:
   dependencies.json と config.json を読み込み、所定のJSON形式で出力します。
 
 Options:
-  -h, --help       ヘルプ
-
-Examples:
-  $0 dependencies.json config.json > result.json
+  -d, --dependencies :  <dependencies.json> 依存OSSの一覧
+  -c, --config       :  <config.json> 評価基準
+  -h, --help         : ヘルプを表示
 EOF
-  exit 0
-fi
+  return 0
+}
 
 #--------------------------------------
 # 引数の取得
 #--------------------------------------
-dependencies_json=${1:-}
-config_json=${2:-}
-
-# タイムスタンプ
-# shellcheck disable=SC2155
-readonly TS="$(date +%Y%m%d_%H%M%S)"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+  -d | --dependencies)
+    dependencies_json="$2"
+    shift 2
+    ;;
+  -c | --config)
+    config_json="$2"
+    shift 2
+    ;;
+  -h | --help)
+    show_usage
+    exit 1
+    ;;
+  *)
+    printf '%s\n' "Unknown option: $1" >&2
+    show_usage
+    exit 1
+    ;;
+  esac
+done
 
 #--------------------------------------
 # 引数のバリデーション
 #--------------------------------------
-function validate_json_file() {
-  # ファイルが存在するか確認
-  for file in "${dependencies_json}" "${config_json}"; do
-    if [[ ! -f ${file} ]]; then
-      echo "ERROR: ${file} is not a file" >&2
-      exit 1
-    fi
-  done
+# ファイルが存在するか確認
+for file in "${dependencies_json}" "${config_json}"; do
+  if [[ ! -f ${file} ]]; then
+    echo "ERROR: file ${file} is not a file" >&2
+    exit 1
+  fi
+done
 
-  # ファイルが空でないか確認
-  for file in "${dependencies_json}" "${config_json}"; do
-    if [[ ! -s ${file} ]]; then
-      echo "ERROR: ${file} is empty" >&2
-      exit 1
-    fi
-  done
+# ファイルが空でないか確認
+for file in "${dependencies_json}" "${config_json}"; do
+  if [[ ! -s ${file} ]]; then
+    echo "ERROR: file ${file} is empty" >&2
+    exit 1
+  fi
+done
 
-  # ファイルが有効なJSONか確認
-  for file in "${dependencies_json}" "${config_json}"; do
-    if ! jq '.' "${file}" >/dev/null; then
-      echo "Error: ${file} is not a valid JSON file" >&2
-      exit 1
-    fi
-  done
-}
+# ファイルが有効なJSONか確認
+for file in "${dependencies_json}" "${config_json}"; do
+  if ! jq '.' "${file}" >/dev/null; then
+    echo "Error: file ${file} is not a valid JSON file" >&2
+    exit 1
+  fi
+done
 
 #--------------------------------------
 # メイン処理
 #--------------------------------------
 function process_dependencies_json() {
-  local output_json_path
-  output_json_path=${1:-}
+  local OUTPUT_JSON_DIR
+  OUTPUT_JSON_DIR=${1:-}
+  local TODAY
+  TODAY=$(date +%Y%m%d_%H:%M:%S)
 
   jq -n \
     --slurpfile deps "${dependencies_json}" \
-    --slurpfile cfg "${config_json}" '
+    --slurpfile cfg "${config_json}" \
+    '
+      # 有効な評価基準（enabled==true）の集合とデフォルト値マップ
+      def enabledCrit: ($cfg[0].evaluationCriteria // [] | map(select(.enabled == true)));
 
-  # 有効な評価基準（enabled==true）の集合とデフォルト値マップ
-  def enabledCrit: ($cfg[0].evaluationCriteria // [] | map(select(.enabled == true)));
+      # 有効な評価基準のキーの集合
+      def allowedKeys: (enabledCrit | map(.key));
 
-  # 有効な評価基準のキーの集合
-  def allowedKeys: (enabledCrit | map(.key));
+      # デフォルト値マップ
+      def defaults: (enabledCrit | map({(.key): .value}) | add // {});
 
-  # デフォルト値マップ
-  def defaults: (enabledCrit | map({(.key): .value}) | add // {});
+      # 数値化（number型 or 数値文字列のみ採用）
+      def to_num:
+        if type=="number" then .
+        elif type=="string" then (try (tonumber) catch empty)
+        else empty
+        end;
 
-  # 数値化（number型 or 数値文字列のみ採用）
-  def to_num:
-    if type=="number" then .
-    elif type=="string" then (try (tonumber) catch empty)
-    else empty
-    end;
-
-  {
-    meta: ($deps[0].meta),
-    data: (($deps[0].data // []) | map(
-      . as $item
-      |
-      # 既存評価基準（なければ空オブジェクト）
-      (($item.evaluation.evaluationCriteria) // {}) as $crit0
-      |
-      # 無効キーの削除（allowedKeysに無いキーを落とす）
-      ($crit0 | with_entries(select(.key as $k | (allowedKeys | index($k))))) as $crit1
-      |
-      # 未設定キーの補完（defaults + 既存で既存値を優先）
-      (defaults + $crit1) as $crit
-      |
-      # 平均値の算出（数値/数値文字列のみ対象）
-      ([ $crit[] | to_num ]) as $vals
-      | ($vals | length) as $cnt
-      | (if $cnt > 0 then (($vals | add) / $cnt) else null end) as $avg
-      |
-      # 出力組み立て（元要素を維持しつつevaluationを更新）
-      $item
-      | .evaluation = { result: $avg, evaluationCriteria: $crit }
-    ))
-  }
-' >"${output_json_path}/result_${TS}.json"
+      {
+        meta: ($deps[0].meta),
+        data: (($deps[0].data // []) | map(
+          . as $item
+          |
+          # 既存評価基準（なければ空オブジェクト）
+          (($item.evaluation.evaluationCriteria) // {}) as $crit0
+          |
+          # 無効キーの削除（allowedKeysに無いキーを落とす）
+          ($crit0 | with_entries(select(.key as $k | (allowedKeys | index($k))))) as $crit1
+          |
+          # 未設定キーの補完（defaults + 既存で既存値を優先）
+          (defaults + $crit1) as $crit
+          |
+          # 平均値の算出（数値/数値文字列のみ対象）
+          ([ $crit[] | to_num ]) as $vals
+          | ($vals | length) as $cnt
+          | (if $cnt > 0 then (($vals | add) / $cnt) else null end) as $avg
+          |
+          # 出力組み立て（元要素を維持しつつevaluationを更新）
+          $item
+          | .evaluation = { result: $avg, evaluationCriteria: $crit }
+        ))
+      }
+    ' >"${OUTPUT_JSON_DIR}/result-${TODAY}.json"
 }
 
 #--------------------------------------
@@ -165,13 +185,12 @@ function prepare_output_file() {
 # メイン関数
 #--------------------------------------
 function main() {
-  validate_json_file
-  local output_json_path
-  output_json_path=$(prepare_output_file)
-  process_dependencies_json "${output_json_path}"
+  local OUTPUT_JSON_DIR
+  OUTPUT_JSON_DIR=$(prepare_output_file)
+  process_dependencies_json "${OUTPUT_JSON_DIR}"
 }
 
 #--------------------------------------
 # メイン関数の実行
 #--------------------------------------
-main
+main "$@"

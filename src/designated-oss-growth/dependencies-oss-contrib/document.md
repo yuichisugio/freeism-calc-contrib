@@ -67,7 +67,7 @@
 
 ## 仕様
 
-1. dependencies_json に、config_json の key と value の値が入っていない data 配列の要素には、config_json の key と value の値を、key-value オブジェクトとして出力形式を参考に入れる
+1. `dependencies_json` に、`config_json` の key と value の値が入っていない data 配列の要素には、config_json の key と value の値を、key-value オブジェクトとして出力形式を参考に入れる
 2. 入れた config_json の key と value の値をもとに、平均値を算出して、evaluation.result に記載する
 3. すでに config_json の key と value の値が入っている場合は、平均値を再計算する
    後から key と value の値を修正して再計算したいため
