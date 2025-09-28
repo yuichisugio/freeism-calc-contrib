@@ -19,9 +19,10 @@ function process_release_node_id() {
 
   printf '%s\n' "begin:process_release_node_id()"
 
+  # shellcheck disable=SC2016
   local SECOND_OTHER_QUERY='
-    letter_count: ((.name // "" | length) + (.description // "" | length)),
-    good_reaction: (.reactions.totalCount // 0)
+    letter_count: ((($obj.name // "") | length) + (($obj.description // "") | length)),
+    good_reaction: ($obj.reactions.totalCount // 0)
   '
 
   process_data_utils \

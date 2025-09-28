@@ -59,7 +59,8 @@
 			"lower_limit": 1
 		},
 		"amount_of_work": {
-			"letter_count": 0.05
+			"letter_count": 0.05,
+			"letter_count_lower_limit": 1
 		},
 		"amount_of_reaction": {
 			"good_reaction_count": 0.1,
@@ -83,7 +84,8 @@
 			"lower_limit": 1
 		},
 		"amount_of_work": {
-			"letter_count": 0.05
+			"letter_count": 0.05,
+			"letter_count_lower_limit": 1
 		},
 		"amount_of_reaction": {
 			"good_reaction_count": 0.1,
