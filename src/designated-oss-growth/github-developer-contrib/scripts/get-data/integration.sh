@@ -44,15 +44,63 @@ function get_data() {
   get_repo_meta
 
   # 実行するファイルを選択
-  if should_run "commit" "$@"; then get_commit; fi
-  if should_run "discussion" "$@"; then get_discussion; fi
-  if should_run "fork" "$@"; then get_fork; fi
-  if should_run "issue" "$@"; then get_issue; fi
-  if should_run "pull-request" "$@"; then get_pull_request; fi
-  if should_run "release" "$@"; then get_release; fi
-  if should_run "sponsor" "$@"; then get_sponsor; fi
-  if should_run "star" "$@"; then get_star; fi
-  if should_run "watch" "$@"; then get_watch; fi
+  if should_run \
+    "commit" \
+    "create_commit_with_pr" \
+    "comment" \
+    "reaction" \
+    -- "$@"; then
+    get_commit
+  fi
+
+  if should_run \
+    "discussion" \
+    "create_discussion" \
+    "answer_discussion" \
+    "comment" \
+    "reaction" \
+    -- "$@"; then
+    get_discussion
+  fi
+
+  if should_run "fork" -- "$@"; then get_fork; fi
+
+  if should_run \
+    "issue" \
+    "create_issue" \
+    "change_issue_state" \
+    "assigning" \
+    "labeling" \
+    "comment" \
+    "reaction" \
+    -- "$@"; then
+    get_issue
+  fi
+
+  if should_run \
+    "pull-request" \
+    "create_pull_request" \
+    "change_pull_request_state" \
+    "assigning" \
+    "labeling" \
+    "pr_review" \
+    "comment" \
+    "reaction" \
+    -- "$@"; then
+    get_pull_request
+  fi
+
+  if should_run \
+    "release" \
+    "create_release" \
+    "reaction" \
+    -- "$@"; then
+    get_release
+  fi
+
+  if should_run "sponsor" -- "$@"; then get_sponsor; fi
+  if should_run "star" -- "$@"; then get_star; fi
+  if should_run "watch" -- "$@"; then get_watch; fi
 
   # データ取得後のRateLimitを出力
   get_ratelimit "after:get-data()" "$before_remaining_ratelimit" "false"

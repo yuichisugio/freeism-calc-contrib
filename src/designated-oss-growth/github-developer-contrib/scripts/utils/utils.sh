@@ -222,22 +222,70 @@ function get_ratelimit() {
 # 選択なし=全実行、"all"含む=全実行
 #--------------------------------------
 function should_run() {
-  # 第一引数: 判定したいタスク名
-  local name="$1"
-  shift
+  local -a args=("$@")
+  local delimiter_index=-1
+  local i
 
-  # 第二引数以降: 選択されたタスク（スペース/カンマ混在可）
+  for i in "${!args[@]}"; do
+    if [[ "${args[$i]}" == "--" ]]; then
+      delimiter_index=$i
+      break
+    fi
+  done
+
+  local -a raw_keywords=()
+  local -a raw_selected=()
+
+  if ((delimiter_index >= 0)); then
+    if ((delimiter_index > 0)); then
+      raw_keywords=("${args[@]:0:delimiter_index}")
+    fi
+    if ((delimiter_index + 1 <= ${#args[@]})); then
+      raw_selected=("${args[@]:delimiter_index+1}")
+    fi
+  else
+    if ((${#args[@]} > 0)); then
+      raw_keywords=("${args[0]}")
+    fi
+    if ((${#args[@]} > 1)); then
+      raw_selected=("${args[@]:1}")
+    fi
+  fi
+
+  local -a normalized_names=()
+  local raw_keyword
+  for raw_keyword in "${raw_keywords[@]}"; do
+    if [[ -z "$raw_keyword" ]]; then
+      continue
+    fi
+
+    local normalized_input="$raw_keyword"
+    normalized_input="${normalized_input//,/ }"
+    normalized_input="${normalized_input//|/ }"
+
+    local -a keyword_parts=()
+    read -r -a keyword_parts <<<"$normalized_input" || true
+
+    local keyword_part
+    for keyword_part in "${keyword_parts[@]}"; do
+      if [[ -z "$keyword_part" ]]; then
+        continue
+      fi
+      keyword_part="$(printf '%s' "$keyword_part" | tr '[:upper:]' '[:lower:]')"
+      keyword_part="${keyword_part//_/-}"
+      normalized_names+=("$keyword_part")
+    done
+  done
+
   local -a selected_tasks=()
-  if [[ $# -gt 0 ]]; then
+  if ((${#raw_selected[@]} > 0)); then
     local arg part
-    for arg in "$@"; do
-      arg="${arg// /,}" # スペースもカンマに寄せる
+    for arg in "${raw_selected[@]}"; do
+      arg="${arg// /,}"
 
-      # 配列を必ず初期化してから read -a する（nounset対策）
       local -a parts=()
-      IFS=, read -r -a parts <<<"$arg" || true # set -e 環境でも安全に（失敗しても空配列のまま）
+      IFS=, read -r -a parts <<<"$arg" || true
 
-      # parts が空でも unbound にならない
       if ((${#parts[@]} > 0)); then
         for part in "${parts[@]}"; do
           if [[ -n "$part" ]]; then
@@ -248,21 +296,22 @@ function should_run() {
     done
   fi
 
-  # タスク名を正規化
-  local normalized_name="${name//_/-}"
-
-  # 選択が空 → すべて実行
   if ((${#selected_tasks[@]} == 0)); then
     return 0
   fi
 
-  # タスク実行判定
-  local sel
+  local sel normalized_name
   for sel in "${selected_tasks[@]}"; do
     sel="${sel//_/-}"
-    if [[ "$sel" == "all" || "$sel" == "$normalized_name" ]]; then
+    if [[ "$sel" == "all" ]]; then
       return 0
     fi
+
+    for normalized_name in "${normalized_names[@]}"; do
+      if [[ "$sel" == "$normalized_name" ]]; then
+        return 0
+      fi
+    done
   done
 
   return 1

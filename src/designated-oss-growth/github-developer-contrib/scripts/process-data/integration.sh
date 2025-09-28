@@ -41,15 +41,62 @@ function process_data() {
   process_repo_meta
 
   # 実行するファイルを選択
-  if should_run "star" "$@"; then process_star; fi
-  if should_run "fork" "$@"; then process_fork; fi
-  if should_run "sponsor" "$@"; then process_sponsor; fi
-  if should_run "watch" "$@"; then process_watch; fi
-  if should_run "issue" "$@"; then process_issue; fi
-  if should_run "pull-request" "$@"; then process_pull_request; fi
-  if should_run "release" "$@"; then process_release; fi
-  if should_run "commit" "$@"; then process_commit; fi
-  if should_run "discussion" "$@"; then process_discussion; fi
+  if should_run "star" -- "$@"; then process_star; fi
+  if should_run "fork" -- "$@"; then process_fork; fi
+  if should_run "sponsor" -- "$@"; then process_sponsor; fi
+  if should_run "watch" -- "$@"; then process_watch; fi
+
+  if should_run \
+    "issue" \
+    "create_issue" \
+    "change_issue_state" \
+    "assigning" \
+    "labeling" \
+    "comment" \
+    "reaction" \
+    -- "$@"; then
+    process_issue
+  fi
+
+  if should_run \
+    "pull-request" \
+    "create_pull_request" \
+    "change_pull_request_state" \
+    "assigning" \
+    "labeling" \
+    "pr_review" \
+    "comment" \
+    "reaction" \
+    -- "$@"; then
+    process_pull_request
+  fi
+
+  if should_run \
+    "release" \
+    "create_release" \
+    "reaction" \
+    -- "$@"; then
+    process_release
+  fi
+
+  if should_run \
+    "commit" \
+    "create_commit_with_pr" \
+    "comment" \
+    "reaction" \
+    -- "$@"; then
+    process_commit
+  fi
+
+  if should_run \
+    "discussion" \
+    "create_discussion" \
+    "answer_discussion" \
+    "comment" \
+    "reaction" \
+    -- "$@"; then
+    process_discussion
+  fi
 
   # データ加工した、それぞれのファイルを一つのファイルに統合する
   integrate_processed_files "$RESULT_PROCESSED_INTEGRATED_DATA_PATH"

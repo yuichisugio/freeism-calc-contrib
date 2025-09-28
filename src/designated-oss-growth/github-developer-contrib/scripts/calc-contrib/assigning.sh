@@ -16,7 +16,6 @@ function calc_assigning() {
   calc_contrib_utils \
     --task-name "assigning" \
     --repo-creation-to-task-period "true" \
-    --amount-of-work "true" \
     --response-speed "true"
 
   printf '%s\n' "end:calc_assigning()"
