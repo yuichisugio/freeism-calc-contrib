@@ -224,14 +224,13 @@ function get_ratelimit() {
 function should_run() {
   local -a task_words=()
   local -a arg_words=()
-  local mode="keywords"
 
   while [[ $# -gt 0 ]]; do
     case "$1" in
     --task_word)
       if [[ $# -lt 2 ]]; then
         printf '%s\n' "should_run: missing value for --task_word" >&2
-        return 1
+        exit 1
       fi
       task_words+=("$2")
       shift 2
@@ -239,24 +238,14 @@ function should_run() {
     --arg_word)
       if [[ $# -lt 2 ]]; then
         printf '%s\n' "should_run: missing value for --arg_word" >&2
-        return 1
+        exit 1
       fi
       arg_words+=("$2")
       shift 2
       ;;
-    --)
-      mode="args"
-      shift
-      continue
-      ;;
     *)
-      if [[ "$mode" == "keywords" ]]; then
-        task_words+=("$1")
-        mode="args"
-      else
-        arg_words+=("$1")
-      fi
-      shift
+      printf '%s\n' "should_run: unknown option: $1" >&2
+      exit 1
       ;;
     esac
   done

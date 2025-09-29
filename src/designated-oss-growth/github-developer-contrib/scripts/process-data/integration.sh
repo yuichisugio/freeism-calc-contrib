@@ -47,53 +47,31 @@ function process_data() {
   if should_run --task_word "watch" --arg_word "$@"; then process_watch; fi
 
   if should_run \
-    --task_word "issue" \
-    --task_word "create_issue" \
-    --task_word "change_issue_state" \
-    --task_word "assigning" \
-    --task_word "labeling" \
-    --task_word "comment" \
-    --task_word "reaction" \
+    --task_word "issue,create_issue,change_issue_state,assigning,labeling,comment,reaction" \
     --arg_word "$@"; then
     process_issue
   fi
 
   if should_run \
-    --task_word "pull-request" \
-    --task_word "create_pull_request" \
-    --task_word "change_pull_request_state" \
-    --task_word "assigning" \
-    --task_word "labeling" \
-    --task_word "pr_review" \
-    --task_word "comment" \
-    --task_word "reaction" \
+    --task_word "pull-request,create_pull_request,change_pull_request_state,assigning,labeling,pr_review,comment,reaction" \
     --arg_word "$@"; then
     process_pull_request
   fi
 
   if should_run \
-    --task_word "release" \
-    --task_word "create_release" \
-    --task_word "reaction" \
+    --task_word "release,create_release,reaction" \
     --arg_word "$@"; then
     process_release
   fi
 
   if should_run \
-    --task_word "commit" \
-    --task_word "create_commit_with_pr" \
-    --task_word "comment" \
-    --task_word "reaction" \
+    --task_word "commit,create_commit_with_pr,commit_with_pr,comment,reaction" \
     --arg_word "$@"; then
     process_commit
   fi
 
   if should_run \
-    --task_word "discussion" \
-    --task_word "create_discussion" \
-    --task_word "answer_discussion" \
-    --task_word "comment" \
-    --task_word "reaction" \
+    --task_word "discussion,create_discussion,answer_discussion,comment,reaction" \
     --arg_word "$@"; then
     process_discussion
   fi
